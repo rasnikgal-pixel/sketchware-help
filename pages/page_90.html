@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,79 +7,323 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CodeView — поле кода</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>CodeView — поле кода</h1>
 
-<p>CodeView — окно для отображения кода с подсветкой синтаксиса. Показывает текст так, как его видят программисты в редакторе: ключевые слова — одним цветом, строки — другим, комментарии — третьим.</p>
+<p><b>CodeView</b> — окно для отображения кода с подсветкой синтаксиса. Показывает текст так, как его видят программисты в редакторе: ключевые слова — одним цветом, строки — другим, комментарии — третьим.</p>
 
 <p>Иконка в палитре — прямоугольник с символами &lt; &gt;.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает текст с форматированием, похожим на код в IDE.</li>
-<li>Поддерживает подсветку синтаксиса для разных языков: Java, Kotlin, HTML, XML, JavaScript, C++, Python и других.</li>
-<li>Может показывать номера строк слева.</li>
-<li>Поддерживает перенос строк или горизонтальную прокрутку (в зависимости от настроек).</li>
-<li>Может быть только для чтения или с возможностью выделения и копирования текста.</li>
+  <li>Отображает текст с форматированием, похожим на код в IDE.</li>
+  <li>Поддерживает подсветку синтаксиса для разных языков: Java, Kotlin, HTML, XML, JavaScript, C++, Python и других.</li>
+  <li>Может показывать номера строк слева.</li>
+  <li>Поддерживает перенос строк или горизонтальную прокрутку (в зависимости от настроек).</li>
+  <li>Может быть только для чтения или с возможностью выделения и копирования текста.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Приложения-справочники по программированию.</li>
-<li>Обучающие курсы — примеры кода внутри урока.</li>
-<li>Документация библиотек — фрагменты API.</li>
-<li>Заметки программиста — сохранённые сниппеты.</li>
-<li>Демонстрация кода — например, «как выглядит этот блок в Java».</li>
+  <li>Приложения-справочники по программированию.</li>
+  <li>Обучающие курсы — примеры кода внутри урока.</li>
+  <li>Документация библиотек — фрагменты API.</li>
+  <li>Заметки программиста — сохранённые сниппеты.</li>
+  <li>Демонстрация кода — например, «как выглядит этот блок в Java».</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Code</b></td>
+      <td style="border: 1px solid #000;">Текст, который отображается (задаётся в логике).</td>
+      <td style="border: 1px solid #000;">Любая строка с кодом.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Language</b></td>
+      <td style="border: 1px solid #000;">Язык для подсветки.</td>
+      <td style="border: 1px solid #000;"><code>Java</code>, <code>Kotlin</code>, <code>HTML</code>, <code>XML</code>, <code>JavaScript</code>, <code>C++</code>, <code>Python</code> и другие.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ShowLineNumbers</b></td>
+      <td style="border: 1px solid #000;">Показывать ли номера строк.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>WrapContent</b></td>
+      <td style="border: 1px solid #000;">Переносить ли длинные строки.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextSize</b></td>
+      <td style="border: 1px solid #000;">Размер текста кода.</td>
+      <td style="border: 1px solid #000;">Число в sp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>BackgroundColor</b></td>
+      <td style="border: 1px solid #000;">Фон окна кода.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>EnableLineWrap</b></td>
+      <td style="border: 1px solid #000;">Включать/выключать перенос.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> или <code>wrap_content</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>HorizontalScrollingEnabled</b></td>
+      <td style="border: 1px solid #000;">Горизонтальная прокрутка при длинных строках.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по CodeView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>codeview1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>codeview1</code>, <code>codeview2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>exampleCode</code>, если это пример кода.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты. Здесь задаются язык, номера строк, цвета.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>app:codeLanguage="java"</code>, <code>app:showLineNumbers="true"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает полный класс компонента: <code>br.tiagohm.codeview.CodeView</code>.</td>
+      <td style="border: 1px solid #000;">CodeView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет окно кода по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — стандарт для окна кода.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет окно кода по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> или фиксированная — например, <code>300dp</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон. Для окна кода лучше 12.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 12 — отступ от предыдущего текста.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code> — фон задаётся цветом.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Тёмный фон — <code>#1E1E1E</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Можно ли взаимодействовать с виджетом.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые настройки (<b>Language</b>, <b>ShowLineNumbers</b>, <b>WrapContent</b>, <b>TextSize</b>) задаются через <b>Пользовательские атрибуты</b> — в виде <code>app:codeLanguage="java"</code>, <code>app:showLineNumbers="true"</code>. Сам текст кода задаётся в логике через <code>setCode</code>.</div>
+
+<h2>Как перетащить CodeView на макет</h2>
+
+<p>CodeView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>Scroll(V)</b> с <b>Linear(V)</b>.</li>
+  <li>Раскрой категорию <b>Библиотеки</b> в палитре слева.</li>
+  <li>Зажми <b>CodeView</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — окно кода появится в разметке.</li>
+  <li>В свойствах задай <b>Ширину</b> = match_parent, <b>Высоту</b> = wrap_content.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай язык, показ номеров строк, цвет фона.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» и добавь в <code>onCreate</code> блок <code>setCode</code> или <code>setText</code> — задай текст кода.</li>
+  <li>Если код должен меняться в зависимости от выбора пользователя — обновляй его в событии кнопки или списка.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по CodeView в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> CodeView не форматирует код. Если в тексте нет правильных отступов и переносов строк — он покажет как есть. Задавай текст с уже готовым форматированием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> подсветка работает только при указании правильного языка. Если поставить Java, а показать HTML — синтаксис подсветится некорректно.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> CodeView увеличивает вес APK, так как тянет за собой движок подсветки. Если код в приложении — просто текст, используй обычный TextView с моноширинным шрифтом.</div>
+
+<div class="hint">💡 <b>Совет:</b> задавай фон тёмного цвета (#1E1E1E или #282C34) и светлый текст — как в современных редакторах. Так код читается легче.</div>
+
+<div class="hint">💡 <b>Совет:</b> для длинных фрагментов используй обёртку Scroll(V) вокруг CodeView. Иначе код обрежется по высоте.</div>
+
+<div class="hint">💡 <b>Совет:</b> для копирования кода пользователем добавь отдельную кнопку «Копировать». CodeView позволяет выделять текст, но удобнее — одна кнопка.</div>
+
+<div class="hint">💡 <b>Совет:</b> для примеров кода на несколько языков создавай отдельные CodeView для каждого языка и показывай нужный через setVisibility.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать CodeView для обычного текста. Он весит больше TextView, а подсветка не нужна.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> задавать язык подсветки неправильно. Например, Java для Kotlin-кода — ключевые слова совпадут не полностью, подсветка будет странной.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> размещать CodeView без прокрутки. Длинный код обрежется, и пользователь не увидит остальное.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Code</b> — текст, который отображается (задаётся в логике).</li>
-<li><b>Language</b> — язык для подсветки: Java, Kotlin, HTML, XML, JavaScript, C++, Python и другие.</li>
-<li><b>ShowLineNumbers</b> — показывать ли номера строк.</li>
-<li><b>WrapContent</b> — переносить ли длинные строки.</li>
-<li><b>TextSize</b> — размер текста кода.</li>
-<li><b>BackgroundColor</b> — фон окна кода.</li>
-<li><b>EnableLineWrap</b> — включать/выключать перенос.</li>
-<li><b>Width / Height</b> — match_parent или wrap_content.</li>
-<li><b>HorizontalScrollingEnabled</b> — горизонтальная прокрутка при длинных строках.</li>
+  <li><b>CodeView</b> — окно для отображения кода с подсветкой синтаксиса.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Текст кода задаётся в <b>логике</b> через <code>setCode</code> или <code>setText</code>.</li>
+  <li>Ключевые параметры (<b>Language</b>, <b>ShowLineNumbers</b>, цвета) задаются через <b>Пользовательские атрибуты</b>.</li>
+  <li>Подсветка работает только при правильном указании языка.</li>
+  <li>Для длинного кода оборачивай в Scroll(V).</li>
+  <li>Не используй CodeView для обычного текста — он тяжелее TextView.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер — обычно Linear(V) или Scroll(V).</li>
-<li>Тап по CodeView в палитре — виджет добавится внутрь.</li>
-<li>В свойствах задай Language — язык для подсветки.</li>
-<li>Задай ShowLineNumbers и WrapContent по вкусу.</li>
-<li>Присвой id — для работы в логике.</li>
-<li>Открой вкладку «События» и добавь в onCreate блок setCode или setText — задай текст кода.</li>
-<li>Если код должен меняться в зависимости от выбора пользователя — обновляй его в событии кнопки или списка.</li>
+  <li><b>Тапают по CodeView в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Не задают текст кода в логике.</b> Виджет пустой.</li>
+  <li><b>Ищут Language и ShowLineNumbers в обычных свойствах.</b> Через «Пользовательские атрибуты» — <code>app:codeLanguage</code>, <code>app:showLineNumbers</code>.</li>
+  <li><b>Оставляют неправильный язык подсветки.</b> Синтаксис отображается странно.</li>
+  <li><b>Не оборачивают в Scroll(V) для длинного кода.</b> Нижняя часть обрезается.</li>
+  <li><b>Используют CodeView для обычного текста.</b> Лишний вес APK — достаточно TextView.</li>
+  <li><b>Не задают ID.</b> Логика не может обратиться к виджету.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> CodeView не форматирует код. Если в тексте нет правильных отступов и переносов строк — он покажет как есть. Задавай текст с уже готовым форматированием.</p>
-
-<p>⚠️ <b>Важно:</b> подсветка работает только при указании правильного языка. Если поставить Java, а показать HTML — синтаксис подсветится некорректно.</p>
-
-<p>⚠️ <b>Важно:</b> CodeView увеличивает вес APK, так как тянет за собой движок подсветки. Если код в приложении — просто текст, используй обычный TextView с моноширинным шрифтом.</p>
-
-<p>💡 <b>Совет:</b> задавай фон тёмного цвета (#1E1E1E или #282C34) и светлый текст — как в современных редакторах. Так код читается легче.</p>
-
-<p>💡 <b>Совет:</b> для длинных фрагментов используй обёртку Scroll(V) вокруг CodeView. Иначе код обрежется по высоте.</p>
-
-<p>💡 <b>Совет:</b> для копирования кода пользователем добавь отдельную кнопку «Копировать». CodeView позволяет выделять текст, но удобнее — одна кнопка.</p>
-
-<p>💡 <b>Совет:</b> для примеров кода на несколько языков создавай отдельные CodeView для каждого языка и показывай нужный через setVisibility.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать CodeView для обычного текста. Он весит больше TextView, а подсветка не нужна.</p>
-
-<p>❌ <b>Частая ошибка:</b> задавать язык подсветки неправильно. Например, Java для Kotlin-кода — ключевые слова совпадут не полностью, подсветка будет странной.</p>
-
-<p>❌ <b>Частая ошибка:</b> размещать CodeView без прокрутки. Длинный код обрежется, и пользователь не увидит остальное.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
