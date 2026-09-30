@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,72 +7,297 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AnalogClock — аналоговые часы</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>AnalogClock — аналоговые часы</h1>
 
-<p>AnalogClock — аналоговые часы со стрелками. Виджет, который показывает текущее время в классическом виде: круглый циферблат, часовая и минутная стрелки.</p>
+<p><b>AnalogClock</b> — аналоговые часы со стрелками. Виджет, который показывает текущее время в классическом виде: круглый циферблат, часовая и минутная стрелки.</p>
 
 <p>Иконка в палитре — циферблат со стрелками.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает круглый циферблат с двумя стрелками: часовой и минутной.</li>
-<li>Стрелки двигаются автоматически — отражают системное время устройства.</li>
-<li>Пользователь не может взаимодействовать с виджетом — это только отображение.</li>
-<li>Секундной стрелки обычно нет — только часы и минуты.</li>
-<li>Обновляется автоматически каждую минуту.</li>
-<li>Может быть любого размера: маленький — как иконка, большой — как часы на главном экране.</li>
+  <li>Отображает круглый циферблат с двумя стрелками: часовой и минутной.</li>
+  <li>Стрелки двигаются автоматически — отражают системное время устройства.</li>
+  <li>Пользователь не может взаимодействовать с виджетом — это только отображение.</li>
+  <li>Секундной стрелки обычно нет — только часы и минуты.</li>
+  <li>Обновляется автоматически каждую минуту.</li>
+  <li>Может быть любого размера: маленький — как иконка, большой — как часы на главном экране.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Главный экран приложения — декоративные часы.</li>
-<li>Экран блокировки — часы в стиле классических.</li>
-<li>Виджет на рабочем столе — если приложение само является виджетом.</li>
-<li>Приложения-органайзеры — где нужно показать время.</li>
-<li>Игры или приложения в ретро-стиле — аналоговые часы добавляют атмосферу.</li>
+  <li>Главный экран приложения — декоративные часы.</li>
+  <li>Экран блокировки — часы в стиле классических.</li>
+  <li>Виджет на рабочем столе — если приложение само является виджетом.</li>
+  <li>Приложения-органайзеры — где нужно показать время.</li>
+  <li>Игры или приложения в ретро-стиле — аналоговые часы добавляют атмосферу.</li>
 </ul>
 
 <p>В большинстве современных приложений используются цифровые часы. AnalogClock — скорее декоративный выбор.</p>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Размеры виджета. Должны быть равны, чтобы получился ровный круг.</td>
+      <td style="border: 1px solid #000;">Число в dp. Например, 120dp × 120dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон под часами.</td>
+      <td style="border: 1px solid #000;">HEX, drawable-ресурс или <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Padding / Margin</b></td>
+      <td style="border: 1px solid #000;">Внутренние и внешние отступы.</td>
+      <td style="border: 1px solid #000;">Число в dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Visibility</b></td>
+      <td style="border: 1px solid #000;">Показывать/скрывать.</td>
+      <td style="border: 1px solid #000;"><code>visible</code>, <code>invisible</code>, <code>gone</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по AnalogClock в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>analogclock1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>analogclock1</code>, <code>analogclock2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>mainClock</code>, если это часы на главном экране.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:alpha="0.8"</code> — полупрозрачные часы.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>AnalogClock</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">AnalogClock и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широкими будут часы по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>150dp</code> — оптимальный размер для главного экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высокими будут часы по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>150dp</code> — должно совпадать с шириной.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 16 — отступ от заголовка экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — часы по центру экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Прозрачный фон — оставить <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Отображаются ли часы на экране.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>0.8</code> — слегка прозрачные часы.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> у AnalogClock нет настроек времени или стиля стрелок — только размер и положение. Часы работают сразу после перетаскивания, без логики.</div>
+
+<h2>Как перетащить AnalogClock на макет</h2>
+
+<p>AnalogClock, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Дата и время</b> в палитре слева.</li>
+  <li>Зажми <b>AnalogClock</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — часы появятся в разметке.</li>
+  <li>Задай <b>Ширину</b> и <b>Высоту</b> одинаковыми — например, 150dp × 150dp.</li>
+  <li>Задай <b>Внешний отступ</b> — например, Margin top 16.</li>
+  <li>Логика для отображения не нужна — часы работают сразу после добавления.</li>
+  <li>Если часы должны показываться только при определённых условиях — управляй через <code>setVisibility</code> в событиях.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по AnalogClock в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> AnalogClock не даёт программно установить время. Он всегда показывает системное время устройства. Если нужно показать другое время — используй TextView с форматированием через Calendar.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> при Width ≠ Height циферблат будет выглядеть сплюснутым. Задавай одинаковые значения.</div>
+
+<div class="hint">💡 <b>Совет:</b> для декора на главном экране используй AnalogClock размером 150dp × 150dp. Это оптимальный размер, чтобы стрелки были различимы и циферблат не занимал пол-экрана.</div>
+
+<div class="hint">💡 <b>Совет:</b> для ретро-стиля используй AnalogClock в сочетании с деревянным фоном или старинными шрифтами. Отлично смотрится в приложениях-органайзерах.</div>
+
+<div class="hint">💡 <b>Совет:</b> если приложение требует точного времени (например, для будильника или напоминания), AnalogClock недостаточен — нужен TimePicker или Calendar.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать AnalogClock там, где нужно выбрать время. Для этого есть TimePicker — пользователь двигает стрелки сам.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> задавать разные Width и Height и удивляться, почему часы сплюснутые.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> пытаться изменить время на часах через логику. AnalogClock этого не позволяет — только системное время.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Width / Height</b> — размеры виджета. Обычно равные — например, 120dp × 120dp, чтобы получился ровный круг.</li>
-<li><b>Background</b> — фон под часами.</li>
-<li><b>Padding / Margin</b> — внутренние и внешние отступы.</li>
-<li><b>Visibility</b> — показывать/скрывать.</li>
+  <li><b>AnalogClock</b> — аналоговые часы со стрелками, показывающие системное время устройства.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Работает автоматически — логика для отображения не нужна.</li>
+  <li>Не позволяет установить время вручную — только отображение.</li>
+  <li>Ключевые параметры: <b>Ширина и Высота</b> (равные, для ровного круга), <b>Отступы</b>.</li>
+  <li>Для декора — размер 150dp; для иконки — 80dp; для крупного — 200dp+.</li>
+  <li>Для выбора времени используй TimePicker, а не AnalogClock.</li>
+  <li>Показывает только часы и минуты, без секунд.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, куда хочешь положить часы.</li>
-<li>Тап по AnalogClock в палитре — виджет добавится внутрь.</li>
-<li>Задай Width и Height — одинаковые значения, например 150dp × 150dp.</li>
-<li>Задай Margin — отступы от других элементов.</li>
-<li>Логика для отображения не нужна — часы работают сразу после добавления.</li>
-<li>Если часы должны показываться только при определённых условиях — управляй через setVisibility в событиях.</li>
+  <li><b>Тапают по AnalogClock в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Используют там, где нужен выбор времени.</b> Для этого TimePicker.</li>
+  <li><b>Задают разные Width и Height.</b> Получается сплюснутый циферблат.</li>
+  <li><b>Пытаются установить своё время.</b> AnalogClock показывает только системное.</li>
+  <li><b>Добавляют часы на весь экран.</b> Слишком громоздко — 150dp достаточно.</li>
+  <li><b>Ищут настройки стиля стрелок.</b> Их нет — только размер и положение.</li>
+  <li><b>Пытаются сделать через них будильник.</b> Нужен TimePicker + AlarmManager.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> AnalogClock не даёт программно установить время. Он всегда показывает системное время устройства. Если нужно показать другое время — используй TextView с форматированием через Calendar.</p>
-
-<p>⚠️ <b>Важно:</b> при Width ≠ Height циферблат будет выглядеть сплюснутым. Задавай одинаковые значения.</p>
-
-<p>💡 <b>Совет:</b> для декора на главном экране используй AnalogClock размером 150dp × 150dp. Это оптимальный размер, чтобы стрелки были различимы и циферблат не занимал пол-экрана.</p>
-
-<p>💡 <b>Совет:</b> для ретро-стиля используй AnalogClock в сочетании с деревянным фоном или старинными шрифтами. Отлично смотрится в приложениях-органайзерах.</p>
-
-<p>💡 <b>Совет:</b> если приложение требует точного времени (например, для будильника или напоминания), AnalogClock недостаточен — нужен TimePicker или Calendar.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать AnalogClock там, где нужно выбрать время. Для этого есть TimePicker — пользователь двигает стрелки сам.</p>
-
-<p>❌ <b>Частая ошибка:</b> задавать разные Width и Height и удивляться, почему часы сплюснутые.</p>
-
-<p>❌ <b>Частая ошибка:</b> пытаться изменить время на часах через логику. AnalogClock этого не позволяет — только системное время.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
