@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,66 +7,305 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CardView — карточка</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>CardView — карточка</h1>
 
-<p>CardView — карточка с закруглёнными углами и тенью. Контейнер, который визуально выделяет группу связанных элементов на фоне остального экрана. Классический элемент Material Design, используется почти во всех современных приложениях.</p>
+<p><b>CardView</b> — карточка с закруглёнными углами и тенью. Контейнер, который визуально выделяет группу связанных элементов на фоне остального экрана. Классический элемент Material Design, используется почти во всех современных приложениях.</p>
 
 <p>Иконка в палитре — прямоугольник с закруглёнными углами.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>CardView — это контейнер, внутри которого размещаются другие виджеты.</li>
-<li>По умолчанию имеет скруглённые углы и тень (elevation), которая отделяет карточку от фона.</li>
-<li>Может быть плоским (без тени) или объёмным (с глубокой тенью).</li>
-<li>Внутри карточки обычно размещают Linear(V) с содержимым: картинка, заголовок, описание, кнопка.</li>
+  <li>CardView — это контейнер, внутри которого размещаются другие виджеты.</li>
+  <li>По умолчанию имеет скруглённые углы и тень (elevation), которая отделяет карточку от фона.</li>
+  <li>Может быть плоским (без тени) или объёмным (с глубокой тенью).</li>
+  <li>Внутри карточки обычно размещают Linear(V) с содержимым: картинка, заголовок, описание, кнопка.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Списки новостей — каждая новость отдельной карточкой.</li>
-<li>Карточки товаров — фото, название, цена, кнопка «Купить».</li>
-<li>Профили пользователей — аватар, имя, описание.</li>
-<li>Настройки — каждый пункт или группа пунктов в отдельной карточке.</li>
-<li>Дашборды — статистика, графики, метрики, каждая в своей карточке.</li>
+  <li>Списки новостей — каждая новость отдельной карточкой.</li>
+  <li>Карточки товаров — фото, название, цена, кнопка «Купить».</li>
+  <li>Профили пользователей — аватар, имя, описание.</li>
+  <li>Настройки — каждый пункт или группа пунктов в отдельной карточке.</li>
+  <li>Дашборды — статистика, графики, метрики, каждая в своей карточке.</li>
 </ul>
 
 <p>Это самый популярный контейнер для визуальной группировки в Android.</p>
 
 <h2>Настройки</h2>
 
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>CardBackgroundColor</b></td>
+      <td style="border: 1px solid #000;">Цвет фона карточки.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>CardCornerRadius</b></td>
+      <td style="border: 1px solid #000;">Радиус скругления углов.</td>
+      <td style="border: 1px solid #000;">Число в dp. Чем больше — тем круглее. На скриншоте — <code>2dp</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>CardElevation</b></td>
+      <td style="border: 1px solid #000;">Высота тени.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0dp</code> — без тени;<br><code>4–8dp</code> — стандарт;<br><code>16dp+</code> — сильный объём. На скриншоте — <code>2dp</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ContentPadding</b></td>
+      <td style="border: 1px solid #000;">Внутренние отступы содержимого от краёв карточки.</td>
+      <td style="border: 1px solid #000;">Число в dp для каждой стороны.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>CardUseCompatPadding</b></td>
+      <td style="border: 1px solid #000;">Учитывать ли padding на разных версиях Android.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>CardPreventCornerOverlap</b></td>
+      <td style="border: 1px solid #000;">Предотвращать наложение содержимого на скругления.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота карточки.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> или <code>wrap_content</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Margin</b></td>
+      <td style="border: 1px solid #000;">Внешние отступы между карточками.</td>
+      <td style="border: 1px solid #000;">Число в dp.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства контейнера</h2>
+
+<p>Открой панель свойств, тапнув по CardView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>cardview1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя компонента. По этому имени он виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>cardview1</code>, <code>cardview2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>newsCard</code>, если это карточка новости.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Здесь задаются ключевые параметры карточки.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">На скриншоте заданы <code>app:cardElevation="2dp"</code> и <code>app:cardCornerRadius="2dp"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает полный класс компонента: <code>androidx.cardview.widget.CardView</code>.</td>
+      <td style="border: 1px solid #000;">CardView (AndroidX) и другие.</td>
+      <td style="border: 1px solid #000;">Обычно менять не нужно.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широкой будет карточка по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — для карточки-баннера;<br><code>wrap_content</code> — для карточки-плитки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высокой будет карточка по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт для карточки в списке.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> карточки — от её краёв до содержимого. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон. Классика — 12–16 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> карточки — от неё до соседних элементов и краёв родителя.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin 8 со всех сторон — карточки не липнут друг к другу.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как карточка выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>, <code>right</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — карточка по центру.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт карточка. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — карточка заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон карточки из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>, а фон задают через CardBackgroundColor в пользовательских атрибутах.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка карточки сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Белый фон карточки — <code>#FFFFFF</code>. Для Material Design часто задают через <code>app:cardBackgroundColor</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли карточка на нажатия (событие onClick).</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активно;<br><b>выкл</b> — заблокировано.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот карточки вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько карточка прозрачна.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг карточки по горизонтали без изменения её места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг карточки по вертикали без изменения её места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает карточку по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает карточку по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые параметры карточки (<b>CardCornerRadius</b>, <b>CardElevation</b>, <b>CardBackgroundColor</b>) задаются через <b>Пользовательские атрибуты</b> — их нужно вручную прописать в виде <code>app:cardCornerRadius="12dp"</code>, <code>app:cardElevation="4dp"</code>, <code>app:cardBackgroundColor="#FFFFFF"</code>.</div>
+
+<h2>Как перетащить CardView на макет</h2>
+
+<p>CardView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Раскрой категорию <b>AndroidX</b> в палитре слева.</li>
+  <li>Зажми <b>CardView</b> и, не отпуская, перетащи его на макет (обычно внутрь Linear(V) или внутрь Scroll(V) → Linear(V)).</li>
+  <li>Отпусти в нужном месте — карточка появится в разметке.</li>
+  <li>В свойствах задай базовые параметры: <b>Ширина</b>, <b>Высота</b>, <b>Внутренний отступ</b>, <b>Внешний отступ</b>.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай <code>app:cardCornerRadius</code>, <code>app:cardElevation</code>, <code>app:cardBackgroundColor</code>.</li>
+  <li>Внутрь карточки перетащи <b>Linear(V)</b>, а в него — содержимое: ImageView, TextView, Button.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по CardView в палитре ничего не делает. Карточка попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> CardView не подстраивает размер под содержимое автоматически, если задан match_parent. Проверь <b>Высоту</b> — для карточки в списке обычно <code>wrap_content</code>.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> если задаёшь CardCornerRadius, содержимое карточки может «вылезать» за скруглённые углы — картинка, например. Используй CardPreventCornerOverlap = true или задавай внутренние отступы через ContentPadding.</div>
+
+<div class="hint">💡 <b>Совет:</b> классическая карточка для списка: CardCornerRadius = 12dp, CardElevation = 4dp, ContentPadding = 12dp, Margin = 8dp. Такой набор выглядит аккуратно и нейтрально.</div>
+
+<div class="hint">💡 <b>Совет:</b> не ставь слишком глубокую тень (CardElevation больше 12dp) — на тёмных темах она выглядит грязно, а на светлых создаёт эффект «парящих» карточек.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетаскивать содержимое прямо в CardView, без промежуточного Linear(V). Может сработать, но вложенная структура упрощает управление отступами и выравниванием.</div>
+
+<h2>Резюме</h2>
+
 <ul>
-<li><b>CardBackgroundColor</b> — цвет фона карточки.</li>
-<li><b>CardCornerRadius</b> — радиус скругления углов (в dp). Чем больше — тем круглее.</li>
-<li><b>CardElevation</b> — высота тени. 0dp — без тени, 4–8dp — стандарт, 16dp+ — сильный объём.</li>
-<li><b>ContentPadding</b> — внутренние отступы содержимого от краёв карточки.</li>
-<li><b>CardUseCompatPadding</b> — учитывать ли padding на разных версиях Android.</li>
-<li><b>CardPreventCornerOverlap</b> — предотвращать наложение содержимого на скругления.</li>
-<li><b>Width / Height</b> — match_parent или wrap_content.</li>
-<li><b>Margin</b> — внешние отступы между карточками.</li>
+  <li><b>CardView</b> — карточка с закруглёнными углами и тенью, классический контейнер Material Design.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Ключевые параметры (<code>cardCornerRadius</code>, <code>cardElevation</code>, <code>cardBackgroundColor</code>) задаются через <b>Пользовательские атрибуты</b>.</li>
+  <li>Внутрь карточки обычно перетаскивают Linear(V), а в него — содержимое.</li>
+  <li>Стандарт для карточки в списке: radius 12dp, elevation 4dp, padding 12dp, margin 8dp.</li>
+  <li>Не ставь глубокую тень без необходимости — она портит внешний вид.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Тап по CardView в палитре — контейнер добавится в текущий выбранный элемент.</li>
-<li>В свойствах задай CardCornerRadius (обычно 8–16dp), CardElevation (4–8dp) и CardBackgroundColor.</li>
-<li>Внутрь карточки добавь Linear(V) — и уже в него размещай содержимое: ImageView, TextView, Button.</li>
-<li>Задай Margin карточке (8–16dp), чтобы она не прилипала к соседним.</li>
+  <li><b>Тапают по CardView в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Ищут настройки CardCornerRadius и CardElevation в обычных свойствах.</b> Их нужно задавать через «Пользовательские атрибуты».</li>
+  <li><b>Оставляют Высоту = match_parent.</b> Карточка растянется на весь экран и перестанет быть «карточкой».</li>
+  <li><b>Не задают Margin.</b> Карточки в списке слипаются друг с другом.</li>
+  <li><b>Ставят большую CardElevation.</b> Тени выглядят грязно, особенно на тёмной теме.</li>
+  <li><b>Кладут содержимое прямо в CardView без Linear(V).</b> Усложняет управление отступами и выравниванием.</li>
+  <li><b>Забывают, что картинка внутри карточки может вылезать за скруглённые углы.</b> Нужно включать CardPreventCornerOverlap.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> CardView не подстраивает размер под содержимое автоматически, если задан match_parent. Проверь Height — для карточки в списке обычно wrap_content.</p>
-
-<p>⚠️ <b>Важно:</b> если задаёшь CardCornerRadius, содержимое карточки может «вылезать» за скруглённые углы — картинка, например. Используй CardPreventCornerOverlap = true или задавай внутренние отступы через ContentPadding.</p>
-
-<p>💡 <b>Совет:</b> классическая карточка для списка: CardCornerRadius = 12dp, CardElevation = 4dp, ContentPadding = 12dp, Margin = 8dp. Такой набор выглядит аккуратно и нейтрально.</p>
-
-<p>💡 <b>Совет:</b> не ставь слишком глубокую тень (CardElevation больше 12dp) — на тёмных темах она выглядит грязно, а на светлых создаёт эффект «парящих» карточек.</p>
-
-<p>❌ <b>Частая ошибка:</b> добавлять содержимое прямо в CardView, без промежуточного Linear(V). Может сработать, но вложенная структура упрощает управление отступами и выравниванием.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
