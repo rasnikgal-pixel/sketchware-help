@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,101 +7,242 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Категория «Основные»</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>Категория «Основные»</h1>
 
-<p>Основные — первая и самая большая категория в диалоге добавления компонентов. Здесь собраны 22 компонента, которые покрывают базовые задачи приложения: переход между экранами, хранение данных, работу с медиа, устройством, сетью, диалогами.</p>
+<p><b>Основные</b> — первая и самая большая категория в диалоге добавления компонентов. Здесь собраны 22 компонента, которые покрывают базовые задачи приложения: переход между экранами, хранение данных, работу с медиа, устройством, сетью, диалогами.</p>
 
 <p>Именно эти компоненты используются в 90% приложений. Без них приложение остаётся статичным — с ними оно получает реальные возможности.</p>
 
 <h2>Из чего состоит категория</h2>
 
-<p>В категории Основные двадцать два компонента:</p>
+<p>В категории Основные двадцать два компонента, сгруппированные по назначению.</p>
 
 <h3>Навигация и данные</h3>
 
-<ul>
-<li><b>Intent</b> — запуск нового экрана (Activity).</li>
-<li><b>SharedPreferences</b> — хранение небольших данных (настройки, флаги).</li>
-<li><b>FilePicker</b> — выбор файла из памяти устройства.</li>
-<li><b>Calendar</b> — работа с датами и временем.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Компонент</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Intent</b></td>
+      <td style="border: 1px solid #000;">Запуск нового экрана (Activity).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>SharedPreferences</b></td>
+      <td style="border: 1px solid #000;">Хранение небольших данных (настройки, флаги).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>FilePicker</b></td>
+      <td style="border: 1px solid #000;">Выбор файла из памяти устройства.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Calendar</b></td>
+      <td style="border: 1px solid #000;">Работа с датами и временем.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3>Устройство</h3>
 
-<ul>
-<li><b>Vibrator</b> — управление вибрацией.</li>
-<li><b>Gyroscope</b> — данные гироскопа.</li>
-<li><b>LocationManager</b> — определение местоположения.</li>
-<li><b>Camera</b> — доступ к камере.</li>
-<li><b>BluetoothConnect</b> — подключение по Bluetooth.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Компонент</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Vibrator</b></td>
+      <td style="border: 1px solid #000;">Управление вибрацией.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Gyroscope</b></td>
+      <td style="border: 1px solid #000;">Данные гироскопа.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>LocationManager</b></td>
+      <td style="border: 1px solid #000;">Определение местоположения.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Camera</b></td>
+      <td style="border: 1px solid #000;">Доступ к камере.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>BluetoothConnect</b></td>
+      <td style="border: 1px solid #000;">Подключение по Bluetooth.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3>Медиа</h3>
 
-<ul>
-<li><b>MediaPlayer</b> — воспроизведение аудио и видео.</li>
-<li><b>SoundPool</b> — короткие звуковые эффекты.</li>
-<li><b>ObjectAnimator</b> — анимация объектов.</li>
-<li><b>TextToSpeech</b> — синтез речи (озвучивание текста).</li>
-<li><b>SpeechToText</b> — распознавание речи (голосовой ввод).</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Компонент</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>MediaPlayer</b></td>
+      <td style="border: 1px solid #000;">Воспроизведение аудио и видео.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>SoundPool</b></td>
+      <td style="border: 1px solid #000;">Короткие звуковые эффекты.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ObjectAnimator</b></td>
+      <td style="border: 1px solid #000;">Анимация объектов.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextToSpeech</b></td>
+      <td style="border: 1px solid #000;">Синтез речи (озвучивание текста).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>SpeechToText</b></td>
+      <td style="border: 1px solid #000;">Распознавание речи (голосовой ввод).</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3>Диалоги и уведомления</h3>
 
-<ul>
-<li><b>Dialog</b> — всплывающее диалоговое окно.</li>
-<li><b>ProgressDialog</b> — индикатор загрузки с прогрессом.</li>
-<li><b>DatePickerDialog</b> — диалог выбора даты.</li>
-<li><b>TimePickerDialog</b> — диалог выбора времени.</li>
-<li><b>Notification</b> — системные уведомления.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Компонент</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Dialog</b></td>
+      <td style="border: 1px solid #000;">Всплывающее диалоговое окно.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ProgressDialog</b></td>
+      <td style="border: 1px solid #000;">Индикатор загрузки с прогрессом.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>DatePickerDialog</b></td>
+      <td style="border: 1px solid #000;">Диалог выбора даты.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TimePickerDialog</b></td>
+      <td style="border: 1px solid #000;">Диалог выбора времени.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Notification</b></td>
+      <td style="border: 1px solid #000;">Системные уведомления.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3>Сеть и таймеры</h3>
 
-<ul>
-<li><b>Timer</b> — таймер с обратным отсчётом.</li>
-<li><b>RequestNetwork</b> — сетевые запросы (HTTP).</li>
-<li><b>FragmentAdapter</b> — адаптер для работы с фрагментами.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Компонент</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Timer</b></td>
+      <td style="border: 1px solid #000;">Таймер с обратным отсчётом.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>RequestNetwork</b></td>
+      <td style="border: 1px solid #000;">Сетевые запросы (HTTP).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>FragmentAdapter</b></td>
+      <td style="border: 1px solid #000;">Адаптер для работы с фрагментами.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Зачем нужны эти компоненты</h2>
 
 <ul>
-<li><b>Переходы между экранами</b> — Intent открывает новые Activity.</li>
-<li><b>Хранение настроек</b> — SharedPreferences запоминает данные между запусками.</li>
-<li><b>Интернет</b> — RequestNetwork отправляет запросы к API.</li>
-<li><b>Медиа</b> — MediaPlayer, SoundPool для звуков и видео.</li>
-<li><b>Диалоги</b> — Dialog, ProgressDialog для общения с пользователем.</li>
-<li><b>Уведомления</b> — Notification для системных оповещений.</li>
-<li><b>Работа с устройством</b> — вибрация, камера, GPS, гироскоп, Bluetooth.</li>
+  <li><b>Переходы между экранами</b> — Intent открывает новые Activity.</li>
+  <li><b>Хранение настроек</b> — SharedPreferences запоминает данные между запусками.</li>
+  <li><b>Интернет</b> — RequestNetwork отправляет запросы к API.</li>
+  <li><b>Медиа</b> — MediaPlayer, SoundPool для звуков и видео.</li>
+  <li><b>Диалоги</b> — Dialog, ProgressDialog для общения с пользователем.</li>
+  <li><b>Уведомления</b> — Notification для системных оповещений.</li>
+  <li><b>Работа с устройством</b> — вибрация, камера, GPS, гироскоп, Bluetooth.</li>
 </ul>
 
 <h2>Что важно понимать</h2>
 
 <ul>
-<li>Компоненты этой категории добавляются по одному — по мере необходимости.</li>
-<li>Многие из них требуют разрешений: интернет, камера, местоположение, запись звука.</li>
-<li>Некоторые компоненты имеют события (например, onResponse у RequestNetwork), другие работают только через блоки.</li>
-<li>Имя компонента (идентификатор) задаётся при добавлении — по нему он вызывается в логике.</li>
+  <li>Компоненты этой категории добавляются по одному — по мере необходимости.</li>
+  <li>Многие из них требуют разрешений: интернет, камера, местоположение, запись звука.</li>
+  <li>Некоторые компоненты имеют события (например, <code>onResponse</code> у RequestNetwork), другие работают только через блоки.</li>
+  <li>Имя компонента (идентификатор) задаётся при добавлении — по нему он вызывается в логике.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> не подключай все компоненты сразу. Каждый — дополнительный вес APK и потенциальные конфликты. Добавляй только нужные.</p>
+<div class="warn">⚠️ <b>Важно:</b> не подключай все компоненты сразу. Каждый — дополнительный вес APK и потенциальные конфликты. Добавляй только нужные.</div>
 
-<p>⚠️ <b>Важно:</b> для сетевых и медиа-компонентов нужны разрешения. Если забыть — приложение соберётся, но работать не будет.</p>
+<div class="warn">⚠️ <b>Важно:</b> для сетевых и медиа-компонентов нужны разрешения. Если забыть — приложение соберётся, но работать не будет.</div>
 
-<p>💡 <b>Совет:</b> начни с трёх компонентов: SharedPreferences, Intent, RequestNetwork. Они покрывают хранение, навигацию и интернет — основу большинства приложений.</p>
+<div class="hint">💡 <b>Совет:</b> начни с трёх компонентов: SharedPreferences, Intent, RequestNetwork. Они покрывают хранение, навигацию и интернет — основу большинства приложений.</div>
 
-<p>💡 <b>Совет:</b> изучай компоненты по одному. Подключил, использовал, разобрался — переходи к следующему. Так быстрее запоминается.</p>
+<div class="hint">💡 <b>Совет:</b> изучай компоненты по одному. Подключил, использовал, разобрался — переходи к следующему. Так быстрее запоминается.</div>
 
-<p>💡 <b>Совет:</b> если компонент не нужен — удали его. Связанные блоки в логике тоже удалятся, но это лучше, чем тащить балласт.</p>
+<div class="hint">💡 <b>Совет:</b> если компонент не нужен — удали его. Связанные блоки в логике тоже удалятся, но это лучше, чем тащить балласт.</div>
 
-<p>❌ <b>Частая ошибка:</b> добавлять компоненты «на будущее», не используя их. Мусор в проекте и увеличенный APK.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> добавлять компоненты «на будущее», не используя их. Мусор в проекте и увеличенный APK.</div>
 
-<p>❌ <b>Частая ошибка:</b> забывать про разрешения для сетевых и медиа-компонентов. Приложение не заработает, а причина не всегда очевидна.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> забывать про разрешения для сетевых и медиа-компонентов. Приложение не заработает, а причина не всегда очевидна.</div>
 
-<p>❌ <b>Частая ошибка:</b> путать компоненты с виджетами. Vibrator — не виджет, его нельзя отобразить. TextView — не компонент, его нельзя «вызвать» в логике.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> путать компоненты с виджетами. Vibrator — не виджет, его нельзя отобразить. TextView — не компонент, его нельзя «вызвать» в логике.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Основные</b> — самая большая категория компонентов в Sketchware Pro 7.</li>
+  <li>22 компонента, покрывающих базовые задачи: навигация, данные, устройство, медиа, диалоги, сеть, таймеры.</li>
+  <li>Навигация: Intent, SharedPreferences, FilePicker, Calendar.</li>
+  <li>Устройство: Vibrator, Gyroscope, LocationManager, Camera, BluetoothConnect.</li>
+  <li>Медиа: MediaPlayer, SoundPool, ObjectAnimator, TextToSpeech, SpeechToText.</li>
+  <li>Диалоги: Dialog, ProgressDialog, DatePickerDialog, TimePickerDialog, Notification.</li>
+  <li>Сеть и таймеры: Timer, RequestNetwork, FragmentAdapter.</li>
+  <li>Начинай с SharedPreferences, Intent, RequestNetwork — это основа большинства приложений.</li>
+  <li>Добавляй компоненты по мере необходимости, не все сразу.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Добавляют все компоненты сразу.</b> Мусор в проекте, тяжелее APK.</li>
+  <li><b>Забывают про разрешения.</b> Компонент подключён, но не работает.</li>
+  <li><b>Путают компонент с виджетом.</b> Vibrator — компонент, TextView — виджет.</li>
+  <li><b>Ждут, что компонент сам сработает.</b> Нужно вызывать через логику.</li>
+  <li><b>Не знают, с чего начать.</b> Начинай с SharedPreferences, Intent, RequestNetwork.</li>
+  <li><b>Оставляют ненужные компоненты.</b> Удаляй — экономят вес и упрощают проект.</li>
+  <li><b>Не читают, что делает компонент, и добавляют «наугад».</b> Теряется время.</li>
+</ul>
+
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
