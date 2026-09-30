@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,77 +7,193 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>View</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>View</h1>
 
-<p>View — вторая категория в левом меню вкладки «События». Здесь собраны события виджетов, добавленных в Дизайнере: кнопок, полей ввода, чекбоксов, списков, картинок и других компонентов интерфейса.</p>
+<p><b>View</b> — вторая категория в левом меню вкладки «События». Здесь собраны события виджетов, добавленных в Дизайнере: кнопок, полей ввода, чекбоксов, списков, картинок и других компонентов интерфейса.</p>
 
 <p>Если категория Активность отвечает за жизненный цикл экрана, то View — за взаимодействие с пользователем. Каждое событие этой категории срабатывает в ответ на конкретное действие: тап, ввод текста, переключение флажка.</p>
 
 <h2>Список событий категории</h2>
 
-<ul>
-<li><b>onClick</b> — при тапе по виджету: кнопке, картинке, TextView с Clickable = true.</li>
-<li><b>onLongClick</b> — при долгом нажатии на виджет.</li>
-<li><b>onCheckedChanged</b> — при переключении CheckBox, Switch, RadioButton.</li>
-<li><b>onTextChanged</b> — при изменении текста в EditText.</li>
-<li><b>onItemClick</b> — при выборе элемента в ListView, GridView, RecyclerView.</li>
-<li><b>onItemSelected</b> — при выборе элемента в Spinner.</li>
-<li><b>onItemLongClick</b> — при долгом нажатии на элемент списка.</li>
-<li><b>onProgressChanged</b> — при движении SeekBar.</li>
-<li><b>onStartTrackingTouch</b> — при начале движения SeekBar.</li>
-<li><b>onStopTrackingTouch</b> — при отпускании SeekBar.</li>
-<li><b>onRatingChanged</b> — при изменении рейтинга в RatingBar.</li>
-<li><b>onQueryTextSubmit</b> — при нажатии кнопки «Поиск» в SearchView.</li>
-<li><b>onQueryTextChange</b> — при изменении текста в SearchView.</li>
-<li><b>onScrollChanged</b> — при прокрутке ScrollView.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onClick</b></td>
+      <td style="border: 1px solid #000;">При тапе по виджету: кнопке, картинке, TextView с Clickable = true.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onLongClick</b></td>
+      <td style="border: 1px solid #000;">При долгом нажатии на виджет.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onCheckedChanged</b></td>
+      <td style="border: 1px solid #000;">При переключении CheckBox, Switch, RadioButton.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onTextChanged</b></td>
+      <td style="border: 1px solid #000;">При изменении текста в EditText.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onItemClick</b></td>
+      <td style="border: 1px solid #000;">При выборе элемента в ListView, GridView, RecyclerView.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onItemSelected</b></td>
+      <td style="border: 1px solid #000;">При выборе элемента в Spinner.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onItemLongClick</b></td>
+      <td style="border: 1px solid #000;">При долгом нажатии на элемент списка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onProgressChanged</b></td>
+      <td style="border: 1px solid #000;">При движении SeekBar.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onStartTrackingTouch</b></td>
+      <td style="border: 1px solid #000;">При начале движения SeekBar.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onStopTrackingTouch</b></td>
+      <td style="border: 1px solid #000;">При отпускании SeekBar.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onRatingChanged</b></td>
+      <td style="border: 1px solid #000;">При изменении рейтинга в RatingBar.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onQueryTextSubmit</b></td>
+      <td style="border: 1px solid #000;">При нажатии кнопки «Поиск» в SearchView.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onQueryTextChange</b></td>
+      <td style="border: 1px solid #000;">При изменении текста в SearchView.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onScrollChanged</b></td>
+      <td style="border: 1px solid #000;">При прокрутке ScrollView.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Когда что использовать</h2>
 
-<ul>
-<li><b>onClick</b> — основное событие для кнопок и любых кликабельных элементов.</li>
-<li><b>onLongClick</b> — контекстное меню, дополнительные действия по долгому нажатию.</li>
-<li><b>onCheckedChanged</b> — реакция на переключение настроек.</li>
-<li><b>onTextChanged</b> — проверка ввода в реальном времени (валидация email, длины пароля).</li>
-<li><b>onItemClick</b> — открытие деталей при тапе по элементу списка.</li>
-<li><b>onItemSelected</b> — реакция на выбор в Spinner.</li>
-<li><b>onProgressChanged</b> — обновление значения рядом с SeekBar.</li>
-<li><b>onRatingChanged</b> — сохранение оценки, показ «спасибо».</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Зачем использовать</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onClick</b></td>
+      <td style="border: 1px solid #000;">Основное событие для кнопок и любых кликабельных элементов.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onLongClick</b></td>
+      <td style="border: 1px solid #000;">Контекстное меню, дополнительные действия по долгому нажатию.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onCheckedChanged</b></td>
+      <td style="border: 1px solid #000;">Реакция на переключение настроек.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onTextChanged</b></td>
+      <td style="border: 1px solid #000;">Проверка ввода в реальном времени (валидация email, длины пароля).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onItemClick</b></td>
+      <td style="border: 1px solid #000;">Открытие деталей при тапе по элементу списка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onItemSelected</b></td>
+      <td style="border: 1px solid #000;">Реакция на выбор в Spinner.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onProgressChanged</b></td>
+      <td style="border: 1px solid #000;">Обновление значения рядом с SeekBar.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onRatingChanged</b></td>
+      <td style="border: 1px solid #000;">Сохранение оценки, показ «спасибо».</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Как добавить событие</h2>
 
 <ul>
-<li>Тап по категории «View» в левом меню.</li>
-<li>В открывшемся диалоге — список всех виджетов с id и доступных для них событий.</li>
-<li>Каждый виджет показан с названием, а под ним — список событий.</li>
-<li>Отметь нужные галочками.</li>
-<li>Нажми «Добавить».</li>
+  <li>Тап по категории «View» в левом меню.</li>
+  <li>В открывшемся диалоге — список всех виджетов с ID и доступных для них событий.</li>
+  <li>Каждый виджет показан с названием, а под ним — список событий.</li>
+  <li>Отметь нужные галочками.</li>
+  <li>Нажми «Добавить».</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> категория «View» пуста, пока в проекте нет виджетов с id. Сначала добавь виджет в Дизайнере, присвой ему id — потом возвращайся сюда.</p>
+<div class="warn">⚠️ <b>Важно:</b> категория «View» пуста, пока в проекте нет виджетов с ID. Сначала добавь виджет в Дизайнере, присвой ему ID — потом возвращайся сюда.</div>
 
-<p>⚠️ <b>Важно:</b> событие не появится, если оно не применимо к виджету. Например, onCheckedChanged не появится для TextView, потому что TextView не переключается.</p>
+<div class="warn">⚠️ <b>Важно:</b> событие не появится, если оно не применимо к виджету. Например, onCheckedChanged не появится для TextView, потому что TextView не переключается.</div>
 
-<p>⚠️ <b>Важно:</b> id виджета должен быть уникальным в пределах экрана. Если два виджета имеют одинаковый id — события для них объединятся, и логика сработает непредсказуемо.</p>
+<div class="warn">⚠️ <b>Важно:</b> ID виджета должен быть уникальным в пределах экрана. Если два виджета имеют одинаковый ID — события для них объединятся, и логика сработает непредсказуемо.</div>
 
-<p>💡 <b>Совет:</b> для кнопки достаточно одного события onClick. Не добавляй onLongClick, onTouch и другие «на всякий случай».</p>
+<div class="hint">💡 <b>Совет:</b> для кнопки достаточно одного события onClick. Не добавляй onLongClick, onTouch и другие «на всякий случай».</div>
 
-<p>💡 <b>Совет:</b> для валидации форм используй onTextChanged — проверяй правильность ввода по мере набора. Например, подсвечивай поле красным, если email введён неверно.</p>
+<div class="hint">💡 <b>Совет:</b> для валидации форм используй onTextChanged — проверяй правильность ввода по мере набора. Например, подсвечивай поле красным, если email введён неверно.</div>
 
-<p>💡 <b>Совет:</b> для списка используй onItemClick — получишь позицию выбранного элемента и сможешь открыть его детали.</p>
+<div class="hint">💡 <b>Совет:</b> для списка используй onItemClick — получишь позицию выбранного элемента и сможешь открыть его детали.</div>
 
-<p>💡 <b>Совет:</b> для переключателей настроек используй onCheckedChanged — реагируй на переключение сразу, без отдельной кнопки «Сохранить».</p>
+<div class="hint">💡 <b>Совет:</b> для переключателей настроек используй onCheckedChanged — реагируй на переключение сразу, без отдельной кнопки «Сохранить».</div>
 
-<p>❌ <b>Частая ошибка:</b> не задавать id виджетам. Без id виджет не появится в категории View, и событие для него добавить не получится.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не задавать ID виджетам. Без ID виджет не появится в категории View, и событие для него добавить не получится.</div>
 
-<p>❌ <b>Частая ошибка:</b> добавлять события «про запас». Каждое пустое событие — это метод в коде и лишний вес APK.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> добавлять события «про запас». Каждое пустое событие — это метод в коде и лишний вес APK.</div>
 
-<p>❌ <b>Частая ошибка:</b> путать onClick и onLongClick. Первое срабатывает при обычном тапе, второе — при долгом нажатии. Разные действия — разные события.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> путать onClick и onLongClick. Первое срабатывает при обычном тапе, второе — при долгом нажатии. Разные действия — разные события.</div>
 
-<p>❌ <b>Частая ошибка:</b> ожидать, что onTextChanged срабатывает при установке текста программно. Нет — только при вводе пользователем.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> ожидать, что onTextChanged срабатывает при установке текста программно. Нет — только при вводе пользователем.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>View</b> — категория событий виджетов в разметке.</li>
+  <li>События здесь появляются только для виджетов с заданным <b>ID</b>.</li>
+  <li>Список событий зависит от типа виджета: onClick для Button, onCheckedChanged для CheckBox и т. д.</li>
+  <li>Ключевые события: <b>onClick</b>, <b>onLongClick</b>, <b>onCheckedChanged</b>, <b>onTextChanged</b>, <b>onItemClick</b>.</li>
+  <li>Не добавляй события «про запас» — только те, что реально нужны.</li>
+  <li>Событие не появится, если оно не применимо к виджету.</li>
+  <li>ID виджета должен быть уникальным в пределах экрана.</li>
+  <li>Для каждой задачи — своё событие: клик, ввод, переключение, выбор.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Не задают ID виджетам.</b> Виджет не появляется в категории View.</li>
+  <li><b>Добавляют события «про запас».</b> Мусор в коде и вес APK.</li>
+  <li><b>Путают onClick и onLongClick.</b> Разные действия — разные события.</li>
+  <li><b>Ожидают onTextChanged при программной установке текста.</b> Нет, только при вводе пользователем.</li>
+  <li><b>Используют одинаковый ID у разных виджетов.</b> События объединяются и работают неправильно.</li>
+  <li><b>Ищут событие в неправильной категории.</b> onClick — в View, onCreate — в Активность.</li>
+  <li><b>Ожидают onItemClick для одиночного виджета.</b> Это событие только для списков и сеток.</li>
+</ul>
+
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
