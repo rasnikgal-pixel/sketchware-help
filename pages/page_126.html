@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,105 +7,188 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SharedPreferences — хранилище настроек</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>SharedPreferences — хранилище настроек</h1>
 
-<p>SharedPreferences — компонент для хранения небольших данных между запусками приложения. Настройки, флаги, последние значения, простые пользовательские данные — всё это сохраняется в SharedPreferences.</p>
+<p><b>SharedPreferences</b> — компонент для хранения небольших данных между запусками приложения. Настройки, флаги, последние значения, простые пользовательские данные — всё это сохраняется в SharedPreferences.</p>
 
 <p>Иконка в диалоге добавления — дискета или карточка с полосками.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Сохраняет данные на устройстве в виде пар «ключ — значение».</li>
-<li>Данные переживают закрытие приложения — остаются при следующем запуске.</li>
-<li>Поддерживает простые типы: строки, числа, флаги (true/false).</li>
-<li>Данные приватны — доступны только твоему приложению.</li>
-<li>Хранение происходит в файле на устройстве — но пользователь его не видит.</li>
+  <li>Сохраняет данные на устройстве в виде пар «ключ — значение».</li>
+  <li>Данные переживают закрытие приложения — остаются при следующем запуске.</li>
+  <li>Поддерживает простые типы: строки, числа, флаги (true/false).</li>
+  <li>Данные приватны — доступны только твоему приложению.</li>
+  <li>Хранение происходит в файле на устройстве — но пользователь его не видит.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Настройки приложения — тёмная тема, звук, уведомления.</li>
-<li>Флаги — «пользователь уже видел приветствие», «показать обучение».</li>
-<li>Последние значения — последний введённый город, ник, счёт.</li>
-<li>Счётчики — количество запусков, прогресс в игре.</li>
-<li>Простые данные профиля — имя, email, аватар (в base64).</li>
+  <li>Настройки приложения — тёмная тема, звук, уведомления.</li>
+  <li>Флаги — «пользователь уже видел приветствие», «показать обучение».</li>
+  <li>Последние значения — последний введённый город, ник, счёт.</li>
+  <li>Счётчики — количество запусков, прогресс в игре.</li>
+  <li>Простые данные профиля — имя, email, аватар (в base64).</li>
 </ul>
 
 <p>Для больших объёмов данных (списки, объекты) лучше использовать базу данных или Firebase DB.</p>
 
-<h2>Основные настройки при добавлении</h2>
+<h2>Настройки при добавлении</h2>
 
-<ul>
-<li><b>Имя компонента</b> — идентификатор для вызова в логике. Например, prefs.</li>
-<li><b>Имя файла</b> — имя файла на устройстве. Обычно совпадает с именем приложения.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>prefs</code>, <code>myPrefs</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя файла</b></td>
+      <td style="border: 1px solid #000;">Имя файла на устройстве. Обычно совпадает с именем приложения.</td>
+      <td style="border: 1px solid #000;"><code>MyAppPrefs</code>.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Основные блоки в логике</h2>
 
-<ul>
-<li><b>putString</b> — сохранить строку.</li>
-<li><b>putInt</b> — сохранить целое число.</li>
-<li><b>putBoolean</b> — сохранить флаг.</li>
-<li><b>getString</b> — прочитать строку.</li>
-<li><b>getInt</b> — прочитать число.</li>
-<li><b>getBoolean</b> — прочитать флаг.</li>
-<li><b>remove</b> — удалить одно значение.</li>
-<li><b>clear</b> — удалить все данные.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>putString</b></td>
+      <td style="border: 1px solid #000;">Сохранить строку.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>putInt</b></td>
+      <td style="border: 1px solid #000;">Сохранить целое число.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>putBoolean</b></td>
+      <td style="border: 1px solid #000;">Сохранить флаг (true / false).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getString</b></td>
+      <td style="border: 1px solid #000;">Прочитать строку.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getInt</b></td>
+      <td style="border: 1px solid #000;">Прочитать число.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getBoolean</b></td>
+      <td style="border: 1px solid #000;">Прочитать флаг.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>remove</b></td>
+      <td style="border: 1px solid #000;">Удалить одно значение.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>clear</b></td>
+      <td style="border: 1px solid #000;">Удалить все данные.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Как использовать</h2>
 
-<ul>
-<li>Подключи компонент SharedPreferences на вкладке «Компонент».</li>
-<li>Задай ему имя — например, myPrefs.</li>
-<li>Для сохранения: используй блок putString (или другой) с ключом и значением.</li>
-<li>Для чтения: используй блок getString (или другой) с тем же ключом.</li>
-<li>Первый блок — putString с ключом user_name и значением из EditText.</li>
-<li>Второй блок — getString с ключом user_name при следующем запуске.</li>
-</ul>
+<ol>
+  <li>Подключи компонент SharedPreferences на вкладке «Компонент».</li>
+  <li>Задай ему имя — например, <code>myPrefs</code>.</li>
+  <li>Для сохранения: используй блок <code>putString</code> (или другой) с ключом и значением.</li>
+  <li>Для чтения: используй блок <code>getString</code> (или другой) с тем же ключом.</li>
+  <li>Первый блок — <code>putString</code> с ключом <code>user_name</code> и значением из EditText.</li>
+  <li>Второй блок — <code>getString</code> с ключом <code>user_name</code> при следующем запуске.</li>
+</ol>
 
 <h2>Пример: сохранение имени</h2>
 
 <p>Задача: сохранить имя пользователя и восстановить его при следующем запуске.</p>
 
 <ul>
-<li><b>Компонент:</b> SharedPreferences с именем prefs.</li>
-<li><b>Виджеты:</b> EditText (id nameInput), Button (id saveBtn).</li>
-<li><b>Логика:</b>
+  <li><b>Компонент:</b> SharedPreferences с именем <code>prefs</code>.</li>
+  <li><b>Виджеты:</b> EditText (ID <code>nameInput</code>), Button (ID <code>saveBtn</code>).</li>
+  <li><b>Логика:</b>
+    <ul>
+      <li>в <code>onCreate</code> — <code>setText</code> для nameInput со значением из <code>prefs.getString("name", "")</code>;</li>
+      <li>в <code>onClick</code> кнопки — <code>prefs.putString("name", nameInput.getText())</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> ключи должны совпадать при записи и чтении. Ключ <code>user_name</code> ≠ ключ <code>userName</code>. Данные не найдутся.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> тип данных тоже важен. Нельзя сохранить <code>putString</code>, а прочитать <code>getInt</code>. Sketchware может упасть или вернуть значение по умолчанию.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> всегда задавай значение по умолчанию при чтении. Если ключа нет (первый запуск) — вернётся значение по умолчанию. Иначе — ошибка или пустота.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не храни в SharedPreferences пароли в открытом виде. Данные лежат в открытом файле — любой с root-доступом может их прочитать. Используй хеширование.</div>
+
+<div class="hint">💡 <b>Совет:</b> для простых настроек (тема, звук) используй <code>putBoolean</code> — сохраняй true / false. Читай в <code>onCreate</code> и сразу применяй.</div>
+
+<div class="hint">💡 <b>Совет:</b> давай ключам понятные имена: <code>user_name</code>, <code>last_city</code>, <code>theme_dark</code>. Тогда в коде сразу ясно, что где хранится.</div>
+
+<div class="hint">💡 <b>Совет:</b> для сброса всех данных используй <code>clear</code>. Полезно для кнопки «Сбросить настройки» в приложении.</div>
+
+<div class="hint">💡 <b>Совет:</b> не храни в SharedPreferences большие строки (например, JSON на мегабайт). Это замедляет работу. Для больших данных — база или файлы.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> несовпадение ключей. Save с одним ключом, read с другим — данные не находятся.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> несовпадение типов. Save <code>putString</code>, read <code>getInt</code> — ошибка при запуске.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> хранить пароли в открытом виде. Любой, у кого есть доступ к файлам, увидит пароль.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про значение по умолчанию. При первом запуске приложение падает или показывает пустые поля.</div>
+
+<h2>Резюме</h2>
+
 <ul>
-<li>в onCreate — setText для nameInput со значением из prefs.getString("name", "");</li>
-<li>в onClick кнопки — prefs.putString("name", nameInput.getText()).</li>
+  <li><b>SharedPreferences</b> — компонент для хранения небольших данных между запусками.</li>
+  <li>Данные сохраняются в виде пар «ключ — значение».</li>
+  <li>Поддерживает простые типы: строки, числа, флаги.</li>
+  <li>Основные блоки: <b>putString</b>, <b>putInt</b>, <b>putBoolean</b>, <b>getString</b>, <b>getInt</b>, <b>getBoolean</b>, <b>remove</b>, <b>clear</b>.</li>
+  <li>Ключи и типы при записи и чтении должны совпадать.</li>
+  <li>Всегда задавай значение по умолчанию для чтения.</li>
+  <li>Не храни пароли в открытом виде.</li>
+  <li>Для больших данных используй базу данных или файлы.</li>
 </ul>
-</li>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Несовпадение ключей.</b> Данные не находятся.</li>
+  <li><b>Несовпадение типов.</b> Приложение падает или возвращает мусор.</li>
+  <li><b>Хранят пароли в открытом виде.</b> Небезопасно.</li>
+  <li><b>Забывают значение по умолчанию.</b> При первом запуске — пустые поля или падение.</li>
+  <li><b>Хранят большие строки.</b> Замедляют работу приложения.</li>
+  <li><b>Используют SharedPreferences вместо базы.</b> Не подходит для больших объёмов.</li>
+  <li><b>Путают putString и getString.</b> Пробуют читать тем же блоком, которым пишут.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> ключи должны совпадать при записи и чтении. Ключ user_name ≠ ключ userName. Данные не найдутся.</p>
-
-<p>⚠️ <b>Важно:</b> тип данных тоже важен. Нельзя сохранить putString, а прочитать getInt. Sketchware может упасть или вернуть значение по умолчанию.</p>
-
-<p>⚠️ <b>Важно:</b> всегда задавай значение по умолчанию при чтении. Если ключа нет (первый запуск) — вернётся значение по умолчанию. Иначе — ошибка или пустота.</p>
-
-<p>⚠️ <b>Важно:</b> не храни в SharedPreferences пароли в открытом виде. Данные лежат в открытом файле — любой с root-доступом может их прочитать. Используй хеширование.</p>
-
-<p>💡 <b>Совет:</b> для простых настроек (тема, звук) используй putBoolean — сохраняй true/false. Читай в onCreate и сразу применяй.</p>
-
-<p>💡 <b>Совет:</b> давай ключам понятные имена: user_name, last_city, theme_dark. Тогда в коде сразу ясно, что где хранится.</p>
-
-<p>💡 <b>Совет:</b> для сброса всех данных используй clear. Полезно для кнопки «Сбросить настройки» в приложении.</p>
-
-<p>💡 <b>Совет:</b> не храни в SharedPreferences большие строки (например, JSON на мегабайт). Это замедляет работу. Для больших данных — база или файлы.</p>
-
-<p>❌ <b>Частая ошибка:</b> несовпадение ключей. Save с одним ключом, read с другим — данные не находятся.</p>
-
-<p>❌ <b>Частая ошибка:</b> несовпадение типов. Save putString, read getInt — ошибка при запуске.</p>
-
-<p>❌ <b>Частая ошибка:</b> хранить пароли в открытом виде. Любой, у кого есть доступ к файлам, увидит пароль.</p>
-
-<p>❌ <b>Частая ошибка:</b> забыть про значение по умолчанию. При первом запуске приложение падает или показывает пустые поля.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
