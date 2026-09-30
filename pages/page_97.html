@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,90 +7,328 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>YoutubePlayer — YouTube-плеер</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>YoutubePlayer — YouTube-плеер</h1>
 
-<p>YoutubePlayer — встроенный проигрыватель YouTube. Позволяет смотреть видео с YouTube прямо внутри приложения, без перехода в отдельное приложение или браузер.</p>
+<p><b>YoutubePlayer</b> — встроенный проигрыватель YouTube. Позволяет смотреть видео с YouTube прямо внутри приложения, без перехода в отдельное приложение или браузер.</p>
 
 <p>Иконка в палитре — прямоугольник с логотипом YouTube.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает окно плеера YouTube в разметке.</li>
-<li>Видео задаётся через ID видео (не полную ссылку) — например, dQw4w9WgXcQ.</li>
-<li>Поддерживает воспроизведение, паузу, перемотку, полный экран.</li>
-<li>Может запускаться автоматически при появлении экрана.</li>
-<li>Показывает стандартные элементы YouTube: логотип, кнопки, название.</li>
-<li>Может быть встроен в разные экраны: список видео, детали, онбординг.</li>
+  <li>Отображает окно плеера YouTube в разметке.</li>
+  <li>Видео задаётся через ID видео (не полную ссылку) — например, <code>dQw4w9WgXcQ</code>.</li>
+  <li>Поддерживает воспроизведение, паузу, перемотку, полный экран.</li>
+  <li>Может запускаться автоматически при появлении экрана.</li>
+  <li>Показывает стандартные элементы YouTube: логотип, кнопки, название.</li>
+  <li>Может быть встроен в разные экраны: список видео, детали, онбординг.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Обучающие приложения — уроки с YouTube.</li>
-<li>Каталоги видео — подборки роликов по теме.</li>
-<li>Новостные приложения — видеорепортажи.</li>
-<li>Развлекательные приложения — подборки клипов и трейлеров.</li>
-<li>Фитнес-приложения — видеоупражнения.</li>
-<li>Кулинарные приложения — видеорецепты.</li>
+  <li>Обучающие приложения — уроки с YouTube.</li>
+  <li>Каталоги видео — подборки роликов по теме.</li>
+  <li>Новостные приложения — видеорепортажи.</li>
+  <li>Развлекательные приложения — подборки клипов и трейлеров.</li>
+  <li>Фитнес-приложения — видеоупражнения.</li>
+  <li>Кулинарные приложения — видеорецепты.</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>VideoId</b></td>
+      <td style="border: 1px solid #000;">Идентификатор видео на YouTube (не ссылка).</td>
+      <td style="border: 1px solid #000;">Строка из 11 символов, например <code>dQw4w9WgXcQ</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>AutoPlay</b></td>
+      <td style="border: 1px solid #000;">Начинать ли воспроизведение автоматически.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>FullscreenButtonEnabled</b></td>
+      <td style="border: 1px solid #000;">Показывать ли кнопку полного экрана.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ShowInfo</b></td>
+      <td style="border: 1px solid #000;">Показывать ли информацию о видео.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ControlsEnabled</b></td>
+      <td style="border: 1px solid #000;">Показывать ли стандартные элементы управления.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>PlayerStyle</b></td>
+      <td style="border: 1px solid #000;">Стиль плеера.</td>
+      <td style="border: 1px solid #000;"><code>default</code>, <code>minimal</code>, <code>chromeless</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;">Обычно <code>match_parent</code> по ширине, <code>wrap_content</code> по высоте.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по YoutubePlayer в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>youtube1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>youtube1</code>, <code>youtube2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>lessonPlayer</code>, если это плеер урока.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты. Здесь задаются AutoPlay, ControlsEnabled, FullscreenButtonEnabled.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">На скриншоте заданы <code>app:autoPlay="false"</code> и <code>app:useWebUi="false"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает полный класс компонента: <code>com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView</code>.</td>
+      <td style="border: 1px solid #000;">YouTubePlayerView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет плеер по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — стандарт для плеера.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет плеер по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>220dp</code> — стандарт для плеера 16:9.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 0 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Обычно 0 — плеер занимает всё пространство.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Чёрный фон под плеером — <code>#000000</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли плеер на тапы.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые параметры (<b>VideoId</b>, <b>AutoPlay</b>, <b>FullscreenButtonEnabled</b>, <b>ControlsEnabled</b>) задаются через <b>Пользовательские атрибуты</b> или через логику (<code>loadVideo</code>, <code>cueVideo</code>, <code>play</code>, <code>pause</code>). В обычной панели свойств доступен только базовый внешний вид.</div>
+
+<h2>Как перетащить YoutubePlayer на макет</h2>
+
+<p>YoutubePlayer, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Получи <b>ID видео</b> на YouTube. Это часть ссылки после <code>watch?v=</code>. Например, для <code>https://www.youtube.com/watch?v=dQw4w9WgXcQ</code> — ID будет <code>dQw4w9WgXcQ</code>.</li>
+  <li>В Sketchware Pro 7 подключи библиотеку <b>YouTube Player</b> через Менеджер библиотек.</li>
+  <li>Добавь разрешение <b>INTERNET</b> в Менеджере разрешений.</li>
+  <li>Открой вкладку <b>«Дизайнер»</b>. Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Google</b> в палитре слева.</li>
+  <li>Зажми <b>YoutubePlayer</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — плеер появится в разметке.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай <code>app:autoPlay</code>, <code>app:controlsEnabled</code>, <code>app:fullscreenButtonEnabled</code>.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» и добавь в <code>onCreate</code> блок <code>loadVideo</code> или <code>cueVideo</code> с ID видео.</li>
+  <li>Для управления используй блоки <code>play</code>, <code>pause</code>.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по YoutubePlayer в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> нужен ID видео, а не полная ссылка. Если вставить <code>https://youtube.com/watch?v=...</code>, плеер не заработает.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> для работы требуется интернет. Без подключения — плеер покажет ошибку или пустой экран.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> YouTube может требовать API-ключ для полноценной работы некоторых функций. Обычно встроенный плеер работает без ключа, но при публикации может потребоваться ключ.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не все видео разрешают встраивание. Некоторые авторы блокируют показ в сторонних приложениях. Плеер покажет «Видео недоступно».</div>
+
+<div class="warn">⚠️ <b>Важно:</b> монетизация YouTube-видео не переходит в твоё приложение. Если встраиваешь чужие видео — это нарушение авторских прав, если нет разрешения.</div>
+
+<div class="hint">💡 <b>Совет:</b> для списка видео создавай RecyclerView с превью-картинками и названиями. При тапе — открывай экран с YoutubePlayer, куда передаётся VideoId.</div>
+
+<div class="hint">💡 <b>Совет:</b> превью видео можно получить по ссылке <code>https://img.youtube.com/vi/&lt;VideoId&gt;/maxresdefault.jpg</code>. Загружай картинку через ImageView — так список видео выглядит красиво.</div>
+
+<div class="hint">💡 <b>Совет:</b> для своего контента — используй свои видео с YouTube-канала. Так ты не нарушаешь авторские права.</div>
+
+<div class="hint">💡 <b>Совет:</b> не делай AutoPlay = true для длинных видео. Пользователь может не хотеть, чтобы звук запускался сразу. Пусть тапнет play сам.</div>
+
+<div class="hint">💡 <b>Совет:</b> предусмотри обработку ошибок — если видео недоступно, покажи пользователю понятное сообщение: «Видео недоступно. Попробуйте позже».</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> вставлять полную ссылку вместо ID видео. Плеер не загрузит видео.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про INTERNET. Плеер пустой, ошибки не видно.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> встраивать чужие видео без разрешения. Это нарушение авторских прав, за которое можно получить страйк или блокировку аккаунта.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> открывать недоступное видео без обработки ошибки. Пользователь видит пустое окно и не понимает, что произошло.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать YoutubePlayer для локальных видеофайлов. Для этого есть VideoView (категория Widgets).</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>VideoId</b> — идентификатор видео на YouTube (не ссылка).</li>
-<li><b>AutoPlay</b> — начинать ли воспроизведение автоматически.</li>
-<li><b>FullscreenButtonEnabled</b> — показывать ли кнопку полного экрана.</li>
-<li><b>ShowInfo</b> — показывать ли информацию о видео.</li>
-<li><b>ControlsEnabled</b> — показывать ли стандартные элементы управления.</li>
-<li><b>PlayerStyle</b> — стиль плеера: default, minimal, chromeless.</li>
-<li><b>Width / Height</b> — обычно match_parent по ширине, wrap_content по высоте.</li>
+  <li><b>YoutubePlayer</b> — встроенный плеер для просмотра YouTube-видео внутри приложения.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Использует <b>ID видео</b> (11 символов), а не полную ссылку.</li>
+  <li>Требует разрешение <b>INTERNET</b> и подключение библиотеки YouTube Player.</li>
+  <li>Ключевые параметры (<b>AutoPlay</b>, <b>ControlsEnabled</b>, <b>FullscreenButtonEnabled</b>) задаются через <b>Пользовательские атрибуты</b>.</li>
+  <li>Управление воспроизведением — через логику: <code>loadVideo</code>, <code>play</code>, <code>pause</code>.</li>
+  <li>Не используй чужие видео без разрешения — это нарушение авторских прав.</li>
+  <li>Для списка видео используй превью через <code>img.youtube.com/vi/&lt;ID&gt;/...</code>.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Получи ID видео на YouTube. Это часть ссылки после watch?v=. Например, для https://www.youtube.com/watch?v=dQw4w9WgXcQ — ID будет dQw4w9WgXcQ.</li>
-<li>В Sketchware Pro 7 подключи библиотеку YouTube Player через Менеджер библиотек.</li>
-<li>Добавь разрешение INTERNET в Менеджере разрешений.</li>
-<li>Тап по YoutubePlayer в палитре — виджет добавится в контейнер.</li>
-<li>В свойствах укажи VideoId — идентификатор нужного видео.</li>
-<li>Задай AutoPlay, ControlsEnabled, FullscreenButtonEnabled по вкусу.</li>
-<li>Присвой id — если хочешь управлять воспроизведением из логики.</li>
-<li>В событиях используй блоки play, pause, loadVideo, cueVideo.</li>
+  <li><b>Тапают по YoutubePlayer в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Вставляют полную ссылку вместо ID.</b> Плеер не загружает видео.</li>
+  <li><b>Забывают разрешение INTERNET.</b> Плеер пустой.</li>
+  <li><b>Не подключают библиотеку YouTube Player.</b> Сборка не проходит.</li>
+  <li><b>Используют AutoPlay = true без надобности.</b> Раздражает пользователя.</li>
+  <li><b>Встраивают чужие видео без разрешения.</b> Нарушение авторских прав.</li>
+  <li><b>Не обрабатывают ошибку «видео недоступно».</b> Пользователь видит пустой плеер.</li>
+  <li><b>Не задают ID.</b> Логика не может управлять плеером.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> нужен ID видео, а не полная ссылка. Если вставить https://youtube.com/watch?v=..., плеер не заработает.</p>
-
-<p>⚠️ <b>Важно:</b> для работы требуется интернет. Без подключения — плеер покажет ошибку или пустой экран.</p>
-
-<p>⚠️ <b>Важно:</b> YouTube может требовать API-ключ для полноценной работы некоторых функций. Обычно встроенный плеер работает без ключа, но при публикации может потребоваться ключ.</p>
-
-<p>⚠️ <b>Важно:</b> не все видео разрешают встраивание. Некоторые авторы блокируют показ в сторонних приложениях. Плеер покажет «Видео недоступно».</p>
-
-<p>⚠️ <b>Важно:</b> монетизация YouTube-видео не переходит в твоё приложение. Если встраиваешь чужие видео — это нарушение авторских прав, если нет разрешения.</p>
-
-<p>💡 <b>Совет:</b> для списка видео создавай RecyclerView с превью-картинками и названиями. При тапе — открывай экран с YoutubePlayer, куда передаётся VideoId.</p>
-
-<p>💡 <b>Совет:</b> превью видео можно получить по ссылке https://img.youtube.com/vi/&lt;VideoId&gt;/maxresdefault.jpg. Загружай картинку через ImageView — так список видео выглядит красиво.</p>
-
-<p>💡 <b>Совет:</b> для своего контента — используй свои видео с YouTube-канала. Так ты не нарушаешь авторские права.</p>
-
-<p>💡 <b>Совет:</b> не делай AutoPlay = true для длинных видео. Пользователь может не хотеть, чтобы звук запускался сразу. Пусть тапнет play сам.</p>
-
-<p>💡 <b>Совет:</b> предусмотри обработку ошибок — если видео недоступно, покажи пользователю понятное сообщение: «Видео недоступно. Попробуйте позже».</p>
-
-<p>❌ <b>Частая ошибка:</b> вставлять полную ссылку вместо ID видео. Плеер не загрузит видео.</p>
-
-<p>❌ <b>Частая ошибка:</b> забыть про INTERNET. Плеер пустой, ошибки не видно.</p>
-
-<p>❌ <b>Частая ошибка:</b> встраивать чужие видео без разрешения. Это нарушение авторских прав, за которое можно получить страйк или блокировку аккаунта.</p>
-
-<p>❌ <b>Частая ошибка:</b> открывать недоступное видео без обработки ошибки. Пользователь видит пустое окно и не понимает, что произошло.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать YoutubePlayer для локальных видеофайлов. Для этого есть VideoView (категория Widgets).</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
