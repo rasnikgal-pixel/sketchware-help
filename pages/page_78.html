@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,79 +7,319 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SearchView — поле поиска</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>SearchView — поле поиска</h1>
 
-<p>SearchView — готовое поле поиска с иконкой лупы. Совмещает в себе EditText и кнопку очистки, и обычно встраивается в тулбар или размещается в разметке отдельным виджетом.</p>
+<p><b>SearchView</b> — готовое поле поиска с иконкой лупы. Совмещает в себе EditText и кнопку очистки, и обычно встраивается в тулбар или размещается в разметке отдельным виджетом.</p>
 
 <p>Иконка в палитре — лупа внутри прямоугольника.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает поле поиска с иконкой лупы слева.</li>
-<li>При тапе — открывается клавиатура, можно вводить запрос.</li>
-<li>По мере ввода можно реагировать в реальном времени (событие onQueryTextChange).</li>
-<li>При нажатии кнопки «Поиск» на клавиатуре — срабатывает событие onQueryTextSubmit.</li>
-<li>Кнопка «×» справа очищает поле.</li>
-<li>Может раскрываться по тапу на иконку (если в тулбаре) или быть всегда видимым (если в разметке).</li>
+  <li>Отображает поле поиска с иконкой лупы слева.</li>
+  <li>При тапе — открывается клавиатура, можно вводить запрос.</li>
+  <li>По мере ввода можно реагировать в реальном времени (событие <code>onQueryTextChange</code>).</li>
+  <li>При нажатии кнопки «Поиск» на клавиатуре — срабатывает событие <code>onQueryTextSubmit</code>.</li>
+  <li>Кнопка «×» справа очищает поле.</li>
+  <li>Может раскрываться по тапу на иконку (если в тулбаре) или быть всегда видимым (если в разметке).</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Поиск по списку — фильтрация ListView или RecyclerView.</li>
-<li>Поиск на сервере — отправка запроса к API.</li>
-<li>Поиск в базе данных — по названию или тексту.</li>
-<li>Фильтр в каталоге — поиск товара по имени.</li>
-<li>Глобальный поиск в приложении — по всем экранам.</li>
+  <li>Поиск по списку — фильтрация ListView или RecyclerView.</li>
+  <li>Поиск на сервере — отправка запроса к API.</li>
+  <li>Поиск в базе данных — по названию или тексту.</li>
+  <li>Фильтр в каталоге — поиск товара по имени.</li>
+  <li>Глобальный поиск в приложении — по всем экранам.</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>QueryHint</b></td>
+      <td style="border: 1px solid #000;">Подсказка внутри поля.</td>
+      <td style="border: 1px solid #000;">Любая строка, например «Поиск товаров…».</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Iconified</b></td>
+      <td style="border: 1px solid #000;">Свёрнутый режим — показывать только иконку лупы.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>IconifiedByDefault</b></td>
+      <td style="border: 1px solid #000;">Раскрывать ли поле сразу при запуске.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>SubmitButtonEnabled</b></td>
+      <td style="border: 1px solid #000;">Показывать ли кнопку поиска отдельно.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Query</b></td>
+      <td style="border: 1px solid #000;">Текущий введённый запрос.</td>
+      <td style="border: 1px solid #000;">Любая строка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextColor / TextSize</b></td>
+      <td style="border: 1px solid #000;">Цвет и размер текста.</td>
+      <td style="border: 1px solid #000;">HEX, число в sp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон виджета.</td>
+      <td style="border: 1px solid #000;">HEX, drawable-ресурс или <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> или <code>wrap_content</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по SearchView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>searchview1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>searchview1</code>, <code>searchview2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>productSearch</code>, если это поиск товаров.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>app:queryHint="Поиск"</code>, <code>app:iconifiedByDefault="false"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>SearchView</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">SearchView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет поле поиска по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — стандарт для поля поиска.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет поле поиска по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета — от него до соседних элементов.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin bottom 8 — между поиском и списком.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — поле поиска заберёт всё оставшееся место (например, рядом с кнопкой).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Светло-серый фон под поиск — <code>#F5F5F5</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли поле на тапы и ввод.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые настройки (<b>QueryHint</b>, <b>Iconified</b>, <b>SubmitButtonEnabled</b>) обычно задаются через <b>Пользовательские атрибуты</b> — в виде <code>app:queryHint="Поиск"</code>, <code>app:iconifiedByDefault="false"</code>. В обычной панели свойств их может не быть.</div>
+
+<h2>Как перетащить SearchView на макет</h2>
+
+<p>SearchView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b>, <b>Linear(H)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Widgets</b> в палитре слева.</li>
+  <li>Зажми <b>SearchView</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — поле поиска появится в разметке.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай <code>app:queryHint</code> (подсказка), <code>app:iconifiedByDefault</code> (раскрыто ли поле сразу), <code>app:submitButtonEnabled</code> (кнопка поиска).</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» и добавь:
+    <ul>
+      <li><code>onQueryTextSubmit</code> — реакция на нажатие «Поиск»;</li>
+      <li><code>onQueryTextChange</code> — реакция на изменение текста в реальном времени.</li>
+    </ul>
+  </li>
+  <li>Внутри событий опиши логику: что фильтровать, куда отправить запрос, что показать.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по SearchView в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> SearchView сам не ищет. Он только даёт поле ввода и сообщает логике, какой текст введён. Что делать с этим текстом — полностью на тебе.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> событие <code>onQueryTextChange</code> срабатывает на каждый введённый символ. Если в нём идёт запрос к серверу, это создаст нагрузку при быстром вводе. Для серверного поиска лучше использовать <code>onQueryTextSubmit</code>.</div>
+
+<div class="hint">💡 <b>Совет:</b> для локальной фильтрации (по списку в приложении) используй <code>onQueryTextChange</code> — так пользователь видит результаты сразу по мере ввода.</div>
+
+<div class="hint">💡 <b>Совет:</b> для поиска на сервере используй <code>onQueryTextSubmit</code> — иначе каждый введённый символ полетит на сервер.</div>
+
+<div class="hint">💡 <b>Совет:</b> задавай понятный QueryHint — «Поиск товаров», «Поиск в чатах». Универсальное «Поиск…» не помогает пользователю понять, что можно искать.</div>
+
+<div class="hint">💡 <b>Совет:</b> если поле поиска всегда нужно раскрытым — задай Iconified = false. Если оно должно быть иконкой и раскрываться по тапу — оставь true.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетащить SearchView и ждать, что поиск заработает автоматически. Без логики в событиях он только принимает ввод.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать <code>onQueryTextChange</code> для тяжёлых запросов. Пользователь вводит «телефон» — уходит 7 запросов на сервер. Это неправильно и раздражает пользователя задержками.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>QueryHint</b> — подсказка внутри поля (например, «Поиск товаров…»).</li>
-<li><b>Iconified</b> — свернутый режим: показывать только иконку лупы, пока пользователь не тапнет.</li>
-<li><b>IconifiedByDefault</b> — раскрывать ли поле сразу при запуске.</li>
-<li><b>SubmitButtonEnabled</b> — показывать ли кнопку поиска отдельно.</li>
-<li><b>Query</b> — текущий введённый запрос.</li>
-<li><b>TextColor / TextSize</b> — цвет и размер текста.</li>
-<li><b>Background</b> — фон виджета.</li>
-<li><b>Width / Height</b> — match_parent или wrap_content.</li>
+  <li><b>SearchView</b> — готовое поле поиска с иконкой лупы и кнопкой очистки.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Ключевые настройки (<b>QueryHint</b>, <b>Iconified</b>, <b>SubmitButtonEnabled</b>) задаются через <b>Пользовательские атрибуты</b>.</li>
+  <li>Сам по себе не ищет — нужно описывать логику в событиях.</li>
+  <li>Для локального поиска — <code>onQueryTextChange</code>; для серверного — <code>onQueryTextSubmit</code>.</li>
+  <li>Не используй тяжёлые запросы в <code>onQueryTextChange</code> — событие срабатывает на каждый символ.</li>
+  <li>Задавай понятный QueryHint — что именно ищет пользователь.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, куда хочешь положить поиск.</li>
-<li>Тап по SearchView в палитре — виджет добавится внутрь.</li>
-<li>Задай QueryHint — «Поиск…» или более конкретно.</li>
-<li>Присвой id — для работы в логике.</li>
-<li>Открой вкладку «События» и добавь:
-<ul>
-<li>onQueryTextSubmit — реакция на нажатие «Поиск»;</li>
-<li>onQueryTextChange — реакция на изменение текста в реальном времени.</li>
-</ul>
-</li>
-<li>Внутри событий опиши логику: что фильтровать, куда отправить запрос, что показать.</li>
+  <li><b>Тапают по SearchView в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Перетащили поле, но не добавили события.</b> Ввод идёт, но поиска нет.</li>
+  <li><b>Вешают серверный запрос на onQueryTextChange.</b> Каждый введённый символ — запрос на сервер. Нагрузка и тормоза.</li>
+  <li><b>Не задают QueryHint.</b> Универсальное «Search…» не помогает пользователю.</li>
+  <li><b>Ищут QueryHint в обычных свойствах.</b> Через «Пользовательские атрибуты» — <code>app:queryHint</code>.</li>
+  <li><b>Не задают ID.</b> Виджет не появляется в списке событий, логика не подключается.</li>
+  <li><b>Ждут, что SearchView сам отфильтрует список.</b> Он только отдаёт текст — фильтровать нужно вручную.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> SearchView сам не ищет. Он только даёт поле ввода и сообщает логике, какой текст введён. Что делать с этим текстом — полностью на тебе.</p>
-
-<p>⚠️ <b>Важно:</b> событие onQueryTextChange срабатывает на каждый введённый символ. Если в нём идёт запрос к серверу, это создаст нагрузку при быстром вводе. Для серверного поиска лучше использовать onQueryTextSubmit.</p>
-
-<p>💡 <b>Совет:</b> для локальной фильтрации (по списку в приложении) используй onQueryTextChange — так пользователь видит результаты сразу по мере ввода.</p>
-
-<p>💡 <b>Совет:</b> для поиска на сервере используй onQueryTextSubmit — иначе каждый введённый символ полетит на сервер.</p>
-
-<p>💡 <b>Совет:</b> задавай понятный QueryHint — «Поиск товаров», «Поиск в чатах». Универсальное «Поиск…» не помогает пользователю понять, что можно искать.</p>
-
-<p>💡 <b>Совет:</b> если поле поиска всегда нужно раскрытым — задай Iconified = false. Если оно должно быть иконкой и раскрываться по тапу — оставь true.</p>
-
-<p>❌ <b>Частая ошибка:</b> добавить SearchView и ждать, что поиск заработает автоматически. Без логики в событиях он только принимает ввод.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать onQueryTextChange для тяжёлых запросов. Пользователь вводит «телефон» — уходит 7 запросов на сервер. Это неправильно и раздражает пользователя задержками.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
