@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,71 +7,320 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>WaveSideBar — алфавитный указатель</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>WaveSideBar — алфавитный указатель</h1>
 
-<p>WaveSideBar — боковая панель с волновой анимацией. Располагается вертикально по правому краю экрана и позволяет быстро перейти к нужному разделу списка — обычно по алфавиту. При касании буква «выныривает» волной и показывает выбранный символ.</p>
+<p><b>WaveSideBar</b> — боковая панель с волновой анимацией. Располагается вертикально по правому краю экрана и позволяет быстро перейти к нужному разделу списка — обычно по алфавиту. При касании буква «выныривает» волной и показывает выбранный символ.</p>
 
 <p>Иконка в палитре — вертикальная полоса с буквами.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображается вдоль правого края экрана — узкая вертикальная полоса.</li>
-<li>Содержит набор символов: A, B, C, … Z, # (или кириллицу, цифры — в зависимости от настройки).</li>
-<li>При тапе по символу срабатывает волновая анимация, и логика может прокрутить список до нужной группы.</li>
-<li>Обычно используется вместе с ListView или RecyclerView — для быстрой навигации по большому алфавитному списку.</li>
+  <li>Отображается вдоль правого края экрана — узкая вертикальная полоса.</li>
+  <li>Содержит набор символов: A, B, C, … Z, # (или кириллицу, цифры — в зависимости от настройки).</li>
+  <li>При тапе по символу срабатывает волновая анимация, и логика может прокрутить список до нужной группы.</li>
+  <li>Обычно используется вместе с ListView или RecyclerView — для быстрой навигации по большому алфавитному списку.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Список контактов — навигация по алфавиту.</li>
-<li>Список городов или стран — большие алфавитные списки.</li>
-<li>Каталог товаров — если он организован по буквам.</li>
-<li>Музыкальный плеер — переход по первой букве исполнителя.</li>
-<li>Список терминов или статей — справочники с алфавитным порядком.</li>
+  <li>Список контактов — навигация по алфавиту.</li>
+  <li>Список городов или стран — большие алфавитные списки.</li>
+  <li>Каталог товаров — если он организован по буквам.</li>
+  <li>Музыкальный плеер — переход по первой букве исполнителя.</li>
+  <li>Список терминов или статей — справочники с алфавитным порядком.</li>
 </ul>
 
 <p>WaveSideBar бесполезен, если список маленький или не отсортирован по алфавиту.</p>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextColor</b></td>
+      <td style="border: 1px solid #000;">Цвет символов на панели.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextSize</b></td>
+      <td style="border: 1px solid #000;">Размер символов.</td>
+      <td style="border: 1px solid #000;">Число в sp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextAlign</b></td>
+      <td style="border: 1px solid #000;">Выравнивание символов.</td>
+      <td style="border: 1px solid #000;"><code>left</code>, <code>center</code>, <code>right</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>SideBarPosition</b></td>
+      <td style="border: 1px solid #000;">Положение панели.</td>
+      <td style="border: 1px solid #000;"><code>left</code> или <code>right</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>MaxOffset</b></td>
+      <td style="border: 1px solid #000;">Величина «волны» — насколько далеко выносится активный символ.</td>
+      <td style="border: 1px solid #000;">Число в dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон панели.</td>
+      <td style="border: 1px solid #000;">HEX или drawable-ресурс.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;">Обычно <code>wrap_content</code> по ширине, <code>match_parent</code> по высоте.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по WaveSideBar в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>wavesidebar1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>wavesidebar1</code>, <code>wavesidebar2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>contactSidebar</code>, если это указатель в списке контактов.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты. Здесь задаются ключевые параметры панели.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">На скриншоте заданы <code>app:sidebar_text_alignment="center"</code> и <code>app:sidebar_position="left"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает полный класс компонента: <code>com.sayuti.lib.WaveSideBar</code>.</td>
+      <td style="border: 1px solid #000;">WaveSideBar и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Размер текста</b><br>Text size</td>
+      <td style="border: 1px solid #000;">Размер символов на панели.</td>
+      <td style="border: 1px solid #000;">Число в sp. По умолчанию — <code>16sp</code>.</td>
+      <td style="border: 1px solid #000;"><code>12sp</code> — компактная панель; <code>16sp</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет текста</b><br>Text color</td>
+      <td style="border: 1px solid #000;">Цвет символов на панели.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Синий <code>#2196F3</code> — контрастно на светлом фоне.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широкой будет панель по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт для боковой панели.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высокой будет панель по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — чтобы панель занимала весь экран по высоте.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 0 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin end 4 — небольшой отступ от края экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>right</code>, <code>center_vertical</code>.</td>
+      <td style="border: 1px solid #000;"><code>right|center_vertical</code> — прижать к правому краю по центру.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт для панели.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Прозрачный фон — оставить <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли виджет на тапы по символам.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые параметры (<b>SideBarPosition</b>, <b>TextAlign</b>, <b>MaxOffset</b>) задаются через <b>Пользовательские атрибуты</b> — в виде <code>app:sidebar_position="right"</code>, <code>app:sidebar_text_alignment="center"</code>. В обычной панели свойств доступны только <b>Размер текста</b> и <b>Цвет текста</b>.</div>
+
+<h2>Как перетащить WaveSideBar на макет</h2>
+
+<p>WaveSideBar, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — лучше всего <b>RelativeLayout</b>, чтобы панель прижалась к правому краю.</li>
+  <li>Раскрой категорию <b>Библиотеки</b> в палитре слева.</li>
+  <li>Зажми <b>WaveSideBar</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — панель появится в разметке.</li>
+  <li>В свойствах задай <b>Размер текста</b> и <b>Цвет текста</b>.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай <code>app:sidebar_position="right"</code>, <code>app:sidebar_text_alignment="center"</code>, при необходимости <code>app:max_offset</code>.</li>
+  <li>Для RelativeLayout задай панели <b>alignParentRight</b> и <b>centerVertical</b>.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» — добавь событие выбора символа и опиши логику прокрутки списка.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по WaveSideBar в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> WaveSideBar не работает сам по себе. Он только показывает символы и сообщает логике, какой из них выбран. Прокрутка списка — твоя задача.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> для RelativeLayout задавай панели привязку к правому краю (alignParentRight) и по центру по вертикали (centerVertical). Иначе она окажется в левом верхнем углу.</div>
+
+<div class="hint">💡 <b>Совет:</b> используй WaveSideBar только в тех случаях, где список действительно длинный. Для 5–10 элементов он не нужен.</div>
+
+<div class="hint">💡 <b>Совет:</b> для списка с русскими названиями задай кириллический алфавит в свойствах (А–Я) — так пользователю привычнее.</div>
+
+<div class="hint">💡 <b>Совет:</b> не нагружай WaveSideBar лишними символами. Стандарт — 26–33 буквы. Цифры и знаки добавляй только при реальной необходимости.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетащить WaveSideBar и ждать, что список сам будет прокручиваться. Компонент только сообщает о выборе — логику прокрутки пиши сам.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать WaveSideBar со списком без алфавитной сортировки. Символы будут, но пользы от них ноль.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>TextColor</b> — цвет символов на панели.</li>
-<li><b>TextSize</b> — размер символов.</li>
-<li><b>TextAlign</b> — выравнивание символов.</li>
-<li><b>SideBarPosition</b> — положение панели: слева или справа.</li>
-<li><b>MaxOffset</b> — величина «волны» — насколько далеко выносится активный символ.</li>
-<li><b>Background</b> — фон панели.</li>
-<li><b>Width / Height</b> — обычно wrap_content по ширине, match_parent по высоте.</li>
+  <li><b>WaveSideBar</b> — боковая панель с алфавитным указателем и волновой анимацией.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Обычно используется в связке с ListView или RecyclerView — для быстрой навигации по большому списку.</li>
+  <li>Располагается у правого или левого края — задаётся через <code>app:sidebar_position</code> в «Пользовательских атрибутах».</li>
+  <li>Сам не прокручивает список — нужно описывать логику в событиях.</li>
+  <li>Имеет смысл только для больших отсортированных списков (контакты, города, справочники).</li>
+  <li>Основные свойства: <b>Размер текста</b>, <b>Цвет текста</b>, <b>SideBarPosition</b>, <b>TextAlign</b>.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер — обычно RelativeLayout, чтобы панель прижалась к правому краю.</li>
-<li>Тап по WaveSideBar в палитре — компонент добавится внутрь.</li>
-<li>В свойствах задай TextColor, TextSize и SideBarPosition.</li>
-<li>Присвой id — для работы в логике.</li>
-<li>Открой вкладку «События» — добавь событие выбора символа.</li>
-<li>Внутри события опиши логику: прокрутить ListView или RecyclerView до нужной группы.</li>
+  <li><b>Тапают по WaveSideBar в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Ждут, что список будет прокручиваться сам.</b> Логику прокрутки нужно написать в событиях.</li>
+  <li><b>Используют для короткого или не отсортированного списка.</b> Панель бесполезна.</li>
+  <li><b>Забывают задать привязку к краю в RelativeLayout.</b> Панель оказывается в левом верхнем углу.</li>
+  <li><b>Ищут SideBarPosition в обычных свойствах.</b> Через «Пользовательские атрибуты» — <code>app:sidebar_position</code>.</li>
+  <li><b>Не задают ID.</b> Логика не может обратиться к панели.</li>
+  <li><b>Пишут слишком много символов на панели.</b> Мелко и неудобно — лучше только буквы алфавита.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> WaveSideBar не работает сам по себе. Он только показывает символы и сообщает логике, какой из них выбран. Прокрутка списка — твоя задача.</p>
-
-<p>⚠️ <b>Важно:</b> для RelativeLayout задавай панели привязку к правому краю (alignParentRight) и по центру по вертикали (centerVertical). Иначе она окажется в левом верхнем углу.</p>
-
-<p>💡 <b>Совет:</b> используй WaveSideBar только в тех случаях, где список действительно длинный. Для 5–10 элементов он не нужен.</p>
-
-<p>💡 <b>Совет:</b> для списка с русскими названиями задай кириллический алфавит в свойствах (А–Я) — так пользователю привычнее.</p>
-
-<p>💡 <b>Совет:</b> не нагружай WaveSideBar лишними символами. Стандарт — 26–33 буквы. Цифры и знаки добавляй только при реальной необходимости.</p>
-
-<p>❌ <b>Частая ошибка:</b> добавить WaveSideBar и ждать, что список сам будет прокручиваться. Компонент только сообщает о выборе — логику прокрутки пиши сам.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать WaveSideBar со списком без алфавитной сортировки. Символы будут, но пользы от них ноль.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
