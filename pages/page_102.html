@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,88 +7,331 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>DatePicker — выбор даты</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>DatePicker — выбор даты</h1>
 
-<p>DatePicker — виджет для выбора даты. Пользователь задаёт день, месяц и год: либо через календарь, либо через выпадающие списки — в зависимости от режима.</p>
+<p><b>DatePicker</b> — виджет для выбора даты. Пользователь задаёт день, месяц и год: либо через календарь, либо через выпадающие списки — в зависимости от режима.</p>
 
 <p>Иконка в палитре — календарь с выделенным днём.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает интерфейс выбора даты: день, месяц, год.</li>
-<li>В режиме календаря (calendar) — месячная сетка с днями, пользователь тапает по нужной дате.</li>
-<li>В режиме спиннеров (spinner) — три выпадающих списка: день, месяц, год.</li>
-<li>Пользователь задаёт дату — логика может прочитать её через блоки.</li>
-<li>Может быть встроен в разметку (постоянно виден) или открываться в диалоге (по тапу).</li>
-<li>Минимальная и максимальная даты ограничиваются через свойства.</li>
+  <li>Отображает интерфейс выбора даты: день, месяц, год.</li>
+  <li>В режиме календаря (calendar) — месячная сетка с днями, пользователь тапает по нужной дате.</li>
+  <li>В режиме спиннеров (spinner) — три выпадающих списка: день, месяц, год.</li>
+  <li>Пользователь задаёт дату — логика может прочитать её через блоки.</li>
+  <li>Может быть встроен в разметку (постоянно виден) или открываться в диалоге (по тапу).</li>
+  <li>Минимальная и максимальная даты ограничиваются через свойства.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Формы регистрации — дата рождения.</li>
-<li>Бронирование — выбор даты визита или поездки.</li>
-<li>Календарь событий — добавление события на конкретный день.</li>
-<li>Напоминания — установка даты срабатывания.</li>
-<li>Фильтры — отбор данных по дате.</li>
-<li>Отчёты — период с и по.</li>
-<li>Формы заказа — дата доставки.</li>
+  <li>Формы регистрации — дата рождения.</li>
+  <li>Бронирование — выбор даты визита или поездки.</li>
+  <li>Календарь событий — добавление события на конкретный день.</li>
+  <li>Напоминания — установка даты срабатывания.</li>
+  <li>Фильтры — отбор данных по дате.</li>
+  <li>Отчёты — период с и по.</li>
+  <li>Формы заказа — дата доставки.</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Year</b></td>
+      <td style="border: 1px solid #000;">Текущий год.</td>
+      <td style="border: 1px solid #000;">Число, например 2026.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Month</b></td>
+      <td style="border: 1px solid #000;">Текущий месяц.</td>
+      <td style="border: 1px solid #000;">Число от 0 до 11 (0 — январь).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>DayOfMonth</b></td>
+      <td style="border: 1px solid #000;">Текущий день.</td>
+      <td style="border: 1px solid #000;">Число от 1 до 31.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>MinDate</b></td>
+      <td style="border: 1px solid #000;">Минимальная допустимая дата.</td>
+      <td style="border: 1px solid #000;">Число — миллисекунды с 1970-01-01.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>MaxDate</b></td>
+      <td style="border: 1px solid #000;">Максимальная допустимая дата.</td>
+      <td style="border: 1px solid #000;">Число — миллисекунды с 1970-01-01.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Mode</b></td>
+      <td style="border: 1px solid #000;">Режим отображения.</td>
+      <td style="border: 1px solid #000;"><code>calendar</code> — сетка календаря;<br><code>spinner</code> — выпадающие списки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон виджета.</td>
+      <td style="border: 1px solid #000;">HEX, drawable-ресурс или <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Padding / Margin</b></td>
+      <td style="border: 1px solid #000;">Внутренние и внешние отступы.</td>
+      <td style="border: 1px solid #000;">Число в dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> или <code>match_parent</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по DatePicker в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>datepicker1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>datepicker1</code>, <code>datepicker2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>birthDate</code>, если это дата рождения.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты. Здесь задаётся режим календаря/списка.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:datePickerMode="spinner"</code>, <code>android:calendarViewShown="false"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>DatePicker</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">DatePicker и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет пикер по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет пикер по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — высота подстраивается.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 16 — отступ от предыдущего элемента.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — пикер по центру.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Прозрачный фон — оставить <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли пикер на тапы.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые параметры (<b>Mode</b>, <b>MinDate</b>, <b>MaxDate</b>) задаются через <b>Пользовательские атрибуты</b> — <code>android:datePickerMode</code>, <code>android:minDate</code>, <code>android:maxDate</code>. Значения читай в логике через <code>getYear</code>, <code>getMonth</code>, <code>getDayOfMonth</code>.</div>
+
+<h2>Как перетащить DatePicker на макет</h2>
+
+<p>DatePicker, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Дата и время</b> в палитре слева.</li>
+  <li>Зажми <b>DatePicker</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — пикер появится в разметке.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай <code>android:datePickerMode</code>, при необходимости <code>android:minDate</code> и <code>android:maxDate</code>.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» — добавь событие <code>onDateChanged</code> или читай значения при нажатии кнопки.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по DatePicker в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> месяцы в DatePicker нумеруются с 0. Январь — 0, декабрь — 11. Если забыть про это, дата сдвинется на месяц.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> DatePicker — не диалог. Он встроен в разметку и занимает место. Для всплывающего окна используй DatePickerDialog из категории Компоненты.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> год, месяц и день читаются через отдельные блоки <code>getYear</code>, <code>getMonth</code>, <code>getDayOfMonth</code>. Не путай порядок и не забудь про нумерацию месяца с нуля.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> MinDate и MaxDate задаются в миллисекундах от 1 января 1970 года. В Sketchware Pro 7 есть готовые блоки для конвертации даты в это число — используй их.</div>
+
+<div class="hint">💡 <b>Совет:</b> для даты рождения ограничивай выбор: MaxDate = сегодня (нельзя родиться в будущем), MinDate = 1900-01-01 (реалистичный минимум). Это защитит от ошибок ввода.</div>
+
+<div class="hint">💡 <b>Совет:</b> для бронирования ограничивай MinDate = сегодня — нельзя забронировать на прошлое.</div>
+
+<div class="hint">💡 <b>Совет:</b> используй DatePickerDialog (компонент), если форма перегружена. Диалог открывается по тапу на поле и не занимает места в разметке.</div>
+
+<div class="hint">💡 <b>Совет:</b> для отображения выбранной даты используй TextView рядом с пикером. Пользователь видит, что он выбрал, и может убедиться в правильности.</div>
+
+<div class="hint">💡 <b>Совет:</b> сохраняй дату в формате ГГГГ-ММ-ДД (например, 2026-09-29). Это универсальный формат, который легко сортируется и передаётся между системами.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про нумерацию месяца с 0. Январь = 0, а не 1. Частая причина неправильных дат.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетаскивать DatePicker туда, где достаточно одного поля ввода или DatePickerDialog. Полный пикер занимает много места.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не ограничивать минимальную и максимальную даты. Пользователь может выбрать 1800 год или дату через 100 лет.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> путать DatePicker (виджет в разметке) и DatePickerDialog (всплывающее окно).</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Year</b> — текущий год (например, 2026).</li>
-<li><b>Month</b> — текущий месяц (0–11, где 0 — январь).</li>
-<li><b>DayOfMonth</b> — текущий день (1–31).</li>
-<li><b>MinDate</b> — минимальная допустимая дата.</li>
-<li><b>MaxDate</b> — максимальная допустимая дата.</li>
-<li><b>Mode</b> — режим отображения: calendar (сетка) или spinner (списки).</li>
-<li><b>Background</b> — фон виджета.</li>
-<li><b>Padding / Margin</b> — внутренние и внешние отступы.</li>
-<li><b>Width / Height</b> — wrap_content или match_parent.</li>
+  <li><b>DatePicker</b> — виджет для выбора даты (день, месяц, год).</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Ключевые параметры (<b>Mode</b>, <b>MinDate</b>, <b>MaxDate</b>) задаются через <b>Пользовательские атрибуты</b>.</li>
+  <li>Значения читаются через <code>getYear</code>, <code>getMonth</code>, <code>getDayOfMonth</code> в логике.</li>
+  <li><b>Месяц нумеруется с 0</b> — январь = 0, декабрь = 11.</li>
+  <li>Это встроенный виджет, а не диалог — для диалога используй DatePickerDialog.</li>
+  <li>Ограничивай MinDate и MaxDate для защиты от ошибок ввода.</li>
+  <li>Для форм с временем используй вместе с TimePicker.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, куда хочешь положить пикер.</li>
-<li>Тап по DatePicker в палитре — виджет добавится внутрь.</li>
-<li>Задай Mode — calendar или spinner.</li>
-<li>Задай стартовые Year, Month, DayOfMonth.</li>
-<li>Опционально: задай MinDate и MaxDate — например, для даты рождения MinDate = 1900-01-01, MaxDate = сегодня.</li>
-<li>Присвой id — для чтения выбранной даты в логике.</li>
-<li>Открой вкладку «События» — добавь событие onDateChanged или читай значения при нажатии кнопки.</li>
+  <li><b>Тапают по DatePicker в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Забывают про нумерацию месяца с 0.</b> Дата сдвигается на месяц — январь становится февралём.</li>
+  <li><b>Путают с DatePickerDialog.</b> DatePicker — виджет в разметке; DatePickerDialog — всплывающее окно.</li>
+  <li><b>Не ограничивают MinDate и MaxDate.</b> Пользователь может выбрать нереалистичную дату.</li>
+  <li><b>Ищут Mode в обычных свойствах.</b> Через «Пользовательские атрибуты» — <code>android:datePickerMode</code>.</li>
+  <li><b>Не задают ID.</b> Логика не может прочитать значение.</li>
+  <li><b>Задают дату в неправильном формате.</b> Сохраняй ГГГГ-ММ-ДД — универсально и удобно.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> месяцы в DatePicker нумеруются с 0. Январь — 0, декабрь — 11. Если забыть про это, дата сдвинется на месяц.</p>
-
-<p>⚠️ <b>Важно:</b> DatePicker — не диалог. Он встроен в разметку и занимает место. Для всплывающего окна используй DatePickerDialog из категории Компоненты.</p>
-
-<p>⚠️ <b>Важно:</b> год, месяц и день читаются через отдельные блоки getYear, getMonth, getDayOfMonth. Не путай порядок и не забудь про нумерацию месяца с нуля.</p>
-
-<p>⚠️ <b>Важно:</b> MinDate и MaxDate задаются в миллисекундах от 1 января 1970 года. В Sketchware Pro 7 есть готовые блоки для конвертации даты в это число — используй их.</p>
-
-<p>💡 <b>Совет:</b> для даты рождения ограничивай выбор: MaxDate = сегодня (нельзя родиться в будущем), MinDate = 1900-01-01 (реалистичный минимум). Это защитит от ошибок ввода.</p>
-
-<p>💡 <b>Совет:</b> для бронирования ограничивай MinDate = сегодня — нельзя забронировать на прошлое.</p>
-
-<p>💡 <b>Совет:</b> используй DatePickerDialog (компонент), если форма перегружена. Диалог открывается по тапу на поле и не занимает места в разметке.</p>
-
-<p>💡 <b>Совет:</b> для отображения выбранной даты используй TextView рядом с пикером. Пользователь видит, что он выбрал, и может убедиться в правильности.</p>
-
-<p>💡 <b>Совет:</b> сохраняй дату в формате ГГГГ-ММ-ДД (например, 2026-09-29). Это универсальный формат, который легко сортируется и передаётся между системами.</p>
-
-<p>❌ <b>Частая ошибка:</b> забыть про нумерацию месяца с 0. Январь = 0, а не 1. Частая причина неправильных дат.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать DatePicker там, где достаточно одного поля ввода или DatePickerDialog. Полный пикер занимает много места.</p>
-
-<p>❌ <b>Частая ошибка:</b> не ограничивать минимальную и максимальную даты. Пользователь может выбрать 1800 год или дату через 100 лет.</p>
-
-<p>❌ <b>Частая ошибка:</b> путать DatePicker (виджет в разметке) и DatePickerDialog (всплывающее окно).</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
