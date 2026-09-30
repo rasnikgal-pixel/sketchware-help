@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,72 +7,366 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CheckBox — галочка</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>CheckBox — галочка</h1>
 
-<p>CheckBox — флажок (галочка). Виджет, который может находиться в одном из двух состояний: включён (галочка стоит) или выключен (галочки нет). Пользователь тапает по нему и переключает состояние.</p>
+<p><b>CheckBox</b> — флажок (галочка). Виджет, который может находиться в одном из двух состояний: включён (галочка стоит) или выключен (галочки нет). Пользователь тапает по нему и переключает состояние.</p>
 
 <p>Иконка в палитре — квадрат с галочкой внутри.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Имеет два состояния: Checked = true (галка стоит) или false (галка снята).</li>
-<li>Тап по чекбоксу переключает состояние.</li>
-<li>Независим от других чекбоксов: можно отметить один, два или все сразу.</li>
-<li>При изменении состояния срабатывает событие onCheckedChanged — там можно описать логику.</li>
-<li>В отличие от RadioButton, который работает только в группе, CheckBox работает сам по себе.</li>
+  <li>Имеет два состояния: <code>Checked = true</code> (галка стоит) или <code>false</code> (галка снята).</li>
+  <li>Тап по чекбоксу переключает состояние.</li>
+  <li>Независим от других чекбоксов: можно отметить один, два или все сразу.</li>
+  <li>При изменении состояния срабатывает событие <code>onCheckedChanged</code> — там можно описать логику.</li>
+  <li>В отличие от RadioButton, который работает только в группе, CheckBox работает сам по себе.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Согласия — «Принимаю условия», «Согласен с обработкой данных».</li>
-<li>Множественный выбор — отметить несколько интересов, категорий, фильтров.</li>
-<li>Настройки — включение/отключение функций.</li>
-<li>Списки задач — «Сделано», «Куплено».</li>
-<li>Опции заказа — «Добавить соус», «Оформить как подарок».</li>
+  <li>Согласия — «Принимаю условия», «Согласен с обработкой данных».</li>
+  <li>Множественный выбор — отметить несколько интересов, категорий, фильтров.</li>
+  <li>Настройки — включение/отключение функций.</li>
+  <li>Списки задач — «Сделано», «Куплено».</li>
+  <li>Опции заказа — «Добавить соус», «Оформить как подарок».</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Text</b></td>
+      <td style="border: 1px solid #000;">Подпись рядом с флажком.</td>
+      <td style="border: 1px solid #000;">Любая строка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Checked</b></td>
+      <td style="border: 1px solid #000;">Начальное состояние (включён / выключен).</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextColor</b></td>
+      <td style="border: 1px solid #000;">Цвет текста подписи.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextSize</b></td>
+      <td style="border: 1px solid #000;">Размер текста.</td>
+      <td style="border: 1px solid #000;">Число в sp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ButtonTint</b></td>
+      <td style="border: 1px solid #000;">Цвет самого флажка (в современных версиях Android).</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Gravity</b></td>
+      <td style="border: 1px solid #000;">Положение текста относительно флажка.</td>
+      <td style="border: 1px solid #000;"><code>left</code>, <code>right</code>, <code>center</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b></td>
+      <td style="border: 1px solid #000;">Активен ли чекбокс.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Padding / Margin</b></td>
+      <td style="border: 1px solid #000;">Внутренние и внешние отступы.</td>
+      <td style="border: 1px solid #000;">Число в dp для каждой стороны.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> или <code>match_parent</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по CheckBox в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>checkbox1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики. Без ID состояние не прочитать.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>checkbox1</code>, <code>checkbox2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>agreeCheck</code>, если это согласие.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:buttonTint="#2196F3"</code> — синий флажок.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>CheckBox</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">CheckBox и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Checked</b><br>Отмечен</td>
+      <td style="border: 1px solid #000;">Начальное состояние чекбокса.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — галка стоит;<br><b>выкл</b> — галка снята. На скриншоте — выкл.</td>
+      <td style="border: 1px solid #000;">Обычно выкл — пользователь сам ставит.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет чекбокс с подписью по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — если подпись длинная, чтобы занимала всю строку.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет чекбокс по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета — от краёв до подписи и флажка. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета — от него до соседних элементов.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 8 — между чекбоксами.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Положение</b><br>Position</td>
+      <td style="border: 1px solid #000;">Позиционирование виджета внутри родителя (для RelativeLayout).</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>другие правила зависят от родителя.</td>
+      <td style="border: 1px solid #000;">Оставь <code>none</code> для Linear-контейнеров.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — виджет заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства текста</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Текст</b><br>Text</td>
+      <td style="border: 1px solid #000;">Подпись рядом с флажком.</td>
+      <td style="border: 1px solid #000;">Любая строка. По умолчанию — <code>CheckBox</code>.</td>
+      <td style="border: 1px solid #000;">«Согласен с условиями», «Запомнить меня».</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Размер текста</b><br>Text size</td>
+      <td style="border: 1px solid #000;">Размер текста подписи.</td>
+      <td style="border: 1px solid #000;">Число в sp. По умолчанию — <code>12sp</code>.</td>
+      <td style="border: 1px solid #000;"><code>14sp</code> или <code>16sp</code> — комфортно для чтения.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Стиль текста</b><br>Text style</td>
+      <td style="border: 1px solid #000;">Начертание текста.</td>
+      <td style="border: 1px solid #000;"><code>normal</code>, <code>bold</code>, <code>italic</code>.</td>
+      <td style="border: 1px solid #000;">Обычно <code>normal</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет текста</b><br>Text color</td>
+      <td style="border: 1px solid #000;">Цвет текста подписи.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — по умолчанию;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Тёмно-серый <code>#333333</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Светло-серый фон для блока с чекбоксами — <code>#F5F5F5</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Активен ли чекбокс. Если выкл — серый и не нажимается.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> главные свойства чекбокса — <b>Текст</b>, <b>Checked</b>, <b>Размер текста</b> и <b>Цвет текста</b>. Не забудь задать <b>ID</b>, если будешь читать состояние в логике.</div>
+
+<h2>Как перетащить CheckBox на макет</h2>
+
+<p>CheckBox, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b>, <b>Linear(H)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Widgets</b> в палитре слева.</li>
+  <li>Зажми <b>CheckBox</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — чекбокс появится в разметке.</li>
+  <li>Тапни по нему и задай <b>Текст</b> — например, «Согласен с условиями».</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен, чтобы читать состояние.</li>
+  <li>Открой вкладку «События» — добавь событие <code>onCheckedChanged</code> для этого чекбокса, если нужна логика при переключении.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по CheckBox в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без ID чекбокс не появится в списке событий вкладки «События». Его состояние нельзя будет прочитать в логике.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> если чекбоксов несколько и они не связаны логически — каждый работает сам по себе. Если нужно выбрать только один — используй RadioGroup и RadioButton.</div>
+
+<div class="hint">💡 <b>Совет:</b> для чтения состояния в логике используй блок <code>isChecked</code> — он возвращает true или false. На основе этого можно включать и отключать другие элементы.</div>
+
+<div class="hint">💡 <b>Совет:</b> для обязательного согласия (например, «Согласен с условиями») проверяй состояние в <code>onClick</code> кнопки «Продолжить». Если false — покажи предупреждение и не продолжай.</div>
+
+<div class="hint">💡 <b>Совет:</b> не делай чекбоксы слишком мелкими. Стандартный размер флажка в Android — 48dp по тапу. Подпись делай читаемой — 14–16sp.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать CheckBox для взаимоисключающего выбора («Мужской / Женский»). Для этого — RadioGroup с RadioButton.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забывать про ID и потом не иметь возможности прочитать состояние в логике.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Text</b> — подпись рядом с флажком.</li>
-<li><b>Checked</b> — начальное состояние (включён/выключен).</li>
-<li><b>TextColor</b> — цвет текста подписи.</li>
-<li><b>TextSize</b> — размер текста.</li>
-<li><b>ButtonTint</b> — цвет самого флажка (в современных версиях Android).</li>
-<li><b>Gravity</b> — положение текста относительно флажка.</li>
-<li><b>Enabled</b> — активен ли чекбокс.</li>
-<li><b>Padding / Margin</b> — внутренние и внешние отступы.</li>
-<li><b>Width / Height</b> — wrap_content или match_parent.</li>
+  <li><b>CheckBox</b> — флажок с двумя состояниями: включён / выключен.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Независим от других чекбоксов: можно отметить несколько сразу.</li>
+  <li>Ключевые свойства: <b>Текст</b>, <b>Checked</b>, <b>Размер текста</b>, <b>Цвет текста</b>.</li>
+  <li>Для чтения состояния в логике обязательно задавай <b>ID</b> и используй <code>isChecked</code>.</li>
+  <li>Для взаимоисключающего выбора используй <b>RadioGroup + RadioButton</b>, а не чекбоксы.</li>
+  <li>Для события при переключении используется <code>onCheckedChanged</code>.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, куда хочешь положить чекбокс.</li>
-<li>Тап по CheckBox в палитре — виджет добавится внутрь.</li>
-<li>Задай Text — например, «Согласен с условиями».</li>
-<li>Задай Checked — обычно false (снят).</li>
-<li>Присвой id — если планируешь читать состояние в логике.</li>
-<li>Открой вкладку «События» — добавь событие onCheckedChanged для этого чекбокса, если нужна логика при переключении.</li>
+  <li><b>Тапают по CheckBox в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Не задают ID.</b> Нельзя прочитать состояние — чекбокс не появится в событиях.</li>
+  <li><b>Используют CheckBox для выбора одного из нескольких.</b> Нужен RadioGroup.</li>
+  <li><b>Не проверяют состояние в логике.</b> Пользователь ставит галку, а приложение её игнорирует.</li>
+  <li><b>Ставят Checked = вкл по умолчанию без необходимости.</b> Лучше оставить выкл — пользователь сам ставит галку.</li>
+  <li><b>Делают подписи слишком длинными.</b> «Я согласен с условиями использования и обработкой персональных данных» — тяжело читать. Лучше короткая подпись со ссылкой.</li>
+  <li><b>Забывают про событие onCheckedChanged.</b> Логика при переключении не срабатывает.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> без id чекбокс не появится в списке событий вкладки «События». Его состояние нельзя будет прочитать в логике.</p>
-
-<p>⚠️ <b>Важно:</b> если чекбоксов несколько и они не связаны логически — каждый работает сам по себе. Если нужно выбрать только один — используй RadioGroup и RadioButton.</p>
-
-<p>💡 <b>Совет:</b> для чтения состояния в логике используй блок isChecked — он возвращает true или false. На основе этого можно включать и отключать другие элементы.</p>
-
-<p>💡 <b>Совет:</b> для обязательного согласия (например, «Согласен с условиями») проверяй состояние в onClick кнопки «Продолжить». Если false — покажи предупреждение и не продолжай.</p>
-
-<p>💡 <b>Совет:</b> не делай чекбоксы слишком мелкими. Стандартный размер флажка в Android — 48dp по тапу. Подпись делай читаемой — 14–16sp.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать CheckBox для взаимоисключающего выбора («Мужской / Женский»). Для этого — RadioGroup с RadioButton.</p>
-
-<p>❌ <b>Частая ошибка:</b> забывать про id и потом не иметь возможности прочитать состояние в логике.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
