@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,59 +7,264 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Linear(V) — вертикальный</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>Linear(V) — вертикальный</h1>
 
-<p>Linear(V) — линейный макет с вертикальным расположением элементов. Все дочерние виджеты выстраиваются в столбик сверху вниз, один под другим.</p>
+<p><b>Linear(V)</b> — линейный макет с вертикальным расположением элементов. Все дочерние виджеты выстраиваются в столбик сверху вниз, один под другим.</p>
 
 <p>Иконка в палитре — три горизонтальные полоски друг под другом.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Первый добавленный виджет — самый верхний.</li>
-<li>Второй — ниже первого.</li>
-<li>Третий — ещё ниже.</li>
-<li>Если виджеты не помещаются по высоте — они обрезаются снизу.</li>
-<li>По умолчанию контейнер растягивается на всю ширину экрана.</li>
+  <li>Первый перетащенный виджет — самый верхний.</li>
+  <li>Второй — ниже первого.</li>
+  <li>Третий — ещё ниже.</li>
+  <li>Если виджеты не помещаются по высоте — они обрезаются снизу.</li>
+  <li>По умолчанию контейнер растягивается на всю ширину экрана.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Основа любого простого экрана — заголовок сверху, содержимое в центре, кнопка снизу.</li>
-<li>Формы — поле, поле, поле, кнопка — всё в столбик.</li>
-<li>Списки карточек — несколько CardView друг под другом.</li>
-<li>Настройки приложения — пункты меню один под другим.</li>
-<li>Обёртка для содержимого внутри Scroll(V).</li>
+  <li>Основа любого простого экрана — заголовок сверху, содержимое в центре, кнопка снизу.</li>
+  <li>Формы — поле, поле, поле, кнопка — всё в столбик.</li>
+  <li>Списки карточек — несколько CardView друг под другом.</li>
+  <li>Настройки приложения — пункты меню один под другим.</li>
+  <li>Обёртка для содержимого внутри Scroll(V).</li>
 </ul>
 
-<h2>Настройки контейнера</h2>
+<h2>Как перетащить Linear(V) на макет</h2>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Раскрой категорию <b>Layouts</b> в палитре слева.</li>
+  <li>Зажми <b>Linear(V)</b> и, не отпуская, перетащи его на макет.</li>
+  <li>Отпусти в нужном месте — контейнер появится в разметке.</li>
+  <li>Чтобы поместить внутрь него виджеты, перетаскивай их из палитры <b>поверх этого контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Внутрь Linear(V) можно так же перетаскивать другие контейнеры — например, Linear(H) для строки «иконка + текст».</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по Linear(V) в палитре ничего не делает. Контейнер попадает на макет только перетаскиванием.</div>
+
+<h2>Свойства контейнера</h2>
+
+<p>Открой панель свойств, тапнув по контейнеру в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7.</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя контейнера. По этому имени контейнер виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>linear1</code>, <code>linear2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>contentColumn</code>, если это основной столбик содержимого.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:background="#FF0000"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Превратить этот контейнер в другой тип макета (например, в RelativeLayout).</td>
+      <td style="border: 1px solid #000;">LinearLayout, RelativeLayout и другие.</td>
+      <td style="border: 1px solid #000;">Если передумал и хочешь относительное позиционирование — выбери RelativeLayout.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет контейнер по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp — фиксированная ширина.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, чтобы столбик занял весь экран по ширине.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет контейнер по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — высота подстроится под содержимое.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> контейнера — от его краёв до содержимого. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Padding 16 со всех сторон — содержимое не липнет к краям экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> контейнера — от него до соседних элементов и краёв родителя.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 8 — контейнер сдвинется на 8 dp вниз от предыдущего элемента.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ориентация</b><br>Orientation</td>
+      <td style="border: 1px solid #000;">Направление, в котором выстраиваются дочерние элементы.</td>
+      <td style="border: 1px solid #000;"><code>horizontal</code> — в строку;<br><code>vertical</code> — в столбик.</td>
+      <td style="border: 1px solid #000;">Для Linear(V) стоит <code>vertical</code>, менять не нужно.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Сумма весов</b><br>Weight sum</td>
+      <td style="border: 1px solid #000;">Общая сумма весов дочерних элементов. Нужна, если хочешь распределять свободное место между детьми в пропорциях.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — не используется.</td>
+      <td style="border: 1px solid #000;"><code>3</code>, если три ребёнка с весом 1 — поделят высоту на три равные части.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Положение</b><br>Position</td>
+      <td style="border: 1px solid #000;">Позиционирование контейнера внутри родителя (влияет на порядок и привязку).</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>другие варианты зависят от типа родителя.</td>
+      <td style="border: 1px solid #000;">Оставь <code>none</code>, если не работаешь с RelativeLayout-родителем.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как контейнер выравнивается внутри родителя: по левому краю, центру, правому и т. п.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center</code>, <code>center_horizontal</code>, <code>right</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — столбик встанет по центру родителя.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт этот контейнер. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — контейнер заберёт всё оставшееся место в родителе.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон контейнера из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Установи <code>NONE</code>, если фон не нужен.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка контейнера сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры (например, <code>#FFFFFF</code>).</td>
+      <td style="border: 1px solid #000;">Белый фон для карточки содержимого — <code>#FFFFFF</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот контейнера вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;"><code>90</code> — контейнер развернётся на 90°.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько контейнер и его содержимое прозрачны.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — половина прозрачности.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг контейнера по горизонтали без изменения его места в разметке (визуальный сдвиг).</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — контейнер визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг контейнера по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает контейнер по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает контейнер по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> на первых порах достаточно четырёх свойств — <b>Ширина</b>, <b>Высота</b>, <b>Внутренний отступ</b>, <b>Внешний отступ</b>. Остальные оставь по умолчанию.</div>
+
+<h2>Практический пример: экран с шапкой и содержимым</h2>
+
+<ol>
+  <li>Перетащи на макет <b>Linear(V)</b> — он будет корневым.</li>
+  <li>Внутрь него перетащи <b>Linear(H)</b> — это будет шапка.</li>
+  <li>Внутрь шапки перетащи <b>TextView</b> с названием экрана.</li>
+  <li>Ниже шапки (внутрь корневого Linear(V)) перетащи ещё один <b>Linear(V)</b> — это столбик содержимого.</li>
+  <li>Внутрь столбика содержимого перетаскивай поля, кнопки и другие виджеты.</li>
+  <li>Тапни по корневому Linear(V) и задай <b>Внутренний отступ</b> 16 со всех сторон.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> если элементов больше, чем помещается на экране — Linear(V) их обрезает. Чтобы добавить прокрутку, вложи Linear(V) внутрь Scroll(V). Без этого нижние элементы будут недоступны.</div>
+
+<div class="hint">💡 <b>Совет:</b> для экрана с шапкой и подвалом используй структуру: Linear(V) → Linear(H) (шапка) + Scroll(V) → Linear(V) (содержимое) + Linear(H) (подвал). Так шапка и подвал останутся на месте, а прокручиваться будет только середина.</div>
+
+<div class="hint">💡 <b>Совет:</b> не забывай про Padding — контент, прижатый к краям экрана, выглядит плохо. Добавляй 16dp отступов по краям.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Orientation</b> — фиксировано вертикальное, менять не нужно.</li>
-<li><b>Gravity</b> — выравнивание содержимого: слева, по центру, справа.</li>
-<li><b>Width / Height</b> — match_parent (на всю ширину/высоту) или wrap_content (по содержимому).</li>
-<li><b>Padding</b> — внутренние отступы от краёв контейнера до содержимого.</li>
-<li><b>Margin</b> — внешние отступы от других элементов.</li>
+  <li><b>Linear(V)</b> — контейнер, выстраивающий дочерние элементы в столбик сверху вниз.</li>
+  <li>Перетаскивается на макет так же, как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Виджеты и вложенные контейнеры попадают внутрь тем же способом: перетаскиванием поверх Linear(V).</li>
+  <li>Главные свойства: Ширина, Высота, Внутренний и Внешний отступы, Ориентация, Вес.</li>
+  <li>Свойства изображения (фон, прозрачность, вращение, масштаб) — визуальные, для тонкой настройки.</li>
+  <li>Лишние по высоте элементы обрезаются — для прокрутки оборачивай в Scroll(V).</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Тап по Linear(V) в палитре — контейнер добавится в текущий выбранный элемент.</li>
-<li>Внутрь Linear(V) добавляй виджеты тем же способом: сначала выбери контейнер, потом тапни по нужному виджету в палитре.</li>
-<li>Внутрь Linear(V) можно вкладывать другие контейнеры — например, Linear(H) для строки «иконка + текст».</li>
+  <li><b>Тапают по Linear(V) в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Забывают про Scroll(V).</b> Большой экран без обёртки в Scroll(V) — половина содержимого просто не видна.</li>
+  <li><b>Меняют Orientation вручную</b> на <code>horizontal</code> — тогда контейнер превращается в строку и теряет смысл Linear(V).</li>
+  <li><b>Не задают Padding.</b> Контент прижимается к краям — выглядит плохо и неудобно читается.</li>
+  <li><b>Складывают всё в один Linear(V) без вложенных контейнеров.</b> Разметка запутывается, сложно менять отдельные блоки.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> если элементов больше, чем помещается на экране — Linear(V) их обрезает. Чтобы добавить прокрутку, вложи Linear(V) внутрь Scroll(V). Без этого нижние элементы будут недоступны.</p>
-
-<p>💡 <b>Совет:</b> для экрана с шапкой и подвалом используй структуру: Linear(V) → Linear(H) (шапка) + Scroll(V) → Linear(V) (содержимое) + Linear(H) (подвал). Так шапка и подвал останутся на месте, а прокручиваться будет только середина.</p>
-
-<p>💡 <b>Совет:</b> не забывай про Padding — контент, прижатый к краям экрана, выглядит плохо. Добавляй 16dp отступов по краям.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать Linear(V) как единственный контейнер экрана с большим количеством содержимого и не оборачивать в Scroll(V). Половина содержимого просто не будет видна.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
