@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,32 +7,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Scroll(V) — вертикальная прокрутка</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>Scroll(V) — вертикальная прокрутка</h1>
 
-<p>Scroll(V) — контейнер с вертикальной прокруткой. Содержимое внутри него можно сдвигать вверх-вниз, если оно не помещается по высоте экрана.</p>
+<p><b>Scroll(V)</b> — контейнер с вертикальной прокруткой. Содержимое внутри него можно сдвигать вверх-вниз, если оно не помещается по высоте экрана.</p>
 
 <p>Иконка в палитре — прямоугольник с изогнутой стрелкой в вертикальной плоскости.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Внутри Scroll(V) может быть только один дочерний элемент — обычно это Linear(V).</li>
-<li>Все виджеты помещаются внутрь этого Linear(V), и вместе они образуют прокручиваемый столбик.</li>
-<li>Высота содержимого определяется суммой высот виджетов внутри.</li>
-<li>Если высота содержимого больше высоты экрана — появляется вертикальная прокрутка.</li>
-<li>Если меньше — прокрутка не появляется, содержимое стоит на месте.</li>
+  <li>Внутри Scroll(V) может быть только один дочерний элемент — обычно это Linear(V).</li>
+  <li>Все виджеты перетаскиваются внутрь этого Linear(V), и вместе они образуют прокручиваемый столбик.</li>
+  <li>Высота содержимого определяется суммой высот виджетов внутри.</li>
+  <li>Если высота содержимого больше высоты экрана — появляется вертикальная прокрутка.</li>
+  <li>Если меньше — прокрутка не появляется, содержимое стоит на месте.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Формы с множеством полей — когда ввод не помещается на один экран.</li>
-<li>Экраны с длинным текстом — статьи, описания, инструкции.</li>
-<li>Списки карточек — несколько CardView друг под другом.</li>
-<li>Экраны настроек — длинные меню с пунктами.</li>
-<li>Практически любой экран, где содержимого больше, чем помещается на дисплей.</li>
+  <li>Формы с множеством полей — когда ввод не помещается на один экран.</li>
+  <li>Экраны с длинным текстом — статьи, описания, инструкции.</li>
+  <li>Списки карточек — несколько CardView друг под другом.</li>
+  <li>Экраны настроек — длинные меню с пунктами.</li>
+  <li>Практически любой экран, где содержимого больше, чем помещается на дисплей.</li>
 </ul>
 
 <p>Это самый часто используемый контейнер после Linear(V).</p>
@@ -41,40 +48,222 @@
 <h2>Структура, которую нужно строить</h2>
 
 <ul>
-<li><b>Scroll(V)</b> — внешний контейнер с прокруткой.</li>
-<li><b>Linear(V)</b> — единственный дочерний элемент внутри Scroll(V).</li>
-<li>Внутри Linear(V) — сами виджеты: TextView, EditText, Button и другие.</li>
+  <li><b>Scroll(V)</b> — внешний контейнер с прокруткой.</li>
+  <li><b>Linear(V)</b> — единственный дочерний элемент внутри Scroll(V).</li>
+  <li>Внутри Linear(V) — сами виджеты: TextView, EditText, Button и другие.</li>
 </ul>
 
 <p>Без Linear(V) внутри виджеты не будут корректно выстраиваться в столбик.</p>
 
-<h2>Настройки</h2>
+<h2>Как перетащить Scroll(V) на макет</h2>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Раскрой категорию <b>Layouts</b> в палитре слева.</li>
+  <li>Зажми <b>Scroll(V)</b> и, не отпуская, перетащи его на макет.</li>
+  <li>Отпусти в нужном месте — контейнер появится в разметке.</li>
+  <li><b>Сразу перетащи внутрь Scroll(V) контейнер Linear(V)</b> — без него прокрутка работать не будет.</li>
+  <li>Затем перетаскивай нужные виджеты (TextView, EditText, Button) внутрь Linear(V).</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по Scroll(V) в палитре ничего не делает. Контейнер попадает на макет только перетаскиванием.</div>
+
+<h2>Свойства контейнера</h2>
+
+<p>Открой панель свойств, тапнув по контейнеру в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>vscroll2</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя контейнера. По этому имени контейнер виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>vscroll1</code>, <code>vscroll2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>contentScroll</code>, если это основная прокрутка экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:fillViewport="true"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Превратить этот контейнер в другой тип (например, в HorizontalScrollView).</td>
+      <td style="border: 1px solid #000;">ScrollView, HorizontalScrollView и другие.</td>
+      <td style="border: 1px solid #000;">Если нужна горизонтальная прокрутка — переключи на HorizontalScrollView.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет контейнер по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, чтобы область прокрутки заняла весь экран по ширине.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет контейнер по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — прокрутка займёт весь экран по высоте. С <code>wrap_content</code> прокрутка не появится.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> контейнера — от его краёв до содержимого. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Padding 16 со всех сторон — содержимое не липнет к краям экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> контейнера — от него до соседних элементов и краёв родителя.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 8 — прокрутка начнётся на 8 dp ниже шапки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как контейнер выравнивается внутри родителя: по левому краю, центру, правому и т. п.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>, <code>right</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — контейнер встанет по центру родителя.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт этот контейнер. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — контейнер заберёт всё оставшееся место в родителе (например, между шапкой и подвалом).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон контейнера из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Установи <code>NONE</code>, если фон не нужен.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка контейнера сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры (например, <code>#FFFFFF</code>).</td>
+      <td style="border: 1px solid #000;">Белый фон под прокруткой содержимого — <code>#FFFFFF</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот контейнера вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;"><code>90</code> — контейнер развернётся на 90°.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько контейнер и его содержимое прозрачны.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — половина прозрачности.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг контейнера по горизонтали без изменения его места в разметке (визуальный сдвиг).</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — контейнер визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг контейнера по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает контейнер по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает контейнер по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> на первых порах достаточно четырёх свойств — <b>Ширина</b>, <b>Высота</b>, <b>Внутренний отступ</b>, <b>Внешний отступ</b>. Остальные оставь по умолчанию.</div>
+
+<h2>Практический пример: длинная форма</h2>
+
+<ol>
+  <li>Перетащи на макет <b>Linear(V)</b> — он будет корневым.</li>
+  <li>Внутрь перетащи <b>Scroll(V)</b>.</li>
+  <li><b>Сразу перетащи внутрь Scroll(V) контейнер Linear(V)</b>.</li>
+  <li>Внутрь Linear(V) перетаскивай поля формы: TextView, EditText, Button.</li>
+  <li>Тапни по Scroll(V) и убедись, что <b>Высота</b> стоит <code>match_parent</code>, а <b>Ширина</b> — <code>match_parent</code>.</li>
+  <li>Задай Scroll(V) <b>Внутренний отступ</b> 16 со всех сторон.</li>
+  <li>Готово: длинная форма помещается на экран и прокручивается.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> Scroll(V) с одним дочерним элементом — жёсткое требование Android. Если попытаться перетащить внутрь несколько элементов напрямую, минуя Linear(V), поведение будет непредсказуемым.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не вкладывай Scroll(V) в Scroll(V) — получится конфликт жестов, прокрутка будет дёргаться или зависать.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> если внутри Scroll(V) находится ListView или RecyclerView, прокрутка может работать некорректно — эти компоненты имеют собственную прокрутку. Для таких случаев используются специальные настройки высоты (wrap_content) или заголовки/подвалы списка.</div>
+
+<div class="hint">💡 <b>Совет:</b> если прокрутка «не работает» — проверь, что у Scroll(V) стоит match_parent по высоте. С wrap_content контейнер растянется по содержимому и прокручивать будет нечего.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Width / Height</b> — match_parent по ширине и высоте (либо wrap_content, если прокрутка должна быть ограничена).</li>
-<li><b>Padding</b> — внутренние отступы.</li>
-<li><b>Margin</b> — внешние отступы.</li>
-<li><b>Scrollbars</b> — показывать или скрывать полосу прокрутки.</li>
-<li><b>FillViewport</b> — растягивать ли содержимое на всю высоту, если оно меньше экрана.</li>
+  <li><b>Scroll(V)</b> — контейнер с вертикальной прокруткой: содержимое листается вверх-вниз.</li>
+  <li>Перетаскивается на макет так же, как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Внутри должен быть <b>ровно один</b> дочерний элемент — обычно Linear(V).</li>
+  <li>Прокрутка появляется только тогда, когда высота содержимого превышает высоту экрана.</li>
+  <li>Главное условие работы: <b>Высота</b> контейнера = <code>match_parent</code>.</li>
+  <li>Главные свойства: Ширина, Высота, Внутренний и Внешний отступы, Гравитация макета, Вес.</li>
+  <li>Свойства изображения — визуальные, для тонкой настройки.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Тап по Scroll(V) в палитре — контейнер добавится в текущий выбранный элемент.</li>
-<li>Сразу после этого добавь внутрь Linear(V) — иначе прокрутка работать не будет.</li>
-<li>Затем в Linear(V) добавляй нужные виджеты.</li>
+  <li><b>Тапают по Scroll(V) в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Перетаскивают Scroll(V) без Linear(V) внутрь.</b> Прокрутки нет — виджеты не размещаются в столбик.</li>
+  <li><b>Ставят Высоте wrap_content.</b> Тогда Scroll(V) растянется по содержимому, и прокручивать будет нечего.</li>
+  <li><b>Перетаскивают внутрь Scroll(V) несколько элементов напрямую</b>, минуя Linear(V). Нарушается требование Android «один дочерний элемент».</li>
+  <li><b>Вкладывают Scroll(V) в Scroll(V).</b> Жесты конфликтуют, прокрутка дёргается.</li>
+  <li><b>Кладут ListView или RecyclerView прямо в Scroll(V).</b> Двойная прокрутка работает некорректно — эти компоненты сами скроллятся.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> Scroll(V) с одним дочерним элементом — жёсткое требование Android. Если положить внутрь несколько элементов напрямую, поведение будет непредсказуемым.</p>
-
-<p>⚠️ <b>Важно:</b> не вкладывай Scroll(V) в Scroll(V) — получится конфликт жестов, прокрутка будет дёргаться или зависать.</p>
-
-<p>⚠️ <b>Важно:</b> если внутри Scroll(V) находится ListView или RecyclerView, прокрутка может работать некорректно — эти компоненты имеют собственную прокрутку. Для таких случаев используются специальные настройки высоты (wrap_content) или заголовки/подвалы списка.</p>
-
-<p>💡 <b>Совет:</b> если прокрутка «не работает» — проверь, что у Scroll(V) стоит match_parent по высоте. С wrap_content контейнер растянется по содержимому и прокручивать будет нечего.</p>
-
-<p>❌ <b>Частая ошибка:</b> добавлять Scroll(V) без вложенного Linear(V). Контейнер есть, но виджеты не размещаются — прокрутки нет.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
