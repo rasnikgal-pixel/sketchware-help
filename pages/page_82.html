@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,81 +7,328 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ListView — вертикальный список</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>ListView — вертикальный список</h1>
 
-<p>ListView — вертикальный список элементов. Классический компонент Android для отображения однотипных строк: названий, сообщений, контактов, настроек. Каждый элемент — отдельная строка, которую можно нажать.</p>
+<p><b>ListView</b> — вертикальный список элементов. Классический компонент Android для отображения однотипных строк: названий, сообщений, контактов, настроек. Каждый элемент — отдельная строка, которую можно нажать.</p>
 
 <p>Иконка в палитре — прямоугольник с несколькими горизонтальными полосами.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает список элементов сверху вниз.</li>
-<li>Каждый элемент — строка с текстом (или с текстом и иконкой, в зависимости от адаптера).</li>
-<li>Прокручивается вертикально, если элементы не помещаются на экран.</li>
-<li>Создаёт только видимые элементы — для сотен строк это работает быстро.</li>
-<li>Реагирует на тап по элементу — событие onItemClick.</li>
-<li>Может быть привязан к массиву данных или к базе данных (SQLite, Firebase).</li>
+  <li>Отображает список элементов сверху вниз.</li>
+  <li>Каждый элемент — строка с текстом (или с текстом и иконкой, в зависимости от адаптера).</li>
+  <li>Прокручивается вертикально, если элементы не помещаются на экран.</li>
+  <li>Создаёт только видимые элементы — для сотен строк это работает быстро.</li>
+  <li>Реагирует на тап по элементу — событие <code>onItemClick</code>.</li>
+  <li>Может быть привязан к массиву данных или к базе данных (SQLite, Firebase).</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Список контактов — имя и телефон.</li>
-<li>Список сообщений — чат или SMS.</li>
-<li>Меню настроек — пункты с иконками.</li>
-<li>Список покупок — задачи или товары.</li>
-<li>Результаты поиска — строки с совпадениями.</li>
-<li>Любой однотипный вертикальный список.</li>
+  <li>Список контактов — имя и телефон.</li>
+  <li>Список сообщений — чат или SMS.</li>
+  <li>Меню настроек — пункты с иконками.</li>
+  <li>Список покупок — задачи или товары.</li>
+  <li>Результаты поиска — строки с совпадениями.</li>
+  <li>Любой однотипный вертикальный список.</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Adapter</b></td>
+      <td style="border: 1px solid #000;">Связывает данные со списком. Задаётся в логике.</td>
+      <td style="border: 1px solid #000;">ArrayAdapter, CustomAdapter.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Divider</b></td>
+      <td style="border: 1px solid #000;">Цвет или изображение разделителя между строками.</td>
+      <td style="border: 1px solid #000;">HEX или drawable-ресурс.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>DividerHeight</b></td>
+      <td style="border: 1px solid #000;">Высота разделителя.</td>
+      <td style="border: 1px solid #000;">Число в dp. По умолчанию — 1dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ChoiceMode</b></td>
+      <td style="border: 1px solid #000;">Режим выбора элемента.</td>
+      <td style="border: 1px solid #000;"><code>none</code>, <code>singleChoice</code>, <code>multipleChoice</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Цвет фона списка.</td>
+      <td style="border: 1px solid #000;">HEX или drawable-ресурс.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Scrollbars</b></td>
+      <td style="border: 1px solid #000;">Показывать ли полосу прокрутки.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> по ширине, обычно <code>match_parent</code> и по высоте.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Padding / Margin</b></td>
+      <td style="border: 1px solid #000;">Внутренние и внешние отступы.</td>
+      <td style="border: 1px solid #000;">Число в dp для каждой стороны.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по ListView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>listview1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики. Без ID нельзя подключить адаптер.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>listview1</code>, <code>listview2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>contactList</code>, если это список контактов.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:listSelector="#33FFFFFF"</code> — цвет подсветки при тапе.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>ListView</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">ListView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота разделителя</b><br>Divider height</td>
+      <td style="border: 1px solid #000;">Высота разделительной линии между строками.</td>
+      <td style="border: 1px solid #000;">Число в dp. По умолчанию — <code>1dp</code>.</td>
+      <td style="border: 1px solid #000;"><code>1dp</code> — тонкая линия; <code>8dp</code> — воздух между строками.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательский вид</b><br>Custom view</td>
+      <td style="border: 1px solid #000;">Свой Layout для элемента списка (вместо стандартного текста).</td>
+      <td style="border: 1px solid #000;"><code>none</code> — стандартный вид; любой XML-макет элемента.</td>
+      <td style="border: 1px solid #000;">Укажи здесь свой макет для карточек с иконками.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет список по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — стандарт для списка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет список по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — чтобы список занимал весь экран.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета — от него до соседних элементов.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Обычно 0 — список занимает всё свободное место.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — список заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Белый фон — <code>#FFFFFF</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые настройки ListView — <b>Высота разделителя</b>, <b>Пользовательский вид</b>, <b>Цвет фона</b>. Данные подключаются в <b>логике</b> — через блоки <code>setListData</code> или <code>setAdapter</code>.</div>
+
+<h2>Как перетащить ListView на макет</h2>
+
+<p>ListView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>. Чаще всего список — единственный элемент на экране.</li>
+  <li>Раскрой категорию <b>Списки</b> в палитре слева.</li>
+  <li>Зажми <b>ListView</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — список появится в разметке.</li>
+  <li>Присвой осмысленный <b>ID</b> — без него логика не сможет обратиться к списку.</li>
+  <li>Открой вкладку «События» и добавь в <code>onCreate</code>:
+    <ul>
+      <li>блок <code>setListData</code> — простой способ задать список строк;</li>
+      <li>или блок <code>setAdapter</code> — для более сложного адаптера с картинками и форматированием.</li>
+    </ul>
+  </li>
+  <li>Добавь событие <code>onItemClick</code> — реакцию на тап по элементу.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по ListView в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без адаптера в логике ListView отображается как пустая область. Просто добавить в разметку недостаточно.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> ListView не вкладывается в Scroll(V). У него собственная прокрутка, и вместе с прокруткой родителя возникает конфликт. Если нужен список внутри прокручиваемого экрана — используй RecyclerView с NestedScrollView.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> ListView устарел в современном Android. Google рекомендует использовать RecyclerView. Однако в Sketchware Pro 7 ListView проще в настройке, и для многих задач его достаточно.</div>
+
+<div class="hint">💡 <b>Совет:</b> для простого списка (только текст) используй блок <code>setListData</code> с массивом строк. Это самый быстрый способ сделать рабочий список.</div>
+
+<div class="hint">💡 <b>Совет:</b> для списка с иконками или карточками создай свой Layout (элемент списка) в Дизайнере и подключи его как адаптер. Это требует больше шагов, но даёт полный контроль над видом.</div>
+
+<div class="hint">💡 <b>Совет:</b> для выбора одного элемента из списка используй ChoiceMode = singleChoice. Sketchware покажет радиокнопки справа от каждой строки.</div>
+
+<div class="hint">💡 <b>Совет:</b> задавай DividerHeight = 1dp для тонкой разделительной линии. Без разделителя элементы сливаются и плохо читаются.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетащить ListView и ждать, что он покажет данные. Без логики — он пустой.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> оборачивать ListView в Scroll(V). Прокрутка работает нестабильно: список либо не прокручивается, либо ведёт себя странно.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Adapter</b> — задаётся в логике, не в свойствах.</li>
-<li><b>Divider</b> — цвет или изображение разделителя между строками.</li>
-<li><b>DividerHeight</b> — высота разделителя (в dp).</li>
-<li><b>ChoiceMode</b> — режим выбора: none, singleChoice, multipleChoice.</li>
-<li><b>Background</b> — цвет фона списка.</li>
-<li><b>Scrollbars</b> — показывать ли полосу прокрутки.</li>
-<li><b>Width / Height</b> — match_parent по ширине, обычно match_parent и по высоте.</li>
-<li><b>Padding / Margin</b> — внутренние и внешние отступы.</li>
+  <li><b>ListView</b> — вертикальный список однотипных строк.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Работает только через <b>адаптер</b>, задаваемый в логике (<code>setListData</code> или <code>setAdapter</code>).</li>
+  <li>Без логики остаётся пустой областью.</li>
+  <li>Ключевые свойства: <b>Высота разделителя</b>, <b>Пользовательский вид</b>, <b>ChoiceMode</b>.</li>
+  <li>Не вкладывай ListView в Scroll(V) — прокрутка конфликтует.</li>
+  <li>Для простых списков ListView проще, чем RecyclerView; для сложных — RecyclerView предпочтительнее.</li>
+  <li>Событие <code>onItemClick</code> — реакция на тап по элементу.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, куда хочешь положить список. Чаще всего — корневой Linear(V) или RelativeLayout.</li>
-<li>Тап по ListView в палитре — компонент добавится внутрь.</li>
-<li>Присвой id — без него логика не сможет обратиться к списку.</li>
-<li>Открой вкладку «События» и добавь в onCreate:
-<ul>
-<li>блок setListData — простой способ задать список строк;</li>
-<li>или блок setAdapter — для более сложного адаптера с картинками и форматированием.</li>
-</ul>
-</li>
-<li>Добавь событие onItemClick — реакцию на тап по элементу.</li>
+  <li><b>Тапают по ListView в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Перетащили список, но не подключили адаптер.</b> Область пустая.</li>
+  <li><b>Ищут содержимое списка в свойствах.</b> Данные задаются только в логике.</li>
+  <li><b>Вкладывают ListView в Scroll(V).</b> Прокрутка не работает — конфликт двух скроллов.</li>
+  <li><b>Используют ListView для сложных карточек.</b> Лучше подходит RecyclerView.</li>
+  <li><b>Не задают ID.</b> Логика не может обратиться к списку.</li>
+  <li><b>Не добавляют onItemClick.</b> Тап по элементу ничего не делает.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> без адаптера в логике ListView отображается как пустая область. Просто добавить в разметку недостаточно.</p>
-
-<p>⚠️ <b>Важно:</b> ListView не вкладывается в Scroll(V). У него собственная прокрутка, и вместе с прокруткой родителя возникает конфликт. Если нужен список внутри прокручиваемого экрана — используй RecyclerView с NestedScrollView.</p>
-
-<p>⚠️ <b>Важно:</b> ListView устарел в современном Android. Google рекомендует использовать RecyclerView. Однако в Sketchware Pro 7 ListView проще в настройке, и для многих задач его достаточно.</p>
-
-<p>💡 <b>Совет:</b> для простого списка (только текст) используй блок setListData с массивом строк. Это самый быстрый способ сделать рабочий список.</p>
-
-<p>💡 <b>Совет:</b> для списка с иконками или карточками создай свой Layout (элемент списка) в Дизайнере и подключи его как адаптер. Это требует больше шагов, но даёт полный контроль над видом.</p>
-
-<p>💡 <b>Совет:</b> для выбора одного элемента из списка используй ChoiceMode = singleChoice. Sketchware покажет радиокнопки справа от каждой строки.</p>
-
-<p>💡 <b>Совет:</b> задавай DividerHeight = 1dp для тонкой разделительной линии. Без разделителя элементы сливаются и плохо читаются.</p>
-
-<p>❌ <b>Частая ошибка:</b> добавить ListView и ждать, что он покажет данные. Без логики — он пустой.</p>
-
-<p>❌ <b>Частая ошибка:</b> оборачивать ListView в Scroll(V). Прокрутка работает нестабильно: список либо не прокручивается, либо ведёт себя странно.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
