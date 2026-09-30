@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,85 +7,315 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SignInButton — вход через Google</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>SignInButton — вход через Google</h1>
 
-<p>SignInButton — кнопка входа через аккаунт Google. Пользователь тапает — и входит в приложение, используя свою учётную запись Google, без ввода пароля и регистрации.</p>
+<p><b>SignInButton</b> — кнопка входа через аккаунт Google. Пользователь тапает — и входит в приложение, используя свою учётную запись Google, без ввода пароля и регистрации.</p>
 
 <p>Иконка в палитре — кнопка с логотипом Google и надписью.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает фирменную кнопку с логотипом Google и надписью «Войти через Google».</li>
-<li>При тапе — открывается диалог выбора аккаунта Google, сохранённого на устройстве.</li>
-<li>Пользователь выбирает аккаунт — приложение получает токен авторизации.</li>
-<li>Через токен можно получить имя, email, фото профиля и другие данные.</li>
-<li>Если у пользователя нет аккаунта Google на устройстве — откроется экран входа в Google.</li>
+  <li>Отображает фирменную кнопку с логотипом Google и надписью «Войти через Google».</li>
+  <li>При тапе — открывается диалог выбора аккаунта Google, сохранённого на устройстве.</li>
+  <li>Пользователь выбирает аккаунт — приложение получает токен авторизации.</li>
+  <li>Через токен можно получить имя, email, фото профиля и другие данные.</li>
+  <li>Если у пользователя нет аккаунта Google на устройстве — откроется экран входа в Google.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Быстрая регистрация — не заставлять вводить email и пароль.</li>
-<li>Авторизация в приложении — вместо собственной формы входа.</li>
-<li>Персонализация — получить имя и фото профиля.</li>
-<li>Синхронизация данных — привязать данные к аккаунту.</li>
-<li>Облачное хранение — сохранять данные в Google Drive или Firebase.</li>
-<li>Социальные функции — привязка к аккаунту для отзывов и комментариев.</li>
+  <li>Быстрая регистрация — не заставлять вводить email и пароль.</li>
+  <li>Авторизация в приложении — вместо собственной формы входа.</li>
+  <li>Персонализация — получить имя и фото профиля.</li>
+  <li>Синхронизация данных — привязать данные к аккаунту.</li>
+  <li>Облачное хранение — сохранять данные в Google Drive или Firebase.</li>
+  <li>Социальные функции — привязка к аккаунту для отзывов и комментариев.</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ButtonSize</b></td>
+      <td style="border: 1px solid #000;">Размер кнопки.</td>
+      <td style="border: 1px solid #000;"><code>Standard</code> — стандартный;<br><code>Wide</code> — растянутый;<br><code>IconOnly</code> — только иконка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ColorScheme</b></td>
+      <td style="border: 1px solid #000;">Цветовая схема.</td>
+      <td style="border: 1px solid #000;"><code>Dark</code> — тёмная;<br><code>Light</code> — светлая;<br><code>Colorful</code> — яркая.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Text</b></td>
+      <td style="border: 1px solid #000;">Надпись на кнопке.</td>
+      <td style="border: 1px solid #000;">«Войти через Google», «Зарегистрироваться», «Войти».</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> или <code>match_parent</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Margin / Padding</b></td>
+      <td style="border: 1px solid #000;">Отступы.</td>
+      <td style="border: 1px solid #000;">Число в dp.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по SignInButton в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>signinbutton1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>signinbutton1</code>, <code>signinbutton2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>googleSignIn</code>, если это основная кнопка входа.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты. Здесь задаются размер, цветовая схема и текст кнопки.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>app:buttonSize="wide"</code>, <code>app:colorScheme="dark"</code>, <code>app:signInText="Войти"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает полный класс компонента: <code>com.google.android.gms.common.SignInButton</code>.</td>
+      <td style="border: 1px solid #000;">SignInButton и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широкой будет кнопка по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — если кнопка на всю форму.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высокой будет кнопка по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 0 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 16 — между кнопкой и полями формы.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — кнопка по центру.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code> — фон задаётся стилем.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code> — стиль Google устанавливает фон сам.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли кнопка на тапы.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активна;<br><b>выкл</b> — заблокирована.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые параметры (<b>ButtonSize</b>, <b>ColorScheme</b>, <b>Text</b>) задаются через <b>Пользовательские атрибуты</b> — <code>app:buttonSize</code>, <code>app:colorScheme</code>, <code>app:signInText</code>. Реакция на тап и сам вход — в логике через <code>onClick</code> и блоки <code>signIn</code>.</div>
+
+<h2>Как перетащить SignInButton на макет</h2>
+
+<p>SignInButton, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Зарегистрируйся в <b>Google Cloud Console</b>.</li>
+  <li>Настрой <b>OAuth 2.0</b> — тип «Android». Укажи имя пакета приложения и SHA-1 сертификата подписи.</li>
+  <li>Получи <b>Client ID</b> для OAuth.</li>
+  <li>В Sketchware Pro 7 подключи библиотеку <b>Google Sign-In</b> через Менеджер библиотек.</li>
+  <li>Открой вкладку <b>«Дизайнер»</b>. Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Google</b> в палитре слева.</li>
+  <li>Зажми <b>SignInButton</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — кнопка появится в разметке.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай <code>app:buttonSize</code>, <code>app:colorScheme</code>, <code>app:signInText</code>.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» — добавь событие <code>onClick</code> для кнопки.</li>
+  <li>Внутри <code>onClick</code> вызови блок <code>signIn</code> — запрос на вход.</li>
+  <li>Добавь события <code>onSignInSuccess</code> и <code>onSignInFailed</code> — реакцию на результат.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по SignInButton в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без настройки OAuth в Google Cloud кнопка не работает. Нужно зарегистрировать приложение, указать пакет и SHA-1 отпечаток.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> SHA-1 отпечаток берётся из сертификата, которым подписано приложение. Для тестовой сборки — один отпечаток, для релиза (Google Play) — другой. Оба нужно добавить в консоль.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без google-services.json файла (для Firebase Auth) или правильной настройки OAuth вход не сработает. Ошибки часто скрыты в логах.</div>
+
+<div class="hint">💡 <b>Совет:</b> для простых приложений используй SignInButton в паре с Firebase Auth. Firebase возьмёт на себя большую часть работы — легче, чем чистая настройка OAuth.</div>
+
+<div class="hint">💡 <b>Совет:</b> после успешного входа сохраняй данные пользователя в SharedPreferences — чтобы не запрашивать вход при каждом запуске.</div>
+
+<div class="hint">💡 <b>Совет:</b> задавай ButtonSize = Wide, если кнопка в форме — она растянется на всю ширину. Для небольших экранов — Standard.</div>
+
+<div class="hint">💡 <b>Совет:</b> используй ColorScheme = Dark для тёмной темы приложения. Light — для светлой. Colorful — для ярких приложений.</div>
+
+<div class="hint">💡 <b>Совет:</b> предусмотри выход из аккаунта — добавь кнопку «Выйти» в настройках профиля. Пользователь должен иметь возможность сменить аккаунт.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не указать SHA-1 отпечаток при настройке OAuth. Кнопка нажимается, но вход не срабатывает.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать debug-версию SHA-1 для релизного APK. При публикации в Google Play нужен release-отпечаток.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не обрабатывать <code>onSignInFailed</code>. Пользователь тапает, ничего не происходит, ошибки не видно.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не показывать имя пользователя после входа. Пользователь не понимает, что вошёл успешно.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про кнопку «Выйти». Пользователь не может сменить аккаунт.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>ButtonSize</b> — размер кнопки: Standard, Wide, IconOnly.</li>
-<li><b>ColorScheme</b> — цветовая схема: Dark, Light, Colorful.</li>
-<li><b>Text</b> — надпись: «Войти через Google», «Зарегистрироваться» или «Войти».</li>
-<li><b>Width / Height</b> — wrap_content или match_parent.</li>
-<li><b>Margin / Padding</b> — отступы.</li>
+  <li><b>SignInButton</b> — фирменная кнопка входа через аккаунт Google.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Требует настройки <b>OAuth 2.0</b> в Google Cloud Console с указанием пакета и SHA-1.</li>
+  <li>Нужна библиотека <b>Google Sign-In</b> (или Firebase Auth) через Менеджер библиотек.</li>
+  <li>Ключевые параметры (<b>ButtonSize</b>, <b>ColorScheme</b>, <b>Text</b>) задаются через <b>Пользовательские атрибуты</b>.</li>
+  <li>Реакция на тап и сам вход — через логику (<code>onClick</code>, <code>signIn</code>, <code>onSignInSuccess</code>).</li>
+  <li>Debug и release версии приложения требуют <b>разные SHA-1</b> в консоли.</li>
+  <li>Обязательно предусмотри кнопку «Выйти» и обработку ошибок входа.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Зарегистрируйся в Google Cloud Console.</li>
-<li>Настрой OAuth 2.0 — тип «Android». Укажи имя пакета приложения и SHA-1 сертификата подписи.</li>
-<li>Получи Client ID для OAuth.</li>
-<li>В Sketchware Pro 7 подключи библиотеку Google Sign-In через Менеджер библиотек.</li>
-<li>Тап по SignInButton в палитре — кнопка добавится в контейнер.</li>
-<li>В свойствах задай ButtonSize, ColorScheme и Text.</li>
-<li>Присвой id.</li>
-<li>Открой вкладку «События» — добавь событие onClick для кнопки.</li>
-<li>Внутри onClick вызови блок signIn — запрос на вход.</li>
-<li>Добавь события onSignInSuccess и onSignInFailed — реакцию на результат.</li>
+  <li><b>Тапают по SignInButton в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Не настраивают OAuth.</b> Кнопка нажимается, но вход не работает.</li>
+  <li><b>Не указывают SHA-1.</b> Вход отклоняется, ошибка в логах.</li>
+  <li><b>Используют debug SHA-1 для релизной сборки.</b> Вход не работает у пользователей из Google Play.</li>
+  <li><b>Не обрабатывают onSignInFailed.</b> Пользователь не понимает, что произошло.</li>
+  <li><b>Забывают кнопку «Выйти».</b> Пользователь не может сменить аккаунт.</li>
+  <li><b>Ищут ButtonSize и ColorScheme в обычных свойствах.</b> Через «Пользовательские атрибуты».</li>
+  <li><b>Не задают ID.</b> Логика не может подключиться к кнопке.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> без настройки OAuth в Google Cloud кнопка не работает. Нужно зарегистрировать приложение, указать пакет и SHA-1 отпечаток.</p>
-
-<p>⚠️ <b>Важно:</b> SHA-1 отпечаток берётся из сертификата, которым подписано приложение. Для тестовой сборки — один отпечаток, для релиза (Google Play) — другой. Оба нужно добавить в консоль.</p>
-
-<p>⚠️ <b>Важно:</b> без google-services.json файла (для Firebase Auth) или правильной настройки OAuth вход не сработает. Ошибки часто скрыты в логах.</p>
-
-<p>💡 <b>Совет:</b> для простых приложений используй SignInButton в паре с Firebase Auth. Firebase возьмёт на себя большую часть работы — легче, чем чистая настройка OAuth.</p>
-
-<p>💡 <b>Совет:</b> после успешного входа сохраняй данные пользователя в SharedPreferences — чтобы не запрашивать вход при каждом запуске.</p>
-
-<p>💡 <b>Совет:</b> задавай ButtonSize = Wide, если кнопка в форме — она растянется на всю ширину. Для небольших экранов — Standard.</p>
-
-<p>💡 <b>Совет:</b> используй ColorScheme = Dark для тёмной темы приложения. Light — для светлой. Colorful — для ярких приложений.</p>
-
-<p>💡 <b>Совет:</b> предусмотри выход из аккаунта — добавь кнопку «Выйти» в настройках профиля. Пользователь должен иметь возможность сменить аккаунт.</p>
-
-<p>❌ <b>Частая ошибка:</b> не указать SHA-1 отпечаток при настройке OAuth. Кнопка нажимается, но вход не срабатывает.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать debug-версию SHA-1 для релизного APK. При публикации в Google Play нужен release-отпечаток.</p>
-
-<p>❌ <b>Частая ошибка:</b> не обрабатывать onSignInFailed. Пользователь тапает, ничего не происходит, ошибки не видно.</p>
-
-<p>❌ <b>Частая ошибка:</b> не показывать имя пользователя после входа. Пользователь не понимает, что вошёл успешно.</p>
-
-<p>❌ <b>Частая ошибка:</b> забыть про кнопку «Выйти». Пользователь не может сменить аккаунт.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
