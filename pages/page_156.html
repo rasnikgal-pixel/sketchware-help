@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,124 +7,211 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Google Login — вход через Google</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>Google Login — вход через Google</h1>
 
-<p>Google Login — авторизация через аккаунт Google. Пользователь тапает по кнопке — система предлагает список аккаунтов на устройстве. Один тап — и он вошёл в приложение, без ввода пароля.</p>
+<p><b>Google Login</b> — авторизация через аккаунт Google. Пользователь тапает по кнопке — система предлагает список аккаунтов на устройстве. Один тап — и он вошёл в приложение, без ввода пароля.</p>
 
 <p>Иконка в диалоге добавления — логотип Firebase.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Открывает диалог выбора аккаунта Google.</li>
-<li>Пользователь выбирает аккаунт — приложение получает токен авторизации.</li>
-<li>Firebase проверяет токен и создаёт сессию.</li>
-<li>Приложение получает UID, email, имя, фото профиля.</li>
-<li>Аккаунт Google уже существует — регистрация не нужна.</li>
+  <li>Открывает диалог выбора аккаунта Google.</li>
+  <li>Пользователь выбирает аккаунт — приложение получает токен авторизации.</li>
+  <li>Firebase проверяет токен и создаёт сессию.</li>
+  <li>Приложение получает UID, email, имя, фото профиля.</li>
+  <li>Аккаунт Google уже существует — регистрация не нужна.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Быстрая авторизация — один тап вместо ввода пароля.</li>
-<li>Приложения с профилем — получить имя и аватар пользователя автоматически.</li>
-<li>Синхронизация с Google-сервисами — Google Drive, Calendar, Gmail.</li>
-<li>Покупки — привязать к аккаунту Google.</li>
-<li>Отзывы и комментарии — авторизация для публикации.</li>
-<li>Облачные функции — сохранение данных в аккаунте пользователя.</li>
+  <li>Быстрая авторизация — один тап вместо ввода пароля.</li>
+  <li>Приложения с профилем — получить имя и аватар пользователя автоматически.</li>
+  <li>Синхронизация с Google-сервисами — Google Drive, Calendar, Gmail.</li>
+  <li>Покупки — привязать к аккаунту Google.</li>
+  <li>Отзывы и комментарии — авторизация для публикации.</li>
+  <li>Облачные функции — сохранение данных в аккаунте пользователя.</li>
 </ul>
 
 <p>Это самый удобный способ входа — меньше всего действий от пользователя.</p>
 
-<h2>Основные настройки при добавлении</h2>
+<h2>Настройки при добавлении</h2>
 
-<ul>
-<li><b>Имя компонента</b> — идентификатор для вызова. Например, googleLogin.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>googleLogin</code>.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Основные блоки в логике</h2>
 
-<ul>
-<li><b>signIn</b> — начать вход через Google.</li>
-<li><b>signOut</b> — выйти из аккаунта.</li>
-<li><b>getDisplayName</b> — получить имя пользователя.</li>
-<li><b>getEmail</b> — получить email.</li>
-<li><b>getPhotoUrl</b> — получить URL аватара.</li>
-<li><b>getUid</b> — получить уникальный ID.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>signIn</b></td>
+      <td style="border: 1px solid #000;">Начать вход через Google.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>signOut</b></td>
+      <td style="border: 1px solid #000;">Выйти из аккаунта.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getDisplayName</b></td>
+      <td style="border: 1px solid #000;">Получить имя пользователя.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getEmail</b></td>
+      <td style="border: 1px solid #000;">Получить email.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getPhotoUrl</b></td>
+      <td style="border: 1px solid #000;">Получить URL аватара.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getUid</b></td>
+      <td style="border: 1px solid #000;">Получить уникальный ID.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>События Google Login</h2>
 
-<ul>
-<li><b>onGoogleSignInSuccess</b> — успешный вход.</li>
-<li><b>onGoogleSignInFailed</b> — ошибка входа.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onGoogleSignInSuccess</b></td>
+      <td style="border: 1px solid #000;">Успешный вход.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onGoogleSignInFailed</b></td>
+      <td style="border: 1px solid #000;">Ошибка входа.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Как использовать</h2>
 
-<ul>
-<li>Зарегистрируйся в Firebase Console и Google Cloud Console.</li>
-<li>В Firebase → Authentication включи Google.</li>
-<li>В Google Cloud создай OAuth 2.0 Client ID для Android.</li>
-<li>Укажи имя пакета приложения и SHA-1 отпечаток сертификата.</li>
-<li>Скачай google-services.json и подключи его в Sketchware Pro 7.</li>
-<li>Подключи компонент Google Login на вкладке «Компонент».</li>
-<li>Задай имя — например, googleLogin.</li>
-<li>В логике:
-<ul>
-<li>в onClick кнопки «Войти через Google» — вызови signIn;</li>
-<li>в onGoogleSignInSuccess — сохрани данные пользователя и перейди на главный экран;</li>
-<li>в onGoogleSignInFailed — покажи сообщение об ошибке.</li>
-</ul>
-</li>
-</ul>
+<ol>
+  <li>Зарегистрируйся в Firebase Console и Google Cloud Console.</li>
+  <li>В Firebase → Authentication включи <b>Google</b>.</li>
+  <li>В Google Cloud создай <b>OAuth 2.0 Client ID</b> для Android.</li>
+  <li>Укажи имя пакета приложения и <b>SHA-1</b> отпечаток сертификата.</li>
+  <li>Скачай <b>google-services.json</b> и подключи его в Sketchware Pro 7.</li>
+  <li>Подключи компонент Google Login на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>googleLogin</code>.</li>
+  <li>В логике:
+    <ul>
+      <li>в <code>onClick</code> кнопки «Войти через Google» — вызови <code>signIn</code>;</li>
+      <li>в <code>onGoogleSignInSuccess</code> — сохрани данные пользователя и перейди на главный экран;</li>
+      <li>в <code>onGoogleSignInFailed</code> — покажи сообщение об ошибке.</li>
+    </ul>
+  </li>
+</ol>
 
 <h2>Пример: вход через Google</h2>
 
 <ul>
-<li>Button «Войти через Google» → signIn.</li>
-<li>onGoogleSignInSuccess → сохрани getUid, getEmail, getDisplayName в Firebase DB.</li>
-<li>Покажи имя пользователя на главном экране.</li>
-<li>onGoogleSignInFailed → покажи «Не удалось войти. Попробуйте снова».</li>
+  <li>Button «Войти через Google» → <code>signIn</code>.</li>
+  <li><code>onGoogleSignInSuccess</code> → сохрани <code>getUid</code>, <code>getEmail</code>, <code>getDisplayName</code> в Firebase DB.</li>
+  <li>Покажи имя пользователя на главном экране.</li>
+  <li><code>onGoogleSignInFailed</code> → покажи «Не удалось войти. Попробуйте снова».</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> SHA-1 отпечаток обязателен. Без него Google не признаёт приложение и вход не работает. Отпечаток берётся из сертификата подписи приложения.</p>
+<div class="warn">⚠️ <b>Важно:</b> SHA-1 отпечаток обязателен. Без него Google не признаёт приложение и вход не работает. Отпечаток берётся из сертификата подписи приложения.</div>
 
-<p>⚠️ <b>Важно:</b> SHA-1 меняется между debug и release версиями. Для теста — один отпечаток, для публикации — другой. Оба нужно добавить в Google Cloud.</p>
+<div class="warn">⚠️ <b>Важно:</b> SHA-1 меняется между debug и release версиями. Для теста — один отпечаток, для публикации — другой. Оба нужно добавить в Google Cloud.</div>
 
-<p>⚠️ <b>Важно:</b> не используй debug-отпечаток в релизной сборке. Приложение соберётся, но вход через Google работать не будет.</p>
+<div class="warn">⚠️ <b>Важно:</b> не используй debug-отпечаток в релизной сборке. Приложение соберётся, но вход через Google работать не будет.</div>
 
-<p>⚠️ <b>Важно:</b> пользователь может отказаться от входа. Приложение должно корректно обработать отказ и предложить альтернативу (например, вход по email).</p>
+<div class="warn">⚠️ <b>Важно:</b> пользователь может отказаться от входа. Приложение должно корректно обработать отказ и предложить альтернативу (например, вход по email).</div>
 
-<p>⚠️ <b>Важно:</b> не показывай свой OAuth Client ID в коде приложения. Он может быть использован злоумышленниками для подделки запросов.</p>
+<div class="warn">⚠️ <b>Важно:</b> не показывай свой OAuth Client ID в коде приложения. Он может быть использован злоумышленниками для подделки запросов.</div>
 
-<p>💡 <b>Совет:</b> для получения SHA-1 используй команду keytool -list -v -keystore &lt;файл&gt; или смотри его в Firebase Console → Project Settings.</p>
+<div class="hint">💡 <b>Совет:</b> для получения SHA-1 используй команду <code>keytool -list -v -keystore &lt;файл&gt;</code> или смотри его в Firebase Console → Project Settings.</div>
 
-<p>💡 <b>Совет:</b> для отладки используй два OAuth Client ID: один для debug-сборки, другой для release. Так можно тестировать и то, и другое.</p>
+<div class="hint">💡 <b>Совет:</b> для отладки используй два OAuth Client ID: один для debug-сборки, другой для release. Так можно тестировать и то, и другое.</div>
 
-<p>💡 <b>Совет:</b> для профиля пользователя сразу получи getDisplayName, getEmail, getPhotoUrl и сохрани в Firebase DB. Так у тебя есть и данные авторизации, и профиль.</p>
+<div class="hint">💡 <b>Совет:</b> для профиля пользователя сразу получи <code>getDisplayName</code>, <code>getEmail</code>, <code>getPhotoUrl</code> и сохрани в Firebase DB. Так у тебя есть и данные авторизации, и профиль.</div>
 
-<p>💡 <b>Совет:</b> для аватара используй CircleImageView с URL из getPhotoUrl. Вход через Google даёт готовую круглую картинку профиля.</p>
+<div class="hint">💡 <b>Совет:</b> для аватара используй CircleImageView с URL из <code>getPhotoUrl</code>. Вход через Google даёт готовую круглую картинку профиля.</div>
 
-<p>💡 <b>Совет:</b> для выхода предусмотри кнопку «Выйти из Google» в настройках. Пользователь должен иметь возможность сменить аккаунт.</p>
+<div class="hint">💡 <b>Совет:</b> для выхода предусмотри кнопку «Выйти из Google» в настройках. Пользователь должен иметь возможность сменить аккаунт.</div>
 
-<p>💡 <b>Совет:</b> для обработки ошибок показывай общее сообщение: «Не удалось войти. Проверьте подключение к интернету». Конкретику пользователю знать не обязательно.</p>
+<div class="hint">💡 <b>Совет:</b> для обработки ошибок показывай общее сообщение: «Не удалось войти. Проверьте подключение к интернету». Конкретику пользователю знать не обязательно.</div>
 
-<p>💡 <b>Совет:</b> для дополнительной информации после входа запроси разрешения на другие Google-сервисы: Calendar, Drive. Пользователь сам решит, что разрешить.</p>
+<div class="hint">💡 <b>Совет:</b> для дополнительной информации после входа запроси разрешения на другие Google-сервисы: Calendar, Drive. Пользователь сам решит, что разрешить.</div>
 
-<p>❌ <b>Частая ошибка:</b> не указать SHA-1 в Google Cloud. Вход не работает, ошибка не всегда видна.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не указать SHA-1 в Google Cloud. Вход не работает, ошибка не всегда видна.</div>
 
-<p>❌ <b>Частая ошибка:</b> использовать debug-отпечаток в release. Кнопка нажимается, но вход не проходит.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> использовать debug-отпечаток в release. Кнопка нажимается, но вход не проходит.</div>
 
-<p>❌ <b>Частая ошибка:</b> не обрабатывать onGoogleSignInFailed. Пользователь тапает, ничего не происходит, ошибки не видно.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не обрабатывать <code>onGoogleSignInFailed</code>. Пользователь тапает, ничего не происходит, ошибки не видно.</div>
 
-<p>❌ <b>Частая ошибка:</b> не показывать имя пользователя после входа. Пользователь не понимает, что вошёл успешно.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не показывать имя пользователя после входа. Пользователь не понимает, что вошёл успешно.</div>
 
-<p>❌ <b>Частая ошибка:</b> не предусмотреть выход. Пользователь не может сменить аккаунт.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не предусмотреть выход. Пользователь не может сменить аккаунт.</div>
 
-<p>❌ <b>Частая ошибка:</b> путать Google Login (Firebase) и SignInButton (Google). SignInButton — просто кнопка, логику входа надо писать. Google Login — готовый компонент с Firebase.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> путать Google Login (Firebase) и SignInButton (Google). SignInButton — просто кнопка, логику входа надо писать. Google Login — готовый компонент с Firebase.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Google Login</b> — авторизация через аккаунт Google.</li>
+  <li>Основные блоки: <b>signIn</b>, <b>signOut</b>, <b>getDisplayName</b>, <b>getEmail</b>, <b>getPhotoUrl</b>, <b>getUid</b>.</li>
+  <li>Основные события: <b>onGoogleSignInSuccess</b>, <b>onGoogleSignInFailed</b>.</li>
+  <li>Требует настройки OAuth 2.0 в Google Cloud с указанием пакета и SHA-1.</li>
+  <li>Отпечатки debug и release версии разные — оба нужны в Cloud.</li>
+  <li>Не показывай OAuth Client ID в коде приложения.</li>
+  <li>Обрабатывай отказ и ошибки входа.</li>
+  <li>Google Login (Firebase) ≠ SignInButton (Google) — разные вещи.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Не указывают SHA-1.</b> Вход не работает.</li>
+  <li><b>Используют debug-отпечаток в release.</b> Вход не проходит у пользователей.</li>
+  <li><b>Не обрабатывают onGoogleSignInFailed.</b> Ошибки не видны.</li>
+  <li><b>Не показывают имя пользователя.</b> Непонятно, что вход выполнен.</li>
+  <li><b>Не предусматривают выход.</b> Нельзя сменить аккаунт.</li>
+  <li><b>Путают с SignInButton.</b> Разные компоненты.</li>
+  <li><b>Показывают OAuth Client ID в коде.</b> Уязвимость безопасности.</li>
+</ul>
+
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
