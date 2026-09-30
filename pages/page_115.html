@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,74 +7,151 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Drawer</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>Drawer</h1>
 
-<p>Drawer — четвёртая категория в левом меню вкладки «События». Здесь собраны события бокового меню — выдвижной панели, которая появляется слева при свайпе или тапе по иконке «гамбургер».</p>
+<p><b>Drawer</b> — четвёртая категория в левом меню вкладки «События». Здесь собраны события бокового меню — выдвижной панели, которая появляется слева при свайпе или тапе по иконке «гамбургер».</p>
 
-<p>Боковое меню (Navigation Drawer) — классический паттерн Android. Оно позволяет разместить основную навигацию в одной панели: разделы приложения, профиль, настройки, выход.</p>
+<p><b>Боковое меню (Navigation Drawer)</b> — классический паттерн Android. Оно позволяет разместить основную навигацию в одной панели: разделы приложения, профиль, настройки, выход.</p>
 
 <h2>Что такое Drawer</h2>
 
 <ul>
-<li><b>Drawer</b> — выдвижная панель, обычно слева.</li>
-<li>Открывается свайпом от левого края или тапом по иконке в тулбаре.</li>
-<li>Содержит пункты навигации: обычно иконка + текст.</li>
-<li>Может содержать шапку с аватаром и именем пользователя.</li>
-<li>При выборе пункта — приложение переключается на нужный раздел.</li>
+  <li><b>Drawer</b> — выдвижная панель, обычно слева.</li>
+  <li>Открывается свайпом от левого края или тапом по иконке в тулбаре.</li>
+  <li>Содержит пункты навигации: обычно иконка + текст.</li>
+  <li>Может содержать шапку с аватаром и именем пользователя.</li>
+  <li>При выборе пункта — приложение переключается на нужный раздел.</li>
 </ul>
 
 <h2>Список событий категории</h2>
 
-<ul>
-<li><b>onDrawerOpened</b> — когда боковое меню открылось.</li>
-<li><b>onDrawerClosed</b> — когда боковое меню закрылось.</li>
-<li><b>onDrawerSlide</b> — при движении меню (свайпе). Срабатывает многократно во время анимации.</li>
-<li><b>onDrawerStateChanged</b> — при изменении состояния: idle, dragging, settling.</li>
-<li><b>onItemClick</b> — при выборе пункта в списке меню.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDrawerOpened</b></td>
+      <td style="border: 1px solid #000;">Когда боковое меню открылось.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDrawerClosed</b></td>
+      <td style="border: 1px solid #000;">Когда боковое меню закрылось.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDrawerSlide</b></td>
+      <td style="border: 1px solid #000;">При движении меню (свайпе). Срабатывает многократно во время анимации.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDrawerStateChanged</b></td>
+      <td style="border: 1px solid #000;">При изменении состояния: idle, dragging, settling.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onItemClick</b></td>
+      <td style="border: 1px solid #000;">При выборе пункта в списке меню.</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>Точный список зависит от версии Sketchware Pro 7 и структуры Drawer в проекте.</p>
 
 <h2>Когда что использовать</h2>
 
-<ul>
-<li><b>onDrawerOpened</b> — приостановить анимации на экране, отключить звук.</li>
-<li><b>onDrawerClosed</b> — обновить данные, если они могли измениться.</li>
-<li><b>onDrawerSlide</b> — анимация вместе с открытием меню (например, сдвиг контента).</li>
-<li><b>onItemClick</b> — основное событие. Реакция на выбор раздела: открыть новый экран, показать раздел, выйти из аккаунта.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Зачем использовать</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDrawerOpened</b></td>
+      <td style="border: 1px solid #000;">Приостановить анимации на экране, отключить звук.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDrawerClosed</b></td>
+      <td style="border: 1px solid #000;">Обновить данные, если они могли измениться.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDrawerSlide</b></td>
+      <td style="border: 1px solid #000;">Анимация вместе с открытием меню (например, сдвиг контента).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onItemClick</b></td>
+      <td style="border: 1px solid #000;">Основное событие. Реакция на выбор раздела: открыть новый экран, показать раздел, выйти из аккаунта.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Как добавить событие</h2>
 
 <ul>
-<li>Убедись, что Drawer включён в разметке (в диалоге создания нового view отметь чекбокс Drawer).</li>
-<li>Тапни по категории «Drawer» в левом меню.</li>
-<li>В открывшемся диалоге — список доступных событий Drawer.</li>
-<li>Отметь нужные галочками.</li>
-<li>Нажми «Добавить».</li>
+  <li>Убедись, что Drawer включён в разметке (в диалоге создания нового view отметь чекбокс Drawer).</li>
+  <li>Тапни по категории «Drawer» в левом меню.</li>
+  <li>В открывшемся диалоге — список доступных событий Drawer.</li>
+  <li>Отметь нужные галочками.</li>
+  <li>Нажми «Добавить».</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> категория «Drawer» пуста, если боковое меню не включено в проекте. Сначала добавь Drawer в разметку, потом возвращайся к событиям.</p>
+<div class="warn">⚠️ <b>Важно:</b> категория «Drawer» пуста, если боковое меню не включено в проекте. Сначала добавь Drawer в разметку, потом возвращайся к событиям.</div>
 
-<p>⚠️ <b>Важно:</b> для пунктов меню Drawer нужен отдельный файл меню (XML) с описанием пунктов. Событие onItemClick сработает только для реально существующих пунктов.</p>
+<div class="warn">⚠️ <b>Важно:</b> для пунктов меню Drawer нужен отдельный файл меню (XML) с описанием пунктов. Событие onItemClick сработает только для реально существующих пунктов.</div>
 
-<p>⚠️ <b>Важно:</b> onItemClick в Drawer и onItemClick в ListView — разные события. Они находятся в разных категориях и не пересекаются.</p>
+<div class="warn">⚠️ <b>Важно:</b> onItemClick в Drawer и onItemClick в ListView — разные события. Они находятся в разных категориях и не пересекаются.</div>
 
-<p>💡 <b>Совет:</b> для простых приложений Drawer может быть избыточен. Если у тебя 3–4 раздела — используй BottomNavigationView (нижнее меню). Drawer удобнее для приложений с 5+ разделами.</p>
+<div class="hint">💡 <b>Совет:</b> для простых приложений Drawer может быть избыточен. Если у тебя 3–4 раздела — используй BottomNavigationView (нижнее меню). Drawer удобнее для приложений с 5+ разделами.</div>
 
-<p>💡 <b>Совет:</b> для навигации внутри onItemClick используй компонент Intent — он позволяет перейти на другой экран приложения.</p>
+<div class="hint">💡 <b>Совет:</b> для навигации внутри onItemClick используй компонент Intent — он позволяет перейти на другой экран приложения.</div>
 
-<p>💡 <b>Совет:</b> не забывай закрывать Drawer после выбора пункта через блок closeDrawer. Иначе меню останется открытым и перекроет содержимое.</p>
+<div class="hint">💡 <b>Совет:</b> не забывай закрывать Drawer после выбора пункта через блок closeDrawer. Иначе меню останется открытым и перекроет содержимое.</div>
 
-<p>💡 <b>Совет:</b> для шапки Drawer (с аватаром и именем) используй RelativeLayout или Linear(V) с ImageView и TextView — отдельно от основной разметки.</p>
+<div class="hint">💡 <b>Совет:</b> для шапки Drawer (с аватаром и именем) используй RelativeLayout или Linear(V) с ImageView и TextView — отдельно от основной разметки.</div>
 
-<p>❌ <b>Частая ошибка:</b> добавлять события Drawer без самого Drawer. Категория пуста, события не появляются.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> добавлять события Drawer без самого Drawer. Категория пуста, события не появляются.</div>
 
-<p>❌ <b>Частая ошибка:</b> не закрывать Drawer после выбора пункта. Пользователь видит открытое меню поверх нового экрана.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не закрывать Drawer после выбора пункта. Пользователь видит открытое меню поверх нового экрана.</div>
 
-<p>❌ <b>Частая ошибка:</b> путать onItemClick Drawer и onItemClick View. Для бокового меню — категория Drawer, для списков — View.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> путать onItemClick Drawer и onItemClick View. Для бокового меню — категория Drawer, для списков — View.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Drawer</b> — категория событий бокового меню (Navigation Drawer).</li>
+  <li>Меню появляется свайпом от левого края или тапом по иконке в тулбаре.</li>
+  <li>Ключевые события: <b>onItemClick</b> (выбор пункта), <b>onDrawerOpened</b>, <b>onDrawerClosed</b>, <b>onDrawerSlide</b>, <b>onDrawerStateChanged</b>.</li>
+  <li>События Drawer появляются только если Drawer включён в разметке.</li>
+  <li>Для пунктов меню нужен отдельный XML-файл меню.</li>
+  <li>onItemClick Drawer и onItemClick View — разные события.</li>
+  <li>Не забывай закрывать Drawer через <code>closeDrawer</code> после выбора пункта.</li>
+  <li>Для 3–4 разделов лучше BottomNavigationView; для 5+ — Drawer.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Добавляют события Drawer без самого Drawer.</b> Категория пуста.</li>
+  <li><b>Не закрывают Drawer после выбора пункта.</b> Меню перекрывает новый экран.</li>
+  <li><b>Путают onItemClick Drawer и onItemClick View.</b> Это разные события.</li>
+  <li><b>Не создают XML-файл меню.</b> Пункты Drawer не отображаются.</li>
+  <li><b>Используют Drawer для 2–3 разделов.</b> Избыточно — лучше BottomNavigationView.</li>
+  <li><b>Пытаются навигировать без Intent.</b> Переключение экранов не работает.</li>
+  <li><b>Не обрабатывают onItemClick.</b> Меню открывается, но выбор пунктов ничего не делает.</li>
+</ul>
+
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
