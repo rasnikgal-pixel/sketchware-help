@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,81 +7,324 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>LottieAnimation — JSON-анимация</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>LottieAnimation — JSON-анимация</h1>
 
-<p>LottieAnimation — виджет для воспроизведения векторных анимаций в формате Lottie. Это JSON-файл, созданный в Adobe After Effects с плагином Bodymovin. Анимация выглядит как видео, но весит в разы меньше и масштабируется без потери качества.</p>
+<p><b>LottieAnimation</b> — виджет для воспроизведения векторных анимаций в формате Lottie. Это JSON-файл, созданный в Adobe After Effects с плагином Bodymovin. Анимация выглядит как видео, но весит в разы меньше и масштабируется без потери качества.</p>
 
 <p>Иконка в палитре — прямоугольник с воспроизводимой анимацией.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает анимацию из JSON-файла, подключённого к проекту.</li>
-<li>Анимация может проигрываться автоматически или запускаться в логике по кнопке.</li>
-<li>Может зацикливаться (повторяться бесконечно) или проиграться один раз.</li>
-<li>Может менять скорость, направление, положение внутри виджета.</li>
-<li>Как и любая векторная графика, не теряет качество при увеличении.</li>
+  <li>Отображает анимацию из JSON-файла, подключённого к проекту.</li>
+  <li>Анимация может проигрываться автоматически или запускаться в логике по кнопке.</li>
+  <li>Может зацикливаться (повторяться бесконечно) или проиграться один раз.</li>
+  <li>Может менять скорость, направление, положение внутри виджета.</li>
+  <li>Как и любая векторная графика, не теряет качество при увеличении.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Онбординг — красивые анимированные экраны знакомства с приложением.</li>
-<li>Индикаторы загрузки — креативные спиннеры вместо стандартных.</li>
-<li>Пустые состояния — «Нет данных», «Ничего не найдено» — с анимацией.</li>
-<li>Иконки-кнопки — например, анимированное «сердце» при лайке.</li>
-<li>Праздничные эффекты — при достижении цели или победы.</li>
-<li>Заставка при запуске — короткая анимация логотипа.</li>
+  <li>Онбординг — красивые анимированные экраны знакомства с приложением.</li>
+  <li>Индикаторы загрузки — креативные спиннеры вместо стандартных.</li>
+  <li>Пустые состояния — «Нет данных», «Ничего не найдено» — с анимацией.</li>
+  <li>Иконки-кнопки — например, анимированное «сердце» при лайке.</li>
+  <li>Праздничные эффекты — при достижении цели или победы.</li>
+  <li>Заставка при запуске — короткая анимация логотипа.</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>LottieFile</b></td>
+      <td style="border: 1px solid #000;">Путь к JSON-файлу анимации (загружается через Менеджер ресурсов).</td>
+      <td style="border: 1px solid #000;">Имя загруженного JSON-файла.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>AutoPlay</b></td>
+      <td style="border: 1px solid #000;">Начинать воспроизведение сразу при появлении на экране.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Loop</b></td>
+      <td style="border: 1px solid #000;">Повторять бесконечно.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Speed</b></td>
+      <td style="border: 1px solid #000;">Скорость воспроизведения.</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — норма;<br><code>0.5</code> — медленнее;<br><code>2.0</code> — быстрее.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleType</b></td>
+      <td style="border: 1px solid #000;">Как вписывать анимацию в размеры виджета.</td>
+      <td style="border: 1px solid #000;"><code>fitCenter</code>, <code>centerCrop</code>, <code>fitXY</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Размеры виджета.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> или <code>wrap_content</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон позади анимации.</td>
+      <td style="border: 1px solid #000;">HEX или drawable-ресурс.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по LottieAnimation в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>lottie1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>lottie1</code>, <code>lottie2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>loadingAnimation</code>, если это спиннер загрузки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты. Здесь задаётся ScaleType и привязка в RelativeLayout.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">На скриншоте заданы <code>android:scaleType="fitCenter"</code> и <code>android:layout_centerInParent="true"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает полный класс компонента: <code>com.airbnb.lottie.LottieAnimationView</code>.</td>
+      <td style="border: 1px solid #000;">LottieAnimationView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет виджет по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>200dp</code> — стандарт для индикатора загрузки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет виджет по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>200dp</code> — совпадает с шириной.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 16 — отступ от предыдущего элемента.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center</code>, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;"><code>center</code> — анимация по центру экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — анимация заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Прозрачный фон — оставить <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Запускается ли анимация при появлении на экране.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые настройки (<b>LottieFile</b>, <b>AutoPlay</b>, <b>Loop</b>, <b>Speed</b>) задаются в логике через блоки: <code>setAnimation</code>, <code>playAnimation</code>, <code>setRepeatCount</code>, <code>setSpeed</code>. В панели свойств доступны только базовые параметры и ScaleType через «Пользовательские атрибуты».</div>
+
+<h2>Как перетащить LottieAnimation на макет</h2>
+
+<p>LottieAnimation, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Сначала скачай JSON-файл анимации. Источники: lottiefiles.com или экспорт из After Effects с плагином Bodymovin.</li>
+  <li>Загрузи JSON через <b>Менеджер ресурсов</b> — он должен оказаться в проекте.</li>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Библиотеки</b> в палитре слева.</li>
+  <li>Зажми <b>LottieAnimation</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — анимация появится в разметке.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай <code>android:scaleType="fitCenter"</code> и при необходимости привязку в RelativeLayout.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» и добавь в <code>onCreate</code>:
+    <ul>
+      <li>блок <code>setAnimation</code> — задать JSON-файл;</li>
+      <li>блок <code>playAnimation</code> — запустить воспроизведение;</li>
+      <li>блок <code>setRepeatCount</code> — задать количество повторов или бесконечность;</li>
+      <li>блок <code>setSpeed</code> — задать скорость.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по LottieAnimation в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> JSON-файл должен быть правильно загружен в проект. Если файл повреждён или в неправильном формате — анимация не отобразится.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> AutoPlay = true запускает анимацию сразу при появлении экрана. Если анимация длинная и зацикленная — это может раздражать пользователя. Для фоновых анимаций лучше AutoPlay = false и запуск по событию.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> Lottie-анимации требуют ресурсов при воспроизведении. Если у тебя 10 таких виджетов на одном экране — приложение будет тормозить. Оптимально — 1–2 крупные анимации на экран.</div>
+
+<div class="hint">💡 <b>Совет:</b> для индикатора загрузки используй короткую (1–2 секунды) зацикленную анимацию. Так пользователь видит, что приложение работает.</div>
+
+<div class="hint">💡 <b>Совет:</b> для онбординга используй разные анимации на каждой странице ViewPager. Это создаёт ощущение качества.</div>
+
+<div class="hint">💡 <b>Совет:</b> источник бесплатных Lottie-анимаций — lottiefiles.com. Там тысячи готовых JSON-файлов бесплатно. Скачивай JSON и загружай в Менеджер ресурсов.</div>
+
+<div class="hint">💡 <b>Совет:</b> не используй Lottie для фоновых видео. Для сложных анимаций (многослойных, с эффектами) Lottie будет тормозить. Здесь лучше подходит обычное видео, но оно весит больше.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетащить LottieAnimation без загруженного JSON. Виджет пустой, пользователь не понимает, почему.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> включать Loop = true для длинной анимации, которая должна проиграть один раз. Она будет крутиться бесконечно и раздражать.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> ставить 10+ Lottie-анимаций на один экран. Приложение будет заметно тормозить.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать видео-файлы вместо Lottie. JSON-анимация весит в разы меньше и масштабируется без потери качества.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>LottieFile</b> — путь к JSON-файлу анимации (загружается через Менеджер ресурсов).</li>
-<li><b>AutoPlay</b> — начинать воспроизведение сразу при появлении на экране.</li>
-<li><b>Loop</b> — повторять бесконечно.</li>
-<li><b>Speed</b> — скорость воспроизведения (1.0 — норма, 0.5 — медленнее, 2.0 — быстрее).</li>
-<li><b>ScaleType</b> — как вписывать анимацию в размеры виджета: fitCenter, centerCrop, fitXY.</li>
-<li><b>Width / Height</b> — размеры виджета.</li>
-<li><b>Background</b> — фон позади анимации.</li>
+  <li><b>LottieAnimation</b> — виджет для воспроизведения векторных JSON-анимаций.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Требует загруженный <b>JSON-файл анимации</b> в Менеджере ресурсов.</li>
+  <li>Управление (play, pause, repeat, speed) — через <b>логику</b>.</li>
+  <li>ScaleType задаётся через <b>Пользовательские атрибуты</b> — <code>android:scaleType</code>.</li>
+  <li>Источник бесплатных анимаций — lottiefiles.com.</li>
+  <li>Ограничивай количество анимаций на экране — 1–2 крупные, иначе тормоза.</li>
+  <li>Для длинной одноразовой анимации не включай Loop.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Сначала скачай JSON-файл анимации. Источники: lottiefiles.com, lottiefiles.com/featured, или экспорт из After Effects с плагином Bodymovin.</li>
-<li>Загрузи JSON через Менеджер ресурсов — он должен оказаться в проекте.</li>
-<li>Выбери контейнер, куда хочешь положить анимацию.</li>
-<li>Тап по LottieAnimation в палитре — виджет добавится внутрь.</li>
-<li>В свойствах укажи LottieFile — выбери загруженный JSON.</li>
-<li>Задай AutoPlay, Loop и Speed.</li>
-<li>Присвой id — если хочешь управлять из логики (пауза, стоп, воспроизведение заново).</li>
-<li>В событиях используй блоки: playAnimation, pauseAnimation, cancelAnimation, setSpeed.</li>
+  <li><b>Тапают по LottieAnimation в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Не загружают JSON-файл.</b> Анимация пустая.</li>
+  <li><b>Забывают запустить анимацию в логике.</b> AutoPlay по умолчанию может быть выключен.</li>
+  <li><b>Ставят Loop = true на одноразовую анимацию.</b> Раздражает пользователя.</li>
+  <li><b>Перетаскивают 10+ анимаций на один экран.</b> Приложение тормозит.</li>
+  <li><b>Ищут файл анимации в обычных свойствах.</b> Файл подключается через логику и Менеджер ресурсов.</li>
+  <li><b>Не задают ID.</b> Логика не может обратиться к виджету.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> JSON-файл должен быть правильно загружен в проект. Если файл повреждён или в неправильном формате — анимация не отобразится.</p>
-
-<p>⚠️ <b>Важно:</b> AutoPlay = true запускает анимацию сразу при появлении экрана. Если анимация длинная и зацикленная — это может раздражать пользователя. Для фоновых анимаций лучше AutoPlay = false и запуск по событию.</p>
-
-<p>⚠️ <b>Важно:</b> Lottie-анимации требуют ресурсов при воспроизведении. Если у тебя 10 таких виджетов на одном экране — приложение будет тормозить. Оптимально — 1–2 крупные анимации на экран.</p>
-
-<p>💡 <b>Совет:</b> для индикатора загрузки используй короткую (1–2 секунды) зацикленную анимацию. Так пользователь видит, что приложение работает.</p>
-
-<p>💡 <b>Совет:</b> для онбординга используй разные анимации на каждой странице ViewPager. Это создаёт ощущение качества.</p>
-
-<p>💡 <b>Совет:</b> источник бесплатных Lottie-анимаций — lottiefiles.com. Там тысячи готовых JSON-файлов бесплатно. Скачивай JSON и загружай в Менеджер ресурсов.</p>
-
-<p>💡 <b>Совет:</b> не используй Lottie для фоновых видео. Для сложных анимаций (многослойных, с эффектами) Lottie будет тормозить. Здесь лучше подходит обычное видео, но оно весит больше.</p>
-
-<p>❌ <b>Частая ошибка:</b> добавлять LottieAnimation без загруженного JSON. Виджет пустой, пользователь не понимает, почему.</p>
-
-<p>❌ <b>Частая ошибка:</b> включать Loop = true для длинной анимации, которая должна проиграть один раз. Она будет крутиться бесконечно и раздражать.</p>
-
-<p>❌ <b>Частая ошибка:</b> ставить 10+ Lottie-анимаций на один экран. Приложение будет заметно тормозить.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать видео-файлы вместо Lottie. JSON-анимация весит в разы меньше и масштабируется без потери качества.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
