@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,73 +7,370 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Button — кнопка</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>Button — кнопка</h1>
 
-<p>Button — обычная кнопка. Виджет, на который пользователь нажимает, чтобы выполнить действие: отправить форму, запустить вычисление, перейти на другой экран.</p>
+<p><b>Button</b> — обычная кнопка. Виджет, на который пользователь нажимает, чтобы выполнить действие: отправить форму, запустить вычисление, перейти на другой экран.</p>
 
 <p>Иконка в палитре — закруглённый прямоугольник с текстом.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает текст или иконку (или и то, и другое).</li>
-<li>При нажатии срабатывает событие onClick — ты задаёшь, что должно произойти.</li>
-<li>Имеет состояния: обычное, нажатое, отключённое.</li>
-<li>При нажатии появляется подсветка — стандартный ripple-эффект Android.</li>
+  <li>Отображает текст или иконку (или и то, и другое).</li>
+  <li>При нажатии срабатывает событие <code>onClick</code> — ты задаёшь, что должно произойти.</li>
+  <li>Имеет состояния: обычное, нажатое, отключённое.</li>
+  <li>При нажатии появляется подсветка — стандартный ripple-эффект Android.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Отправка форм — «Войти», «Зарегистрироваться», «Отправить».</li>
-<li>Действия с данными — «Сохранить», «Удалить», «Обновить».</li>
-<li>Переходы между экранами — «Открыть», «Далее».</li>
-<li>Запуск вычислений — «Посчитать», «Конвертировать».</li>
-<li>Любое действие по нажатию.</li>
+  <li>Отправка форм — «Войти», «Зарегистрироваться», «Отправить».</li>
+  <li>Действия с данными — «Сохранить», «Удалить», «Обновить».</li>
+  <li>Переходы между экранами — «Открыть», «Далее».</li>
+  <li>Запуск вычислений — «Посчитать», «Конвертировать».</li>
+  <li>Любое действие по нажатию.</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Text</b></td>
+      <td style="border: 1px solid #000;">Текст на кнопке.</td>
+      <td style="border: 1px solid #000;">Любая строка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextColor</b></td>
+      <td style="border: 1px solid #000;">Цвет текста.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextSize</b></td>
+      <td style="border: 1px solid #000;">Размер текста.</td>
+      <td style="border: 1px solid #000;">Число в sp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон кнопки — цвет или изображение.</td>
+      <td style="border: 1px solid #000;">HEX, drawable-ресурс или <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextStyle</b></td>
+      <td style="border: 1px solid #000;">Начертание текста.</td>
+      <td style="border: 1px solid #000;"><code>normal</code>, <code>bold</code>, <code>italic</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Gravity</b></td>
+      <td style="border: 1px solid #000;">Выравнивание текста внутри кнопки.</td>
+      <td style="border: 1px solid #000;"><code>left</code>, <code>center</code>, <code>right</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b></td>
+      <td style="border: 1px solid #000;">Активна ли кнопка. Если false — серая и не нажимается.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Clickable</b></td>
+      <td style="border: 1px solid #000;">Реагирует ли на нажатие.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Padding / Margin</b></td>
+      <td style="border: 1px solid #000;">Внутренние и внешние отступы.</td>
+      <td style="border: 1px solid #000;">Число в dp для каждой стороны.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> или <code>match_parent</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>AllCaps</b></td>
+      <td style="border: 1px solid #000;">Показывать текст заглавными буквами.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл. По умолчанию Android делает это автоматически.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по Button в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>button1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики. Без ID кнопка не появится в списке событий.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>button1</code>, <code>button2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>submitButton</code>, если это кнопка отправки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:textAllCaps="false"</code> — отключить автоматический капс.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>Button</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">Button и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широкой будет кнопка по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — для широкой кнопки «Войти» в форме.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высокой будет кнопка по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> кнопки — от краёв до текста. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> кнопки — от неё до соседних элементов и краёв родителя.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 16 — кнопка сдвинется на 16 dp вниз от предыдущего элемента.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Положение</b><br>Position</td>
+      <td style="border: 1px solid #000;">Позиционирование виджета внутри родителя (для RelativeLayout).</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center</code>, <code>alignParentBottom</code>.</td>
+      <td style="border: 1px solid #000;">Оставь <code>none</code> для Linear-контейнеров.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>, <code>right</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — кнопка встанет по центру родителя.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — кнопка заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства текста</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Текст</b><br>Text</td>
+      <td style="border: 1px solid #000;">Текст на кнопке.</td>
+      <td style="border: 1px solid #000;">Любая строка. По умолчанию — <code>Button</code>.</td>
+      <td style="border: 1px solid #000;">«Отправить», «Войти», «Готово».</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Размер текста</b><br>Text size</td>
+      <td style="border: 1px solid #000;">Размер текста на кнопке.</td>
+      <td style="border: 1px solid #000;">Число в sp. По умолчанию — <code>12sp</code>.</td>
+      <td style="border: 1px solid #000;"><code>16sp</code> — стандарт для кнопки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Стиль текста</b><br>Text style</td>
+      <td style="border: 1px solid #000;">Начертание текста.</td>
+      <td style="border: 1px solid #000;"><code>normal</code>, <code>bold</code>, <code>italic</code>.</td>
+      <td style="border: 1px solid #000;"><code>bold</code> — для акцентной кнопки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет текста</b><br>Text color</td>
+      <td style="border: 1px solid #000;">Цвет текста на кнопке.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — по умолчанию;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Белый <code>#FFFFFF</code> — на цветной кнопке.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон кнопки из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code> — фон задают цветом.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка кнопки сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета (фон из темы);<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Синий <code>#2196F3</code> — для основной кнопки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Активна ли кнопка. Если выкл — серая, не нажимается.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активна;<br><b>выкл</b> — заблокирована.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот кнопки вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько кнопка прозрачна.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг кнопки по горизонтали без изменения её места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг кнопки по вертикали без изменения её места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает кнопку по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает кнопку по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> на первых порах достаточно свойств <b>Текст</b>, <b>Размер текста</b>, <b>Цвет текста</b> и <b>Цвет фона</b>. Не забудь задать <b>ID</b> и добавить <b>onClick</b> в событиях.</div>
+
+<h2>Как перетащить Button на макет</h2>
+
+<p>Button, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b>, <b>Linear(H)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Widgets</b> в палитре слева.</li>
+  <li>Зажми <b>Button</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — кнопка появится в разметке.</li>
+  <li>Тапни по кнопке и задай <b>Текст</b> — например, «Отправить».</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен, чтобы кнопка появилась в списке событий.</li>
+  <li>Открой вкладку «События» — добавь событие <code>onClick</code> для этой кнопки.</li>
+  <li>Внутри <code>onClick</code> опиши блоки, которые должны выполниться при нажатии.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по Button в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без <code>onClick</code> кнопка нажимается, но ничего не делает. Внешне реагирует (подсветка), но логики нет.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без ID кнопка не появится в списке событий вкладки «События». Не забудь задать уникальный ID.</div>
+
+<div class="hint">💡 <b>Совет:</b> для современного вида используй MaterialButton (следующий подпункт) — он умеет скруглённые углы, цвета фона и текста в стиле Material Design. Обычный Button выглядит устаревшим.</div>
+
+<div class="hint">💡 <b>Совет:</b> отключай кнопку (Enabled = false), если действие сейчас недоступно. Например, кнопка «Отправить» неактивна, пока пользователь не заполнил форму. Это лучше, чем позволить нажать и выдать ошибку.</div>
+
+<div class="hint">💡 <b>Совет:</b> текст на кнопке делай коротким: 1–2 слова. Длинные надписи «Нажмите здесь, чтобы отправить» выглядят плохо.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать TextView как кнопку (с Clickable = true). Работает, но не имеет стиля кнопки — пользователь не понимает, что это можно нажать.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> задавать размер в dp вместо sp. При системном шрифте крупнее текст на кнопке останется мелким.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Text</b> — текст на кнопке.</li>
-<li><b>TextColor</b> — цвет текста.</li>
-<li><b>TextSize</b> — размер текста.</li>
-<li><b>Background</b> — фон кнопки. Может быть цветом или изображением.</li>
-<li><b>TextStyle</b> — начертание: normal, bold, italic.</li>
-<li><b>Gravity</b> — выравнивание текста внутри кнопки.</li>
-<li><b>Enabled</b> — активна ли кнопка. Если false — она серая и не нажимается.</li>
-<li><b>Clickable</b> — реагирует ли на нажатие.</li>
-<li><b>Padding / Margin</b> — внутренние и внешние отступы.</li>
-<li><b>Width / Height</b> — wrap_content или match_parent.</li>
-<li><b>AllCaps</b> — показывать текст заглавными буквами. По умолчанию Android делает это автоматически.</li>
+  <li><b>Button</b> — обычная кнопка, на которую пользователь нажимает для выполнения действия.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Размещается внутри контейнера — Linear(V), Linear(H), RelativeLayout.</li>
+  <li>Ключевые свойства: <b>Текст</b>, <b>Размер текста</b>, <b>Цвет текста</b>, <b>Цвет фона</b>, <b>Enabled</b>.</li>
+  <li>Для работы обязательно нужно событие <code>onClick</code> и осмысленный <b>ID</b>.</li>
+  <li>Если действие недоступно, отключай кнопку через Enabled = false.</li>
+  <li>Для современного вида используй MaterialButton из категории AndroidX.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, куда хочешь положить кнопку.</li>
-<li>Тап по Button в палитре — виджет добавится внутрь.</li>
-<li>Задай Text — например, «Отправить».</li>
-<li>Присвой id — если планируешь использовать её в логике.</li>
-<li>Открой вкладку «События» — добавь событие onClick для этой кнопки.</li>
-<li>Внутри onClick опиши блоки, которые должны выполниться при нажатии.</li>
+  <li><b>Тапают по Button в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Забывают про onClick.</b> Кнопка нажимается, но ничего не происходит.</li>
+  <li><b>Не задают ID.</b> Кнопка не появляется в списке событий на вкладке «События».</li>
+  <li><b>Пишут длинный текст на кнопке.</b> «Нажмите здесь, чтобы отправить» — плохо. Лучше «Отправить».</li>
+  <li><b>Задают размер в dp вместо sp.</b> Текст не масштабируется под системный шрифт.</li>
+  <li><b>Используют TextView с Clickable вместо Button.</b> Пользователь не понимает, что это кнопка.</li>
+  <li><b>Не отключают кнопку, когда действие недоступно.</b> Пользователь жмёт, получает ошибку — лучше Enabled = false.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> без onClick кнопка нажимается, но ничего не делает. Внешне реагирует (подсветка), но логики нет.</p>
-
-<p>⚠️ <b>Важно:</b> без id кнопка не появится в списке событий вкладки «События». Не забудь задать уникальный id.</p>
-
-<p>💡 <b>Совет:</b> для современного вида используй MaterialButton (следующий подпункт) — он умеет скруглённые углы, цвета фона и текста в стиле Material Design. Обычный Button выглядит устаревшим.</p>
-
-<p>💡 <b>Совет:</b> отключай кнопку (Enabled = false), если действие сейчас недоступно. Например, кнопка «Отправить» неактивна, пока пользователь не заполнил форму. Это лучше, чем позволить нажать и выдать ошибку.</p>
-
-<p>💡 <b>Совет:</b> текст на кнопке делай коротким: 1–2 слова. Длинные надписи «Нажмите здесь, чтобы отправить» выглядят плохо.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать TextView как кнопку (с Clickable = true). Работает, но не имеет стиля кнопки — пользователь не понимает, что это можно нажать.</p>
-
-<p>❌ <b>Частая ошибка:</b> задавать размер в dp вместо sp. При системном шрифте крупнее текст на кнопке останется мелким.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
