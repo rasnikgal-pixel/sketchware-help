@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,31 +7,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>MultiAutoCompleteTextView — несколько автоподсказок</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>MultiAutoCompleteTextView — несколько автоподсказок</h1>
 
-<p>MultiAutoCompleteTextView — расширенная версия AutoCompleteTextView, которая поддерживает несколько значений в одном поле. Пользователь вводит первое слово, выбирает из подсказок, ставит разделитель — и продолжает вводить следующее.</p>
+<p><b>MultiAutoCompleteTextView</b> — расширенная версия AutoCompleteTextView, которая поддерживает несколько значений в одном поле. Пользователь вводит первое слово, выбирает из подсказок, ставит разделитель — и продолжает вводить следующее.</p>
 
 <p>Иконка в палитре — поле с двумя вертикальными метками и выпадающим списком.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Пользователь вводит текст — появляется выпадающий список подсказок, как у обычного AutoCompleteTextView.</li>
-<li>После выбора или ввода значения пользователь ставит разделитель (обычно запятую).</li>
-<li>Начинает вводить следующее значение — снова появляются подсказки.</li>
-<li>В поле накапливается список значений через запятую: Москва, Казань, Сочи.</li>
-<li>Каждое значение можно удалить вручную, стерев его.</li>
+  <li>Пользователь вводит текст — появляется выпадающий список подсказок, как у обычного AutoCompleteTextView.</li>
+  <li>После выбора или ввода значения пользователь ставит разделитель (обычно запятую).</li>
+  <li>Начинает вводить следующее значение — снова появляются подсказки.</li>
+  <li>В поле накапливается список значений через запятую: Москва, Казань, Сочи.</li>
+  <li>Каждое значение можно удалить вручную, стерев его.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Ввод тегов — несколько меток в одном поле.</li>
-<li>Список получателей — email-адреса через запятую.</li>
-<li>Множественный выбор городов — когда нужно несколько вариантов.</li>
-<li>Категории и ключевые слова — например, теги статьи.</li>
+  <li>Ввод тегов — несколько меток в одном поле.</li>
+  <li>Список получателей — email-адреса через запятую.</li>
+  <li>Множественный выбор городов — когда нужно несколько вариантов.</li>
+  <li>Категории и ключевые слова — например, теги статьи.</li>
 </ul>
 
 <p>По сути — «поле ввода тегов», как в блогах или на сайтах.</p>
@@ -40,53 +47,341 @@
 <h2>Из чего состоит</h2>
 
 <ul>
-<li><b>MultiAutoCompleteTextView</b> — само поле.</li>
-<li><b>Список подсказок</b> — задаётся в логике.</li>
-<li><b>Токенайзер (Tokenizer)</b> — определяет, какой символ считать разделителем между значениями. Обычно запятая.</li>
-<li><b>Выпадающий список</b> — появляется при вводе каждого нового значения.</li>
+  <li><b>MultiAutoCompleteTextView</b> — само поле.</li>
+  <li><b>Список подсказок</b> — задаётся в логике.</li>
+  <li><b>Токенайзер (Tokenizer)</b> — определяет, какой символ считать разделителем между значениями. Обычно запятая.</li>
+  <li><b>Выпадающий список</b> — появляется при вводе каждого нового значения.</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Hint</b></td>
+      <td style="border: 1px solid #000;">Подсказка внутри поля.</td>
+      <td style="border: 1px solid #000;">Любая строка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Text</b></td>
+      <td style="border: 1px solid #000;">Начальные значения.</td>
+      <td style="border: 1px solid #000;">Любая строка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>InputType</b></td>
+      <td style="border: 1px solid #000;">Тип ввода.</td>
+      <td style="border: 1px solid #000;">text, textEmailAddress и другие.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextColor / TextSize</b></td>
+      <td style="border: 1px solid #000;">Цвет и размер текста.</td>
+      <td style="border: 1px solid #000;">HEX, число в sp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Threshold</b></td>
+      <td style="border: 1px solid #000;">Минимальное число символов для старта автодополнения.</td>
+      <td style="border: 1px solid #000;">Число. Обычно 1 или 2.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>DropDownWidth / DropDownBackground</b></td>
+      <td style="border: 1px solid #000;">Параметры выпадающего списка.</td>
+      <td style="border: 1px solid #000;">Число в dp, HEX.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> или <code>wrap_content</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>MaxLines / MinLines</b></td>
+      <td style="border: 1px solid #000;">Ограничения по высоте (обычно многострочный).</td>
+      <td style="border: 1px solid #000;">Число.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по MultiAutoCompleteTextView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>multiautocomplete1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>multiautocomplete1</code>, <code>multiautocomplete2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>tagsInput</code>, если это поле тегов.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:completionThreshold="2"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>MultiAutoCompleteTextView</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">MultiAutoCompleteTextView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Подсказка</b><br>Hint</td>
+      <td style="border: 1px solid #000;">Текст-подсказка внутри поля, исчезает при вводе.</td>
+      <td style="border: 1px solid #000;">Любая строка. По умолчанию — <code>MultiAutoCompleteTextView</code>.</td>
+      <td style="border: 1px solid #000;">«Введите теги через запятую».</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет подсказки</b><br>Hint color</td>
+      <td style="border: 1px solid #000;">Цвет текста подсказки.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — по умолчанию;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Серый <code>#888888</code> — стандарт.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет поле по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — для формы тегов.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет поле по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — высота по содержимому.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> поля. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> поля — от него до соседних элементов.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin bottom 16 — между полями формы.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Положение</b><br>Position</td>
+      <td style="border: 1px solid #000;">Позиционирование виджета внутри родителя (для RelativeLayout).</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>другие правила зависят от родителя.</td>
+      <td style="border: 1px solid #000;">Оставь <code>none</code> для Linear-контейнеров.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — виджет заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства текста</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Текст</b><br>Text</td>
+      <td style="border: 1px solid #000;">Начальный текст в поле.</td>
+      <td style="border: 1px solid #000;">Любая строка. По умолчанию — пусто.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют пустым.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Размер текста</b><br>Text size</td>
+      <td style="border: 1px solid #000;">Размер вводимого текста.</td>
+      <td style="border: 1px solid #000;">Число в sp. По умолчанию — <code>12sp</code>.</td>
+      <td style="border: 1px solid #000;"><code>16sp</code> — комфортный размер.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Стиль текста</b><br>Text style</td>
+      <td style="border: 1px solid #000;">Начертание текста.</td>
+      <td style="border: 1px solid #000;"><code>normal</code>, <code>bold</code>, <code>italic</code>.</td>
+      <td style="border: 1px solid #000;">Обычно <code>normal</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет текста</b><br>Text color</td>
+      <td style="border: 1px solid #000;">Цвет вводимых символов.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — по умолчанию;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Тёмно-серый <code>#333333</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон поля из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка поля сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Белый фон <code>#FFFFFF</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли поле на тапы и ввод.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активно;<br><b>выкл</b> — заблокировано.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот поля вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько поле прозрачно.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг поля по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг поля по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает поле по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает поле по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> в свойствах задаётся только внешний вид. <b>Список подсказок</b> и <b>разделитель</b> задаются в логике через блоки <code>setSimpleItems</code> и <code>setTokenizer</code>.</div>
+
+<h2>Как перетащить MultiAutoCompleteTextView на макет</h2>
+
+<p>MultiAutoCompleteTextView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b>, <b>Linear(H)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Widgets</b> в палитре слева.</li>
+  <li>Зажми <b>MultiAutoCompleteTextView</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — поле появится в разметке.</li>
+  <li>Тапни по нему и задай <b>Подсказку</b> и <b>Порог</b>.</li>
+  <li>Присвой осмысленный <b>ID</b> — он понадобится для логики.</li>
+  <li>Открой вкладку «События» и в блоке <code>onCreate</code> добавь для этого виджета:
+    <ul>
+      <li>блок <code>setSimpleItems</code> — список подсказок;</li>
+      <li>блок <code>setTokenizer</code> — символ-разделитель (обычно запятая).</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по MultiAutoCompleteTextView в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без настройки Tokenizer в логике поле будет вести себя как обычное AutoCompleteTextView — без учёта разделителей. Вводить несколько значений не получится.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> список подсказок задаётся в логике, а не в свойствах виджета. В Дизайнере ты настраиваешь только внешний вид.</div>
+
+<div class="hint">💡 <b>Совет:</b> в качестве разделителя используй запятую с пробелом — это самый привычный формат для пользователей. Тогда ввод будет выглядеть аккуратно: Москва, Казань, Сочи.</div>
+
+<div class="hint">💡 <b>Совет:</b> не ставь слишком много подсказок — поле ввода тегов с автодополнением удобно, только если вариантов не десятки тысяч. Для больших списков используй другой подход.</div>
+
+<div class="hint">💡 <b>Совет:</b> показывай пользователю уже введённые значения — они видны в поле через запятую. Это позволяет легко удалить лишнее.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> путать AutoCompleteTextView и MultiAutoCompleteTextView. Первый — для одного значения, второй — для нескольких через разделитель.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть указать Tokenizer. Без него подсказки появляются только для первого слова, а после запятой — нет.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Hint</b> — подсказка внутри поля.</li>
-<li><b>Text</b> — начальные значения.</li>
-<li><b>InputType</b> — тип ввода.</li>
-<li><b>TextColor / TextSize</b> — цвет и размер текста.</li>
-<li><b>Threshold</b> — минимальное число символов для старта автодополнения.</li>
-<li><b>DropDownWidth / DropDownBackground</b> — параметры выпадающего списка.</li>
-<li><b>Width / Height</b> — match_parent или wrap_content.</li>
-<li><b>MaxLines / MinLines</b> — ограничения по высоте (обычно многострочный).</li>
+  <li><b>MultiAutoCompleteTextView</b> — поле ввода нескольких значений с автодополнением, разделённых символом (обычно запятой).</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>В свойствах задаётся только внешний вид: <b>Подсказка</b>, <b>Цвет подсказки</b>, размер текста.</li>
+  <li>Список подсказок задаётся в логике через <code>setSimpleItems</code>.</li>
+  <li><b>Обязательно настраивается Tokenizer</b> в логике — разделитель между значениями. Без него много значений не ввести.</li>
+  <li>Идеальный сценарий: ввод тегов, ключевых слов, email-адресов через запятую.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, в который хочешь положить поле.</li>
-<li>Тап по MultiAutoCompleteTextView в палитре — виджет добавится внутрь.</li>
-<li>Задай Hint и Threshold в свойствах.</li>
-<li>Присвой виджету id для работы в логике.</li>
-<li>Открой вкладку «События» и добавь:
-<ul>
-<li>блок setSimpleItems — список подсказок;</li>
-<li>блок setTokenizer — разделитель (запятая, пробел и т.д.).</li>
-</ul>
-</li>
+  <li><b>Тапают по виджету в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Забывают указать Tokenizer.</b> После запятой подсказки не появляются — виджет работает как обычный AutoCompleteTextView.</li>
+  <li><b>Не задают список подсказок в логике.</b> Поле молчит, потому что не знает вариантов.</li>
+  <li><b>Путают с AutoCompleteTextView.</b> Это разные виджеты: один — для одного значения, другой — для нескольких.</li>
+  <li><b>Не задают ID.</b> В логике невозможно привязать подсказки и разделитель к полю.</li>
+  <li><b>Используют для больших списков.</b> На тысячи вариантов виджет не рассчитан — нужен другой подход.</li>
+  <li><b>Ставят в качестве разделителя случайные символы.</b> Пользователь не догадается, что вводить «;» или «|». Лучше запятая.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> без настройки Tokenizer в логике поле будет вести себя как обычное AutoCompleteTextView — без учёта разделителей. Вводить несколько значений не получится.</p>
-
-<p>⚠️ <b>Важно:</b> список подсказок задаётся в логике, а не в свойствах виджета. В Дизайнере ты настраиваешь только внешний вид.</p>
-
-<p>💡 <b>Совет:</b> в качестве разделителя используй запятую с пробелом — это самый привычный формат для пользователей. Тогда ввод будет выглядеть аккуратно: Москва, Казань, Сочи.</p>
-
-<p>💡 <b>Совет:</b> не ставь слишком много подсказок — поле ввода тегов с автодополнением удобно, только если вариантов не десятки тысяч. Для больших списков используй другой подход.</p>
-
-<p>💡 <b>Совет:</b> показывай пользователю уже введённые значения — они видны в поле через запятую. Это позволяет легко удалить лишнее.</p>
-
-<p>❌ <b>Частая ошибка:</b> путать AutoCompleteTextView и MultiAutoCompleteTextView. Первый — для одного значения, второй — для нескольких через разделитель.</p>
-
-<p>❌ <b>Частая ошибка:</b> забыть указать Tokenizer. Без него подсказки появляются только для первого слова, а после запятой — нет.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
