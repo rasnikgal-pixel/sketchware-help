@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,86 +7,333 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CalendarView — календарь</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>CalendarView — календарь</h1>
 
-<p>CalendarView — календарь на месяц. Показывает сетку дней текущего месяца и позволяет пользователю выбрать один день. Отличие от DatePicker — более компактный и наглядный вид, удобный для быстрого выбора.</p>
+<p><b>CalendarView</b> — календарь на месяц. Показывает сетку дней текущего месяца и позволяет пользователю выбрать один день. Отличие от DatePicker — более компактный и наглядный вид, удобный для быстрого выбора.</p>
 
 <p>Иконка в палитре — календарь с выделенным днём.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает месяц целиком: сетка из 5–6 недель.</li>
-<li>Вверху — название месяца и год с кнопками переключения влево-вправо.</li>
-<li>Пользователь тапает по дню — он выделяется.</li>
-<li>Событие onDateChange срабатывает при выборе дня.</li>
-<li>Выбранная дата читается в логике — можно получить день, месяц, год.</li>
-<li>Поддерживает выделение диапазона дат (если включено).</li>
+  <li>Отображает месяц целиком: сетка из 5–6 недель.</li>
+  <li>Вверху — название месяца и год с кнопками переключения влево-вправо.</li>
+  <li>Пользователь тапает по дню — он выделяется.</li>
+  <li>Событие <code>onDateChange</code> срабатывает при выборе дня.</li>
+  <li>Выбранная дата читается в логике — можно получить день, месяц, год.</li>
+  <li>Поддерживает выделение диапазона дат (если включено).</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Календарь событий — список встреч по дням.</li>
-<li>Бронирование — выбор даты визита.</li>
-<li>Дневник или заметки — записи по датам.</li>
-<li>Расписание — приложение для учёбы или работы.</li>
-<li>История — просмотр данных за конкретный день.</li>
-<li>Напоминания — привязка к дате.</li>
+  <li>Календарь событий — список встреч по дням.</li>
+  <li>Бронирование — выбор даты визита.</li>
+  <li>Дневник или заметки — записи по датам.</li>
+  <li>Расписание — приложение для учёбы или работы.</li>
+  <li>История — просмотр данных за конкретный день.</li>
+  <li>Напоминания — привязка к дате.</li>
 </ul>
 
 <p>CalendarView лучше подходит, когда пользователю нужно увидеть месяц целиком и выбрать день. DatePicker — когда нужна точная дата в форме.</p>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>SelectedDate</b></td>
+      <td style="border: 1px solid #000;">Текущая выбранная дата.</td>
+      <td style="border: 1px solid #000;">Число — миллисекунды с 1970-01-01.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>MinDate</b></td>
+      <td style="border: 1px solid #000;">Минимальная допустимая дата.</td>
+      <td style="border: 1px solid #000;">Число — миллисекунды с 1970-01-01.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>MaxDate</b></td>
+      <td style="border: 1px solid #000;">Максимальная допустимая дата.</td>
+      <td style="border: 1px solid #000;">Число — миллисекунды с 1970-01-01.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>FirstDayOfWeek</b></td>
+      <td style="border: 1px solid #000;">Какой день недели первый.</td>
+      <td style="border: 1px solid #000;"><code>Sunday</code> или <code>Monday</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ShownWeekCount</b></td>
+      <td style="border: 1px solid #000;">Сколько недель показывать.</td>
+      <td style="border: 1px solid #000;">Число. Обычно 6.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ShowWeekNumber</b></td>
+      <td style="border: 1px solid #000;">Показывать ли номер недели.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон календаря.</td>
+      <td style="border: 1px solid #000;">HEX, drawable-ресурс или <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;">Обычно <code>match_parent</code> и <code>wrap_content</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по CalendarView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>calendarview1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>calendarview1</code>, <code>calendarview2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>eventCalendar</code>, если это календарь событий.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты. Здесь задаётся первый день недели и количество недель.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:firstDayOfWeek="2"</code> (понедельник), <code>android:shownWeekCount="6"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>CalendarView</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">CalendarView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>firstDayOfWeek</b></td>
+      <td style="border: 1px solid #000;">Какой день недели считается первым.</td>
+      <td style="border: 1px solid #000;"><code>Sunday</code> — воскресенье (по умолчанию);<br><code>Monday</code> — понедельник.</td>
+      <td style="border: 1px solid #000;">Для России — <code>Monday</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет календарь по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет календарь по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — высота по содержимому.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 16 — отступ от заголовка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — календарь по центру.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Прозрачный фон — оставить <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли календарь на тапы.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> главные настройки — <b>firstDayOfWeek</b>, <b>MinDate</b>, <b>MaxDate</b>. Значения читай в логике через <code>getSelectedDate</code> и конвертируй через Calendar. Событие выбора — <code>onDateChange</code>.</div>
+
+<h2>Как перетащить CalendarView на макет</h2>
+
+<p>CalendarView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Дата и время</b> в палитре слева.</li>
+  <li>Зажми <b>CalendarView</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — календарь появится в разметке.</li>
+  <li>Задай <b>firstDayOfWeek</b> — <code>Monday</code> для России.</li>
+  <li>Опционально: задай <code>MinDate</code> и <code>MaxDate</code> для ограничения диапазона.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» — добавь событие <code>onDateChange</code>, оно срабатывает при выборе дня.</li>
+  <li>Внутри <code>onDateChange</code> читай выбранную дату и выполняй действие — например, показывай список событий этого дня.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по CalendarView в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> CalendarView возвращает дату в миллисекундах от 1 января 1970 года. Чтобы получить год, месяц, день — используй Calendar (компонент) или блоки конвертации.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> нумерация месяцев с 0 и здесь. Январь — 0, декабрь — 11. Частая причина сдвига даты на месяц.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> ShownWeekCount влияет на высоту виджета. Меньше недель — компактнее, но не все дни месяца видны. Оптимально — 6 недель.</div>
+
+<div class="hint">💡 <b>Совет:</b> для русской локализации задавай FirstDayOfWeek = понедельник. По умолчанию Android часто ставит воскресенье — так непривычно для России.</div>
+
+<div class="hint">💡 <b>Совет:</b> показывай выбранную дату над календарём в TextView. Пользователь видит, что он выбрал, и может проверить.</div>
+
+<div class="hint">💡 <b>Совет:</b> для списка событий по дням используй CalendarView + ListView. При выборе дня обновляй ListView данными за этот день.</div>
+
+<div class="hint">💡 <b>Совет:</b> не открывай календарь сразу на текущем дне, если пользователь ищет событие в будущем. Дай ему возможность перемещаться по месяцам и выбирать.</div>
+
+<div class="hint">💡 <b>Совет:</b> для отметки дней с событиями (точки под числами) нужна отдельная логика через Calendar и декораторы — стандартный CalendarView этого не умеет.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про нумерацию месяца с 0. Январь = 0, не 1. Частая причина сдвигов.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетаскивать CalendarView туда, где нужен только один день в форме. Для этого достаточно DatePickerDialog — компактнее и уместнее.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не задавать FirstDayOfWeek. По умолчанию в некоторых локалях первым днём стоит воскресенье — непривычно для российских пользователей.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> размещать CalendarView в Scroll(V). Календарь может конфликтовать с прокруткой родителя — жесты переключения месяца работают плохо.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>SelectedDate</b> — текущая выбранная дата (в миллисекундах).</li>
-<li><b>MinDate</b> — минимальная допустимая дата.</li>
-<li><b>MaxDate</b> — максимальная допустимая дата.</li>
-<li><b>FirstDayOfWeek</b> — какой день недели первый: понедельник или воскресенье.</li>
-<li><b>ShownWeekCount</b> — сколько недель показывать.</li>
-<li><b>ShowWeekNumber</b> — показывать ли номер недели.</li>
-<li><b>Background</b> — фон календаря.</li>
-<li><b>Width / Height</b> — обычно match_parent и wrap_content.</li>
+  <li><b>CalendarView</b> — календарь на месяц для выбора одной даты.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Ключевые параметры (<b>FirstDayOfWeek</b>, <b>MinDate</b>, <b>MaxDate</b>, <b>ShownWeekCount</b>) задаются через <b>Пользовательские атрибуты</b>.</li>
+  <li>Выбранная дата читается через <code>getSelectedDate</code> — как миллисекунды, конвертируется через Calendar.</li>
+  <li><b>Месяц нумеруется с 0</b> — январь = 0, декабрь = 11.</li>
+  <li>Событие выбора — <code>onDateChange</code>.</li>
+  <li>Для России задавай firstDayOfWeek = понедельник.</li>
+  <li>Для выбора одного дня в форме удобнее DatePickerDialog.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, куда хочешь положить календарь.</li>
-<li>Тап по CalendarView в палитре — виджет добавится внутрь.</li>
-<li>Задай FirstDayOfWeek — понедельник для России.</li>
-<li>Опционально: MinDate и MaxDate — ограничения диапазона.</li>
-<li>Присвой id — для работы в логике.</li>
-<li>Открой вкладку «События» — добавь событие onDateChange — оно срабатывает при выборе дня.</li>
-<li>Внутри onDateChange читай выбранную дату и выполняй действие — например, показывай список событий этого дня.</li>
+  <li><b>Тапают по CalendarView в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Забывают про нумерацию месяца с 0.</b> Дата сдвигается на месяц.</li>
+  <li><b>Не задают firstDayOfWeek.</b> По умолчанию может быть воскресенье — непривычно.</li>
+  <li><b>Используют там, где достаточно DatePickerDialog.</b> Календарь занимает много места.</li>
+  <li><b>Размещают в Scroll(V).</b> Жесты переключения месяца работают плохо.</li>
+  <li><b>Пытаются отметить дни с событиями точками.</b> Стандартный CalendarView этого не умеет — нужен свой декоратор.</li>
+  <li><b>Не задают ID.</b> Логика не может прочитать выбранную дату.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> CalendarView возвращает дату в миллисекундах от 1 января 1970 года. Чтобы получить год, месяц, день — используй Calendar (компонент) или блоки конвертации.</p>
-
-<p>⚠️ <b>Важно:</b> нумерация месяцев с 0 и здесь. Январь — 0, декабрь — 11. Частая причина сдвига даты на месяц.</p>
-
-<p>⚠️ <b>Важно:</b> ShownWeekCount влияет на высоту виджета. Меньше недель — компактнее, но не все дни месяца видны. Оптимально — 6 недель.</p>
-
-<p>💡 <b>Совет:</b> для русской локализации задавай FirstDayOfWeek = понедельник. По умолчанию Android часто ставит воскресенье — так непривычно для России.</p>
-
-<p>💡 <b>Совет:</b> показывай выбранную дату над календарём в TextView. Пользователь видит, что он выбрал, и может проверить.</p>
-
-<p>💡 <b>Совет:</b> для списка событий по дням используй CalendarView + ListView. При выборе дня обновляй ListView данными за этот день.</p>
-
-<p>💡 <b>Совет:</b> не открывай календарь сразу на текущем дне, если пользователь ищет событие в будущем. Дай ему возможность перемещаться по месяцам и выбирать.</p>
-
-<p>💡 <b>Совет:</b> для отметки дней с событиями (точки под числами) нужна отдельная логика через Calendar и декораторы — стандартный CalendarView этого не умеет.</p>
-
-<p>❌ <b>Частая ошибка:</b> забыть про нумерацию месяца с 0. Январь = 0, не 1. Частая причина сдвигов.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать CalendarView там, где нужен только один день в форме. Для этого достаточно DatePickerDialog — компактнее и уместнее.</p>
-
-<p>❌ <b>Частая ошибка:</b> не задавать FirstDayOfWeek. По умолчанию в некоторых локалях первым днём стоит воскресенье — непривычно для российских пользователей.</p>
-
-<p>❌ <b>Частая ошибка:</b> размещать CalendarView в Scroll(V). Календарь может конфликтовать с прокруткой родителя — жесты переключения месяца работают плохо.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
