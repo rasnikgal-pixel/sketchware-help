@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,136 +7,236 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Firebase Auth — авторизация Firebase</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>Firebase Auth — авторизация Firebase</h1>
 
-<p>Firebase Auth — облачная авторизация пользователей. Позволяет регистрировать и входить по email и паролю, не создавая собственный сервер. Firebase берёт на себя хранение учётных данных, проверку паролей и безопасность.</p>
+<p><b>Firebase Auth</b> — облачная авторизация пользователей. Позволяет регистрировать и входить по email и паролю, не создавая собственный сервер. Firebase берёт на себя хранение учётных данных, проверку паролей и безопасность.</p>
 
 <p>Иконка в диалоге добавления — логотип Firebase.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li><b>Регистрация</b> — пользователь создаёт аккаунт по email и паролю.</li>
-<li><b>Вход</b> — проверка существующего аккаунта.</li>
-<li><b>Выход</b> — завершение сессии.</li>
-<li><b>Сброс пароля</b> — отправка письма для восстановления.</li>
-<li><b>Проверка email</b> — подтверждение адреса письмом.</li>
-<li><b>Текущий пользователь</b> — получить данные авторизованного пользователя.</li>
-<li>Все данные хранятся в Firebase — не нужно писать свой сервер.</li>
+  <li><b>Регистрация</b> — пользователь создаёт аккаунт по email и паролю.</li>
+  <li><b>Вход</b> — проверка существующего аккаунта.</li>
+  <li><b>Выход</b> — завершение сессии.</li>
+  <li><b>Сброс пароля</b> — отправка письма для восстановления.</li>
+  <li><b>Проверка email</b> — подтверждение адреса письмом.</li>
+  <li><b>Текущий пользователь</b> — получить данные авторизованного пользователя.</li>
+  <li>Все данные хранятся в Firebase — не нужно писать свой сервер.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Приложения с личным кабинетом — у каждого пользователя свои данные.</li>
-<li>Мессенджеры и соцсети — учётные записи.</li>
-<li>Дневники и заметки — личные записи под аккаунтом.</li>
-<li>Обучающие приложения — прогресс пользователя.</li>
-<li>Приложения с подпиской — привязка оплаты к аккаунту.</li>
-<li>Облачные хранилища — доступ к своим файлам с любого устройства.</li>
-<li>Любое приложение, где нужны личные аккаунты.</li>
+  <li>Приложения с личным кабинетом — у каждого пользователя свои данные.</li>
+  <li>Мессенджеры и соцсети — учётные записи.</li>
+  <li>Дневники и заметки — личные записи под аккаунтом.</li>
+  <li>Обучающие приложения — прогресс пользователя.</li>
+  <li>Приложения с подпиской — привязка оплаты к аккаунту.</li>
+  <li>Облачные хранилища — доступ к своим файлам с любого устройства.</li>
+  <li>Любое приложение, где нужны личные аккаунты.</li>
 </ul>
 
-<h2>Основные настройки при добавлении</h2>
+<h2>Настройки при добавлении</h2>
 
-<ul>
-<li><b>Имя компонента</b> — идентификатор для вызова. Например, auth.</li>
-<li><b>API-ключ</b> — из Firebase Console.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>auth</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>API-ключ</b></td>
+      <td style="border: 1px solid #000;">Из Firebase Console.</td>
+      <td style="border: 1px solid #000;"><code>AIza...</code>.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Основные блоки в логике</h2>
 
-<ul>
-<li><b>createUserWithEmailAndPassword</b> — регистрация.</li>
-<li><b>signInWithEmailAndPassword</b> — вход.</li>
-<li><b>signOut</b> — выход.</li>
-<li><b>sendPasswordResetEmail</b> — сброс пароля.</li>
-<li><b>getCurrentUser</b> — получить текущего пользователя.</li>
-<li><b>getUid</b> — получить ID пользователя.</li>
-<li><b>getEmail</b> — получить email.</li>
-<li><b>isEmailVerified</b> — проверить, подтверждён ли email.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>createUserWithEmailAndPassword</b></td>
+      <td style="border: 1px solid #000;">Регистрация.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>signInWithEmailAndPassword</b></td>
+      <td style="border: 1px solid #000;">Вход.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>signOut</b></td>
+      <td style="border: 1px solid #000;">Выход.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>sendPasswordResetEmail</b></td>
+      <td style="border: 1px solid #000;">Сброс пароля.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getCurrentUser</b></td>
+      <td style="border: 1px solid #000;">Получить текущего пользователя.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getUid</b></td>
+      <td style="border: 1px solid #000;">Получить ID пользователя.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getEmail</b></td>
+      <td style="border: 1px solid #000;">Получить email.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>isEmailVerified</b></td>
+      <td style="border: 1px solid #000;">Проверить, подтверждён ли email.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>События Firebase Auth</h2>
 
-<ul>
-<li><b>onAuthSuccess</b> — успешная авторизация (регистрация или вход).</li>
-<li><b>onAuthFailed</b> — ошибка авторизации.</li>
-<li><b>onEmailVerified</b> — email подтверждён.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onAuthSuccess</b></td>
+      <td style="border: 1px solid #000;">Успешная авторизация (регистрация или вход).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onAuthFailed</b></td>
+      <td style="border: 1px solid #000;">Ошибка авторизации.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onEmailVerified</b></td>
+      <td style="border: 1px solid #000;">Email подтверждён.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Как использовать</h2>
 
-<ul>
-<li>Зарегистрируйся в Firebase Console.</li>
-<li>В разделе Authentication включи способ входа Email/Password.</li>
-<li>Скачай google-services.json и подключи его в Sketchware Pro 7.</li>
-<li>Подключи компонент Firebase Auth на вкладке «Компонент».</li>
-<li>Задай имя — например, auth.</li>
-<li>Добавь разрешение INTERNET.</li>
-<li>В логике:
-<ul>
-<li>регистрация — createUserWithEmailAndPassword с email и паролем из EditText;</li>
-<li>вход — signInWithEmailAndPassword;</li>
-<li>выход — signOut;</li>
-<li>в onAuthSuccess — перейди на главный экран;</li>
-<li>в onAuthFailed — покажи сообщение об ошибке.</li>
-</ul>
-</li>
-</ul>
+<ol>
+  <li>Зарегистрируйся в <b>Firebase Console</b>.</li>
+  <li>В разделе <b>Authentication</b> включи способ входа <b>Email/Password</b>.</li>
+  <li>Скачай <b>google-services.json</b> и подключи его в Sketchware Pro 7.</li>
+  <li>Подключи компонент Firebase Auth на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>auth</code>.</li>
+  <li>Добавь разрешение <b>INTERNET</b>.</li>
+  <li>В логике:
+    <ul>
+      <li>регистрация — <code>createUserWithEmailAndPassword</code> с email и паролем из EditText;</li>
+      <li>вход — <code>signInWithEmailAndPassword</code>;</li>
+      <li>выход — <code>signOut</code>;</li>
+      <li>в <code>onAuthSuccess</code> — перейди на главный экран;</li>
+      <li>в <code>onAuthFailed</code> — покажи сообщение об ошибке.</li>
+    </ul>
+  </li>
+</ol>
 
 <h2>Пример: вход по email и паролю</h2>
 
 <ul>
-<li>EditText для email, EditText для пароля.</li>
-<li>Button «Войти» → onClick → signInWithEmailAndPassword.</li>
-<li>onAuthSuccess → перейти на главный экран.</li>
-<li>onAuthFailed → показать сообщение «Неверный email или пароль».</li>
+  <li>EditText для email, EditText для пароля.</li>
+  <li>Button «Войти» → <code>onClick</code> → <code>signInWithEmailAndPassword</code>.</li>
+  <li><code>onAuthSuccess</code> → перейти на главный экран.</li>
+  <li><code>onAuthFailed</code> → показать сообщение «Неверный email или пароль».</li>
 </ul>
 
 <h2>Пример: проверка при запуске</h2>
 
 <ul>
-<li>В onCreate — getCurrentUser.</li>
-<li>Если пользователь уже вошёл — сразу открыть главный экран.</li>
-<li>Если нет — показать экран входа.</li>
+  <li>В <code>onCreate</code> — <code>getCurrentUser</code>.</li>
+  <li>Если пользователь уже вошёл — сразу открыть главный экран.</li>
+  <li>Если нет — показать экран входа.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> правила безопасности в Firebase Console должны разрешать работу с Auth. По умолчанию они настроены верно, но проверь.</p>
+<div class="warn">⚠️ <b>Важно:</b> правила безопасности в Firebase Console должны разрешать работу с Auth. По умолчанию они настроены верно, но проверь.</div>
 
-<p>⚠️ <b>Важно:</b> не храни пароли в своём коде или Firebase DB. Только через Firebase Auth. Он хеширует и защищает пароли.</p>
+<div class="warn">⚠️ <b>Важно:</b> не храни пароли в своём коде или Firebase DB. Только через Firebase Auth. Он хеширует и защищает пароли.</div>
 
-<p>⚠️ <b>Важно:</b> проверяй email перед использованием. Пользователь может зарегистрироваться с вымышленным адресом. Для критичных операций — используй sendEmailVerification.</p>
+<div class="warn">⚠️ <b>Важно:</b> проверяй email перед использованием. Пользователь может зарегистрироваться с вымышленным адресом. Для критичных операций — используй <code>sendEmailVerification</code>.</div>
 
-<p>⚠️ <b>Важно:</b> не показывай пользователю конкретные ошибки Firebase. Сообщение «Неверный пароль» или «Email уже занят» может помочь злоумышленнику. Показывай общее: «Ошибка входа».</p>
+<div class="warn">⚠️ <b>Важно:</b> не показывай пользователю конкретные ошибки Firebase. Сообщение «Неверный пароль» или «Email уже занят» может помочь злоумышленнику. Показывай общее: «Ошибка входа».</div>
 
-<p>⚠️ <b>Важно:</b> пароль должен быть надёжным. Firebase требует минимум 6 символов. Рекомендуй пользователю хотя бы 8 и с разными символами.</p>
+<div class="warn">⚠️ <b>Важно:</b> пароль должен быть надёжным. Firebase требует минимум 6 символов. Рекомендуй пользователю хотя бы 8 и с разными символами.</div>
 
-<p>💡 <b>Совет:</b> для проверки email используй sendEmailVerification после регистрации. Пользователь получит письмо со ссылкой — по ней подтвердит адрес.</p>
+<div class="hint">💡 <b>Совет:</b> для проверки email используй <code>sendEmailVerification</code> после регистрации. Пользователь получит письмо со ссылкой — по ней подтвердит адрес.</div>
 
-<p>💡 <b>Совет:</b> для сохранения сессии Firebase помнит пользователя автоматически. При следующем запуске getCurrentUser вернёт его — не нужно заставлять входить заново.</p>
+<div class="hint">💡 <b>Совет:</b> для сохранения сессии Firebase помнит пользователя автоматически. При следующем запуске <code>getCurrentUser</code> вернёт его — не нужно заставлять входить заново.</div>
 
-<p>💡 <b>Совет:</b> для сброса пароля используй sendPasswordResetEmail. Firebase отправит письмо со ссылкой для смены пароля.</p>
+<div class="hint">💡 <b>Совет:</b> для сброса пароля используй <code>sendPasswordResetEmail</code>. Firebase отправит письмо со ссылкой для смены пароля.</div>
 
-<p>💡 <b>Совет:</b> для профиля пользователя используй Firebase DB — храни там дополнительные данные: имя, аватар, возраст. А в Auth — только email и пароль.</p>
+<div class="hint">💡 <b>Совет:</b> для профиля пользователя используй Firebase DB — храни там дополнительные данные: имя, аватар, возраст. А в Auth — только email и пароль.</div>
 
-<p>💡 <b>Совет:</b> для выхода предусмотри кнопку в настройках. Пользователь должен иметь возможность сменить аккаунт.</p>
+<div class="hint">💡 <b>Совет:</b> для выхода предусмотри кнопку в настройках. Пользователь должен иметь возможность сменить аккаунт.</div>
 
-<p>💡 <b>Совет:</b> валидируй email перед отправкой. Регулярное выражение на формат name@domain.com. Если email неправильный — Firebase вернёт ошибку.</p>
+<div class="hint">💡 <b>Совет:</b> валидируй email перед отправкой. Регулярное выражение на формат <code>name@domain.com</code>. Если email неправильный — Firebase вернёт ошибку.</div>
 
-<p>❌ <b>Частая ошибка:</b> не включить Email/Password в Firebase Console. Регистрация и вход не работают.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не включить Email/Password в Firebase Console. Регистрация и вход не работают.</div>
 
-<p>❌ <b>Частая ошибка:</b> хранить пароли в базе. Только Firebase Auth — безопасно.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> хранить пароли в базе. Только Firebase Auth — безопасно.</div>
 
-<p>❌ <b>Частая ошибка:</b> показывать конкретные ошибки («Неверный пароль», «Email занят»). Это помогает злоумышленнику подбирать учётные данные.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> показывать конкретные ошибки («Неверный пароль», «Email занят»). Это помогает злоумышленнику подбирать учётные данные.</div>
 
-<p>❌ <b>Частая ошибка:</b> не проверять текущего пользователя при запуске. Пользователь входит каждый раз заново.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не проверять текущего пользователя при запуске. Пользователь входит каждый раз заново.</div>
 
-<p>❌ <b>Частая ошибка:</b> не предусмотреть выход. Пользователь не может сменить аккаунт.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не предусмотреть выход. Пользователь не может сменить аккаунт.</div>
 
-<p>❌ <b>Частая ошибка:</b> не валидировать email. Firebase вернёт ошибку, но лучше проверить заранее.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не валидировать email. Firebase вернёт ошибку, но лучше проверить заранее.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Firebase Auth</b> — облачная авторизация по email и паролю.</li>
+  <li>Основные блоки: <b>createUserWithEmailAndPassword</b>, <b>signInWithEmailAndPassword</b>, <b>signOut</b>, <b>sendPasswordResetEmail</b>, <b>getCurrentUser</b>, <b>getUid</b>, <b>getEmail</b>.</li>
+  <li>Основные события: <b>onAuthSuccess</b>, <b>onAuthFailed</b>, <b>onEmailVerified</b>.</li>
+  <li>Требует включения Email/Password в Firebase Console.</li>
+  <li>Не храни пароли — только Firebase Auth.</li>
+  <li>Не показывай конкретные ошибки — общее сообщение безопаснее.</li>
+  <li>Проверяй getCurrentUser при запуске — сохраняй сессию.</li>
+  <li>Для профиля — Firebase DB, для учётных данных — Auth.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Не включают Email/Password в Console.</b> Авторизация не работает.</li>
+  <li><b>Хранят пароли в базе.</b> Грубая ошибка.</li>
+  <li><b>Показывают конкретные ошибки.</b> Утечка информации злоумышленнику.</li>
+  <li><b>Не проверяют текущего пользователя при запуске.</b> Вход каждый раз.</li>
+  <li><b>Не предусматривают выход.</b> Нельзя сменить аккаунт.</li>
+  <li><b>Не валидируют email.</b> Ошибки при отправке.</li>
+  <li><b>Используют слабые пароли.</b> Firebase требует минимум 6 символов.</li>
+</ul>
+
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
