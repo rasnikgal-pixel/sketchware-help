@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,87 +7,326 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>GridView — сетка</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>GridView — сетка</h1>
 
-<p>GridView — сетка элементов. Раскладывает содержимое по колонкам и строкам, как плитку: несколько элементов в ряд, следующий ряд ниже.</p>
+<p><b>GridView</b> — сетка элементов. Раскладывает содержимое по колонкам и строкам, как плитку: несколько элементов в ряд, следующий ряд ниже.</p>
 
 <p>Иконка в палитре — прямоугольник с квадратной сеткой внутри.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает элементы в виде таблицы: несколько колонок, неограниченное число строк.</li>
-<li>Количество колонок задаётся в свойствах (NumColumns).</li>
-<li>Прокручивается вертикально.</li>
-<li>Создаёт только видимые элементы — работает быстро даже с сотнями плиток.</li>
-<li>Реагирует на тап по элементу — событие onItemClick.</li>
-<li>Внутри каждой ячейки может быть текст, картинка, кнопка — в зависимости от адаптера.</li>
+  <li>Отображает элементы в виде таблицы: несколько колонок, неограниченное число строк.</li>
+  <li>Количество колонок задаётся в свойствах (NumColumns).</li>
+  <li>Прокручивается вертикально.</li>
+  <li>Создаёт только видимые элементы — работает быстро даже с сотнями плиток.</li>
+  <li>Реагирует на тап по элементу — событие <code>onItemClick</code>.</li>
+  <li>Внутри каждой ячейки может быть текст, картинка, кнопка — в зависимости от адаптера.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Галерея изображений — фотографии в сетке.</li>
-<li>Каталог товаров — товары плитками.</li>
-<li>Меню приложения — плитки с иконками и подписями.</li>
-<li>Портфолио — работы в виде плитки.</li>
-<li>Игры-головоломки — игровое поле.</li>
-<li>Выбор цвета или иконки — из набора вариантов.</li>
-<li>Любое отображение элементов «плитками».</li>
+  <li>Галерея изображений — фотографии в сетке.</li>
+  <li>Каталог товаров — товары плитками.</li>
+  <li>Меню приложения — плитки с иконками и подписями.</li>
+  <li>Портфолио — работы в виде плитки.</li>
+  <li>Игры-головоломки — игровое поле.</li>
+  <li>Выбор цвета или иконки — из набора вариантов.</li>
+  <li>Любое отображение элементов «плитками».</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>NumColumns</b></td>
+      <td style="border: 1px solid #000;">Количество колонок в сетке.</td>
+      <td style="border: 1px solid #000;">Число (например, 2, 3, 4) или <code>auto_fit</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ColumnWidth</b></td>
+      <td style="border: 1px solid #000;">Ширина одной колонки (при auto_fit).</td>
+      <td style="border: 1px solid #000;">Число в dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>HorizontalSpacing</b></td>
+      <td style="border: 1px solid #000;">Отступ по горизонтали между колонками.</td>
+      <td style="border: 1px solid #000;">Число в dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>VerticalSpacing</b></td>
+      <td style="border: 1px solid #000;">Отступ по вертикали между строками.</td>
+      <td style="border: 1px solid #000;">Число в dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>StretchMode</b></td>
+      <td style="border: 1px solid #000;">Как растягивать колонки при auto_fit.</td>
+      <td style="border: 1px solid #000;"><code>columnWidth</code> — по ширине колонки;<br><code>spacingWidth</code> — распределяется между колонками;<br><code>none</code> — не растягивать.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Gravity</b></td>
+      <td style="border: 1px solid #000;">Выравнивание всей сетки в контейнере.</td>
+      <td style="border: 1px solid #000;"><code>left</code>, <code>center</code>, <code>right</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон сетки.</td>
+      <td style="border: 1px solid #000;">HEX или drawable-ресурс.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;">Обычно <code>match_parent</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по GridView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>gridview1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>gridview1</code>, <code>gridview2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>productGrid</code>, если это каталог товаров.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты. Через них задаются ключевые параметры сетки.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">На скриншоте заданы <code>android:numColumns="3"</code> и <code>android:stretchMode="columnWidth"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>GridView</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">GridView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательский вид</b><br>Custom view</td>
+      <td style="border: 1px solid #000;">Свой Layout для элемента сетки (вместо стандартного текста).</td>
+      <td style="border: 1px solid #000;"><code>none</code> — стандартный вид; любой XML-макет элемента.</td>
+      <td style="border: 1px solid #000;">Укажи здесь свой макет для плиток с картинкой и текстом.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широкой будет сетка по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высокой будет сетка по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — чтобы сетка занимала весь экран.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета — от него до соседних элементов.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Обычно 0 — сетка занимает всё свободное место.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — сетка заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Светло-серый фон — <code>#F5F5F5</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли виджет на тапы.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые параметры сетки (<b>NumColumns</b>, <b>StretchMode</b>, <b>ColumnWidth</b>) задаются через <b>Пользовательские атрибуты</b> — в виде <code>android:numColumns="3"</code>, <code>android:stretchMode="columnWidth"</code>, <code>android:columnWidth="100dp"</code>.</div>
+
+<h2>Как перетащить GridView на макет</h2>
+
+<p>GridView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Списки</b> в палитре слева.</li>
+  <li>Зажми <b>GridView</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — сетка появится в разметке.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай <code>android:numColumns</code>, <code>android:horizontalSpacing</code>, <code>android:verticalSpacing</code>, <code>android:stretchMode</code>.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» и добавь в <code>onCreate</code> блок <code>setListData</code> или <code>setAdapter</code> — задай элементы сетки.</li>
+  <li>Добавь событие <code>onItemClick</code> для реакции на тап.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по GridView в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без адаптера в логике GridView — пустая область. Данные нужно задавать вручную.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> NumColumns не влияет на размер самих элементов. Если ячейки слишком широкие или узкие, задавай их размеры в Layout, который используется как шаблон элемента.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> как и ListView, GridView не вкладывается в Scroll(V). Собственная прокрутка конфликтует с родительской.</div>
+
+<div class="hint">💡 <b>Совет:</b> для галереи фото используй NumColumns = 3 и Spacing = 4dp. Плотная сетка выглядит аккуратно и экономно использует экран.</div>
+
+<div class="hint">💡 <b>Совет:</b> для плиток меню используй NumColumns = 2 и Spacing = 8–12dp. Ячейки больше по размеру, помещается текст и иконка.</div>
+
+<div class="hint">💡 <b>Совет:</b> для каталога товаров используй NumColumns = 2 — каждая карточка с картинкой, названием и ценой.</div>
+
+<div class="hint">💡 <b>Совет:</b> в ячейке не размещай много контента. GridView подразумевает компактные элементы. Для больших карточек лучше RecyclerView с разметкой в одну колонку.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> задавать NumColumns = auto_fit без ColumnWidth. Тогда колонки могут стать слишком узкими или широкими.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать GridView для списка с разной высотой строк. Все ячейки будут одинаковыми по высоте — самая высокая определит размер остальных.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> вкладывать GridView в Scroll(V). Прокрутка работает нестабильно.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>NumColumns</b> — количество колонок. По умолчанию 2 или auto_fit.</li>
-<li><b>ColumnWidth</b> — ширина одной колонки (при auto_fit).</li>
-<li><b>HorizontalSpacing</b> — отступ по горизонтали между колонками.</li>
-<li><b>VerticalSpacing</b> — отступ по вертикали между строками.</li>
-<li><b>StretchMode</b> — как растягивать колонки при auto_fit:
-<ul>
-<li>columnWidth — по ширине колонки;</li>
-<li>spacingWidth — распределяется между колонками;</li>
-<li>none — не растягивать.</li>
-</ul>
-</li>
-<li><b>Gravity</b> — выравнивание всей сетки в контейнере.</li>
-<li><b>Background</b> — фон сетки.</li>
-<li><b>Width / Height</b> — match_parent обычно.</li>
+  <li><b>GridView</b> — сетка элементов: несколько колонок, неограниченное число строк.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Ключевые параметры (<b>NumColumns</b>, <b>StretchMode</b>, <b>ColumnWidth</b>) задаются через <b>Пользовательские атрибуты</b>.</li>
+  <li>Работает только через <b>адаптер</b> в логике — без него пустая область.</li>
+  <li>Для галереи — 3 колонки; для плиток меню и товаров — 2 колонки.</li>
+  <li>Все ячейки одной высоты — они определяются самой высокой.</li>
+  <li>Не вкладывай GridView в Scroll(V) — прокрутка конфликтует.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, куда хочешь положить сетку.</li>
-<li>Тап по GridView в палитре — компонент добавится внутрь.</li>
-<li>Задай NumColumns — обычно 2, 3 или 4.</li>
-<li>Задай HorizontalSpacing и VerticalSpacing — например, 8dp для аккуратных отступов.</li>
-<li>Присвой id — для работы в логике.</li>
-<li>Открой вкладку «События» и добавь в onCreate блок setListData или setAdapter — задай элементы сетки.</li>
-<li>Добавь событие onItemClick для реакции на тап.</li>
+  <li><b>Тапают по GridView в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Перетащили сетку, но не подключили адаптер.</b> Область пустая.</li>
+  <li><b>Ищут NumColumns в обычных свойствах.</b> Через «Пользовательские атрибуты» — <code>android:numColumns</code>.</li>
+  <li><b>Используют auto_fit без ColumnWidth.</b> Колонки слишком узкие или широкие.</li>
+  <li><b>Вкладывают GridView в Scroll(V).</b> Прокрутка работает нестабильно.</li>
+  <li><b>Делают ячейки разной высоты.</b> Все подтянутся к самой высокой.</li>
+  <li><b>Не задают ID.</b> В событиях не появляется, логика не подключается.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> без адаптера в логике GridView — пустая область. Данные нужно задавать вручную.</p>
-
-<p>⚠️ <b>Важно:</b> NumColumns не влияет на размер самих элементов. Если ячейки слишком широкие или узкие, задавай их размеры в Layout, который используется как шаблон элемента.</p>
-
-<p>⚠️ <b>Важно:</b> как и ListView, GridView не вкладывается в Scroll(V). Собственная прокрутка конфликтует с родительской.</p>
-
-<p>💡 <b>Совет:</b> для галереи фото используй NumColumns = 3 и Spacing = 4dp. Плотная сетка выглядит аккуратно и экономно использует экран.</p>
-
-<p>💡 <b>Совет:</b> для плиток меню используй NumColumns = 2 и Spacing = 8–12dp. Ячейки больше по размеру, помещается текст и иконка.</p>
-
-<p>💡 <b>Совет:</b> для каталога товаров используй NumColumns = 2 — каждая карточка с картинкой, названием и ценой.</p>
-
-<p>💡 <b>Совет:</b> в ячейке не размещай много контента. GridView подразумевает компактные элементы. Для больших карточек лучше RecyclerView с разметкой в одну колонку.</p>
-
-<p>❌ <b>Частая ошибка:</b> задавать NumColumns = auto_fit без ColumnWidth. Тогда колонки могут стать слишком узкими или широкими.</p>
-
-<p>❌ <b>Частая ошибка:</b> использовать GridView для списка с разной высотой строк. Все ячейки будут одинаковыми по высоте — самая высокая определит размер остальных.</p>
-
-<p>❌ <b>Частая ошибка:</b> вкладывать GridView в Scroll(V). Прокрутка работает нестабильно.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
