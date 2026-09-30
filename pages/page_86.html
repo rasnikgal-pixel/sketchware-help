@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,77 +7,312 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ViewPager — страницы со свайпом</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>ViewPager — страницы со свайпом</h1>
 
-<p>ViewPager — контейнер для горизонтальной прокрутки страниц. Пользователь свайпает влево-вправо и переключается между несколькими экранами, каждый из которых — отдельная «страница».</p>
+<p><b>ViewPager</b> — контейнер для горизонтальной прокрутки страниц. Пользователь свайпает влево-вправо и переключается между несколькими экранами, каждый из которых — отдельная «страница».</p>
 
 <p>Иконка в палитре — прямоугольник с двумя стрелками влево-вправо.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Отображает одну страницу за раз.</li>
-<li>Пользователь свайпает влево или вправо — переключается на соседнюю страницу.</li>
-<li>Каждая страница — это отдельный Layout или Fragment.</li>
-<li>Содержимое страниц задаётся в логике через адаптер.</li>
-<li>Может синхронизироваться с TabLayout — тогда вкладки сверху показывают текущую страницу и позволяют переключаться тапом.</li>
+  <li>Отображает одну страницу за раз.</li>
+  <li>Пользователь свайпает влево или вправо — переключается на соседнюю страницу.</li>
+  <li>Каждая страница — это отдельный Layout или Fragment.</li>
+  <li>Содержимое страниц задаётся в логике через адаптер.</li>
+  <li>Может синхронизироваться с TabLayout — тогда вкладки сверху показывают текущую страницу и позволяют переключаться тапом.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Онбординг — знакомство с приложением из 3–5 слайдов.</li>
-<li>Галерея — пролистывание изображений.</li>
-<li>Разделы одного экрана — «Новости», «Популярное», «Избранное» вместе с TabLayout.</li>
-<li>Карусель баннеров — реклама или промо-блоки.</li>
-<li>Пошаговые формы — заполнение по шагам: шаг 1, шаг 2, шаг 3.</li>
+  <li>Онбординг — знакомство с приложением из 3–5 слайдов.</li>
+  <li>Галерея — пролистывание изображений.</li>
+  <li>Разделы одного экрана — «Новости», «Популярное», «Избранное» вместе с TabLayout.</li>
+  <li>Карусель баннеров — реклама или промо-блоки.</li>
+  <li>Пошаговые формы — заполнение по шагам: шаг 1, шаг 2, шаг 3.</li>
 </ul>
 
-<h2>Основные свойства</h2>
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Adapter</b></td>
+      <td style="border: 1px solid #000;">Связывает данные со страницами. Задаётся в логике.</td>
+      <td style="border: 1px solid #000;">PagerAdapter, FragmentPagerAdapter.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>CurrentItem</b></td>
+      <td style="border: 1px solid #000;">Текущая страница (индекс).</td>
+      <td style="border: 1px solid #000;">Число от 0 до количества страниц − 1.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>OffscreenPageLimit</b></td>
+      <td style="border: 1px solid #000;">Сколько страниц держать в памяти рядом с текущей.</td>
+      <td style="border: 1px solid #000;">Число. Обычно 1–2.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон контейнера.</td>
+      <td style="border: 1px solid #000;">HEX или drawable-ресурс.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;">Обычно <code>match_parent</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по ViewPager в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>viewpager1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>viewpager1</code>, <code>viewpager2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>onboarding</code>, если это онбординг.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:clipToPadding="false"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает полный класс: <code>androidx.viewpager.widget.ViewPager</code>.</td>
+      <td style="border: 1px solid #000;">ViewPager и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательский вид</b><br>Custom view</td>
+      <td style="border: 1px solid #000;">Свой Layout для страницы (если страница — макет, а не Fragment).</td>
+      <td style="border: 1px solid #000;"><code>none</code> — стандартный; любой XML-макет.</td>
+      <td style="border: 1px solid #000;">Оставь <code>none</code>, если страницы задаются через адаптер.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет контейнер по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет контейнер по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — чтобы страницы занимали весь экран.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета — от него до соседних элементов.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Обычно 0.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — виджет заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Белый фон — <code>#FFFFFF</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли виджет на свайп.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> в панели свойств задаётся только внешний вид. <b>Страницы</b> и <b>адаптер</b> задаются в логике — через блоки <code>setViewPagerAdapter</code> или <code>setViewPagerData</code>. Каждую страницу нужно создать отдельным макетом или Fragment.</div>
+
+<h2>Как перетащить ViewPager на макет</h2>
+
+<p>ViewPager, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>. Обычно ViewPager — единственный элемент экрана.</li>
+  <li>Раскрой категорию <b>Списки</b> в палитре слева.</li>
+  <li>Зажми <b>ViewPager</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — контейнер страниц появится в разметке.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Создай <b>Layout или Fragment</b> для каждой страницы в Менеджере представлений.</li>
+  <li>Открой вкладку «События» и добавь в <code>onCreate</code>:
+    <ul>
+      <li>блок <code>setViewPagerAdapter</code> — подключить адаптер;</li>
+      <li>блок <code>setViewPagerData</code> — задать список страниц.</li>
+    </ul>
+  </li>
+  <li>Опционально — добавь <b>TabLayout</b> сверху и свяжи его с ViewPager через специальный блок.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по ViewPager в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> ViewPager не работает без адаптера. Без указания страниц в логике он пустой.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> для большого количества страниц задавай OffscreenPageLimit небольшим (1 или 2). Иначе приложение будет держать в памяти все страницы и потреблять много RAM.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> ViewPager не вставляй внутрь Scroll(H) — конфликт жестов. Горизонтальная прокрутка родителя «съест» свайп страниц.</div>
+
+<div class="hint">💡 <b>Совет:</b> для онбординга используй ViewPager с 3 страницами и точками-индикаторами внизу (реализуются отдельно через Linear(H) с точками и логику).</div>
+
+<div class="hint">💡 <b>Совет:</b> для разделов внутри одного экрана связка <b>TabLayout + ViewPager</b> — стандарт Android. Вкладки сверху, содержимое переключается и свайпом, и тапом.</div>
+
+<div class="hint">💡 <b>Совет:</b> для галереи изображений используй ViewPager с каждой страницей = ImageView. Обязательно добавь индикатор текущей позиции (например, «3 / 10»).</div>
+
+<div class="hint">💡 <b>Совет:</b> не делай 20 страниц в одном ViewPager. Если разделов больше 5 — подумай, нужен ли ViewPager вообще. Может, лучше BottomNavigationView или боковое меню.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетащить ViewPager и забыть про адаптер в логике. Компонент пустой, свайп ничего не листает.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> вкладывать ViewPager в Scroll(H). Свайп работает нестабильно: либо прокручивается родитель, либо переключается страница — непредсказуемо.</div>
+
+<h2>Резюме</h2>
 
 <ul>
-<li><b>Adapter</b> — задаётся в логике, не в свойствах.</li>
-<li><b>CurrentItem</b> — текущая страница (индекс).</li>
-<li><b>OffscreenPageLimit</b> — сколько страниц держать в памяти рядом с текущей.</li>
-<li><b>Background</b> — фон контейнера.</li>
-<li><b>Width / Height</b> — match_parent обычно.</li>
+  <li><b>ViewPager</b> — контейнер для горизонтальной прокрутки страниц со свайпом.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Работает только через <b>адаптер</b>, задаваемый в логике.</li>
+  <li>Каждая страница — отдельный Layout или Fragment.</li>
+  <li>Идеален для онбординга, галерей, разделов с TabLayout.</li>
+  <li>OffscreenPageLimit = 1–2 — для экономии памяти.</li>
+  <li>Не вкладывай ViewPager в Scroll(H) — конфликт жестов.</li>
+  <li>Не используй для 20+ страниц — подумай о другой навигации.</li>
 </ul>
 
-<h2>Как добавить</h2>
+<h2>Частые ошибки новичков</h2>
 
 <ul>
-<li>Выбери контейнер, куда хочешь положить ViewPager. Обычно — корневой Linear(V).</li>
-<li>Тап по ViewPager в палитре — компонент добавится внутрь.</li>
-<li>Присвой id — для работы в логике.</li>
-<li>Создай Layout или Fragment для каждой страницы в Менеджере представлений.</li>
-<li>Открой вкладку «События» и добавь в onCreate:
-<ul>
-<li>блок setViewPagerAdapter — подключить адаптер;</li>
-<li>блок setViewPagerData — задать список страниц.</li>
-</ul>
-</li>
-<li>Опционально — добавь TabLayout сверху и свяжи его с ViewPager через специальный блок.</li>
+  <li><b>Тапают по ViewPager в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Перетащили ViewPager, но не задали адаптер.</b> Свайп ничего не листает.</li>
+  <li><b>Не создали макеты страниц.</b> Адаптеру нечего показывать.</li>
+  <li><b>Вкладывают ViewPager в Scroll(H).</b> Свайп работает нестабильно.</li>
+  <li><b>Ставят 10+ страниц.</b> Тяжело для памяти, неудобно пользователю.</li>
+  <li><b>Забывают про индикатор текущей страницы.</b> Пользователь не понимает, где он.</li>
+  <li><b>Не задают ID.</b> Логика не может обратиться к компоненту.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> ViewPager не работает без адаптера. Без указания страниц в логике он пустой.</p>
-
-<p>⚠️ <b>Важно:</b> для большого количества страниц задавай OffscreenPageLimit небольшим (1 или 2). Иначе приложение будет держать в памяти все страницы и потреблять много RAM.</p>
-
-<p>⚠️ <b>Важно:</b> ViewPager не вставляй внутрь Scroll(H) — конфликт жестов. Горизонтальная прокрутка родителя «съест» свайп страниц.</p>
-
-<p>💡 <b>Совет:</b> для онбординга используй ViewPager с 3 страницами и точками-индикаторами внизу (реализуются отдельно через Linear(H) с точками и логику).</p>
-
-<p>💡 <b>Совет:</b> для разделов внутри одного экрана связка TabLayout + ViewPager — стандарт Android. Вкладки сверху, содержимое переключается и свайпом, и тапом.</p>
-
-<p>💡 <b>Совет:</b> для галереи изображений используй ViewPager с каждой страницей = ImageView. Обязательно добавь индикатор текущей позиции (например, «3 / 10»).</p>
-
-<p>💡 <b>Совет:</b> не делай 20 страниц в одном ViewPager. Если разделов больше 5 — подумай, нужен ли ViewPager вообще. Может, лучше BottomNavigationView или боковое меню.</p>
-
-<p>❌ <b>Частая ошибка:</b> добавить ViewPager и забыть про адаптер в логике. Компонент пустой, свайп ничего не листает.</p>
-
-<p>❌ <b>Частая ошибка:</b> вкладывать ViewPager в Scroll(H). Свайп работает нестабильно: либо прокручивается родитель, либо переключается страница — непредсказуемо.</p>
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
