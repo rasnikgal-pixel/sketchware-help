@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,117 +7,204 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AsyncTask — фоновая задача</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>AsyncTask — фоновая задача</h1>
 
-<p>AsyncTask — компонент для выполнения фоновых задач. Позволяет делать длительные операции — вычисления, работу с файлами, сложные манипуляции — без «зависания» интерфейса. Пользователь продолжает работать с приложением, пока задача выполняется в фоне.</p>
+<p><b>AsyncTask</b> — компонент для выполнения фоновых задач. Позволяет делать длительные операции — вычисления, работу с файлами, сложные манипуляции — без «зависания» интерфейса. Пользователь продолжает работать с приложением, пока задача выполняется в фоне.</p>
 
 <p>Иконка в диалоге добавления — логотип Firebase с круговой стрелкой (или похожий значок фоновой задачи).</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Запускает фоновую задачу — отдельно от главного потока.</li>
-<li>Интерфейс не блокируется — кнопки нажимаются, экран прокручивается.</li>
-<li>По завершении задачи срабатывает событие — можно показать результат.</li>
-<li>Может обновлять прогресс — например, ProgressBar в реальном времени.</li>
-<li>Есть три фазы: onPreExecute (подготовка), doInBackground (работа), onPostExecute (результат).</li>
+  <li>Запускает фоновую задачу — отдельно от главного потока.</li>
+  <li>Интерфейс не блокируется — кнопки нажимаются, экран прокручивается.</li>
+  <li>По завершении задачи срабатывает событие — можно показать результат.</li>
+  <li>Может обновлять прогресс — например, ProgressBar в реальном времени.</li>
+  <li>Есть три фазы: <b>onPreExecute</b> (подготовка), <b>doInBackground</b> (работа), <b>onPostExecute</b> (результат).</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Тяжёлые вычисления — например, обработка больших массивов.</li>
-<li>Работа с большими файлами — чтение, запись, парсинг.</li>
-<li>Сложные манипуляции с данными — сортировка тысяч элементов.</li>
-<li>Обработка изображений — сжатие, фильтрация, сохранение.</li>
-<li>Долгие операции с базой данных — массовые запросы.</li>
+  <li>Тяжёлые вычисления — например, обработка больших массивов.</li>
+  <li>Работа с большими файлами — чтение, запись, парсинг.</li>
+  <li>Сложные манипуляции с данными — сортировка тысяч элементов.</li>
+  <li>Обработка изображений — сжатие, фильтрация, сохранение.</li>
+  <li>Долгие операции с базой данных — массовые запросы.</li>
 </ul>
 
-<p>Не используй для сетевых запросов — для них есть RequestNetwork, он уже асинхронный.</p>
+<p><b>Не используй</b> для сетевых запросов — для них есть RequestNetwork, он уже асинхронный.</p>
 
-<h2>Основные настройки при добавлении</h2>
+<h2>Настройки при добавлении</h2>
 
-<ul>
-<li><b>Имя компонента</b> — идентификатор для вызова. Например, myTask.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>myTask</code>, <code>heavyTask</code>.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Основные блоки в логике</h2>
 
-<ul>
-<li><b>execute</b> — запустить задачу.</li>
-<li><b>publishProgress</b> — обновить прогресс (внутри задачи).</li>
-<li><b>cancel</b> — отменить задачу.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>execute</b></td>
+      <td style="border: 1px solid #000;">Запустить задачу.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>publishProgress</b></td>
+      <td style="border: 1px solid #000;">Обновить прогресс (внутри задачи).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>cancel</b></td>
+      <td style="border: 1px solid #000;">Отменить задачу.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>События AsyncTask</h2>
 
-<ul>
-<li><b>onPreExecute</b> — выполняется до начала задачи. Здесь готовят интерфейс: показывают ProgressBar, блокируют кнопки.</li>
-<li><b>doInBackground</b> — основная задача. Здесь выполняется тяжёлая работа.</li>
-<li><b>onProgressUpdate</b> — обновление прогресса. Здесь меняют ProgressBar.</li>
-<li><b>onPostExecute</b> — выполняется после задачи. Здесь показывают результат, скрывают ProgressBar.</li>
-<li><b>onCancelled</b> — вызывается при отмене задачи.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onPreExecute</b></td>
+      <td style="border: 1px solid #000;">Выполняется до начала задачи. Здесь готовят интерфейс: показывают ProgressBar, блокируют кнопки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>doInBackground</b></td>
+      <td style="border: 1px solid #000;">Основная задача. Здесь выполняется тяжёлая работа.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onProgressUpdate</b></td>
+      <td style="border: 1px solid #000;">Обновление прогресса. Здесь меняют ProgressBar.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onPostExecute</b></td>
+      <td style="border: 1px solid #000;">Выполняется после задачи. Здесь показывают результат, скрывают ProgressBar.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onCancelled</b></td>
+      <td style="border: 1px solid #000;">Вызывается при отмене задачи.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Как использовать</h2>
 
-<ul>
-<li>Подключи компонент AsyncTask на вкладке «Компонент».</li>
-<li>Задай имя — например, heavyTask.</li>
-<li>В категории «Компонент» добавь события:
-<ul>
-<li>onPreExecute — показ ProgressBar;</li>
-<li>doInBackground — сама тяжёлая операция;</li>
-<li>onPostExecute — обработка результата;</li>
-<li>onProgressUpdate — если нужно обновлять прогресс.</li>
-</ul>
-</li>
-<li>В логике вызови execute — например, по кнопке.</li>
-<li>Внутри doInBackground выполни работу.</li>
-<li>В onPostExecute — используй результат.</li>
-</ul>
+<ol>
+  <li>Подключи компонент AsyncTask на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>heavyTask</code>.</li>
+  <li>В категории «Компонент» добавь события:
+    <ul>
+      <li><code>onPreExecute</code> — показ ProgressBar;</li>
+      <li><code>doInBackground</code> — сама тяжёлая операция;</li>
+      <li><code>onPostExecute</code> — обработка результата;</li>
+      <li><code>onProgressUpdate</code> — если нужно обновлять прогресс.</li>
+    </ul>
+  </li>
+  <li>В логике вызови <code>execute</code> — например, по кнопке.</li>
+  <li>Внутри <code>doInBackground</code> выполни работу.</li>
+  <li>В <code>onPostExecute</code> — используй результат.</li>
+</ol>
 
 <h2>Пример: обработка большого файла</h2>
 
 <ul>
-<li>Кнопка «Обработать» → heavyTask.execute().</li>
-<li>onPreExecute — показать ProgressBar, заблокировать кнопку.</li>
-<li>doInBackground — прочитать файл, обработать данные.</li>
-<li>onProgressUpdate — обновить ProgressBar в процессе.</li>
-<li>onPostExecute — показать результат, скрыть ProgressBar, разблокировать кнопку.</li>
+  <li>Кнопка «Обработать» → <code>heavyTask.execute()</code>.</li>
+  <li><code>onPreExecute</code> — показать ProgressBar, заблокировать кнопку.</li>
+  <li><code>doInBackground</code> — прочитать файл, обработать данные.</li>
+  <li><code>onProgressUpdate</code> — обновить ProgressBar в процессе.</li>
+  <li><code>onPostExecute</code> — показать результат, скрыть ProgressBar, разблокировать кнопку.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> не обновляй интерфейс в doInBackground. Этот метод работает в фоновом потоке — обращение к виджетам приведёт к ошибке. Обновляй UI только в onPreExecute, onProgressUpdate и onPostExecute.</p>
+<div class="warn">⚠️ <b>Важно:</b> не обновляй интерфейс в <code>doInBackground</code>. Этот метод работает в фоновом потоке — обращение к виджетам приведёт к ошибке. Обновляй UI только в <code>onPreExecute</code>, <code>onProgressUpdate</code> и <code>onPostExecute</code>.</div>
 
-<p>⚠️ <b>Важно:</b> не используй AsyncTask для сетевых запросов. Для этого есть RequestNetwork — он уже работает в фоне и правильно обрабатывает ответы.</p>
+<div class="warn">⚠️ <b>Важно:</b> не используй AsyncTask для сетевых запросов. Для этого есть RequestNetwork — он уже работает в фоне и правильно обрабатывает ответы.</div>
 
-<p>⚠️ <b>Важно:</b> не запускай AsyncTask из AsyncTask. Вложенные задачи создают путаницу и непредсказуемое поведение.</p>
+<div class="warn">⚠️ <b>Важно:</b> не запускай AsyncTask из AsyncTask. Вложенные задачи создают путаницу и непредсказуемое поведение.</div>
 
-<p>⚠️ <b>Важно:</b> не забывай про отмену. Если пользователь ушёл с экрана — отмени задачу через cancel. Иначе она продолжит работать впустую.</p>
+<div class="warn">⚠️ <b>Важно:</b> не забывай про отмену. Если пользователь ушёл с экрана — отмени задачу через <code>cancel</code>. Иначе она продолжит работать впустую.</div>
 
-<p>⚠️ <b>Важно:</b> AsyncTask устарел в современном Android. Google рекомендует использовать Executor или Coroutine. Но в Sketchware Pro 7 AsyncTask — единственный доступный инструмент для фоновых задач.</p>
+<div class="warn">⚠️ <b>Важно:</b> AsyncTask устарел в современном Android. Google рекомендует использовать Executor или Coroutine. Но в Sketchware Pro 7 AsyncTask — единственный доступный инструмент для фоновых задач.</div>
 
-<p>💡 <b>Совет:</b> для простых операций AsyncTask не нужен. Большинство действий Sketchware выполняет достаточно быстро и без него.</p>
+<div class="hint">💡 <b>Совет:</b> для простых операций AsyncTask не нужен. Большинство действий Sketchware выполняет достаточно быстро и без него.</div>
 
-<p>💡 <b>Совет:</b> для сетевых запросов используй RequestNetwork — он асинхронный и правильно обрабатывает ответы. Не нужно оборачивать его в AsyncTask.</p>
+<div class="hint">💡 <b>Совет:</b> для сетевых запросов используй RequestNetwork — он асинхронный и правильно обрабатывает ответы. Не нужно оборачивать его в AsyncTask.</div>
 
-<p>💡 <b>Совет:</b> для прогресса используй publishProgress внутри doInBackground. Промежуточное значение — в onProgressUpdate. Пользователь увидит, как задача движется.</p>
+<div class="hint">💡 <b>Совет:</b> для прогресса используй <code>publishProgress</code> внутри <code>doInBackground</code>. Промежуточное значение — в <code>onProgressUpdate</code>. Пользователь увидит, как задача движется.</div>
 
-<p>💡 <b>Совет:</b> для отмены задачи — предусмотри кнопку «Отмена». Если задача долгая, пользователь должен иметь возможность её прервать.</p>
+<div class="hint">💡 <b>Совет:</b> для отмены задачи — предусмотри кнопку «Отмена». Если задача долгая, пользователь должен иметь возможность её прервать.</div>
 
-<p>💡 <b>Совет:</b> для проверки результата используй onPostExecute — там ты имеешь доступ к UI и можешь показать данные.</p>
+<div class="hint">💡 <b>Совет:</b> для проверки результата используй <code>onPostExecute</code> — там ты имеешь доступ к UI и можешь показать данные.</div>
 
-<p>❌ <b>Частая ошибка:</b> обновлять UI в doInBackground. Приложение падает с ошибкой «только главный поток может обращаться к UI».</p>
+<div class="warn">❌ <b>Частая ошибка:</b> обновлять UI в <code>doInBackground</code>. Приложение падает с ошибкой «только главный поток может обращаться к UI».</div>
 
-<p>❌ <b>Частая ошибка:</b> использовать AsyncTask для сетевых запросов. Это лишний код — RequestNetwork делает то же самое проще.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> использовать AsyncTask для сетевых запросов. Это лишний код — RequestNetwork делает то же самое проще.</div>
 
-<p>❌ <b>Частая ошибка:</b> не отменять задачи при уходе с экрана. Задача продолжает работать, расходуя ресурсы.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не отменять задачи при уходе с экрана. Задача продолжает работать, расходуя ресурсы.</div>
 
-<p>❌ <b>Частая ошибка:</b> запускать AsyncTask из AsyncTask. Приводит к путанице и ошибкам.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> запускать AsyncTask из AsyncTask. Приводит к путанице и ошибкам.</div>
 
-<p>❌ <b>Частая ошибка:</b> не показывать прогресс. Пользователь не понимает, работает ли задача.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не показывать прогресс. Пользователь не понимает, работает ли задача.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>AsyncTask</b> — компонент для выполнения фоновых задач.</li>
+  <li>Не блокирует интерфейс — пользователь продолжает работать.</li>
+  <li>Основные блоки: <b>execute</b>, <b>publishProgress</b>, <b>cancel</b>.</li>
+  <li>Основные события: <b>onPreExecute</b>, <b>doInBackground</b>, <b>onProgressUpdate</b>, <b>onPostExecute</b>, <b>onCancelled</b>.</li>
+  <li>Не обновляй UI в doInBackground — только в главном потоке.</li>
+  <li>Не используй для сетевых запросов — для них RequestNetwork.</li>
+  <li>Отменяй задачу при уходе с экрана.</li>
+  <li>Для простых операций AsyncTask не нужен.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Обновляют UI в doInBackground.</b> Приложение падает.</li>
+  <li><b>Используют AsyncTask для сетевых запросов.</b> Нужен RequestNetwork.</li>
+  <li><b>Не отменяют задачу при уходе с экрана.</b> Ресурсы расходуются зря.</li>
+  <li><b>Запускают AsyncTask из AsyncTask.</b> Путаница и ошибки.</li>
+  <li><b>Не показывают прогресс.</b> Пользователь не видит, что происходит.</li>
+  <li><b>Используют для простых операций.</b> Избыточно и без пользы.</li>
+  <li><b>Забывают onPostExecute.</b> Результат задачи не обрабатывается.</li>
+</ul>
+
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
