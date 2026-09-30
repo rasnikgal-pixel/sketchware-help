@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 
@@ -8,128 +7,242 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>MediaPlayer — проигрывание аудио</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 <body>
 <h1>MediaPlayer — проигрывание аудио</h1>
 
-<p>MediaPlayer — компонент для воспроизведения аудио и видео. Работает с музыкой, звуками, аудиофайлами и видео. Управляет воспроизведением: play, pause, stop, seek, loop.</p>
+<p><b>MediaPlayer</b> — компонент для воспроизведения аудио и видео. Работает с музыкой, звуками, аудиофайлами и видео. Управляет воспроизведением: play, pause, stop, seek, loop.</p>
 
 <p>Иконка в диалоге добавления — плёнка или плеер.</p>
 
 <h2>Как работает</h2>
 
 <ul>
-<li>Воспроизводит аудио и видео из разных источников: файл в памяти, ресурс приложения, сеть.</li>
-<li>Может играть один раз или в цикле (loop).</li>
-<li>Позволяет ставить на паузу, продолжать, останавливать воспроизведение.</li>
-<li>Позволяет перемотать на нужную позицию (в миллисекундах).</li>
-<li>Может менять громкость.</li>
-<li>При завершении воспроизведения срабатывает событие onCompletion.</li>
+  <li>Воспроизводит аудио и видео из разных источников: файл в памяти, ресурс приложения, сеть.</li>
+  <li>Может играть один раз или в цикле (loop).</li>
+  <li>Позволяет ставить на паузу, продолжать, останавливать воспроизведение.</li>
+  <li>Позволяет перемотать на нужную позицию (в миллисекундах).</li>
+  <li>Может менять громкость.</li>
+  <li>При завершении воспроизведения срабатывает событие <code>onCompletion</code>.</li>
 </ul>
 
 <h2>Когда использовать</h2>
 
 <ul>
-<li>Музыкальный плеер — воспроизведение треков.</li>
-<li>Звуковое сопровождение игры — фоновая музыка.</li>
-<li>Уведомления — звук при событии.</li>
-<li>Обучающие приложения — озвученные уроки.</li>
-<li>Медитационные приложения — фоновые звуки.</li>
-<li>Аудиокниги — с управлением позицией.</li>
-<li>Видеоплеер — воспроизведение видеофайлов.</li>
+  <li>Музыкальный плеер — воспроизведение треков.</li>
+  <li>Звуковое сопровождение игры — фоновая музыка.</li>
+  <li>Уведомления — звук при событии.</li>
+  <li>Обучающие приложения — озвученные уроки.</li>
+  <li>Медитационные приложения — фоновые звуки.</li>
+  <li>Аудиокниги — с управлением позицией.</li>
+  <li>Видеоплеер — воспроизведение видеофайлов.</li>
 </ul>
 
-<h2>Основные настройки при добавлении</h2>
+<h2>Настройки при добавлении</h2>
 
-<ul>
-<li><b>Имя компонента</b> — идентификатор для вызова. Например, musicPlayer.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>player</code>, <code>musicPlayer</code>.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Основные блоки в логике</h2>
 
-<ul>
-<li><b>setSource / setDataSource</b> — задать источник (путь или URL).</li>
-<li><b>prepare</b> — подготовить воспроизведение.</li>
-<li><b>start</b> — начать воспроизведение.</li>
-<li><b>pause</b> — пауза.</li>
-<li><b>stop</b> — остановить и сбросить.</li>
-<li><b>reset</b> — вернуть в исходное состояние.</li>
-<li><b>release</b> — освободить ресурсы (когда плеер больше не нужен).</li>
-<li><b>seekTo</b> — перемотать к позиции (мс).</li>
-<li><b>setLooping</b> — включить/выключить повтор.</li>
-<li><b>setVolume</b> — задать громкость.</li>
-<li><b>getDuration</b> — получить длительность трека.</li>
-<li><b>getCurrentPosition</b> — получить текущую позицию.</li>
-<li><b>isPlaying</b> — проверить, играет ли сейчас.</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setSource / setDataSource</b></td>
+      <td style="border: 1px solid #000;">Задать источник (путь или URL).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>prepare</b></td>
+      <td style="border: 1px solid #000;">Подготовить воспроизведение.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>start</b></td>
+      <td style="border: 1px solid #000;">Начать воспроизведение.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>pause</b></td>
+      <td style="border: 1px solid #000;">Пауза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>stop</b></td>
+      <td style="border: 1px solid #000;">Остановить и сбросить.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>reset</b></td>
+      <td style="border: 1px solid #000;">Вернуть в исходное состояние.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>release</b></td>
+      <td style="border: 1px solid #000;">Освободить ресурсы (когда плеер больше не нужен).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>seekTo</b></td>
+      <td style="border: 1px solid #000;">Перемотать к позиции (мс).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setLooping</b></td>
+      <td style="border: 1px solid #000;">Включить / выключить повтор.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setVolume</b></td>
+      <td style="border: 1px solid #000;">Задать громкость.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getDuration</b></td>
+      <td style="border: 1px solid #000;">Получить длительность трека.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getCurrentPosition</b></td>
+      <td style="border: 1px solid #000;">Получить текущую позицию.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>isPlaying</b></td>
+      <td style="border: 1px solid #000;">Проверить, играет ли сейчас.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>События MediaPlayer</h2>
 
-<ul>
-<li><b>onPrepared</b> — плеер готов к воспроизведению.</li>
-<li><b>onCompletion</b> — воспроизведение завершено.</li>
-<li><b>onError</b> — ошибка воспроизведения.</li>
-<li><b>onBufferingUpdate</b> — обновление буфера (при потоке из сети).</li>
-</ul>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onPrepared</b></td>
+      <td style="border: 1px solid #000;">Плеер готов к воспроизведению.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onCompletion</b></td>
+      <td style="border: 1px solid #000;">Воспроизведение завершено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onError</b></td>
+      <td style="border: 1px solid #000;">Ошибка воспроизведения.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onBufferingUpdate</b></td>
+      <td style="border: 1px solid #000;">Обновление буфера (при потоке из сети).</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Как использовать</h2>
 
-<ul>
-<li>Подключи компонент MediaPlayer на вкладке «Компонент».</li>
-<li>Задай имя — например, player.</li>
-<li><b>Загрузка локального файла:</b>
-<ul>
-<li>скопируй файл в res/raw через Менеджер ресурсов;</li>
-<li>используй блок setSource с указанием raw и имени файла.</li>
-</ul>
-</li>
-<li><b>Загрузка из сети:</b>
-<ul>
-<li>используй setSource с URL;</li>
-<li>требуется разрешение INTERNET.</li>
-</ul>
-</li>
-<li>В категории «Компонент» добавь событие onPrepared — только там можно начинать воспроизведение.</li>
-<li>Вызови start для запуска.</li>
-</ul>
+<ol>
+  <li>Подключи компонент MediaPlayer на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>player</code>.</li>
+  <li><b>Загрузка локального файла:</b>
+    <ul>
+      <li>скопируй файл в <code>res/raw</code> через Менеджер ресурсов;</li>
+      <li>используй блок <code>setSource</code> с указанием raw и имени файла.</li>
+    </ul>
+  </li>
+  <li><b>Загрузка из сети:</b>
+    <ul>
+      <li>используй <code>setSource</code> с URL;</li>
+      <li>требуется разрешение INTERNET.</li>
+    </ul>
+  </li>
+  <li>В категории «Компонент» добавь событие <code>onPrepared</code> — только там можно начинать воспроизведение.</li>
+  <li>Вызови <code>start</code> для запуска.</li>
+</ol>
 
 <h2>Пример: воспроизведение трека</h2>
 
 <ul>
-<li>В onCreate вызови setSource и prepare.</li>
-<li>В onPrepared вызови start.</li>
-<li>В onClick кнопки «Пауза» — pause.</li>
-<li>В onClick кнопки «Стоп» — stop.</li>
-<li>В onCompletion — покажи сообщение или перезапусти трек.</li>
+  <li>В <code>onCreate</code> вызови <code>setSource</code> и <code>prepare</code>.</li>
+  <li>В <code>onPrepared</code> вызови <code>start</code>.</li>
+  <li>В <code>onClick</code> кнопки «Пауза» — <code>pause</code>.</li>
+  <li>В <code>onClick</code> кнопки «Стоп» — <code>stop</code>.</li>
+  <li>В <code>onCompletion</code> — покажи сообщение или перезапусти трек.</li>
 </ul>
 
-<p>⚠️ <b>Важно:</b> start нельзя вызвать до onPrepared. Иначе воспроизведение не начнётся или приложение упадёт. Всегда дожидайся готовности.</p>
+<div class="warn">⚠️ <b>Важно:</b> <code>start</code> нельзя вызвать до <code>onPrepared</code>. Иначе воспроизведение не начнётся или приложение упадёт. Всегда дожидайся готовности.</div>
 
-<p>⚠️ <b>Важно:</b> не забывай про release при уходе с экрана. Без освобождения ресурсов воспроизведение может продолжаться в фоне и расходовать батарею.</p>
+<div class="warn">⚠️ <b>Важно:</b> не забывай про <code>release</code> при уходе с экрана. Без освобождения ресурсов воспроизведение может продолжаться в фоне и расходовать батарею.</div>
 
-<p>⚠️ <b>Важно:</b> для воспроизведения из интернета нужно разрешение INTERNET в Менеджере разрешений.</p>
+<div class="warn">⚠️ <b>Важно:</b> для воспроизведения из интернета нужно разрешение <b>INTERNET</b> в Менеджере разрешений.</div>
 
-<p>⚠️ <b>Важно:</b> одновременное воспроизведение через несколько MediaPlayer может вызвать конфликты. Обычно для коротких звуков используется SoundPool, а MediaPlayer — для длинных треков.</p>
+<div class="warn">⚠️ <b>Важно:</b> одновременное воспроизведение через несколько MediaPlayer может вызвать конфликты. Обычно для коротких звуков используется SoundPool, а MediaPlayer — для длинных треков.</div>
 
-<p>💡 <b>Совет:</b> для фоновой музыки устанавливай setLooping = true. Так трек будет играть по кругу без остановки.</p>
+<div class="hint">💡 <b>Совет:</b> для фоновой музыки устанавливай <code>setLooping = true</code>. Так трек будет играть по кругу без остановки.</div>
 
-<p>💡 <b>Совет:</b> для коротких звуков (клик, всплеск) используй SoundPool — он быстрее и легче для коротких эффектов.</p>
+<div class="hint">💡 <b>Совет:</b> для коротких звуков (клик, всплеск) используй <b>SoundPool</b> — он быстрее и легче для коротких эффектов.</div>
 
-<p>💡 <b>Совет:</b> останавливай воспроизведение в onPause или onStop. Иначе музыка продолжит играть, когда пользователь ушёл с экрана.</p>
+<div class="hint">💡 <b>Совет:</b> останавливай воспроизведение в <code>onPause</code> или <code>onStop</code>. Иначе музыка продолжит играть, когда пользователь ушёл с экрана.</div>
 
-<p>💡 <b>Совет:</b> для прогресса воспроизведения используй Timer + блок getCurrentPosition. Обновляй SeekBar каждую секунду.</p>
+<div class="hint">💡 <b>Совет:</b> для прогресса воспроизведения используй Timer + блок <code>getCurrentPosition</code>. Обновляй SeekBar каждую секунду.</div>
 
-<p>💡 <b>Совет:</b> для выбора трека используй FilePicker или ListView с треками. Не зашивай путь в код — дай пользователю выбрать.</p>
+<div class="hint">💡 <b>Совет:</b> для выбора трека используй FilePicker или ListView с треками. Не зашивай путь в код — дай пользователю выбрать.</div>
 
-<p>❌ <b>Частая ошибка:</b> вызывать start до onPrepared. Воспроизведение не начнётся, возможна ошибка.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> вызывать <code>start</code> до <code>onPrepared</code>. Воспроизведение не начнётся, возможна ошибка.</div>
 
-<p>❌ <b>Частая ошибка:</b> не освобождать ресурсы при выходе с экрана. Плеер продолжает работать в фоне.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не освобождать ресурсы при выходе с экрана. Плеер продолжает работать в фоне.</div>
 
-<p>❌ <b>Частая ошибка:</b> использовать MediaPlayer для коротких звуков. Для этого лучше SoundPool.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> использовать MediaPlayer для коротких звуков. Для этого лучше SoundPool.</div>
 
-<p>❌ <b>Частая ошибка:</b> забыть про разрешение INTERNET для потокового аудио. Плеер не запустится.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про разрешение INTERNET для потокового аудио. Плеер не запустится.</div>
 
-<p>❌ <b>Частая ошибка:</b> не обрабатывать onError. При ошибке плеер молчит, а пользователь не понимает, что произошло.</p>
+<div class="warn">❌ <b>Частая ошибка:</b> не обрабатывать <code>onError</code>. При ошибке плеер молчит, а пользователь не понимает, что произошло.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>MediaPlayer</b> — компонент для воспроизведения аудио и видео.</li>
+  <li>Работает с локальными файлами, ресурсами приложения и потоками из сети.</li>
+  <li>Основные блоки: <b>setSource</b>, <b>prepare</b>, <b>start</b>, <b>pause</b>, <b>stop</b>, <b>reset</b>, <b>release</b>, <b>seekTo</b>, <b>setLooping</b>, <b>setVolume</b>.</li>
+  <li>Основные события: <b>onPrepared</b>, <b>onCompletion</b>, <b>onError</b>, <b>onBufferingUpdate</b>.</li>
+  <li><code>start</code> вызывай только после <code>onPrepared</code>.</li>
+  <li>Для коротких звуков используй SoundPool, для длинных — MediaPlayer.</li>
+  <li>Не забывай про <code>release</code> при уходе с экрана.</li>
+  <li>Для потокового аудио нужно разрешение INTERNET.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Вызывают start до onPrepared.</b> Воспроизведение не начинается.</li>
+  <li><b>Не освобождают ресурсы при выходе.</b> Плеер работает в фоне.</li>
+  <li><b>Используют MediaPlayer для коротких звуков.</b> Нужен SoundPool.</li>
+  <li><b>Забывают разрешение INTERNET.</b> Потоковое аудио не запускается.</li>
+  <li><b>Не обрабатывают onError.</b> Ошибки не видны.</li>
+  <li><b>Не останавливают в onPause.</b> Музыка играет в фоне.</li>
+  <li><b>Зашивают путь в код.</b> Лучше дать выбор пользователю.</li>
+</ul>
+
 <!-- manulist:footer -->
 <hr>
 <p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
