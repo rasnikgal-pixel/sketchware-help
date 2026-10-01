@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Что такое компонент</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Что такое компонент</h1>
+
+<p><b>Компонент</b> — это невидимый сервис в приложении, который обеспечивает функционал: работу с сетью, базой данных, камерой, звуком, уведомлениями, рекламой, Firebase. Компоненты не отображаются на экране и не имеют визуального представления — но именно они дают приложению реальные возможности.</p>
+
+<p>Простой пример: у тебя есть TextView и Button. Пользователь вводит текст, нажимает кнопку — и текст должен сохраниться, чтобы при следующем запуске он был на месте. Для этого нужен компонент <b>SharedPreferences</b>. Виджеты показывают, компонент запоминает.</p>
+
+<h2>Где живут компоненты</h2>
+
+<ul>
+  <li>На вкладке <b>«Компонент»</b> — здесь ты подключаешь нужные сервисы.</li>
+  <li>В <b>логике</b> — через блоки, которые появляются после подключения.</li>
+  <li>В <b>фоне</b> — в момент работы приложения, без участия пользователя.</li>
+</ul>
+
+<h2>Чем компонент отличается от виджета</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство</th>
+      <th style="border: 1px solid #000;">Виджет</th>
+      <th style="border: 1px solid #000;">Компонент</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;">Видимость</td>
+      <td style="border: 1px solid #000;">Виден на экране (TextView, Button, ImageView).</td>
+      <td style="border: 1px solid #000;">Невидим (RequestNetwork, Camera, SharedPreferences).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">Как добавляется</td>
+      <td style="border: 1px solid #000;">На вкладке «Дизайнер» через перетаскивание.</td>
+      <td style="border: 1px solid #000;">На вкладке «Компонент» через кнопку «+».</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">Работа</td>
+      <td style="border: 1px solid #000;">Пользователь взаимодействует напрямую.</td>
+      <td style="border: 1px solid #000;">Работает в фоне, управляется логикой.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Какие задачи решают компоненты</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Задача</th>
+      <th style="border: 1px solid #000;">Компонент</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;">Работа с интернетом</td>
+      <td style="border: 1px solid #000;">RequestNetwork отправляет запросы к серверу.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">Хранение данных</td>
+      <td style="border: 1px solid #000;">SharedPreferences — локально; Firebase DB — в облаке.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">Работа с устройством</td>
+      <td style="border: 1px solid #000;">Camera, Vibrator, LocationManager, TextToSpeech.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">Медиа</td>
+      <td style="border: 1px solid #000;">MediaPlayer, SoundPool для звуков и музыки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">Уведомления</td>
+      <td style="border: 1px solid #000;">Notification показывает системные уведомления.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">Диалоги</td>
+      <td style="border: 1px solid #000;">Dialog, ProgressDialog, DatePickerDialog, TimePickerDialog.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">Реклама</td>
+      <td style="border: 1px solid #000;">InterstitialAd, RewardedVideoAd для монетизации.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">Firebase</td>
+      <td style="border: 1px solid #000;">Авторизация, база данных, хранилище, push-уведомления.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как работает компонент</h2>
+
+<ul>
+  <li>Подключается на вкладке «Компонент» через кнопку «+».</li>
+  <li>Получает имя — идентификатор, по которому вызывается в логике.</li>
+  <li>В логике появляются специальные блоки для работы с этим компонентом.</li>
+  <li>В событиях ты вызываешь блоки — компонент выполняет действие.</li>
+  <li>Некоторые компоненты также имеют свои события (например, <code>onResponse</code> у RequestNetwork).</li>
+</ul>
+
+<h2>Простой пример</h2>
+
+<p>Задача: сохранить текст из EditText при нажатии кнопки — и восстановить его при следующем запуске.</p>
+
+<ul>
+  <li><b>Компонент:</b> SharedPreferences — хранилище данных.</li>
+  <li><b>Виджеты:</b> EditText, Button.</li>
+  <li><b>Логика:</b>
+    <ul>
+      <li>в <code>onCreate</code> — читаем сохранённое значение и ставим его в EditText;</li>
+      <li>в <code>onClick</code> кнопки — читаем текст из EditText и сохраняем в SharedPreferences.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Так простой компонент превращает приложение в инструмент, который помнит данные между запусками.</p>
+
+<div class="warn">⚠️ <b>Важно:</b> компонент не работает сам по себе. Без вызова в логике он просто «висит» в проекте и ничего не делает.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> каждому компоненту даётся уникальное имя (идентификатор). Если в проекте два RequestNetwork, они должны иметь разные имена.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> при удалении компонента все блоки, связанные с ним, тоже удаляются из логики. Это может сломать события, где использовался этот компонент.</div>
+
+<div class="hint">💡 <b>Совет:</b> подключай компоненты по мере необходимости. Не добавляй все сразу «на всякий случай» — это создаёт мусор в проекте и увеличивает APK.</div>
+
+<div class="hint">💡 <b>Совет:</b> давай компонентам понятные имена: <code>prefs</code> (для SharedPreferences), <code>weatherRequest</code> (для сетевого запроса), <code>myTimer</code> (для таймера). Тогда в логике легче ориентироваться.</div>
+
+<div class="hint">💡 <b>Совет:</b> изучай компоненты по одному. Начни с SharedPreferences и RequestNetwork — они используются в 90% проектов.</div>
+
+<div class="hint">💡 <b>Совет:</b> перед добавлением компонента посмотри его описание в диалоге. Там указано, что компонент делает и какие даёт возможности.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> добавлять компонент и не использовать его в логике. Лишний компонент — лишний вес APK без пользы.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> удалять компонент, не проверив, где он используется. Связанные блоки в логике тоже удалятся, и приложение может «сломаться».</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> путать виджет и компонент. TextView — виджет, SharedPreferences — компонент. Они добавляются в разных вкладках.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> думать, что компонент работает автоматически. Компонент — это инструмент, которым управляет логика.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Компонент</b> — невидимый сервис приложения, обеспечивающий функционал.</li>
+  <li>Компоненты не отображаются на экране — но дают приложению реальные возможности.</li>
+  <li>Подключаются на вкладке «Компонент» через кнопку «+».</li>
+  <li>Получают уникальное имя, по которому вызываются в логике.</li>
+  <li>После подключения в палитре логики появляются новые блоки.</li>
+  <li>Компонент не работает сам — вызывай его через блоки в событиях.</li>
+  <li>Основные задачи компонентов: сеть, хранение данных, камера, звук, уведомления, реклама, Firebase.</li>
+  <li>Ключевое отличие от виджета: виджет виден, компонент работает в фоне.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Добавляют компонент и не используют.</b> Мусор в проекте.</li>
+  <li><b>Удаляют компонент, не проверив логику.</b> Ломают связанные события.</li>
+  <li><b>Путают виджет и компонент.</b> Добавляют в разных вкладках.</li>
+  <li><b>Ждут, что компонент работает сам.</b> Нужно вызывать через блоки.</li>
+  <li><b>Дают компонентам нечёткие имена.</b> Потом сложно найти нужный.</li>
+  <li><b>Используют одинаковые имена для двух одинаковых компонентов.</b> Sketchware их путает.</li>
+  <li><b>Забывают, что при удалении компонента пропадают его блоки.</b> Логика ломается.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
