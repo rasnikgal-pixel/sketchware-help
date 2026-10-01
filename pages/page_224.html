@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Разметка экрана PreviewActivity</title>
+</head>
+<body>
+<meta charset="utf-8">
+<h1>Разметка экрана PreviewActivity</h1>
+
+<p><b>PreviewActivity</b> — это экран предпросмотра HTML. Открывается по кнопке «Предпросмотр» из редактора. На этом экране пользователь видит, как будет выглядеть его справка — то, что он написал в редакторе.</p>
+
+<p>Разметка этого экрана — самая простая во всём проекте. Здесь всего 5 виджетов: корневой контейнер, шапка с кнопкой «назад» и заголовком, и большое поле WebView, которое занимает всё оставшееся место.</p>
+
+<p>Сложность этого экрана — не в разметке, а в логике. Мы будем передавать HTML-код из редактора в WebView через компонент <b>Намерение / (Intent)</b>, а сам WebView должен корректно отобразить переданный текст.</p>
+
+<h2>Что такое WebView</h2>
+
+<p><b>WebView</b> — это виджет, который встраивает в приложение мини-браузер. Он умеет отображать:</p>
+
+<ul>
+  <li>HTML-страницы из интернета (по URL).</li>
+  <li>Локальные HTML-файлы из ресурсов приложения.</li>
+  <li>HTML-код, переданный прямо как строка (без сохранения в файл).</li>
+</ul>
+
+<p>Мы будем использовать третий вариант — передавать HTML из редактора прямо в WebView. Это самый быстрый способ: не нужно сохранять файл на диск, потом читать его обратно.</p>
+
+<div style="border: 2px solid #2a7; background: #eefaf2; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Подсказка для новичка.</b> WebView — это полноценный браузер. Он умеет выполнять JavaScript, загружать картинки, применять CSS. Но это же означает, что WebView «тяжёлый» — он увеличивает вес APK. Не добавляй его в проект, если он не нужен.
+</div>
+
+<h2>Как открыть этот экран в Дизайнере</h2>
+
+<ol>
+  <li>Открой Менеджер представлений (⋮ → Менеджер представлений).</li>
+  <li>На вкладке <b>View</b> найди карточку <code>preview.xml</code>.</li>
+  <li>Тапни по ней — откроется Дизайнер.</li>
+</ol>
+
+<h2>Дерево макета PreviewActivity</h2>
+
+<pre>
+rootLayout (Linear V, корень)
+├── previewBar (Linear H)
+│   ├── btnPreviewBack (MaterialButton «←»)
+│   └── titlePreview (TextView «Предпросмотр»)
+└── webPreview (WebView)
+</pre>
+
+<p><b>Структура простая:</b> сверху шапка с кнопкой «назад» и заголовком, под ней — WebView, который занимает всё оставшееся место.</p>
+
+<h2>Шаг 1. rootLayout</h2>
+
+<p><b>Что это:</b> корневой контейнер (уже есть).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>rootLayout</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: match_parent</li>
+  <li>Ориентация: vertical</li>
+  <li>Внутренний отступ: 0 со всех сторон</li>
+  <li>Внешний отступ: 0 со всех сторон</li>
+</ul>
+
+<h2>Шаг 2. previewBar</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (H).</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>previewBar</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Ориентация: horizontal</li>
+  <li>Гравитация макета: center_vertical</li>
+  <li>Внутренний отступ: 8 со всех сторон</li>
+  <li>Цвет фона: #3F51B5 (синий — тот же, что в шапке редактора)</li>
+</ul>
+
+<p><b>Почему цвет тот же, что в редакторе:</b> пользователь должен чувствовать, что он находится в той же части приложения. Единый цвет шапки создаёт преемственность.</p>
+
+<h2>Шаг 3. btnPreviewBack</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>previewBar</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnPreviewBack</b></li>
+  <li>Ширина: wrap_content</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>←</b></li>
+  <li>Размер текста: 18 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: прозрачный</li>
+  <li>Внутренний отступ: 8/4/8/4</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<p><b>Зачем кнопка «назад»:</b> пользователь попадёт на этот экран через Intent из редактора. Чтобы вернуться обратно, ему нужна кнопка. Системная кнопка «Назад» на телефоне тоже сработает, но визуальная кнопка в шапке — это стандарт.</p>
+
+<h2>Шаг 4. titlePreview</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>previewBar</b> (после btnPreviewBack).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>titlePreview</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>Предпросмотр</b></li>
+  <li>Размер текста: 18 sp</li>
+  <li>Стиль текста: bold</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Гравитация: center_vertical | start</li>
+  <li>Внутренний отступ: left 8</li>
+</ul>
+
+<h2>Шаг 5. webPreview</h2>
+
+<p><b>Что перетаскиваем:</b> WebView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после previewBar).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>webPreview</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: 0 dp</li>
+  <li>Вес: 1</li>
+  <li>Внутренний отступ: 0</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<p><b>Почему 0dp + вес 1:</b> WebView должен занять всё пространство под шапкой. Вес решает эту задачу наилучшим образом.</p>
+
+<h2>Сводная таблица свойств PreviewActivity</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; text-align: left;">Виджет (id)</th>
+      <th style="border: 1px solid #000; text-align: left;">Ширина</th>
+      <th style="border: 1px solid #000; text-align: left;">Высота</th>
+      <th style="border: 1px solid #000; text-align: left;">Текст</th>
+      <th style="border: 1px solid #000; text-align: left;">Размер текста</th>
+      <th style="border: 1px solid #000; text-align: left;">Цвет текста</th>
+      <th style="border: 1px solid #000; text-align: left;">Внутренний отступ</th>
+      <th style="border: 1px solid #000; text-align: left;">Внешний отступ</th>
+      <th style="border: 1px solid #000; text-align: left;">Гравитация</th>
+      <th style="border: 1px solid #000; text-align: left;">Особенности</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border: 1px solid #000;">rootLayout (Linear V)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Корень</td></tr>
+    <tr><td style="border: 1px solid #000;">previewBar (Linear H)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center_vertical</td><td style="border: 1px solid #000;">Фон #3F51B5</td></tr>
+    <tr><td style="border: 1px solid #000;">btnPreviewBack (MaterialButton)</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">←</td><td style="border: 1px solid #000;">18 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8/4/8/4</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Прозрачный</td></tr>
+    <tr><td style="border: 1px solid #000;">titlePreview (TextView)</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Предпросмотр</td><td style="border: 1px solid #000;">18 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">left 8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center_vertical | start</td><td style="border: 1px solid #000;">Вес 1, bold</td></tr>
+    <tr><td style="border: 1px solid #000;">webPreview (WebView)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Вес 1</td></tr>
+  </tbody>
+</table>
+
+<h2>Что важно понять про разметку PreviewActivity</h2>
+
+<p><b>Первое — минимум виджетов.</b> Пять штук: контейнер, шапка, кнопка, заголовок, WebView. Дальше можно ничего не добавлять.</p>
+
+<p><b>Второе — WebView занимает всё место.</b> Вес 1 и высота 0dp гарантируют, что поле предпросмотра растянется под шапкой до самого низа экрана.</p>
+
+<p><b>Третье — HTML приходит из редактора.</b> Разметка этого экрана не знает, что именно будет показано. Это решается в логике — через Intent.</p>
+
+<div style="border: 2px solid #a72; background: #fdf4e3; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Внимание.</b> WebView требует разрешения <b>INTERNET</b> в Менеджере разрешений, если HTML содержит внешние ресурсы: картинки с серверов, шрифты, стили. Для локального HTML разрешение не обязательно, но лучше включить его сразу.
+</div>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
