@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Логика PreviewActivity</title>
+</head>
+<body>
+<meta charset="utf-8">
+<h1>Логика PreviewActivity</h1>
+
+<p><b>PreviewActivity</b> — экран предпросмотра HTML. Открывается по кнопке «Предпросмотр» из редактора. Показывает, как выглядит HTML-код, который написал пользователь.</p>
+
+<p>Это самый простой экран по логике во всём проекте. Всего три события, и они короткие. Сложность — не в самих событиях, а в понимании того, как HTML передаётся из редактора в WebView через Intent.</p>
+
+<h2>Как открыть логику этого экрана</h2>
+
+<ol>
+  <li>Открой вкладку <b>«События»</b>.</li>
+  <li>Переключись на экран <code>preview.xml</code> через селектор внизу (или через Менеджер представлений).</li>
+  <li>Ты увидишь список событий только этого экрана.</li>
+</ol>
+
+<h2>События PreviewActivity</h2>
+
+<p>У этого экрана всего <b>три события</b>:</p>
+
+<ol>
+  <li><b>При создании / (onCreate)</b> — загрузка HTML в WebView при открытии экрана.</li>
+  <li><b>Нажатие btnPreviewBack / (onClick)</b> — возврат в редактор по кнопке «←».</li>
+  <li><b>При нажатии «Назад» / (onBackPressed)</b> — обработка системной кнопки «Назад».</li>
+</ol>
+
+<hr>
+
+<h2>Событие 1. При создании / (onCreate)</h2>
+
+<p><b>Когда срабатывает:</b> при открытии экрана PreviewActivity.</p>
+
+<p><b>Что делает:</b> получает HTML-код из Intent, настраивает WebView, загружает HTML для отображения.</p>
+
+<p><b>Порядок блоков:</b></p>
+
+<ol>
+  <li><b>Получить данные / (Get Extra)</b> из компонента <code>goToScreen</code>. Ключ: <code>html_content</code>. Значение по умолчанию: пустая строка <code>""</code>. Результат в переменную <code>html</code>.</li>
+  <li><b>Если / (If)</b> <code>html == ""</code>: установить <code>html</code> = <code>"&lt;h1&gt;Нет содержимого&lt;/h1&gt;"</code>.</li>
+  <li><b>Включить JavaScript / (Set JavaScript Enabled)</b> для виджета <code>webPreview</code>. Значение: <b>Да / (Yes)</b>.</li>
+  <li><b>Поддержка зума / (Set Support Zoom)</b> для виджета <code>webPreview</code>. Значение: <b>Да / (Yes)</b>.</li>
+  <li><b>Загрузить HTML / (Load HTML)</b> для виджета <code>webPreview</code>. Параметры:
+    <ul>
+      <li>Содержимое: <code>html</code>.</li>
+      <li>Тип: <code>text/html</code>.</li>
+      <li>Кодировка: <code>UTF-8</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><b>Псевдокод onCreate:</b></p>
+
+<pre>
+// ──── ШАГ 1. Получаем HTML из Intent ────
+// Редактор передал HTML при переходе через Put Extra.
+html = goToScreen.getExtra("html_content")
+
+// ──── ШАГ 2. Проверяем, что HTML не пустой ────
+if (html == "") {
+    html = "&lt;h1&gt;Нет содержимого&lt;/h1&gt;"
+}
+
+// ──── ШАГ 3. Настраиваем WebView ────
+// Включаем выполнение JavaScript на странице.
+webPreview.setJavaScriptEnabled(YES)
+
+// Разрешаем масштабирование жестом «щипок».
+webPreview.setSupportZoom(YES)
+
+// ──── ШАГ 4. Загружаем HTML ────
+// Передаём строку как HTML-контент с указанием кодировки.
+webPreview.loadHtml(html, "text/html", "UTF-8")
+</pre>
+
+<p><b>Что важно понять:</b></p>
+
+<ul>
+  <li>HTML передаётся из редактора через Intent. Если пользователь как-то попал сюда напрямую — сработает заглушка «Нет содержимого».</li>
+  <li>JavaScript включается, потому что многие HTML-страницы используют его для анимаций, интерактивных элементов и форматирования.</li>
+  <li>Зум нужен, чтобы пользователь мог увеличить мелкий текст.</li>
+  <li>Загрузка через <b>Load HTML</b> — самый быстрый способ: не нужно сохранять файл, потом читать его обратно.</li>
+  <li>Кодировка UTF-8 важна — без неё русские буквы в HTML могут отобразиться «кракозябрами».</li>
+</ul>
+
+<hr>
+
+<h2>Событие 2. Нажатие btnPreviewBack / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке «←» в шапке экрана предпросмотра.</p>
+
+<p><b>Что делает:</b> закрывает PreviewActivity и возвращает пользователя в EditorActivity.</p>
+
+<p><b>Порядок блоков:</b></p>
+
+<ol>
+  <li><b>Завершить / (Finish)</b> для компонента <code>goToScreen</code>.</li>
+</ol>
+
+<p><b>Псевдокод onClick btnPreviewBack:</b></p>
+
+<pre>
+// Закрываем текущий экран. Android вернёт пользователя в редактор.
+goToScreen.finish()
+</pre>
+
+<p><b>Что важно понять:</b></p>
+
+<ul>
+  <li>Блок <b>Завершить / (Finish)</b> закрывает текущий экран. Android автоматически возвращает пользователя на предыдущий экран в стеке — то есть в редактор.</li>
+  <li>Не нужно вызывать Intent вручную — система сама помнит, откуда пришёл пользователь.</li>
+  <li>Это работает, потому что редактор открыл предпросмотр через Start Activity, не удаляя себя из стека.</li>
+</ul>
+
+<hr>
+
+<h2>Событие 3. При нажатии «Назад» / (onBackPressed)</h2>
+
+<p><b>Когда срабатывает:</b> при нажатии системной кнопки «Назад» на телефоне.</p>
+
+<p><b>Что делает:</b> проверяет, есть ли в WebView история навигации. Если есть — возвращается на предыдущую страницу внутри WebView. Если нет — закрывает экран и возвращает в редактор.</p>
+
+<p><b>Порядок блоков:</b></p>
+
+<ol>
+  <li><b>Если / (If)</b> <b>Может вернуться назад / (Can Go Back)</b> для виджета <code>webPreview</code>: вызвать <b>Вернуться назад / (Go Back)</b> для виджета <code>webPreview</code>.</li>
+  <li><b>Иначе / (Else)</b>: вызвать <b>Завершить / (Finish)</b> для компонента <code>goToScreen</code>.</li>
+</ol>
+
+<p><b>Псевдокод onBackPressed:</b></p>
+
+<pre>
+// Если WebView может вернуться по своей истории — возвращаемся.
+if (webPreview.canGoBack()) {
+    webPreview.goBack()
+} else {
+    // Иначе закрываем экран и возвращаемся в редактор.
+    goToScreen.finish()
+}
+</pre>
+
+<p><b>Что важно понять:</b></p>
+
+<ul>
+  <li>Это событие нужно, если HTML содержит ссылки или переходы между страницами. Тогда кнопка «Назад» сначала возвращает по истории WebView, а не сразу закрывает экран.</li>
+  <li>Если HTML статичный (без ссылок) — событие всё равно полезно: кнопка «Назад» сразу закроет экран.</li>
+  <li>Без этого события системная кнопка «Назад» просто закроет экран — что тоже работает, но менее удобно, если пользователь открыл несколько страниц внутри WebView.</li>
+</ul>
+
+<hr>
+
+<h2>Сводная таблица событий PreviewActivity</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; text-align: left;">Событие</th>
+      <th style="border: 1px solid #000; text-align: left;">Когда срабатывает</th>
+      <th style="border: 1px solid #000; text-align: left;">Что делает</th>
+      <th style="border: 1px solid #000; text-align: left;">Компоненты и виджеты</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;">onCreate</td>
+      <td style="border: 1px solid #000;">При открытии экрана</td>
+      <td style="border: 1px solid #000;">Загрузка HTML в WebView</td>
+      <td style="border: 1px solid #000;">goToScreen, webPreview</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">btnPreviewBack onClick</td>
+      <td style="border: 1px solid #000;">Тап по «←»</td>
+      <td style="border: 1px solid #000;">Возврат в редактор</td>
+      <td style="border: 1px solid #000;">goToScreen</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;">onBackPressed</td>
+      <td style="border: 1px solid #000;">Системная кнопка «Назад»</td>
+      <td style="border: 1px solid #000;">Go back в WebView или завершение экрана</td>
+      <td style="border: 1px solid #000;">goToScreen, webPreview</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Что важно понять про логику PreviewActivity</h2>
+
+<p><b>Первое — это самый простой экран по логике.</b> Всего три события, и они короткие. Всё, что делает PreviewActivity, — показывает HTML и возвращает пользователя назад.</p>
+
+<p><b>Второе — HTML приходит из редактора.</b> PreviewActivity не хранит данные и не сохраняет их. Она только показывает то, что передано через Intent.</p>
+
+<p><b>Третье — событие onBackPressed критично для UX.</b> Без него системная кнопка «Назад» просто закроет экран. С ним — сначала вернёт по истории WebView, и только потом закроет. Это стандартное поведение браузеров и приложений с WebView.</p>
+
+<p><b>Четвёртое — не забывай про разрешение INTERNET.</b> Если HTML содержит картинки с внешних серверов или подключает внешние стили — WebView не загрузит их без разрешения INTERNET. В Менеджере разрешений убедись, что INTERNET включён.</p>
+
+<p><b>Пятое — кодировка.</b> UTF-8 в блоке Load HTML обязательна. Иначе русский текст в HTML превратится в набор непонятных символов.</p>
+
+<div style="border: 2px solid #a72; background: #fdf4e3; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Внимание.</b> WebView по умолчанию не позволяет переходы по внешним ссылкам внутри приложения. Если пользователь тапнет по ссылке в HTML, WebView может попытаться открыть её внутри себя или заблокировать. Если хочешь, чтобы ссылки открывались в браузере — нужна дополнительная логика через событие shouldOverrideUrlLoading. В HelpStudio этого нет — здесь просто показывается HTML.
+</div>
+
+<div style="border: 2px solid #27a; background: #eaf4fb; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Совет.</b> Проверь работу предпросмотра на разных HTML: простой текст, заголовки, ссылки, картинки. Убедись, что всё отображается правильно. Если что-то не так — открой Logcat и посмотри, что пишет WebView.
+</div>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
