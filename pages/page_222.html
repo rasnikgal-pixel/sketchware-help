@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Разметка экрана MainActivity</title>
+</head>
+<body>
+<meta charset="utf-8">
+<h1>Разметка экрана MainActivity</h1>
+
+<p><b>MainActivity</b> — главный экран приложения. Его пользователь видит первым при запуске. На этом экране будет:</p>
+
+<ul>
+  <li>Шапка с названием приложения и кнопкой переключения темы.</li>
+  <li>Подпись «Список проектов» над списком.</li>
+  <li>Список проектов (ListView), который заполняется данными из хранилища.</li>
+  <li>Кнопка «+ Создать» внизу — для добавления нового проекта.</li>
+</ul>
+
+<h2>Как открыть этот экран в Дизайнере</h2>
+
+<ol>
+  <li>Открой Менеджер представлений (⋮ → Менеджер представлений).</li>
+  <li>На вкладке <b>View</b> найди карточку <code>main.xml</code>.</li>
+  <li>Тапни по ней — откроется Дизайнер с разметкой этого экрана.</li>
+</ol>
+
+<p>Или внизу Дизайнера тапни по селектору макета и выбери <b>main.xml</b>.</p>
+
+<h2>Дерево макета MainActivity</h2>
+
+<p>Вот структура, которую мы будем собирать. Прочитай её внимательно — дальше каждый шаг будет ссылаться на эту схему.</p>
+
+<pre>
+rootLayout (Linear V, корень)
+├── topBar (Linear H)
+│   ├── titleMain (TextView «HelpStudio»)
+│   └── btnTheme (MaterialButton «Тема»)
+├── hintMain (TextView «Список проектов»)
+├── listProjects (ListView)
+└── actionsMain (Linear H)
+    └── btnCreate (MaterialButton «+ Создать»)
+</pre>
+
+<p><b>Что это значит:</b></p>
+
+<ul>
+  <li><b>rootLayout</b> — корневой контейнер. Он «держит» все остальные виджеты и располагает их сверху вниз.</li>
+  <li><b>topBar</b> — горизонтальная строка сверху. Внутри неё два элемента: название приложения и кнопка «Тема».</li>
+  <li><b>hintMain</b> — серая подпись под шапкой.</li>
+  <li><b>listProjects</b> — сам список проектов.</li>
+  <li><b>actionsMain</b> — горизонтальный контейнер внизу с кнопкой «+ Создать».</li>
+</ul>
+
+<div style="border: 2px solid #2a7; background: #eefaf2; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Подсказка для новичка.</b> Виджеты никогда не «добавляются» и не «вставляются» — они <b>перетаскиваются</b> (drag & drop) из палитры на макет. Если ты тапнешь по виджету в палитре — ничего не произойдёт. Нужно зажать его пальцем и, не отпуская, перетащить в нужное место макета.
+</div>
+
+<h2>Шаг 1. rootLayout</h2>
+
+<p><b>Что это:</b> корневой контейнер этого экрана (уже есть).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>rootLayout</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: match_parent</li>
+  <li>Ориентация: vertical</li>
+  <li>Внутренний отступ: 0</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<h2>Шаг 2. topBar</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (H) — горизонтальный контейнер.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>topBar</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Ориентация: horizontal</li>
+  <li>Гравитация макета: center_vertical</li>
+  <li>Внутренний отступ: 12 со всех сторон</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<p><b>Зачем именно так:</b> topBar — это строка, в которой название и кнопка стоят рядом. Ориентация horizontal выстраивает их слева направо. Гравитация center_vertical выравнивает по центру строки по вертикали. Внутренние отступы 12dp — чтобы текст и кнопка не прижимались к краям экрана.</p>
+
+<h2>Шаг 3. titleMain</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>topBar</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>titleMain</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>HelpStudio</b></li>
+  <li>Размер текста: 22 sp</li>
+  <li>Стиль текста: bold</li>
+  <li>Цвет текста: #1A1A1A</li>
+  <li>Гравитация: center_vertical | start</li>
+  <li>Однострочный: вкл</li>
+</ul>
+
+<p><b>Почему Ширина = 0dp, а Вес = 1:</b> это классический приём в LinearLayout. Когда у виджета ширина 0dp и вес 1, он «забирает» всё свободное место, которое осталось от соседей. Это позволяет названию занять всё доступное пространство, а кнопка «Тема» аккуратно прижмётся к правому краю. Если бы ширина была wrap_content — кнопка была бы сразу после текста, а не справа.</p>
+
+<p><b>Почему размер в sp, а не в dp:</b> sp — это масштабируемые пиксели, они учитывают системную настройку размера шрифта у пользователя. dp — нет. Если писать размер текста в dp, то пользователи с крупным системным шрифтом увидят мелкий текст. Всегда используй sp для текста.</p>
+
+<h2>Шаг 4. btnTheme</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>topBar</b> (после titleMain).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnTheme</b></li>
+  <li>Ширина: wrap_content</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Тема</b></li>
+  <li>Размер текста: 14 sp</li>
+  <li>Стиль текста: normal</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #3F51B5</li>
+  <li>Внутренний отступ: 12/8/12/8</li>
+  <li>Внешний отступ: left 8</li>
+  <li>Гравитация: center</li>
+  <li>Включено: вкл</li>
+</ul>
+
+<p><b>Зачем MaterialButton, а не обычный Button:</b> MaterialButton выглядит современнее — скруглённые углы, ripple-эффект при нажатии, поддержка стилей Material. Обычный Button в новом приложении смотрится устаревшим.</p>
+
+<h2>Шаг 5. hintMain</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после topBar).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>hintMain</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Список проектов</b></li>
+  <li>Размер текста: 14 sp</li>
+  <li>Стиль текста: normal</li>
+  <li>Цвет текста: #666666</li>
+  <li>Гравитация: center_vertical | start</li>
+  <li>Внутренний отступ: 16/4/16/4</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<p><b>Зачем эта подпись:</b> без неё непонятно, что за список внизу. Серый цвет и небольшой размер — это стандартная подпись-метка, которая не отвлекает внимание, но объясняет содержимое.</p>
+
+<h2>Шаг 6. listProjects</h2>
+
+<p><b>Что перетаскиваем:</b> ListView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после hintMain).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>listProjects</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: 0 dp</li>
+  <li>Вес: 1</li>
+  <li>Высота разделителя: 1 dp</li>
+  <li>Внутренний отступ: 0</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<p><b>Почему Высота = 0dp, а Вес = 1:</b> тот же приём, что и у titleMain, но по вертикали. ListView должен занять <b>всё оставшееся место</b> между подписью сверху и кнопкой снизу. Вес 1 говорит контейнеру: «отдай этому виджету всё свободное пространство».</p>
+
+<p><b>Высота разделителя 1dp:</b> между строками списка будет тонкая серая линия. Это визуально разделяет элементы и делает список аккуратнее.</p>
+
+<h2>Шаг 7. actionsMain</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (H).</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (последним элементом, снизу).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>actionsMain</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Ориентация: horizontal</li>
+  <li>Гравитация макета: center | end</li>
+  <li>Внутренний отступ: 12/8/12/12</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<p><b>Зачем отдельный контейнер:</b> сейчас в нём одна кнопка, но такой подход удобен для будущего расширения. Если захочешь добавить вторую кнопку — просто перетащишь её рядом.</p>
+
+<h2>Шаг 8. btnCreate</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>actionsMain</b>.</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnCreate</b></li>
+  <li>Ширина: wrap_content</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>+ Создать</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Стиль текста: bold</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #2E7D32</li>
+  <li>Внутренний отступ: 20/12/20/12</li>
+  <li>Внешний отступ: 0</li>
+  <li>Гравитация: center</li>
+  <li>Включено: вкл</li>
+</ul>
+
+<p><b>Почему кнопка зелёная и жирная:</b> это главное действие на экране — создание нового проекта. Зелёный цвет и жирный шрифт делают её заметной.</p>
+
+<h2>Сводная таблица свойств MainActivity</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; text-align: left;">Виджет (id)</th>
+      <th style="border: 1px solid #000; text-align: left;">Ширина</th>
+      <th style="border: 1px solid #000; text-align: left;">Высота</th>
+      <th style="border: 1px solid #000; text-align: left;">Текст</th>
+      <th style="border: 1px solid #000; text-align: left;">Размер текста</th>
+      <th style="border: 1px solid #000; text-align: left;">Цвет текста</th>
+      <th style="border: 1px solid #000; text-align: left;">Внутренний отступ</th>
+      <th style="border: 1px solid #000; text-align: left;">Внешний отступ</th>
+      <th style="border: 1px solid #000; text-align: left;">Гравитация</th>
+      <th style="border: 1px solid #000; text-align: left;">Особенности</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border: 1px solid #000;">rootLayout (Linear V)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Корень</td></tr>
+    <tr><td style="border: 1px solid #000;">topBar (Linear H)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">12</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center_vertical</td><td style="border: 1px solid #000;">horizontal</td></tr>
+    <tr><td style="border: 1px solid #000;">titleMain (TextView)</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">HelpStudio</td><td style="border: 1px solid #000;">22 sp</td><td style="border: 1px solid #000;">#1A1A1A</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center_vertical | start</td><td style="border: 1px solid #000;">Вес 1, bold</td></tr>
+    <tr><td style="border: 1px solid #000;">btnTheme (MaterialButton)</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Тема</td><td style="border: 1px solid #000;">14 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">12/8/12/8</td><td style="border: 1px solid #000;">left 8</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Фон #3F51B5</td></tr>
+    <tr><td style="border: 1px solid #000;">hintMain (TextView)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Список проектов</td><td style="border: 1px solid #000;">14 sp</td><td style="border: 1px solid #000;">#666666</td><td style="border: 1px solid #000;">16/4/16/4</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">start</td><td style="border: 1px solid #000;">Подпись</td></tr>
+    <tr><td style="border: 1px solid #000;">listProjects (ListView)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Вес 1, разделитель 1dp</td></tr>
+    <tr><td style="border: 1px solid #000;">actionsMain (Linear H)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">12/8/12/12</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center | end</td><td style="border: 1px solid #000;">Нижняя панель</td></tr>
+    <tr><td style="border: 1px solid #000;">btnCreate (MaterialButton)</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">+ Создать</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">20/12/20/12</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Фон #2E7D32, bold</td></tr>
+  </tbody>
+</table>
+
+<h2>Что важно понять из этой разметки</h2>
+
+<p><b>Первое — вес (Weight).</b> Это главный инструмент для распределения свободного места в LinearLayout. Если тебе нужно, чтобы один виджет занял всё оставшееся пространство — задай ему ширину/высоту 0dp и вес 1. Если нужно распределить пространство между двумя виджетами — задай обоим вес 1, и они поделят его пополам.</p>
+
+<p><b>Второе — match_parent vs wrap_content.</b> match_parent означает «займи всё доступное место у родителя». wrap_content — «подстройся под своё содержимое». Правило простое: контейнеры и списки обычно match_parent, кнопки и подписи — wrap_content.</p>
+
+<p><b>Третье — отступы Padding vs Margin.</b> Внутренний отступ (Padding) — это отступ <b>внутри</b> виджета, от его края до содержимого. Внешний отступ (Margin) — отступ <b>снаружи</b> виджета, от него до соседних элементов.</p>
+
+<div style="border: 2px solid #27a; background: #eaf4fb; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Совет.</b> После того как соберёшь разметку — нажми «Сохранить» в шапке проекта, потом «▶ Запустить». Приложение соберётся, установится, ты увидишь свой первый экран.
+</div>
+
+<div style="border: 2px solid #a27; background: #fdeef5; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Частая ошибка.</b> Перетащить виджет не в тот контейнер. Например, по ошибке положить titleMain не в topBar, а прямо в rootLayout. Внешне это может выглядеть нормально, но выравнивание будет неправильным. Если виджет «ведёт себя странно» — открой дерево разметки (иконка «Слои» под кнопкой «Создать виджет» в левой панели) и проверь, в каком контейнере он находится.
+</div>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
