@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Разметка SettingActivity</title>
+</head>
+<body>
+<meta charset="utf-8">
+<h1>Разметка экрана SettingsActivity</h1>
+
+<p><b>SettingsActivity</b> — экран настроек. Здесь пользователь переключает тему, выбирает размер шрифта редактора, включает автосохранение и настраивает акцентный цвет.</p>
+
+<p>Разметка этого экрана — вертикальная последовательность пар «подпись + элемент управления». Каждая настройка объяснена подписью сверху и управляется виджетом под ней.</p>
+
+<h2>Как открыть этот экран в Дизайнере</h2>
+
+<ol>
+  <li>Открой Менеджер представлений (⋮ → Менеджер представлений).</li>
+  <li>На вкладке <b>View</b> найди карточку <code>settings.xml</code>.</li>
+  <li>Тапни по ней — откроется Дизайнер.</li>
+</ol>
+
+<h2>Дерево макета SettingsActivity</h2>
+
+<pre>
+rootLayout (Linear V, корень)
+├── topBar (Linear H)
+│   ├── btnSettingsBack (MaterialButton «←»)
+│   └── titleSettings (TextView «Настройки»)
+├── themeLabel (TextView «Тема оформления»)
+├── themeSwitch (Switch «Тёмная тема»)
+├── fontLabel (TextView «Размер шрифта редактора»)
+├── fontSeek (SeekBar)
+├── autosaveLabel (TextView «Автосохранение»)
+├── autosaveSwitch (Switch «Включить автосохранение»)
+├── accentLabel (TextView «Акцентный цвет»)
+└── accentSpinner (Spinner)
+</pre>
+
+<h2>Шаг 1. rootLayout</h2>
+
+<p><b>Что это:</b> корневой контейнер этого экрана (уже есть).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>rootLayout</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: match_parent</li>
+  <li>Ориентация: vertical</li>
+  <li>Внутренний отступ: 16 со всех сторон</li>
+</ul>
+
+<h2>Шаг 2. topBar</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (H).</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>topBar</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Ориентация: horizontal</li>
+  <li>Гравитация макета: center_vertical</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 8</li>
+</ul>
+
+<h2>Шаг 3. btnSettingsBack</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>topBar</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnSettingsBack</b></li>
+  <li>Ширина: wrap_content</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>←</b></li>
+  <li>Размер текста: 18 sp</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<h2>Шаг 4. titleSettings</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>topBar</b> (после btnSettingsBack).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>titleSettings</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>Настройки</b></li>
+  <li>Размер текста: 20 sp</li>
+  <li>Стиль текста: bold</li>
+  <li>Гравитация: center_vertical | start</li>
+</ul>
+
+<h2>Шаг 5. themeLabel</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после topBar).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>themeLabel</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Тема оформления</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 8</li>
+</ul>
+
+<h2>Шаг 6. themeSwitch</h2>
+
+<p><b>Что перетаскиваем:</b> Switch.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после themeLabel).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>themeSwitch</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Тёмная тема</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Отмечен: выкл</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 8</li>
+</ul>
+
+<h2>Шаг 7. fontLabel</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после themeSwitch).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>fontLabel</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Размер шрифта редактора</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 8</li>
+</ul>
+
+<h2>Шаг 8. fontSeek</h2>
+
+<p><b>Что перетаскиваем:</b> SeekBar.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после fontLabel).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>fontSeek</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Максимум: 30</li>
+  <li>Прогресс: 14</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 8</li>
+</ul>
+
+<h2>Шаг 9. autosaveLabel</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после fontSeek).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>autosaveLabel</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Автосохранение</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 8</li>
+</ul>
+
+<h2>Шаг 10. autosaveSwitch</h2>
+
+<p><b>Что перетаскиваем:</b> Switch.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после autosaveLabel).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>autosaveSwitch</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Включить автосохранение</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Отмечен: вкл</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 8</li>
+</ul>
+
+<h2>Шаг 11. accentLabel</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после autosaveSwitch).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>accentLabel</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Акцентный цвет</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 8</li>
+</ul>
+
+<h2>Шаг 12. accentSpinner</h2>
+
+<p><b>Что перетаскиваем:</b> Spinner.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после accentLabel).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>accentSpinner</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 8</li>
+</ul>
+
+<h2>Сводная таблица свойств SettingsActivity</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; text-align: left;">Виджет (id)</th>
+      <th style="border: 1px solid #000; text-align: left;">Ширина</th>
+      <th style="border: 1px solid #000; text-align: left;">Высота</th>
+      <th style="border: 1px solid #000; text-align: left;">Текст</th>
+      <th style="border: 1px solid #000; text-align: left;">Размер текста</th>
+      <th style="border: 1px solid #000; text-align: left;">Особенности</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border: 1px solid #000;">rootLayout (Linear V)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Внутренний отступ 16</td></tr>
+    <tr><td style="border: 1px solid #000;">topBar (Linear H)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">horizontal</td></tr>
+    <tr><td style="border: 1px solid #000;">btnSettingsBack (MaterialButton)</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">←</td><td style="border: 1px solid #000;">18 sp</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">titleSettings (TextView)</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Настройки</td><td style="border: 1px solid #000;">20 sp</td><td style="border: 1px solid #000;">Вес 1, bold</td></tr>
+    <tr><td style="border: 1px solid #000;">themeLabel (TextView)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Тема оформления</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">themeSwitch (Switch)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Тёмная тема</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">Отмечен: выкл</td></tr>
+    <tr><td style="border: 1px solid #000;">fontLabel (TextView)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Размер шрифта редактора</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">fontSeek (SeekBar)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Max 30, Progress 14</td></tr>
+    <tr><td style="border: 1px solid #000;">autosaveLabel (TextView)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Автосохранение</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">autosaveSwitch (Switch)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Включить автосохранение</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">Отмечен: вкл</td></tr>
+    <tr><td style="border: 1px solid #000;">accentLabel (TextView)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Акцентный цвет</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">accentSpinner (Spinner)</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Spinner</td></tr>
+  </tbody>
+</table>
+
+<h2>Что важно понять про разметку SettingsActivity</h2>
+
+<p><b>Первое — простая структура.</b> Все элементы лежат в корневом контейнере друг под другом. Никаких вложенных контейнеров, кроме шапки topBar. Это самый простой экран по разметке.</p>
+
+<p><b>Второе — пары «подпись + элемент управления».</b> Каждая настройка состоит из двух виджетов: подписи (TextView) и самого элемента (Switch, SeekBar, Spinner). Подпись объясняет, что настраивается.</p>
+
+<p><b>Третье — порядок элементов.</b> В разметке порядок такой: тема → размер шрифта → автосохранение → акцентный цвет. Пользователь читает сверху вниз и последовательно настраивает приложение.</p>
+
+<p><b>Четвёртое — не забывай про значения по умолчанию.</b> В свойствах виджетов заданы начальные значения: themeSwitch — выкл, fontSeek — 14, autosaveSwitch — вкл, accentSpinner — первый вариант.</p>
+
+<div style="border: 2px solid #a72; background: #fdf4e3; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Внимание.</b> Spinner (accentSpinner) нужно заполнить вариантами. Это делается в логике через блок <b>Установить список / (Set List Data)</b> в onCreate. Иначе список будет пустым.
+</div>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
