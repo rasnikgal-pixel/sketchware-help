@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DatePickerDialog — диалог выбора даты</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>DatePickerDialog — диалог выбора даты</h1>
+
+<p><b>DatePickerDialog</b> — компонент для показа диалога выбора даты. Пользователь тапает — открывается всплывающее окно с календарём. Выбирает день, месяц, год — и подтверждает.</p>
+
+<p>Иконка в диалоге добавления — календарь с выделенной датой.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Открывает всплывающее окно с календарём.</li>
+  <li>Пользователь выбирает дату: день, месяц, год.</li>
+  <li>Нажимает «ОК» — дата подтверждена, срабатывает событие.</li>
+  <li>Нажимает «Отмена» — диалог закрывается без изменений.</li>
+  <li>Можно задать минимальную и максимальную дату.</li>
+  <li>Отличие от DatePicker (виджет в разметке) — не занимает места на экране, открывается по необходимости.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Дата рождения — в формах регистрации.</li>
+  <li>Бронирование — выбор даты поездки, визита.</li>
+  <li>Напоминания — установка даты срабатывания.</li>
+  <li>Фильтры — «с какой по какую дату».</li>
+  <li>Календарь событий — добавление события на день.</li>
+  <li>Отчётность — период с и по.</li>
+  <li>Заказ доставки — дата доставки.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>dateDialog</code>, <code>birthdayPicker</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>show</b></td>
+      <td style="border: 1px solid #000;">Показать диалог.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setTitle</b></td>
+      <td style="border: 1px solid #000;">Задать заголовок окна.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setMinDate</b></td>
+      <td style="border: 1px solid #000;">Минимальная дата.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setMaxDate</b></td>
+      <td style="border: 1px solid #000;">Максимальная дата.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setYear / setMonth / setDay</b></td>
+      <td style="border: 1px solid #000;">Стартовая дата.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Событие DatePickerDialog</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDateSet</b></td>
+      <td style="border: 1px solid #000;">Срабатывает при подтверждении даты. Внутри — доступ к выбранному году, месяцу, дню.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Подключи компонент DatePickerDialog на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>birthdayPicker</code>.</li>
+  <li>В логике:
+    <ul>
+      <li>вызови <code>show</code> — откроется диалог;</li>
+      <li>задай <code>setTitle</code> — например, «Выберите дату рождения»;</li>
+      <li>задай <code>setMinDate</code> и <code>setMaxDate</code>, если нужны ограничения.</li>
+    </ul>
+  </li>
+  <li>В категории «Компонент» добавь событие <code>onDateSet</code> — обработка выбранной даты.</li>
+  <li>Внутри события получи год, месяц, день — и сохрани их или покажи.</li>
+</ol>
+
+<h2>Пример: дата рождения</h2>
+
+<ul>
+  <li>EditText для даты.</li>
+  <li>Button «Выбрать дату».</li>
+  <li>В <code>onClick</code> — <code>birthdayPicker.show()</code>.</li>
+  <li>Ограничения: MaxDate = сегодня, MinDate = 1900-01-01.</li>
+  <li>В <code>onDateSet</code> — установи в EditText выбранную дату в формате 29.09.2026.</li>
+</ul>
+
+<h2>Пример: напоминание</h2>
+
+<ul>
+  <li>Button «Установить напоминание».</li>
+  <li><code>onClick</code> → <code>dateDialog.show()</code>.</li>
+  <li>Пользователь выбирает дату.</li>
+  <li>В <code>onDateSet</code> — сохрани дату через Calendar и настрой Notification.</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> месяцы нумеруются с 0. Январь — 0, декабрь — 11. Частая причина сдвигов на месяц.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> год указывается полностью: 2026, а не 26. Иначе дата будет неправильной.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> DatePickerDialog — компонент, а не виджет. Его не добавляют в разметку — он открывается по вызову.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не открывай второй диалог, пока первый открыт. Второй вызов <code>show</code> — непредсказуемое поведение.</div>
+
+<div class="hint">💡 <b>Совет:</b> для даты рождения задавай MaxDate = сегодня. Нельзя родиться в будущем.</div>
+
+<div class="hint">💡 <b>Совет:</b> для бронирования задавай MinDate = сегодня. Нельзя забронировать на прошлое.</div>
+
+<div class="hint">💡 <b>Совет:</b> для стартовой даты ставь текущий день через <code>setYear</code>, <code>setMonth</code>, <code>setDay</code>. Так пользователь видит актуальный календарь.</div>
+
+<div class="hint">💡 <b>Совет:</b> для формата отображения используй Calendar и format с шаблоном <code>dd.MM.yyyy</code> для России.</div>
+
+<div class="hint">💡 <b>Совет:</b> для двух дат (начало и конец) используй два DatePickerDialog: один для начала, другой для конца. Второй открывай только после выбора первого.</div>
+
+<div class="hint">💡 <b>Совет:</b> для проверки корректности даты сравнивай с текущей и другими условиями. Например, «дата окончания не может быть раньше даты начала».</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про нумерацию месяца с 0. Январь = 0, не 1.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не ограничивать диапазон. Пользователь может выбрать 1800 год или дату через 100 лет.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> путать DatePickerDialog и DatePicker. Диалог — компонент, открывается по вызову. Виджет — в разметке.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не обрабатывать <code>onDateSet</code>. Диалог открывается, пользователь выбирает дату — а приложение ничего не делает.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать диалог без заголовка. Пользователь не понимает, что именно выбирает — день рождения или дату доставки.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>DatePickerDialog</b> — компонент для выбора даты через всплывающее окно.</li>
+  <li>Основные блоки: <b>show</b>, <b>setTitle</b>, <b>setMinDate</b>, <b>setMaxDate</b>, <b>setYear / setMonth / setDay</b>.</li>
+  <li>Основное событие: <b>onDateSet</b> — при подтверждении даты.</li>
+  <li><b>Месяц нумеруется с 0</b> — январь = 0, декабрь = 11.</li>
+  <li>Не открывай два диалога одновременно.</li>
+  <li>Ограничивай MinDate / MaxDate для защиты от ошибок.</li>
+  <li>Для двух дат — два компонента Dialog.</li>
+  <li>Задавай понятный заголовок — что выбирает пользователь.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Забывают про нумерацию месяца с 0.</b> Дата сдвигается на месяц.</li>
+  <li><b>Не ограничивают диапазон дат.</b> Пользователь выбирает нереалистичные даты.</li>
+  <li><b>Путают с DatePicker.</b> Диалог — компонент, виджет — в разметке.</li>
+  <li><b>Не обрабатывают onDateSet.</b> Дата выбирается, но не используется.</li>
+  <li><b>Задают заголовок «Дата».</b> Неинформативно. Лучше «Выберите дату рождения».</li>
+  <li><b>Не ставят стартовую дату.</b> Календарь открывается на текущем дне, но это не всегда удобно.</li>
+  <li><b>Открывают второй диалог поверх первого.</b> Поведение непредсказуемо.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
