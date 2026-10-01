@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ImageView — изображение</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>ImageView — изображение</h1>
+
+<p><b>ImageView</b> — виджет для отображения изображений. Показывает картинку из ресурсов проекта или загруженную по сети. Используется для иконок, логотипов, аватарок, обложек, иллюстраций.</p>
+
+<p>Иконка в палитре — прямоугольник с изображением гор и солнца.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Отображает картинку, заданную в свойстве Image или Src.</li>
+  <li>Картинка берётся из Менеджера изображений проекта.</li>
+  <li>Может масштабироваться под размер виджета разными способами (ScaleType).</li>
+  <li>Может менять картинку в логике — например, при нажатии кнопки.</li>
+  <li>Может быть кликабельным — реагирует на нажатие как кнопка.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Иконки рядом с текстом.</li>
+  <li>Логотипы приложений на экране «О программе».</li>
+  <li>Аватарки пользователей.</li>
+  <li>Обложки карточек и статей.</li>
+  <li>Иллюстрации на пустых экранах («Нет данных»).</li>
+  <li>Фоны для баннеров и шапок.</li>
+</ul>
+
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Image / Src</b></td>
+      <td style="border: 1px solid #000;">Ссылка на изображение из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;">Drawable-ресурс из Менеджера изображений.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleType</b></td>
+      <td style="border: 1px solid #000;">Способ масштабирования картинки.</td>
+      <td style="border: 1px solid #000;"><code>fitCenter</code> — вписать, сохраняя пропорции, по центру;<br><code>centerCrop</code> — заполнить виджет, обрезая лишнее;<br><code>center</code> — по центру без масштабирования;<br><code>fitXY</code> — растянуть по ширине и высоте (может искажать);<br><code>fitStart</code> / <code>fitEnd</code> — вписать с прижатием к краю.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>AdjustViewBounds</b></td>
+      <td style="border: 1px solid #000;">Подстраивать границы виджета под пропорции картинки.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон виджета — цвет или изображение.</td>
+      <td style="border: 1px solid #000;">HEX, drawable-ресурс или <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ColorFilter</b></td>
+      <td style="border: 1px solid #000;">Наложить цветовой фильтр (оттенок) на картинку.</td>
+      <td style="border: 1px solid #000;">HEX-цвет.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Alpha</b></td>
+      <td style="border: 1px solid #000;">Прозрачность картинки.</td>
+      <td style="border: 1px solid #000;">Число от 0 до 1.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Padding / Margin</b></td>
+      <td style="border: 1px solid #000;">Внутренние и внешние отступы.</td>
+      <td style="border: 1px solid #000;">Число в dp для каждой стороны.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code>, <code>match_parent</code> или число в dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Clickable</b></td>
+      <td style="border: 1px solid #000;">Реагирует ли на нажатие.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по ImageView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>imageview1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>imageview1</code>, <code>imageview2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>avatarImage</code>, если это аватарка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:tint="#888888"</code> — обесцветить картинку.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>ImageView</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">ImageView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет виджет по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>48dp</code> — стандарт для иконки; <code>match_parent</code> — для обложки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет виджет по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>48dp</code> — для иконки; <code>180dp</code> — для обложки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета — от краёв до картинки. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 0 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета — от него до соседних элементов и краёв родителя.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin end 8 — картинка сдвинется на 8 dp влево от правого элемента.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>, <code>right</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — картинка по центру.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — виджет заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Изображение</b><br>Image / Src</td>
+      <td style="border: 1px solid #000;">Ссылка на изображение из Менеджера изображений проекта.</td>
+      <td style="border: 1px solid #000;">Drawable-ресурс. По умолчанию — <code>default_image</code>.</td>
+      <td style="border: 1px solid #000;">Выбери загруженную картинку — например, <code>logo</code>, <code>avatar</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Тип масштабирования</b><br>ScaleType</td>
+      <td style="border: 1px solid #000;">Как картинка масштабируется под размер виджета.</td>
+      <td style="border: 1px solid #000;"><code>CENTER</code> — по центру без масштабирования (значение по умолчанию);<br><code>CENTER_CROP</code> — заполнить, обрезая лишнее;<br><code>FIT_CENTER</code> — вписать, сохраняя пропорции;<br><code>FIT_XY</code> — растянуть (искажает);<br><code>FIT_START</code> / <code>FIT_END</code> — вписать с прижатием к краю.</td>
+      <td style="border: 1px solid #000;">Для аватарок — <code>CENTER_CROP</code>, для иконок — <code>FIT_CENTER</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Серая плашка под иконкой — <code>#EEEEEE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли виджет на нажатия (если Clickable = true).</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активно;<br><b>выкл</b> — заблокировано.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — полупрозрачная картинка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> на первых порах достаточно свойств <b>Изображение</b>, <b>Тип масштабирования</b>, <b>Ширина</b> и <b>Высота</b>. Остальные оставь по умолчанию.</div>
+
+<h2>Как перетащить ImageView на макет</h2>
+
+<p>ImageView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b>, <b>Linear(H)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Widgets</b> в палитре слева.</li>
+  <li>Зажми <b>ImageView</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — картинка появится в разметке.</li>
+  <li>Открой <b>Менеджер изображений</b> и загрузи нужные картинки в проект.</li>
+  <li>Тапни по ImageView в рабочей области и в свойстве <b>Изображение</b> выбери нужный ресурс.</li>
+  <li>Задай <b>Тип масштабирования</b> — обычно <code>CENTER_CROP</code> или <code>FIT_CENTER</code>.</li>
+  <li>Задай <b>Ширину</b> и <b>Высоту</b> — например, 48dp × 48dp для иконки.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по ImageView в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без загруженного изображения в Менеджере ImageView будет пустым. Сначала загрузи картинку — потом выбирай её в свойствах.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> fitXY искажает пропорции. Если картинка не совпадает по форме с виджетом, она «сплющится» или растянется. Используй centerCrop или fitCenter, если важны пропорции.</div>
+
+<div class="hint">💡 <b>Совет:</b> для иконок и аватарок используй centerCrop и квадратные размеры (48dp, 64dp) — так они выглядят аккуратно.</div>
+
+<div class="hint">💡 <b>Совет:</b> для обложек (картинка сверху карточки) используй centerCrop, Height = 180dp, Width = match_parent. Это стандартный приём в новостных приложениях.</div>
+
+<div class="hint">💡 <b>Совет:</b> не используй PNG больших размеров для простых иконок. Это увеличивает вес APK. Загружай картинку нужного разрешения — не больше, чем отображается на экране.</div>
+
+<div class="hint">💡 <b>Совет:</b> для круглых аватарок используй CircleImageView (следующий подпункт). Обычный ImageView с centerCrop даст квадратную картинку.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> ставить fitXY на картинки с непропорциональными размерами. Результат — искажённое изображение.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> добавлять ImageView с огромной картинкой без ScaleType. Картинка отображается в исходном размере и вылезает за пределы контейнера.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>ImageView</b> — виджет для отображения картинок из ресурсов проекта.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Картинки сначала загружаются в <b>Менеджер изображений</b>, потом выбираются в свойстве <b>Изображение</b>.</li>
+  <li>Ключевые свойства: <b>Изображение</b>, <b>Тип масштабирования</b>, <b>Ширина</b>, <b>Высота</b>.</li>
+  <li>Для иконок — <code>CENTER_CROP</code> и размер 48dp; для обложек — <code>CENTER_CROP</code> и высота 180dp.</li>
+  <li>Не используй <code>FIT_XY</code> без необходимости — искажает картинку.</li>
+  <li>Для круглых аватарок используй CircleImageView.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Тапают по ImageView в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Добавляют ImageView без загрузки картинки.</b> Виджет пустой — сначала загрузи изображение в Менеджер.</li>
+  <li><b>Ставят fitXY для пропорциональных картинок.</b> Изображение искажается.</li>
+  <li><b>Не задают размеры.</b> Большая картинка отображается в исходном размере и вылезает за пределы контейнера.</li>
+  <li><b>Оставляют ScaleType = CENTER по умолчанию.</b> Маленькая картинка не заполнит виджет, большая обрежется.</li>
+  <li><b>Используют ImageView для круглой аватарки.</b> Нужен CircleImageView.</li>
+  <li><b>Загружают гигантские PNG для иконок.</b> Утяжеляет APK без пользы.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
