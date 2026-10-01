@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RewardedVideoAd — реклама за награду</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>RewardedVideoAd — реклама за награду</h1>
+
+<p><b>RewardedVideoAd</b> — реклама с вознаграждением. Пользователь смотрит видеоролик и получает за это бонус: монеты, жизни, подсказки, дополнительные попытки. Реклама, которую пользователь сам хочет смотреть, потому что получает выгоду.</p>
+
+<p>Иконка в диалоге добавления — видео с логотипом AdMob.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Показывает видеоролик — обычно 15–30 секунд.</li>
+  <li>Пользователь смотрит до конца — получает вознаграждение.</li>
+  <li>Если пользователь закрыл раньше — вознаграждение не выдаётся.</li>
+  <li>Загружается заранее, пока приложение работает.</li>
+  <li>Требует AdUnitId из AdMob.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Игры — дополнительная жизнь, монеты, ускорение.</li>
+  <li>Приложения с ограничениями — снятие блокировки, доступ к функции.</li>
+  <li>Обучение — разблокировка урока, подсказки.</li>
+  <li>Фитнес — дополнительные тренировки.</li>
+  <li>Развлечения — дополнительный контент.</li>
+  <li>Любая механика, где можно дать бонус за просмотр.</li>
+</ul>
+
+<p>RewardedVideoAd — самый лояльный формат. Пользователь не раздражается — он сам выбирает, смотреть ли рекламу.</p>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>rewardedAd</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>AdUnitId</b></td>
+      <td style="border: 1px solid #000;">Идентификатор рекламного блока из AdMob.</td>
+      <td style="border: 1px solid #000;"><code>ca-app-pub-XXXX/YYYY</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TestMode</b></td>
+      <td style="border: 1px solid #000;">Тестовый режим (обязателен на этапе разработки).</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>loadAd</b></td>
+      <td style="border: 1px solid #000;">Загрузить рекламу заранее.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>show</b></td>
+      <td style="border: 1px solid #000;">Показать загруженную рекламу.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>isLoaded</b></td>
+      <td style="border: 1px solid #000;">Проверить, загружена ли реклама.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>События RewardedVideoAd</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onAdLoaded</b></td>
+      <td style="border: 1px solid #000;">Реклама загружена и готова.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onUserEarnedReward</b></td>
+      <td style="border: 1px solid #000;">Пользователь досмотрел видео и заслужил награду. Основное событие.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onAdClosed</b></td>
+      <td style="border: 1px solid #000;">Пользователь закрыл рекламу (не важно, досмотрел или нет).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onAdFailedToLoad</b></td>
+      <td style="border: 1px solid #000;">Не удалось загрузить рекламу.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Зарегистрируйся в <b>AdMob</b> (admob.google.com).</li>
+  <li>Создай приложение и блок объявлений типа <b>Rewarded</b> — получишь AdUnitId.</li>
+  <li>В Sketchware Pro 7 подключи библиотеку <b>Google Mobile Ads</b>.</li>
+  <li>Добавь разрешение <b>INTERNET</b>.</li>
+  <li>Подключи компонент RewardedVideoAd на вкладке «Компонент».</li>
+  <li>В свойствах укажи <b>AdUnitId</b> и <b>TestMode = true</b>.</li>
+  <li>В логике:
+    <ul>
+      <li>в <code>onCreate</code> — вызови <code>loadAd</code> (предзагрузка);</li>
+      <li>по кнопке «Получить бонус» — проверь <code>isLoaded</code> и вызови <code>show</code>;</li>
+      <li>в <code>onUserEarnedReward</code> — выдай вознаграждение (монеты, жизни, доступ);</li>
+      <li>в <code>onAdClosed</code> — обнови интерфейс;</li>
+      <li>вызови <code>loadAd</code> снова — для следующего показа.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Пример: бонус монет</h2>
+
+<ul>
+  <li>Кнопка «+50 монет за просмотр».</li>
+  <li>В <code>onClick</code> — если <code>isLoaded</code>, вызови <code>show</code>.</li>
+  <li>В <code>onUserEarnedReward</code> — <code>coins = coins + 50</code>, обнови TextView.</li>
+  <li>В <code>onAdClosed</code> — скрой кнопку или покажи «Спасибо».</li>
+  <li>Вызови <code>loadAd</code> для следующей рекламы.</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> <code>onUserEarnedReward</code> — только для настоящего просмотра. Если пользователь закрыл видео раньше — событие не сработает. Награду не выдавай.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> TestMode обязателен при разработке. AdMob блокирует аккаунт за накрутку.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не обманывай пользователя. Если обещал 50 монет — выдай ровно 50. Обман ведёт к жалобам и блокировке.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не показывай RewardedVideoAd насильно. Пользователь должен сам решить, смотреть или нет.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не скрывай кнопку награды, если реклама не загружена. Покажи «Реклама недоступна. Попробуйте позже».</div>
+
+<div class="hint">💡 <b>Совет:</b> для игры давай за просмотр ощутимую награду: +50–100 монет, +1 жизнь, x2 награды на 10 минут. Пользователь должен чувствовать, что 30 секунд стоят этого.</div>
+
+<div class="hint">💡 <b>Совет:</b> для приложений с ограничениями используй RewardedVideoAd для снятия блокировки: «Посмотрите видео, чтобы разблокировать функцию на 1 час».</div>
+
+<div class="hint">💡 <b>Совет:</b> показывай иконку видео рядом с кнопкой. Пользователь сразу понимает, что там видео, и решает, смотреть или нет.</div>
+
+<div class="hint">💡 <b>Совет:</b> давай награду сразу после <code>onUserEarnedReward</code>. Если пользователь ждёт 5 секунд — он думает, что награда не пришла.</div>
+
+<div class="hint">💡 <b>Совет:</b> предзагружай рекламу в <code>onCreate</code>. Тогда к моменту тапа пользователя она уже готова.</div>
+
+<div class="hint">💡 <b>Совет:</b> сбрасывай счётчик показов в сутки. Например, не больше 10 rewarded-видео в день. Иначе пользователь будет смотреть бесконечно и AdMob может снизить ставку.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> выдавать награду в <code>onAdClosed</code>. Это сработает, даже если пользователь закрыл видео через 2 секунды. Награду давай только в <code>onUserEarnedReward</code>.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть выключить TestMode перед публикацией. Пользователи видят заглушки.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> обманывать пользователя. Обещал 100 монет — выдай 100. Иначе жалобы и бан.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не предзагружать рекламу. Пользователь тапает — а реклама ещё грузится. Он ждёт или уходит.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> навязывать просмотр. RewardedVideoAd — добровольный формат. Пользователь сам решает.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>RewardedVideoAd</b> — реклама за награду, которую пользователь смотрит добровольно.</li>
+  <li>Основные блоки: <b>loadAd</b>, <b>show</b>, <b>isLoaded</b>.</li>
+  <li>Основные события: <b>onAdLoaded</b>, <b>onUserEarnedReward</b>, <b>onAdClosed</b>, <b>onAdFailedToLoad</b>.</li>
+  <li>Награду выдавай только в <code>onUserEarnedReward</code> — при досмотренном видео.</li>
+  <li>Требует AdUnitId типа Rewarded из AdMob и TestMode на разработке.</li>
+  <li>Не обманывай с наградой — выдай ровно столько, сколько обещал.</li>
+  <li>Предзагружай рекламу — тогда к моменту тапа она готова.</li>
+  <li>Самый лояльный формат рекламы — не раздражает пользователя.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Выдают награду в onAdClosed.</b> Пользователь получает бонус даже без просмотра.</li>
+  <li><b>Забывают выключить TestMode.</b> Доход не капает.</li>
+  <li><b>Обманывают с наградой.</b> Жалобы и бан AdMob.</li>
+  <li><b>Не предзагружают рекламу.</b> Пользователь ждёт.</li>
+  <li><b>Навязывают просмотр.</b> Формат добровольный.</li>
+  <li><b>Не обрабатывают onAdFailedToLoad.</b> Кнопка работает, но рекламы нет.</li>
+  <li><b>Не выдают награду сразу.</b> Пользователь думает, что обманули.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
