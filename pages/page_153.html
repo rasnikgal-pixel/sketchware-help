@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Firebase Storage — облачное хранилище</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Firebase Storage — облачное хранилище</h1>
+
+<p><b>Firebase Storage</b> — облачное хранилище файлов. Позволяет загружать и хранить изображения, документы, видео, аудио — без собственного сервера. Файлы доступны по ссылке с любого устройства.</p>
+
+<p>Иконка в диалоге добавления — логотип Firebase.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Хранит файлы в облаке Google.</li>
+  <li>Загружает файлы с устройства в Storage.</li>
+  <li>Скачивает файлы по ссылке.</li>
+  <li>Удаляет ненужные файлы.</li>
+  <li>Возвращает URL файла — по нему можно показать картинку в ImageView или передать в RequestNetwork.</li>
+  <li>Поддерживает правила безопасности — кто может читать и записывать.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Аватарки пользователей — картинки профиля в облаке.</li>
+  <li>Фотоальбомы — загрузка и хранение изображений.</li>
+  <li>Документы — PDF, DOC, TXT.</li>
+  <li>Медиа — видео и аудио.</li>
+  <li>Резервные копии — сохранение файлов приложения в облако.</li>
+  <li>Обмен файлами — между пользователями.</li>
+  <li>Загрузка контента — пользовательский контент.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>storage</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>URL хранилища</b></td>
+      <td style="border: 1px solid #000;">Адрес из Firebase Console.</td>
+      <td style="border: 1px solid #000;"><code>gs://my-app.appspot.com</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>uploadFile</b></td>
+      <td style="border: 1px solid #000;">Загрузить файл в облако.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>downloadFile</b></td>
+      <td style="border: 1px solid #000;">Скачать файл из облака.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>deleteFile</b></td>
+      <td style="border: 1px solid #000;">Удалить файл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getDownloadUrl</b></td>
+      <td style="border: 1px solid #000;">Получить ссылку на файл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getReference</b></td>
+      <td style="border: 1px solid #000;">Получить ссылку на папку или файл.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>События Firebase Storage</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onSuccess</b></td>
+      <td style="border: 1px solid #000;">Операция успешно завершена.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onFailure</b></td>
+      <td style="border: 1px solid #000;">Ошибка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onProgress</b></td>
+      <td style="border: 1px solid #000;">Прогресс загрузки (в процентах).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Зарегистрируйся в Firebase Console.</li>
+  <li>Включи <b>Storage</b> в проекте.</li>
+  <li>Скачай <b>google-services.json</b> и подключи в Sketchware Pro 7.</li>
+  <li>Настрой правила безопасности — кто может читать и записывать.</li>
+  <li>Подключи компонент Firebase Storage на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>storage</code>.</li>
+  <li>Добавь разрешение <b>INTERNET</b>.</li>
+  <li>В логике:
+    <ul>
+      <li>загрузка — <code>uploadFile</code> с указанием пути и файла;</li>
+      <li>получение ссылки — <code>getDownloadUrl</code>;</li>
+      <li>скачивание — <code>downloadFile</code>;</li>
+      <li>в <code>onSuccess</code> — обработай результат (URL, файл).</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Пример: загрузка аватарки</h2>
+
+<ul>
+  <li>Пользователь выбирает картинку через FilePicker.</li>
+  <li>Button «Загрузить» → <code>uploadFile</code> в <code>/avatars/{uid}.jpg</code>.</li>
+  <li>В <code>onSuccess</code> — получи URL через <code>getDownloadUrl</code>.</li>
+  <li>Сохрани URL в Firebase DB под профилем пользователя.</li>
+  <li>Покажи картинку из URL в ImageView.</li>
+</ul>
+
+<h2>Пример: скачивание документа</h2>
+
+<ul>
+  <li>Пользователь тапает по элементу списка.</li>
+  <li><code>downloadFile</code> из <code>/documents/file.pdf</code>.</li>
+  <li>В <code>onSuccess</code> — открой файл или покажи ссылку.</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> правила безопасности — критично. По умолчанию Storage открыт только для авторизованных пользователей. Настрой правила под свои задачи.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> бесплатный лимит Firebase — 5 ГБ хранилища, 1 ГБ/день скачивания. При превышении — платно.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> загружай сжатые картинки. Полноразмерные фото 5 МБ займут весь лимит за пару загрузок.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не загружай личные файлы без согласия пользователя. Это нарушение приватности и правил Google Play.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не храни чувствительные данные в Storage без шифрования. Файлы доступны по ссылке, если правила открыты.</div>
+
+<div class="hint">💡 <b>Совет:</b> для аватарок используй формат .jpg и сжимай до 500×500 пикселей. Такой размер достаточен для профиля и весит мало.</div>
+
+<div class="hint">💡 <b>Совет:</b> для галереи изображений используй Storage вместе с Firebase DB. В базе — метаданные (имя, дата, автор), в Storage — сами файлы.</div>
+
+<div class="hint">💡 <b>Совет:</b> для загрузки с прогрессом используй событие <code>onProgress</code>. Показывай ProgressBar с процентом.</div>
+
+<div class="hint">💡 <b>Совет:</b> для удаления файлов используй <code>deleteFile</code>. Не оставляй мусор в облаке — он занимает лимит.</div>
+
+<div class="hint">💡 <b>Совет:</b> для правил безопасности используй шаблон: «только авторизованные пользователи могут читать и писать в свою папку». Например, <code>/users/{uid}/...</code>.</div>
+
+<div class="hint">💡 <b>Совет:</b> не загружай файлы без интернета. Проверяй соединение перед <code>uploadFile</code>.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не настроить правила безопасности. Storage открыт — любой может загрузить или скачать файлы.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> загружать полноразмерные фото. Лимит 5 ГБ забивается за несколько загрузок.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не сжимать картинки перед загрузкой. Медленная загрузка и большой расход трафика.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не обрабатывать <code>onFailure</code>. При ошибке загрузки приложение молчит.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не удалять ненужные файлы. Мусор в облаке занимает лимит.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не показывать прогресс загрузки. Пользователь не понимает, что происходит, и уходит.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Firebase Storage</b> — облачное хранилище файлов.</li>
+  <li>Основные блоки: <b>uploadFile</b>, <b>downloadFile</b>, <b>deleteFile</b>, <b>getDownloadUrl</b>, <b>getReference</b>.</li>
+  <li>Основные события: <b>onSuccess</b>, <b>onFailure</b>, <b>onProgress</b>.</li>
+  <li>Требует регистрации в Firebase и файла google-services.json.</li>
+  <li>Правила безопасности — критичны. Без них файлы открыты всем.</li>
+  <li>Сжимай картинки перед загрузкой — экономия места и трафика.</li>
+  <li>Следи за лимитом 5 ГБ — бесплатно только до этого объёма.</li>
+  <li>Удаляй ненужные файлы — иначе мусор займёт место.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Не настраивают правила безопасности.</b> Storage открыт всем.</li>
+  <li><b>Загружают полноразмерные фото.</b> Лимит быстро забивается.</li>
+  <li><b>Не сжимают картинки.</b> Медленно и дорого по трафику.</li>
+  <li><b>Не обрабатывают onFailure.</b> Ошибки не видны.</li>
+  <li><b>Не удаляют ненужные файлы.</b> Мусор в облаке.</li>
+  <li><b>Не показывают прогресс.</b> Пользователь уходит.</li>
+  <li><b>Не проверяют интернет перед загрузкой.</b> Ошибки при uploadFile.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
