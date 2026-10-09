@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ObjectAnimator — анимации объектов</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>ObjectAnimator — анимации объектов</h1>
+
+<p><b>ObjectAnimator</b> — компонент для анимации объектов. Плавно меняет свойства виджетов: прозрачность, положение, масштаб, поворот. Не требует XML-анимаций — работает из логики.</p>
+
+<p>Иконка в диалоге добавления — круг с линией (движение).</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Анимирует свойства виджета: alpha, translationX, translationY, scaleX, scaleY, rotation.</li>
+  <li>Задаётся длительность анимации в миллисекундах.</li>
+  <li>Может повторяться определённое число раз или бесконечно.</li>
+  <li>Может изменяться во времени по-разному: линейно, ускоренно, замедленно.</li>
+  <li>Позволяет запускать несколько анимаций одновременно или последовательно.</li>
+  <li>При завершении срабатывает событие — можно запустить следующую анимацию.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Появление элементов — плавное «выезжание» сбоку.</li>
+  <li>Исчезновение — затухание через прозрачность.</li>
+  <li>Внимание — покачивание кнопки.</li>
+  <li>Переходы — плавное смещение между экранами.</li>
+  <li>Игровые эффекты — прыжки, вращения, увеличение.</li>
+  <li>Обратная связь — подсветка, увеличение при нажатии.</li>
+  <li>Анимация картинок — вращение, масштабирование.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>fadeIn</code>, <code>bounceAnimator</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setTarget</b></td>
+      <td style="border: 1px solid #000;">Задать виджет, который будет анимирован.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setPropertyName</b></td>
+      <td style="border: 1px solid #000;">Какое свойство менять: alpha, translationX, translationY, scaleX, scaleY, rotation.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setFloatValues</b></td>
+      <td style="border: 1px solid #000;">Значения от и до (например, 0f и 1f для прозрачности).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setDuration</b></td>
+      <td style="border: 1px solid #000;">Длительность в миллисекундах.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setRepeatCount</b></td>
+      <td style="border: 1px solid #000;">Количество повторов (-1 — бесконечно).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setRepeatMode</b></td>
+      <td style="border: 1px solid #000;">Режим повтора: с начала или в обратную сторону.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setInterpolator</b></td>
+      <td style="border: 1px solid #000;">Тип ускорения: линейный, ease-in, ease-out, bounce.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>start</b></td>
+      <td style="border: 1px solid #000;">Запустить анимацию.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>cancel</b></td>
+      <td style="border: 1px solid #000;">Отменить анимацию.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные свойства для анимации</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство</th>
+      <th style="border: 1px solid #000;">Что меняет</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>alpha</b></td>
+      <td style="border: 1px solid #000;">Прозрачность.</td>
+      <td style="border: 1px solid #000;">0f (невидим) → 1f (полностью видим).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>translationX</b></td>
+      <td style="border: 1px solid #000;">Горизонтальное смещение.</td>
+      <td style="border: 1px solid #000;">Пиксели: -300f → 0f.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>translationY</b></td>
+      <td style="border: 1px solid #000;">Вертикальное смещение.</td>
+      <td style="border: 1px solid #000;">Пиксели: 0f → -30f.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>scaleX / scaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб.</td>
+      <td style="border: 1px solid #000;">1f (оригинал), 1.5f (увеличение).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>rotation</b></td>
+      <td style="border: 1px solid #000;">Поворот.</td>
+      <td style="border: 1px solid #000;">Градусы: 0f → 360f.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>rotationX / rotationY</b></td>
+      <td style="border: 1px solid #000;">Поворот в 3D.</td>
+      <td style="border: 1px solid #000;">Градусы: 0f → 180f.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Подключи компонент ObjectAnimator на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>fadeAnimator</code>.</li>
+  <li>В логике:
+    <ul>
+      <li><code>setTarget</code> — какой виджет анимировать;</li>
+      <li><code>setPropertyName</code> — какое свойство;</li>
+      <li><code>setFloatValues</code> — от какого значения к какому;</li>
+      <li><code>setDuration</code> — длительность;</li>
+      <li><code>start</code> — запуск.</li>
+    </ul>
+  </li>
+  <li>Для цепочки анимаций используй событие <code>onAnimationEnd</code> или комбинируй несколько ObjectAnimator.</li>
+</ol>
+
+<h2>Пример: плавное появление кнопки</h2>
+
+<ul>
+  <li>Кнопка Button с ID = <code>myButton</code>.</li>
+  <li>ObjectAnimator: alpha от 0f до 1f, длительность 500 мс.</li>
+  <li>В <code>onCreate</code> — вызов <code>start</code>.</li>
+  <li>Кнопка плавно появляется за полсекунды.</li>
+</ul>
+
+<h2>Пример: подпрыгивание иконки</h2>
+
+<ul>
+  <li>ObjectAnimator 1: translationY от 0f до -30f, длительность 150 мс.</li>
+  <li>ObjectAnimator 2: translationY от -30f до 0f, длительность 150 мс.</li>
+  <li>Запуск второго в событии завершения первого.</li>
+  <li>Результат — иконка подпрыгивает.</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> значения задаются с суффиксом <code>f</code> (float). Например, <code>0f</code>, <code>1f</code>, <code>-30f</code>. Без суффикса блоки могут не принимать значения.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> координаты translationX / translationY — в пикселях, а не в dp. На разных экранах одно и то же значение выглядит по-разному.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> alpha работает только с виджетами, у которых есть фон. Если у TextView нет фона, прозрачность текста будет, но фон не увидишь.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не запускай слишком много анимаций одновременно. На слабых устройствах это вызывает подтормаживание.</div>
+
+<div class="hint">💡 <b>Совет:</b> для плавного появления используй alpha от <code>0f</code> до <code>1f</code>, длительность 300–500 мс.</div>
+
+<div class="hint">💡 <b>Совет:</b> для «внимания» используй scaleX / scaleY от <code>1f</code> до <code>1.1f</code> и обратно. Эффект «пульсации».</div>
+
+<div class="hint">💡 <b>Совет:</b> для сдвига сбоку используй translationX от <code>-300f</code> до <code>0f</code>. Элемент «выезжает» слева.</div>
+
+<div class="hint">💡 <b>Совет:</b> для вращения используй rotation от <code>0f</code> до <code>360f</code>. Полезно для индикаторов загрузки.</div>
+
+<div class="hint">💡 <b>Совет:</b> для отскока используй <code>setInterpolator</code> со значением <code>bounce</code>. Движение будет пружинистым.</div>
+
+<div class="hint">💡 <b>Совет:</b> не злоупотребляй анимациями. Много одновременных эффектов раздражает пользователя и замедляет устройство.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про <code>f</code> при задании значений. Без суффикса блок не примет значение.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать большие значения translation без учёта размеров экрана. На маленьких устройствах элемент уходит за пределы.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> анимировать сразу 10+ виджетов. Устройство не справляется.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не отменять анимацию при уходе с экрана. Анимация может продолжиться в фоне и расходовать батарею.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> путать <code>alpha</code> и видимость. <code>alpha = 0f</code> — прозрачность, но виджет всё ещё занимает место. <code>setVisibility = gone</code> — полностью скрывает.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>ObjectAnimator</b> — компонент для плавной анимации виджетов из логики.</li>
+  <li>Анимирует свойства: alpha, translationX, translationY, scaleX, scaleY, rotation.</li>
+  <li>Основные блоки: <b>setTarget</b>, <b>setPropertyName</b>, <b>setFloatValues</b>, <b>setDuration</b>, <b>setRepeatCount</b>, <b>setRepeatMode</b>, <b>setInterpolator</b>, <b>start</b>, <b>cancel</b>.</li>
+  <li>Значения задаются с суффиксом <code>f</code>: 0f, 1f, -30f.</li>
+  <li>translationX / translationY — в пикселях, а не в dp.</li>
+  <li>Основные сценарии: появление, исчезновение, внимание, вращение, отскок.</li>
+  <li>Не злоупотребляй анимациями — много эффектов замедляет устройство.</li>
+  <li>Отменяй анимацию при уходе с экрана.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Забывают про суффикс f.</b> Блоки не принимают значения.</li>
+  <li><b>Используют большие translation без учёта экрана.</b> Элемент уходит за пределы.</li>
+  <li><b>Анимируют слишком много виджетов одновременно.</b> Устройство тормозит.</li>
+  <li><b>Не отменяют анимацию при уходе с экрана.</b> Расход батареи.</li>
+  <li><b>Путают alpha и видимость.</b> Alpha не убирает место в разметке.</li>
+  <li><b>Не используют interpolator.</b> Анимации выглядят механически.</li>
+  <li><b>Запускают несколько анимаций на одном виджете.</b> Конфликты и рывки.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
