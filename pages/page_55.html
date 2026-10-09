@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RelativeLayout — относительный макет</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>RelativeLayout — относительный макет</h1>
+
+<p><b>RelativeLayout</b> — макет относительного позиционирования. Каждый дочерний элемент внутри него привязывается к другим элементам или к краям контейнера. Это самый гибкий, но и самый сложный контейнер в Sketchware.</p>
+
+<p>Иконка в палитре — прямоугольник с квадратом в центре.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Внутри RelativeLayout нет автоматического порядка. Виджеты не выстраиваются «в столбик» или «в строку».</li>
+  <li>Положение каждого виджета задаётся правилами привязки — относительно родителя или относительно другого виджета.</li>
+  <li>Если правил нет — виджет оказывается в левом верхнем углу контейнера.</li>
+  <li>Несколько виджетов без правил накладываются друг на друга.</li>
+</ul>
+
+<h2>Основные правила привязки</h2>
+
+<ul>
+  <li><b>alignParentTop</b> — прижать к верхнему краю контейнера.</li>
+  <li><b>alignParentBottom</b> — прижать к нижнему краю.</li>
+  <li><b>alignParentLeft / alignParentStart</b> — к левому краю.</li>
+  <li><b>alignParentRight / alignParentEnd</b> — к правому краю.</li>
+  <li><b>centerInParent</b> — по центру контейнера.</li>
+  <li><b>centerHorizontal</b> — по центру по горизонтали.</li>
+  <li><b>centerVertical</b> — по центру по вертикали.</li>
+  <li><b>above / below</b> — над или под указанным виджетом.</li>
+  <li><b>toLeftOf / toRightOf</b> — слева или справа от указанного виджета.</li>
+  <li><b>alignTop / alignBottom / alignLeft / alignRight</b> — выравнивание относительно другого виджета.</li>
+</ul>
+
+<p>Комбинируя правила, можно строить сложные вёрстки: шапка с кнопкой справа, картинка слева с текстом справа, кнопка внизу по центру.</p>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Шапка экрана — заголовок по центру, кнопка справа, стрелка назад слева.</li>
+  <li>Карточка — изображение слева, текст справа, дата в углу.</li>
+  <li>Экран с кнопкой внизу — контент сверху, кнопка прижата к нижнему краю.</li>
+  <li>Сложные формы — когда Linear(V) и Linear(H) не справляются.</li>
+  <li>Наложение элементов — текст поверх картинки, значок в углу аватара.</li>
+</ul>
+
+<h2>Как перетащить RelativeLayout на макет</h2>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Раскрой категорию <b>Layouts</b> в палитре слева.</li>
+  <li>Зажми <b>RelativeLayout</b> и, не отпуская, перетащи его на макет.</li>
+  <li>Отпусти в нужном месте — контейнер появится в разметке.</li>
+  <li>Перетаскивай внутрь нужные виджеты (TextView, Button, ImageView и другие).</li>
+  <li>Тапни по каждому виджету и в панели свойств задай <b>правила привязки</b>: alignParentTop, centerInParent, below, toRightOf и другие.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по RelativeLayout в палитре ничего не делает. Контейнер попадает на макет только перетаскиванием. То же правило — для виджетов внутри него.</div>
+
+<h2>Свойства контейнера</h2>
+
+<p>Открой панель свойств, тапнув по контейнеру в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>relativelayout2</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя контейнера. По этому имени контейнер виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>relativelayout1</code>, <code>relativelayout2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>headerBar</code>, если это шапка экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:background="#FFFFFF"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Превратить этот контейнер в другой тип макета (например, в LinearLayout).</td>
+      <td style="border: 1px solid #000;">RelativeLayout, LinearLayout и другие.</td>
+      <td style="border: 1px solid #000;">Если вёрстка стала проще — переключи на LinearLayout.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет контейнер по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, чтобы контейнер занял всю ширину экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет контейнер по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — высота подстроится под содержимое.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> контейнера — от его краёв до содержимого. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Padding 16 со всех сторон — содержимое не липнет к краям.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> контейнера — от него до соседних элементов и краёв родителя.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin bottom 8 — контейнер сдвинется на 8 dp вверх от нижнего элемента.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как контейнер выравнивается внутри родителя: по левому краю, центру, правому и т. п.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center</code>, <code>center_horizontal</code>, <code>right</code>.</td>
+      <td style="border: 1px solid #000;"><code>center</code> — контейнер встанет по центру родителя.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт этот контейнер. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — контейнер заберёт всё оставшееся место в родителе.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон контейнера из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Установи <code>NONE</code>, если фон не нужен.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка контейнера сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры (например, <code>#FFFFFF</code>).</td>
+      <td style="border: 1px solid #000;">Белый фон для шапки — <code>#FFFFFF</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли контейнер и его содержимое на нажатия и тапы.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">Выключи, если нужно показать шапку, но запретить нажатия.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот контейнера вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;"><code>90</code> — контейнер развернётся на 90°.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько контейнер и его содержимое прозрачны.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — половина прозрачности.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг контейнера по горизонтали без изменения его места в разметке (визуальный сдвиг).</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — контейнер визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг контейнера по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает контейнер по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает контейнер по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> свойства самого RelativeLayout — обычные. Главное — не они, а <b>правила привязки у дочерних виджетов</b>. Именно их задают в свойствах каждого виджета внутри контейнера.</div>
+
+<h2>Практический пример: шапка экрана</h2>
+
+<ol>
+  <li>Перетащи на макет <b>Linear(V)</b> — он будет корневым.</li>
+  <li>Внутрь перетащи <b>RelativeLayout</b> — это будет шапка.</li>
+  <li>Внутрь шапки перетащи <b>ImageView</b> — это будет стрелка назад.</li>
+  <li>Тапни по ImageView и задай правило <b>alignParentLeft</b> (и <b>centerVertical</b>, если нужно по центру по вертикали).</li>
+  <li>Перетащи внутрь шапки <b>TextView</b> с заголовком.</li>
+  <li>Тапни по TextView и задай правило <b>centerInParent</b> — заголовок встанет по центру.</li>
+  <li>Перетащи внутрь шапки <b>Button</b> — например, «Готово».</li>
+  <li>Тапни по Button и задай правила <b>alignParentRight</b> + <b>centerVertical</b>.</li>
+</ol>
+
+<p>Готово: стрелка слева, заголовок по центру, кнопка справа — всё в одной строке.</p>
+
+<div class="warn">⚠️ <b>Важно:</b> без правил привязки все виджеты окажутся в левом верхнем углу и наложатся друг на друга. Это самая частая причина «пропавших» элементов в RelativeLayout. Проверь свойства каждого дочернего виджета.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> ссылаться можно только на виджеты, которые уже добавлены в разметку. Если указать <code>below="@id/button1"</code>, а button1 ещё нет — сборка выдаст ошибку.</div>
+
+<div class="hint">💡 <b>Совет:</b> используй RelativeLayout только тогда, когда понимаешь, зачем он нужен. Для 90% экранов достаточно вложенных Linear(V) и Linear(H). Они проще и предсказуемее.</div>
+
+<div class="hint">💡 <b>Совет:</b> не смешивай wrap_content и правила привязки к обоим краям (alignParentLeft + alignParentRight) — виджет растянется на всю ширину контейнера, что не всегда ожидаемо.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>RelativeLayout</b> — контейнер, где каждый виджет привязывается к другим виджетам или краям родителя.</li>
+  <li>Перетаскивается на макет так же, как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Внутри нет автоматического порядка — положение задаётся <b>правилами привязки</b> у каждого дочернего виджета.</li>
+  <li>Главные правила: alignParentTop / Bottom / Left / Right, centerInParent, below, above, toLeftOf, toRightOf.</li>
+  <li>Без правил виджеты слипаются в левом верхнем углу.</li>
+  <li>Дополнительное свойство изображения — <b>Enabled</b>: включает и выключает реакцию контейнера на тапы.</li>
+  <li>Используй для сложной вёрстки: шапки, карточки, наложения элементов. Для простых экранов хватит Linear.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Тапают по RelativeLayout в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Перетаскивают внутрь виджеты без правил привязки.</b> Все слипаются в левом верхнем углу.</li>
+  <li><b>Ссылаются на несуществующий id.</b> <code>below="@id/button1"</code> при отсутствии button1 — ошибка сборки.</li>
+  <li><b>Комбинируют alignParentLeft + alignParentRight у одного виджета</b> с wrap_content — виджет растягивается на всю ширину.</li>
+  <li><b>Используют RelativeLayout там, где хватило бы Linear(V).</b> Вёрстка запутывается в привязках.</li>
+  <li><b>Задают правила в неправильном порядке.</b> Сначала перетаскивают виджет-якорь, потом тот, что ссылается на него. Иначе ссылаться не на что.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
