@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Spinner — выпадающий список</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Spinner — выпадающий список</h1>
+
+<p><b>Spinner</b> — выпадающий список. Компактный виджет, который показывает выбранный вариант, а по тапу раскрывает меню со всеми доступными. Похож на AutoCompleteTextView, но с ключевым отличием: пользователь не может ввести своё значение — только выбрать из списка.</p>
+
+<p>Иконка в палитре — прямоугольник со стрелкой вниз.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Отображает текущее выбранное значение в одной строке.</li>
+  <li>Справа — стрелка ∨, обозначающая выпадающее меню.</li>
+  <li>Тап по виджету — открывается всплывающий список со всеми вариантами.</li>
+  <li>Тап по варианту — список закрывается, значение подставляется в поле.</li>
+  <li>При выборе срабатывает событие <code>onItemSelected</code>.</li>
+  <li>Пользователь не может ввести произвольный текст — только выбрать из предложенных.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Выбор из фиксированного списка — пол, страна, город из заранее известных.</li>
+  <li>Фильтры — «Все», «Активные», «Завершённые».</li>
+  <li>Сортировка — «По цене», «По дате», «По популярности».</li>
+  <li>Категории — выбор категории товара или статьи.</li>
+  <li>Настройки — выбор языка, темы, валюты.</li>
+</ul>
+
+<p>Это идеальный выбор, когда вариантов немного (3–20) и они заранее известны.</p>
+
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Prompt</b></td>
+      <td style="border: 1px solid #000;">Подпись, показываемая в выпадающем окне сверху.</td>
+      <td style="border: 1px solid #000;">Любая строка, например «Выберите город».</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextColor</b></td>
+      <td style="border: 1px solid #000;">Цвет текста выбранного значения.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextSize</b></td>
+      <td style="border: 1px solid #000;">Размер текста.</td>
+      <td style="border: 1px solid #000;">Число в sp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Фон виджета.</td>
+      <td style="border: 1px solid #000;">HEX, drawable-ресурс или <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Gravity</b></td>
+      <td style="border: 1px solid #000;">Выравнивание текста в виджете.</td>
+      <td style="border: 1px solid #000;"><code>left</code>, <code>center</code>, <code>right</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Padding / Margin</b></td>
+      <td style="border: 1px solid #000;">Внутренние и внешние отступы.</td>
+      <td style="border: 1px solid #000;">Число в dp для каждой стороны.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;">Обычно <code>match_parent</code> по ширине.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по Spinner в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>spinner1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>spinner1</code>, <code>spinner2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>sortSpinner</code>, если это выбор сортировки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:spinnerMode="dialog"</code> — открывать как диалог вместо выпадающего меню.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>Spinner</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">Spinner и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Режим Spinner</b><br>Spinner mode</td>
+      <td style="border: 1px solid #000;">Как показывать варианты.</td>
+      <td style="border: 1px solid #000;"><code>dropdown</code> — выпадающее меню под виджетом;<br><code>dialog</code> — модальное окно по центру.</td>
+      <td style="border: 1px solid #000;">На скриншоте — <code>dropdown</code>. Для длинных списков лучше <code>dialog</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательский вид</b><br>Custom view</td>
+      <td style="border: 1px solid #000;">Свой Layout для элемента списка (вместо стандартного текста).</td>
+      <td style="border: 1px solid #000;"><code>none</code> — стандартный вид; любой XML-макет.</td>
+      <td style="border: 1px solid #000;">Оставь <code>none</code>, если достаточно текста.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет виджет по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — стандарт для формы.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет виджет по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета — от него до соседних элементов.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin bottom 16 — между полями формы.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>1</code> — виджет заберёт всё оставшееся место.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Белый фон — <code>#FFFFFF</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли виджет на тапы.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> в панели свойств задаётся только внешний вид. <b>Список вариантов</b> задаётся в логике через <code>setItems</code> или <code>setSimpleItems</code>, а выбор по умолчанию — через <code>setSelection</code>.</div>
+
+<h2>Как перетащить Spinner на макет</h2>
+
+<p>Spinner, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Списки</b> в палитре слева.</li>
+  <li>Зажми <b>Spinner</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — спиннер появится в разметке.</li>
+  <li>Задай <b>Prompt</b> — что написать над выпадающим меню.</li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Открой вкладку «События» и добавь в <code>onCreate</code>:
+    <ul>
+      <li>блок <code>setItems</code> или <code>setSimpleItems</code> — задать список вариантов;</li>
+      <li>блок <code>setSelection</code> — выбрать элемент по умолчанию.</li>
+    </ul>
+  </li>
+  <li>Добавь событие <code>onItemSelected</code> — реакцию на выбор.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по Spinner в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без заполнения списка в логике Spinner пуст — тап по нему ничего не раскрывает.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> значения нельзя вводить вручную. Если пользователь должен иметь возможность ввести своё — используй AutoCompleteTextView или EditText.</div>
+
+<div class="hint">💡 <b>Совет:</b> для списка из 3–10 вариантов Spinner — идеальный выбор. Для 20+ вариантов лучше использовать AutoCompleteTextView — в нём есть поиск по подсказкам.</div>
+
+<div class="hint">💡 <b>Совет:</b> задавай первый элемент как осмысленное значение, а не пустую строку. Например, для фильтра сортировки: «Сначала новые» — понятнее, чем прочерк или пустое значение.</div>
+
+<div class="hint">💡 <b>Совет:</b> используй <code>setSelection</code> в <code>onCreate</code>, чтобы при запуске приложения был выбран логичный вариант по умолчанию. Иначе Spinner покажет первый элемент из списка, что не всегда ожидаемо.</div>
+
+<div class="hint">💡 <b>Совет:</b> если нужно несколько таких выборов на одном экране (страна, город, категория), используй TextInputLayout над каждым Spinner — так пользователь поймёт, что где.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать Spinner для большого списка (100+ элементов). В нём нет поиска — пользователь замучается листать.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетащить Spinner и забыть задать список вариантов. Виджет выглядит пустым и не реагирует на тап.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> путать Spinner (только выбор из списка) и AutoCompleteTextView (можно ввести своё). Для фиксированного выбора — Spinner, для свободного ввода — AutoCompleteTextView.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Spinner</b> — компактный выпадающий список для выбора одного значения из фиксированного набора.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Список вариантов задаётся в <b>логике</b> — через <code>setItems</code> или <code>setSimpleItems</code>.</li>
+  <li>Значение по умолчанию задаётся через <code>setSelection</code>.</li>
+  <li>Пользователь не может ввести своё значение — только выбрать из предложенных.</li>
+  <li>Подходит для 3–20 вариантов. Для больших списков — AutoCompleteTextView с подсказками.</li>
+  <li>Событие <code>onItemSelected</code> — реакция на выбор.</li>
+  <li>Режим <code>dialog</code> в свойствах Spinner удобен для длинных списков.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Тапают по Spinner в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Перетащили спиннер, но не задали список вариантов.</b> Поле пустое, при тапе ничего не раскрывается.</li>
+  <li><b>Ищут содержимое списка в свойствах.</b> Данные задаются только в логике.</li>
+  <li><b>Используют Spinner для большого списка.</b> Пользователь замучается листать — нужен AutoCompleteTextView.</li>
+  <li><b>Путают Spinner с AutoCompleteTextView.</b> Spinner — только выбор; AutoComplete — с возможностью ввода.</li>
+  <li><b>Не задают setSelection.</b> По умолчанию выбирается первый элемент — не всегда то, что нужно.</li>
+  <li><b>Не задают ID.</b> Виджет не появляется в событиях, логика не подключается.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
