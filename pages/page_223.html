@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Разметка экрана EditorActivity</title>
+</head>
+<body>
+<meta charset="utf-8">
+<h1>Разметка экрана EditorActivity</h1>
+
+<p><b>EditorActivity</b> — экран редактирования проекта. Здесь пользователь работает с разделами и HTML-кодом. Экран сложнее, чем MainActivity, потому что внутри одного экрана должно поместиться несколько разных блоков: список разделов, поле для HTML, информация о проекте.</p>
+
+<p>Если разместить всё это вертикально друг под другом — получится очень длинный экран, на котором ничего не видно. Если разместить рядом — на узком экране телефона всё будет слишком мелким. Поэтому мы используем приём, который часто встречается в мобильных приложениях: <b>несколько панелей в одном экране, но видна всегда только одна</b>.</p>
+
+<p>Переключение между панелями — кнопками сверху.</p>
+
+<h2>Идея трёх панелей</h2>
+
+<p>Внутри корневого контейнера мы разместим <b>три отдельных LinearLayout (V)</b> — по одному на каждую панель. Все три имеют одинаковые размеры: ширина match_parent, высота 0dp, вес 1. Это значит, что все три занимают всё свободное место экрана, накладываясь друг на друга «по очереди».</p>
+
+<p>Но видна всегда только одна — две другие скрыты. Скрытие и показ делаются в логике через блок <b>Установить видимость / (Set Visibility)</b>. Значения видимости:</p>
+
+<ul>
+  <li><b>Видимый / (Visible)</b> — панель отображается.</li>
+  <li><b>Невидимый / (Invisible)</b> — панель не отображается, но занимает место.</li>
+  <li><b>Скрытый / (Gone)</b> — панель не отображается и не занимает места.</li>
+</ul>
+
+<p>Мы будем использовать <b>Скрытый / (Gone)</b> — чтобы скрытая панель не оставляла пустого пространства.</p>
+
+<div style="border: 2px solid #2a7; background: #eefaf2; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Подсказка для новичка.</b> Панели не «переключаются» сами по себе. Их нужно вручную скрывать и показывать через блоки <b>Установить видимость / (Set Visibility)</b> в событиях нажатия на кнопки. В логике это будет описано подробно.
+</div>
+
+<h2>Как открыть этот экран в Дизайнере</h2>
+
+<ol>
+  <li>Открой Менеджер представлений (⋮ → Менеджер представлений).</li>
+  <li>На вкладке <b>View</b> найди карточку <code>editor.xml</code>.</li>
+  <li>Тапни по ней — откроется Дизайнер.</li>
+</ol>
+
+<h2>Дерево макета EditorActivity</h2>
+
+<pre>
+rootLayout (Linear V, корень)
+├── topBar (Linear H)
+│   ├── btnBack (MaterialButton «←»)
+│   ├── titleEdit (TextView «Редактор»)
+│   └── btnMenu (MaterialButton «⋮»)
+├── tabsRow (Linear H)
+│   ├── btnTabSections (MaterialButton «Разделы»)
+│   ├── btnTabEditor (MaterialButton «HTML»)
+│   └── btnTabInfo (MaterialButton «Инфо»)
+├── panelSections (Linear V, вес 1)
+│   ├── hintSections (TextView «Разделы проекта»)
+│   ├── listSections (ListView)
+│   └── rowSectionActions (Linear H)
+│       ├── btnAddSection (MaterialButton «+»)
+│       ├── btnRenameSection (MaterialButton «✎»)
+│       └── btnDeleteSection (MaterialButton «🗑»)
+├── panelEditor (Linear V, вес 1)
+│   ├── hintEditor (TextView «HTML-код страницы»)
+│   └── editorText (EditText)
+├── panelInfo (Linear V, вес 1)
+│   ├── hintInfo (TextView «Информация о проекте»)
+│   ├── infoName (TextView)
+│   ├── infoAuthor (TextView)
+│   └── infoStats (TextView)
+└── bottomBar (Linear H)
+    ├── btnSave (MaterialButton «Сохранить»)
+    ├── btnPreview (MaterialButton «Предпросмотр»)
+    └── btnFind (MaterialButton «Найти»)
+</pre>
+
+<p><b>Структура верхнего уровня:</b> корень (rootLayout) — вертикальный. Внутри него сверху вниз: шапка (topBar), панель вкладок (tabsRow), три панели (panelSections, panelEditor, panelInfo) и нижняя панель действий (bottomBar).</p>
+
+<p><b>Три панели — соседи:</b> они лежат друг под другом в корне. Все три имеют вес 1 и высоту 0dp — значит, каждая занимает всё место между tabsRow и bottomBar. Но видна всегда только одна — остальные скрываются через логику.</p>
+
+<div style="border: 2px solid #a27; background: #fdeef5; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Частая ошибка.</b> Забыть в onCreate скрыть panelEditor и panelInfo. Тогда при запуске приложения пользователь увидит все три панели одновременно — каша из элементов. В логике мы обязательно спрячем их сразу при открытии экрана.
+</div>
+
+<h2>Шаг 1. rootLayout</h2>
+
+<p><b>Что это:</b> корневой контейнер этого экрана (уже есть).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>rootLayout</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: match_parent</li>
+  <li>Ориентация: vertical</li>
+  <li>Внутренний отступ: 0</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<h2>Шаг 2. topBar</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (H).</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>topBar</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Ориентация: horizontal</li>
+  <li>Гравитация макета: center_vertical</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 0</li>
+  <li>Цвет фона: #3F51B5</li>
+</ul>
+
+<p><b>Зачем синий фон шапки:</b> визуально шапка отделяет верхнюю панель управления от содержимого. Пользователь сразу понимает, что здесь находятся кнопки навигации.</p>
+
+<h2>Шаг 3. btnBack</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>topBar</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnBack</b></li>
+  <li>Ширина: wrap_content</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>←</b></li>
+  <li>Размер текста: 18 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: прозрачный</li>
+  <li>Внутренний отступ: 8/4/8/4</li>
+  <li>Внешний отступ: 0</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<p><b>Зачем стрелка на кнопке:</b> это универсальный символ «назад». Пользователь сразу понимает, что нажатие вернёт его на предыдущий экран.</p>
+
+<h2>Шаг 4. titleEdit</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>topBar</b> (после btnBack).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>titleEdit</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>Редактор</b></li>
+  <li>Размер текста: 18 sp</li>
+  <li>Стиль текста: bold</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Гравитация: center_vertical | start</li>
+  <li>Внутренний отступ: left 8</li>
+  <li>Однострочный: вкл</li>
+</ul>
+
+<p><b>Почему 0dp + вес 1:</b> тот же приём, что и в MainActivity. Заголовок забирает всё свободное место, прижимая кнопки «назад» и «меню» к краям шапки.</p>
+
+<h2>Шаг 5. btnMenu</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>topBar</b> (последним элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnMenu</b></li>
+  <li>Ширина: wrap_content</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>⋮</b></li>
+  <li>Размер текста: 18 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: прозрачный</li>
+  <li>Внутренний отступ: 8/4/8/4</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<p><b>Зачем кнопка меню:</b> это привычный паттерн — три точки означают «здесь есть дополнительные действия».</p>
+
+<h2>Шаг 6. tabsRow</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (H).</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после topBar).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>tabsRow</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Ориентация: horizontal</li>
+  <li>Гравитация макета: center</li>
+  <li>Внутренний отступ: 4</li>
+  <li>Внешний отступ: 0</li>
+  <li>Цвет фона: #E8EAF6</li>
+</ul>
+
+<p><b>Зачем отдельная панель вкладок:</b> кнопки переключения панелей должны быть видны всегда и одинаково. Мы выносим их в отдельный контейнер под шапкой.</p>
+
+<h2>Шаг 7. btnTabSections</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>tabsRow</b>.</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnTabSections</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>Разделы</b></li>
+  <li>Размер текста: 13 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #3F51B5 (активная)</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 2</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<p><b>Почему вес 1:</b> каждая кнопка-вкладка занимает равную долю ширины. Так три вкладки делят пространство поровну — по одной трети каждая.</p>
+
+<h2>Шаг 8. btnTabEditor</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>tabsRow</b> (после btnTabSections).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnTabEditor</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>HTML</b></li>
+  <li>Размер текста: 13 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #9E9E9E (неактивная)</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 2</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<h2>Шаг 9. btnTabInfo</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>tabsRow</b> (после btnTabEditor).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnTabInfo</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>Инфо</b></li>
+  <li>Размер текста: 13 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #9E9E9E</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 2</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<h2>Шаг 10. panelSections</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (V) — первая из трёх панелей.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после tabsRow).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>panelSections</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: 0 dp</li>
+  <li>Вес: 1</li>
+  <li>Ориентация: vertical</li>
+  <li>Внутренний отступ: 0</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<p><b>Зачем вес 1 и высота 0dp:</b> панель должна занимать всё пространство между панелью вкладок и нижней панелью действий.</p>
+
+<h2>Шаг 11. hintSections</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>panelSections</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>hintSections</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Разделы проекта</b></li>
+  <li>Размер текста: 14 sp</li>
+  <li>Цвет текста: #666666</li>
+  <li>Внутренний отступ: 16/8/16/8</li>
+</ul>
+
+<h2>Шаг 12. listSections</h2>
+
+<p><b>Что перетаскиваем:</b> ListView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>panelSections</b> (после hintSections).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>listSections</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: 0 dp</li>
+  <li>Вес: 1</li>
+  <li>Высота разделителя: 1 dp</li>
+  <li>Внутренний отступ: 0</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<p><b>Почему 0dp + вес 1:</b> список должен растянуться между подписью сверху и панелью действий снизу. Так он займёт всё свободное место и будет прокручиваться, если разделов много.</p>
+
+<h2>Шаг 13. rowSectionActions</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (H).</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>panelSections</b> (после listSections).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>rowSectionActions</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Ориентация: horizontal</li>
+  <li>Гравитация макета: center</li>
+  <li>Внутренний отступ: 8</li>
+</ul>
+
+<p><b>Зачем три кнопки рядом:</b> в одном ряду помещаются три действия над разделом: добавить, переименовать, удалить.</p>
+
+<h2>Шаг 14. btnAddSection</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rowSectionActions</b>.</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnAddSection</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>+</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #2E7D32 (зелёный — добавление)</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 2</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<h2>Шаг 15. btnRenameSection</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rowSectionActions</b> (после btnAddSection).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnRenameSection</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>✎</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #F57C00 (оранжевый — редактирование)</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 2</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<h2>Шаг 16. btnDeleteSection</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rowSectionActions</b> (после btnRenameSection).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnDeleteSection</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>🗑</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #C62828 (красный — удаление)</li>
+  <li>Внутренний отступ: 8</li>
+  <li>Внешний отступ: 2</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<p><b>Почему разные цвета:</b> цветовая кодировка помогает пользователю не путать кнопки. Зелёный — «добавить», оранжевый — «редактировать», красный — «удалить».</p>
+
+<h2>Шаг 17. panelEditor</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (V) — вторая панель.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после panelSections).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>panelEditor</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: 0 dp</li>
+  <li>Вес: 1</li>
+  <li>Ориентация: vertical</li>
+  <li>Внутренний отступ: 0</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<h2>Шаг 18. hintEditor</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>panelEditor</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>hintEditor</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>HTML-код страницы</b></li>
+  <li>Размер текста: 14 sp</li>
+  <li>Цвет текста: #666666</li>
+  <li>Внутренний отступ: 16/8/16/8</li>
+</ul>
+
+<h2>Шаг 19. editorText</h2>
+
+<p><b>Что перетаскиваем:</b> EditText — поле для ввода HTML-кода.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>panelEditor</b> (после hintEditor).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>editorText</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: 0 dp</li>
+  <li>Вес: 1</li>
+  <li>Подсказка: <b>Введите HTML-код…</b></li>
+  <li>Цвет подсказки: #AAAAAA</li>
+  <li>Тип ввода: textMultiLine | textNoSuggestions</li>
+  <li>Однострочный: выкл</li>
+  <li>Строк: 20</li>
+  <li>Размер текста: 14 sp</li>
+  <li>Цвет текста: #1A1A1A</li>
+  <li>Гравитация: top | start</li>
+  <li>Внутренний отступ: 12</li>
+  <li>Внешний отступ: 8/0/8/0</li>
+  <li>Опция Ime: по умолчанию</li>
+</ul>
+
+<p><b>Почему именно такие настройки:</b></p>
+<ul>
+  <li><b>textMultiLine</b> — разрешает ввод в несколько строк. HTML-код всегда многострочный.</li>
+  <li><b>textNoSuggestions</b> — отключает автозамену и подсказки клавиатуры. Иначе клавиатура будет «исправлять» HTML-теги.</li>
+  <li><b>Строк = 20</b> — минимальная высота поля.</li>
+  <li><b>Гравитация top | start</b> — текст начинается сверху, а не по центру.</li>
+  <li><b>Внутренний отступ 12dp</b> — текст не прижимается к краям поля.</li>
+</ul>
+
+<h2>Шаг 20. panelInfo</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (V) — третья панель.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (после panelEditor).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>panelInfo</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: 0 dp</li>
+  <li>Вес: 1</li>
+  <li>Ориентация: vertical</li>
+  <li>Внутренний отступ: 0</li>
+  <li>Внешний отступ: 0</li>
+</ul>
+
+<h2>Шаг 21. hintInfo</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>panelInfo</b> (первым элементом).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>hintInfo</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Информация о проекте</b></li>
+  <li>Размер текста: 14 sp</li>
+  <li>Цвет текста: #666666</li>
+  <li>Внутренний отступ: 16/8/16/8</li>
+</ul>
+
+<h2>Шаг 22. infoName</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>panelInfo</b> (после hintInfo).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>infoName</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Название: —</b></li>
+  <li>Размер текста: 16 sp</li>
+  <li>Стиль текста: bold</li>
+  <li>Цвет текста: #1A1A1A</li>
+  <li>Внутренний отступ: 16/8/16/8</li>
+</ul>
+
+<h2>Шаг 23. infoAuthor</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>panelInfo</b> (после infoName).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>infoAuthor</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Автор: —</b></li>
+  <li>Размер текста: 14 sp</li>
+  <li>Цвет текста: #1A1A1A</li>
+  <li>Внутренний отступ: 16/8/16/8</li>
+</ul>
+
+<h2>Шаг 24. infoStats</h2>
+
+<p><b>Что перетаскиваем:</b> TextView.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>panelInfo</b> (после infoAuthor).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>infoStats</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Текст: <b>Разделов: 0 · Символов: 0</b></li>
+  <li>Размер текста: 14 sp</li>
+  <li>Цвет текста: #666666</li>
+  <li>Внутренний отступ: 16/8/16/8</li>
+</ul>
+
+<h2>Шаг 25. bottomBar</h2>
+
+<p><b>Что перетаскиваем:</b> LinearLayout (H).</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>rootLayout</b> (последним элементом, снизу).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>bottomBar</b></li>
+  <li>Ширина: match_parent</li>
+  <li>Высота: wrap_content</li>
+  <li>Ориентация: horizontal</li>
+  <li>Гравитация макета: center</li>
+  <li>Внутренний отступ: 4</li>
+  <li>Цвет фона: #E8EAF6</li>
+</ul>
+
+<h2>Шаг 26. btnSave</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>bottomBar</b>.</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnSave</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>Сохранить</b></li>
+  <li>Размер текста: 13 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #2E7D32 (зелёный)</li>
+  <li>Внутренний отступ: 8/10/8/10</li>
+  <li>Внешний отступ: 2</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<h2>Шаг 27. btnPreview</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>bottomBar</b> (после btnSave).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnPreview</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>Предпросмотр</b></li>
+  <li>Размер текста: 13 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #3F51B5 (синий)</li>
+  <li>Внутренний отступ: 8/10/8/10</li>
+  <li>Внешний отступ: 2</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<h2>Шаг 28. btnFind</h2>
+
+<p><b>Что перетаскиваем:</b> MaterialButton.</p>
+<p><b>Куда перетаскиваем:</b> внутрь <b>bottomBar</b> (после btnPreview).</p>
+
+<p><b>Свойства:</b></p>
+<ul>
+  <li>id: <b>btnFind</b></li>
+  <li>Ширина: 0 dp</li>
+  <li>Высота: wrap_content</li>
+  <li>Вес: 1</li>
+  <li>Текст: <b>Найти</b></li>
+  <li>Размер текста: 13 sp</li>
+  <li>Цвет текста: #FFFFFF</li>
+  <li>Цвет фона: #F57C00 (оранжевый)</li>
+  <li>Внутренний отступ: 8/10/8/10</li>
+  <li>Внешний отступ: 2</li>
+  <li>Гравитация: center</li>
+</ul>
+
+<h2>Сводная таблица свойств EditorActivity</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; text-align: left;">Виджет (id)</th>
+      <th style="border: 1px solid #000; text-align: left;">Ширина</th>
+      <th style="border: 1px solid #000; text-align: left;">Высота</th>
+      <th style="border: 1px solid #000; text-align: left;">Текст</th>
+      <th style="border: 1px solid #000; text-align: left;">Размер текста</th>
+      <th style="border: 1px solid #000; text-align: left;">Цвет текста</th>
+      <th style="border: 1px solid #000; text-align: left;">Внутренний отступ</th>
+      <th style="border: 1px solid #000; text-align: left;">Внешний отступ</th>
+      <th style="border: 1px solid #000; text-align: left;">Гравитация</th>
+      <th style="border: 1px solid #000; text-align: left;">Особенности</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border: 1px solid #000;">rootLayout</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Корень</td></tr>
+    <tr><td style="border: 1px solid #000;">topBar</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center_vertical</td><td style="border: 1px solid #000;">Фон #3F51B5</td></tr>
+    <tr><td style="border: 1px solid #000;">btnBack</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">←</td><td style="border: 1px solid #000;">18 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8/4/8/4</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Прозрачный</td></tr>
+    <tr><td style="border: 1px solid #000;">titleEdit</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Редактор</td><td style="border: 1px solid #000;">18 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">left 8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center_vertical | start</td><td style="border: 1px solid #000;">Вес 1, bold</td></tr>
+    <tr><td style="border: 1px solid #000;">btnMenu</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">⋮</td><td style="border: 1px solid #000;">18 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8/4/8/4</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Прозрачный</td></tr>
+    <tr><td style="border: 1px solid #000;">tabsRow</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">4</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Фон #E8EAF6</td></tr>
+    <tr><td style="border: 1px solid #000;">btnTabSections</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Разделы</td><td style="border: 1px solid #000;">13 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8</td><td style="border: 1px solid #000;">2</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Вес 1, фон #3F51B5</td></tr>
+    <tr><td style="border: 1px solid #000;">btnTabEditor</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">HTML</td><td style="border: 1px solid #000;">13 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8</td><td style="border: 1px solid #000;">2</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Вес 1, фон #9E9E9E</td></tr>
+    <tr><td style="border: 1px solid #000;">btnTabInfo</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Инфо</td><td style="border: 1px solid #000;">13 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8</td><td style="border: 1px solid #000;">2</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Вес 1, фон #9E9E9E</td></tr>
+    <tr><td style="border: 1px solid #000;">panelSections</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Вес 1, видима</td></tr>
+    <tr><td style="border: 1px solid #000;">hintSections</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Разделы проекта</td><td style="border: 1px solid #000;">14 sp</td><td style="border: 1px solid #000;">#666666</td><td style="border: 1px solid #000;">16/8/16/8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">start</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">listSections</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Вес 1</td></tr>
+    <tr><td style="border: 1px solid #000;">rowSectionActions</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Панель кнопок</td></tr>
+    <tr><td style="border: 1px solid #000;">btnAddSection</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">+</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8</td><td style="border: 1px solid #000;">2</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Вес 1, фон #2E7D32</td></tr>
+    <tr><td style="border: 1px solid #000;">btnRenameSection</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">✎</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8</td><td style="border: 1px solid #000;">2</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Вес 1, фон #F57C00</td></tr>
+    <tr><td style="border: 1px solid #000;">btnDeleteSection</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">🗑</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8</td><td style="border: 1px solid #000;">2</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Вес 1, фон #C62828</td></tr>
+    <tr><td style="border: 1px solid #000;">panelEditor</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Вес 1, скрыта</td></tr>
+    <tr><td style="border: 1px solid #000;">hintEditor</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">HTML-код страницы</td><td style="border: 1px solid #000;">14 sp</td><td style="border: 1px solid #000;">#666666</td><td style="border: 1px solid #000;">16/8/16/8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">start</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">editorText</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">Введите HTML-код…</td><td style="border: 1px solid #000;">14 sp</td><td style="border: 1px solid #000;">#1A1A1A</td><td style="border: 1px solid #000;">12</td><td style="border: 1px solid #000;">8/0/8/0</td><td style="border: 1px solid #000;">top | start</td><td style="border: 1px solid #000;">Вес 1, multiline</td></tr>
+    <tr><td style="border: 1px solid #000;">panelInfo</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">Вес 1, скрыта</td></tr>
+    <tr><td style="border: 1px solid #000;">hintInfo</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Информация о проекте</td><td style="border: 1px solid #000;">14 sp</td><td style="border: 1px solid #000;">#666666</td><td style="border: 1px solid #000;">16/8/16/8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">start</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">infoName</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Название: —</td><td style="border: 1px solid #000;">16 sp</td><td style="border: 1px solid #000;">#1A1A1A</td><td style="border: 1px solid #000;">16/8/16/8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">start</td><td style="border: 1px solid #000;">bold</td></tr>
+    <tr><td style="border: 1px solid #000;">infoAuthor</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Автор: —</td><td style="border: 1px solid #000;">14 sp</td><td style="border: 1px solid #000;">#1A1A1A</td><td style="border: 1px solid #000;">16/8/16/8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">start</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">infoStats</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Разделов: 0 · Символов: 0</td><td style="border: 1px solid #000;">14 sp</td><td style="border: 1px solid #000;">#666666</td><td style="border: 1px solid #000;">16/8/16/8</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">start</td><td style="border: 1px solid #000;">—</td></tr>
+    <tr><td style="border: 1px solid #000;">bottomBar</td><td style="border: 1px solid #000;">match_parent</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">—</td><td style="border: 1px solid #000;">4</td><td style="border: 1px solid #000;">0</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Фон #E8EAF6</td></tr>
+    <tr><td style="border: 1px solid #000;">btnSave</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Сохранить</td><td style="border: 1px solid #000;">13 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8/10/8/10</td><td style="border: 1px solid #000;">2</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Вес 1, фон #2E7D32</td></tr>
+    <tr><td style="border: 1px solid #000;">btnPreview</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Предпросмотр</td><td style="border: 1px solid #000;">13 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8/10/8/10</td><td style="border: 1px solid #000;">2</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Вес 1, фон #3F51B5</td></tr>
+    <tr><td style="border: 1px solid #000;">btnFind</td><td style="border: 1px solid #000;">0 dp</td><td style="border: 1px solid #000;">wrap_content</td><td style="border: 1px solid #000;">Найти</td><td style="border: 1px solid #000;">13 sp</td><td style="border: 1px solid #000;">#FFFFFF</td><td style="border: 1px solid #000;">8/10/8/10</td><td style="border: 1px solid #000;">2</td><td style="border: 1px solid #000;">center</td><td style="border: 1px solid #000;">Вес 1, фон #F57C00</td></tr>
+  </tbody>
+</table>
+
+<h2>Что важно понять про три панели</h2>
+
+<p><b>Три панели — это три отдельных LinearLayout, лежащих друг под другом в корне.</b> Каждая имеет вес 1 и высоту 0dp — значит, все три «претендуют» на одно и то же место. Но видна всегда только одна. Две другие скрыты через блок <b>Установить видимость / (Set Visibility)</b> со значением <b>Скрытый / (Gone)</b>.</p>
+
+<p><b>Переключение — через кнопки вкладок.</b> При нажатии на btnTabSections срабатывает событие, в котором мы скрываем panelEditor и panelInfo, показываем panelSections, меняем цвета кнопок.</p>
+
+<div style="border: 2px solid #27a; background: #eaf4fb; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Совет.</b> Не пытайся сделать все три панели видимыми одновременно «чтобы было видно сразу всё». На узком экране телефона это превратится в кашу.
+</div>
+
+<div style="border: 2px solid #a72; background: #fdf4e3; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Внимание.</b> Если ты забудешь в onCreate скрыть две панели из трёх — пользователь увидит все три сразу. Панели будут накладываться друг на друга, элементы перемешаются.
+</div>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
