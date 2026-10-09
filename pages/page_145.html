@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Notification — уведомления</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Notification — уведомления</h1>
+
+<p><b>Notification</b> — компонент для показа системных уведомлений. Отображает сообщения в шторке уведомлений Android: вне приложения, поверх других окон, с иконкой и текстом.</p>
+
+<p>Иконка в диалоге добавления — колокольчик.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Создаёт системное уведомление — как у мессенджеров и почтовых клиентов.</li>
+  <li>Отображается в шторке — пользователь видит его при свайпе сверху вниз.</li>
+  <li>Может содержать заголовок, текст, иконку.</li>
+  <li>Может открывать Activity при тапе по уведомлению.</li>
+  <li>Может звучать, вибрировать — с настройкой по каналу.</li>
+  <li>Требует разрешения POST_NOTIFICATIONS на Android 13+.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Напоминания — «Пора пить воду».</li>
+  <li>Будильник — сигнал в заданное время.</li>
+  <li>Сообщения — новое сообщение в чате.</li>
+  <li>Обновления — «Доступна новая версия».</li>
+  <li>События в приложении — «Ваш заказ готов».</li>
+  <li>Задачи — «У вас 3 новых задания».</li>
+  <li>Оповещения — о чём угодно, что требует внимания пользователя.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>myNotification</code>, <code>alarmNotif</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Канал</b></td>
+      <td style="border: 1px solid #000;">Группа уведомлений.</td>
+      <td style="border: 1px solid #000;">«Напоминания», «Сообщения».</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" border="1">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setTitle</b></td>
+      <td style="border: 1px solid #000;">Заголовок уведомления.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setMessage</b></td>
+      <td style="border: 1px solid #000;">Текст уведомления.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setSmallIcon</b></td>
+      <td style="border: 1px solid #000;">Иконка (маленькая).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setLargeIcon</b></td>
+      <td style="border: 1px solid #000;">Большая иконка (опционально).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setSound</b></td>
+      <td style="border: 1px solid #000;">Звук при показе.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setVibrate</b></td>
+      <td style="border: 1px solid #000;">Вибрация при показе.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>show</b></td>
+      <td style="border: 1px solid #000;">Показать уведомление.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>cancel</b></td>
+      <td style="border: 1px solid #000;">Убрать уведомление.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Подключи компонент Notification на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>alarmNotif</code>.</li>
+  <li>Настрой канал — например, «Напоминания» с высоким приоритетом (звук + вибрация).</li>
+  <li>Добавь разрешение <b>POST_NOTIFICATIONS</b> для Android 13+.</li>
+  <li>В логике:
+    <ul>
+      <li>задай <code>setTitle</code> и <code>setMessage</code>;</li>
+      <li>задай <code>setSmallIcon</code> — иконку из ресурсов;</li>
+      <li>при необходимости — звук и вибрацию;</li>
+      <li>вызови <code>show</code> — уведомление появится в шторке.</li>
+    </ul>
+  </li>
+  <li>Для открытия Activity по тапу — настрой Intent внутри уведомления.</li>
+</ol>
+
+<h2>Пример: напоминание</h2>
+
+<ul>
+  <li>Пользователь установил время через TimePickerDialog.</li>
+  <li>При наступлении времени — <code>Notification.show()</code> с заголовком «Напоминание» и текстом «Пора пить воду».</li>
+  <li>Уведомление появляется в шторке, звучит и вибрирует.</li>
+  <li>Пользователь тапает — открывается приложение.</li>
+</ul>
+
+<h2>Пример: будильник</h2>
+
+<ul>
+  <li>Задай канал с высоким приоритетом.</li>
+  <li>Установи звук и вибрацию.</li>
+  <li><code>show</code> в нужное время — уведомление будит пользователя.</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> для Android 13+ нужно разрешение <b>POST_NOTIFICATIONS</b>. Без него уведомления не показываются.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> канал уведомлений создаётся при первом использовании. Пользователь может его отключить в настройках Android — тогда уведомления не приходят.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не спамь уведомлениями. Каждое уведомление — это внимание пользователя. Если приложение шлёт их десятками, пользователь отключит их или удалит приложение.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> для работы в фоне (например, напоминание через час, когда приложение закрыто) нужен AlarmManager. Простой Timer не сработает в фоне.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> иконка уведомления должна быть монохромной (одноцветной). Цветные иконки Android отображает как белый квадрат.</div>
+
+<div class="hint">💡 <b>Совет:</b> для напоминаний используй канал с высоким приоритетом — звук, вибрация, всплывающее окно. Для информационных сообщений — канал с низким приоритетом.</div>
+
+<div class="hint">💡 <b>Совет:</b> для открытия приложения по тапу — настрой Intent в уведомлении. Пользователь тапает — приложение открывается на нужном экране.</div>
+
+<div class="hint">💡 <b>Совет:</b> для группировки уведомлений используй один канал для однотипных сообщений. Так пользователь может отключить их всех сразу.</div>
+
+<div class="hint">💡 <b>Совет:</b> для будильника используй канал с максимальным приоритетом — он пробьётся через режим «Не беспокоить», если разрешено.</div>
+
+<div class="hint">💡 <b>Совет:</b> не используй уведомления для рекламы. Пользователь быстро устаёт и отключает их.</div>
+
+<div class="hint">💡 <b>Совет:</b> для тестирования сначала проверь уведомление с задержкой в несколько секунд, потом — с реальным временем.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не запрашивать POST_NOTIFICATIONS для Android 13+. Уведомления не показываются.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать цветную иконку. Android показывает её как белый квадрат — уведомление выглядит некрасиво.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> спамить уведомлениями. Пользователь отключает их или удаляет приложение.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> ожидать, что Timer сработает в фоне. При закрытом приложении Timer останавливается. Для фоновых напоминаний нужен AlarmManager.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не настраивать Intent в уведомлении. Пользователь тапает — ничего не происходит.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Notification</b> — компонент для показа системных уведомлений.</li>
+  <li>Основные блоки: <b>setTitle</b>, <b>setMessage</b>, <b>setSmallIcon</b>, <b>setLargeIcon</b>, <b>setSound</b>, <b>setVibrate</b>, <b>show</b>, <b>cancel</b>.</li>
+  <li>Требует разрешения <b>POST_NOTIFICATIONS</b> на Android 13+.</li>
+  <li>Иконка должна быть монохромной — иначе Android покажет белый квадрат.</li>
+  <li>Для фоновых напоминаний нужен AlarmManager — Timer не работает в фоне.</li>
+  <li>Не спамь уведомлениями — пользователь отключит их.</li>
+  <li>Настраивай Intent, чтобы открывать приложение по тапу.</li>
+  <li>Разные каналы — для напоминаний, сообщений и информационных сообщений.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Не запрашивают POST_NOTIFICATIONS.</b> Уведомления не показываются на Android 13+.</li>
+  <li><b>Используют цветную иконку.</b> Android показывает белый квадрат.</li>
+  <li><b>Спамят уведомлениями.</b> Пользователь отключает их.</li>
+  <li><b>Ждут работу Timer в фоне.</b> Нужен AlarmManager.</li>
+  <li><b>Не настраивают Intent.</b> Тап по уведомлению не открывает приложение.</li>
+  <li><b>Не настраивают каналы.</b> Все уведомления в одной группе.</li>
+  <li><b>Не тестируют с задержкой.</b> Сложно проверить срабатывание.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
