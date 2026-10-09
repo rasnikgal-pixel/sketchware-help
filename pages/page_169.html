@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Менеджер ресурсов</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Менеджер ресурсов</h1>
+
+<p><b>Менеджер ресурсов</b> — раздел меню «Настройка», через который управляются файлы ресурсов проекта: строки, цвета, размеры, стили, меню, изображения в res-папках. Это общий инструмент для работы с ресурсами Android.</p>
+
+<p>Иконка в меню — папка с файлами.</p>
+
+<h2>Что можно делать</h2>
+
+<ul>
+  <li>Просматривать список ресурсов проекта.</li>
+  <li>Добавлять новые ресурсы: строки, цвета, размеры.</li>
+  <li>Редактировать существующие.</li>
+  <li>Удалять ненужные.</li>
+  <li>Управлять структурами ресурсов: <code>strings.xml</code>, <code>colors.xml</code>, <code>dimens.xml</code>, <code>styles.xml</code>.</li>
+</ul>
+
+<h2>Какие ресурсы бывают</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Ресурс</th>
+      <th style="border: 1px solid #000;">Файл</th>
+      <th style="border: 1px solid #000;">Для чего</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Строки</b></td>
+      <td style="border: 1px solid #000;"><code>strings.xml</code></td>
+      <td style="border: 1px solid #000;">Тексты приложения: названия, сообщения, кнопки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвета</b></td>
+      <td style="border: 1px solid #000;"><code>colors.xml</code></td>
+      <td style="border: 1px solid #000;">Палитра приложения.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Размеры</b></td>
+      <td style="border: 1px solid #000;"><code>dimens.xml</code></td>
+      <td style="border: 1px solid #000;">Стандартные отступы, размеры шрифтов.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Стили</b></td>
+      <td style="border: 1px solid #000;"><code>styles.xml</code></td>
+      <td style="border: 1px solid #000;">Оформление виджетов.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Меню</b></td>
+      <td style="border: 1px solid #000;"><code>menu/</code></td>
+      <td style="border: 1px solid #000;">Файлы для Drawer, Toolbar, BottomNavigation.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Массивы</b></td>
+      <td style="border: 1px solid #000;"><code>arrays.xml</code></td>
+      <td style="border: 1px solid #000;">Списки строк, чисел.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Изображения</b></td>
+      <td style="border: 1px solid #000;"><code>drawable-*/</code></td>
+      <td style="border: 1px solid #000;">Картинки в папках ресурсов.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Зачем это нужно</h2>
+
+<ul>
+  <li><b>Локализация</b> — все тексты в одном месте, легко переводить.</li>
+  <li><b>Единая палитра</b> — цвета хранятся централизованно.</li>
+  <li><b>Стилизация</b> — можно менять вид виджетов через стили.</li>
+  <li><b>Меню</b> — файлы меню для Drawer и BottomNavigation.</li>
+  <li><b>Структура</b> — упорядоченное хранение ресурсов.</li>
+</ul>
+
+<h2>Как добавить ресурс</h2>
+
+<ol>
+  <li>Открой меню <b>⋮</b> → <b>Менеджер ресурсов</b>.</li>
+  <li>Выбери тип ресурса: строки, цвета, размеры, меню.</li>
+  <li>Нажми <b>«+»</b> для добавления нового.</li>
+  <li>Заполни поля:
+    <ul>
+      <li>Имя — уникальное, латиницей;</li>
+      <li>Значение — текст, цвет, размер.</li>
+    </ul>
+  </li>
+  <li>Нажми «Сохранить».</li>
+</ol>
+
+<h2>Как использовать</h2>
+
+<ul>
+  <li>В разметке или в свойствах виджетов используй ссылку на ресурс: <code>@string/имя</code>, <code>@color/имя</code>, <code>@dimen/имя</code>.</li>
+  <li>В логике — через специальные блоки (<code>getString</code>, <code>getColor</code>).</li>
+</ul>
+
+<h2>Как удалить ресурс</h2>
+
+<ol>
+  <li>Открой Менеджер ресурсов.</li>
+  <li>Найди нужный ресурс.</li>
+  <li>Используй контекстное меню → «Удалить».</li>
+  <li>Подтверди.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> не удаляй ресурсы, используемые в проекте. Если TextView ссылается на <code>@string/hello</code>, а ты удалил hello — приложение не соберётся.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> имена ресурсов должны быть уникальными. Два ресурса с одинаковым именем — конфликт.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не редактируй вручную системные ресурсы, которые Sketchware создаёт сам. Это может сломать проект.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> цвета задаются в формате HEX: <code>#RRGGBB</code> или <code>#AARRGGBB</code> для прозрачности.</div>
+
+<div class="hint">💡 <b>Совет:</b> для локализации храни все тексты в strings.xml. Если нужно перевести приложение на другой язык — заменить значения в одном файле, а не искать тексты по всей разметке.</div>
+
+<div class="hint">💡 <b>Совет:</b> для единой палитры используй colors.xml. Если нужно поменять цвет во всём приложении — меняешь одно значение.</div>
+
+<div class="hint">💡 <b>Совет:</b> для меню Drawer создай XML-файл через Менеджер ресурсов. В нём опиши пункты — заголовок, иконка, ID.</div>
+
+<div class="hint">💡 <b>Совет:</b> не дублируй ресурсы. Если цвет <code>#3F51B5</code> уже есть в colors.xml, используй ссылку <code>@color/primary</code>, а не новый ресурс.</div>
+
+<div class="hint">💡 <b>Совет:</b> для динамического текста используй strings.xml только для статичных подписей. Динамический текст задавай в логике через <code>setText</code>.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать ресурс без ссылки. Например, в разметке пишут <code>Hello</code> вместо <code>@string/hello</code>. Локализация не работает.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> удалять используемые ресурсы. Проект не собирается.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> дублировать ресурсы. Один и тот же цвет или текст в нескольких местах — сложно менять.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> неправильный формат цвета. <code>#FFFFFF</code> — верно, <code>FFFFFF</code> или <code>#fff</code> — нет.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> имена с пробелами или кириллицей. Ресурсы требуют латиницу и подчёркивания.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Менеджер ресурсов</b> — раздел для управления ресурсами проекта.</li>
+  <li>Хранит строки, цвета, размеры, стили, меню, массивы, изображения.</li>
+  <li>Основные файлы: <b>strings.xml</b>, <b>colors.xml</b>, <b>dimens.xml</b>, <b>styles.xml</b>.</li>
+  <li>Позволяет локализовать приложение и менять цвета централизованно.</li>
+  <li>Используется через ссылки <code>@string/имя</code>, <code>@color/имя</code>.</li>
+  <li>Не удаляй используемые ресурсы — проект не соберётся.</li>
+  <li>Имена — латиница и подчёркивания, без пробелов.</li>
+  <li>Цвета — HEX формат: <code>#RRGGBB</code> или <code>#AARRGGBB</code>.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Используют текст напрямую, а не через ресурс.</b> Локализация не работает.</li>
+  <li><b>Удаляют используемые ресурсы.</b> Проект ломается.</li>
+  <li><b>Дублируют ресурсы.</b> Сложно менять централизованно.</li>
+  <li><b>Неправильный формат цвета.</b> Ресурс не подставляется.</li>
+  <li><b>Имена с пробелами или кириллицей.</b> Ошибка при сборке.</li>
+  <li><b>Редактируют системные ресурсы.</b> Ломают проект.</li>
+  <li><b>Не используют ресурсы для единой палитры.</b> Много разрозненных цветов.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
