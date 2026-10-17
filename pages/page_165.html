@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Менеджер изображений</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Менеджер изображений</h1>
+
+<p><b>Менеджер изображений</b> — раздел меню «Настройка», через который добавляются картинки в проект. Здесь ты загружаешь изображения для ImageView, иконок, фонов, аватарок.</p>
+
+<p>Иконка в меню — рамка с картинкой.</p>
+
+<h2>Что можно делать</h2>
+
+<ul>
+  <li>Добавлять изображения из памяти устройства.</li>
+  <li>Просматривать список загруженных картинок.</li>
+  <li>Удалять ненужные.</li>
+  <li>Заменять существующие.</li>
+  <li>Использовать в ImageView через свойство Image / Src.</li>
+</ul>
+
+<h2>Какие изображения загружать</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Тип</th>
+      <th style="border: 1px solid #000;">Формат</th>
+      <th style="border: 1px solid #000;">Рекомендуемый размер</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Иконки</b></td>
+      <td style="border: 1px solid #000;">PNG с прозрачностью</td>
+      <td style="border: 1px solid #000;">48×48, 64×64, 96×96</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Фоны</b></td>
+      <td style="border: 1px solid #000;">Оптимизированные JPEG</td>
+      <td style="border: 1px solid #000;">1080×1920 (экран)</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Аватарки</b></td>
+      <td style="border: 1px solid #000;">JPEG или PNG, квадратные</td>
+      <td style="border: 1px solid #000;">200×200, 300×300</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Обложки</b></td>
+      <td style="border: 1px solid #000;">JPEG</td>
+      <td style="border: 1px solid #000;">600–800 по ширине</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Иллюстрации</b></td>
+      <td style="border: 1px solid #000;">PNG или JPG, средний размер</td>
+      <td style="border: 1px solid #000;">300–500 пикселей</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Логотипы</b></td>
+      <td style="border: 1px solid #000;">PNG с прозрачным фоном</td>
+      <td style="border: 1px solid #000;">300–500 по ширине</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Форматы</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Формат</th>
+      <th style="border: 1px solid #000;">Когда использовать</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>PNG</b></td>
+      <td style="border: 1px solid #000;">Для иконок и картинок с прозрачностью.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>JPG / JPEG</b></td>
+      <td style="border: 1px solid #000;">Для фотографий и фонов.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>WEBP</b></td>
+      <td style="border: 1px solid #000;">Современный формат, меньше весит (если поддерживается).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>SVG</b></td>
+      <td style="border: 1px solid #000;">Векторный формат (в Sketchware Pro 7 не используется напрямую).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как добавить</h2>
+
+<ol>
+  <li>Открой меню <b>⋮</b> → <b>Менеджер изображений</b>.</li>
+  <li>Нажми кнопку <b>«+»</b> или <b>«Добавить»</b>.</li>
+  <li>Выбери изображение из памяти устройства.</li>
+  <li>Дай ему имя — латиницей, без пробелов.</li>
+  <li>Нажми «Сохранить» — изображение появится в списке.</li>
+  <li>Теперь его можно выбрать в свойствах ImageView.</li>
+</ol>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Добавь изображение в Менеджер.</li>
+  <li>В Дизайнере тапни по ImageView.</li>
+  <li>В свойствах выбери <b>Image / Src</b> → укажи нужную картинку.</li>
+  <li>Задай <b>ScaleType</b> — <code>centerCrop</code> или <code>fitCenter</code>.</li>
+  <li>Настрой размеры.</li>
+</ol>
+
+<h2>Как удалить</h2>
+
+<ol>
+  <li>Открой Менеджер изображений.</li>
+  <li>Найди нужное изображение.</li>
+  <li>Используй контекстное меню или кнопку «Удалить».</li>
+  <li>Подтверди удаление.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> не используй кириллицу в именах файлов. Android не всегда корректно обрабатывает такие имена.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не загружай большие картинки (больше 500 КБ). Каждая картинка увеличивает APK. Лучше оптимизировать до загрузки.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не удаляй изображение, которое используется в проекте. Приложение перестанет собираться.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> имена файлов должны быть уникальными. Два файла с одинаковым именем — конфликт.</div>
+
+<div class="hint">💡 <b>Совет:</b> для иконок используй PNG с прозрачным фоном. Размер — 48×48, 64×64 или 96×96 пикселей. Больше не нужно.</div>
+
+<div class="hint">💡 <b>Совет:</b> для обложек карточек используй JPEG с шириной 600–800 пикселей. Этого достаточно для большинства экранов.</div>
+
+<div class="hint">💡 <b>Совет:</b> для аватарок используй квадратные картинки 200×200 или 300×300. CircleImageView обрежет их по кругу.</div>
+
+<div class="hint">💡 <b>Совет:</b> оптимизируй картинки на сервисах типа TinyPNG или Squoosh перед загрузкой. Вес уменьшается в 2–3 раза без потери качества.</div>
+
+<div class="hint">💡 <b>Совет:</b> для повторяющихся элементов (иконка в списке) загрузи одну картинку и используй её везде. Дубликаты не нужны.</div>
+
+<div class="hint">💡 <b>Совет:</b> загружай иконку приложения отдельно — через экран «Настроить иконку» при создании проекта. Не путай с Менеджером изображений.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать большие фотографии без сжатия. Одна картинка 3 МБ может удвоить размер APK.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> кириллица в именах файлов. Названия не отображаются корректно, могут возникнуть ошибки.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> дублировать картинки — загружать одну и ту же много раз. Достаточно одной.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> удалять используемые картинки. Проект не собирается.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забывать про ScaleType. Картинка растягивается или обрезается неправильно.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Менеджер изображений</b> — раздел для загрузки картинок в проект.</li>
+  <li>Поддерживает PNG, JPG, WEBP.</li>
+  <li>Используется для иконок, фонов, аватарок, обложек.</li>
+  <li>Имена файлов — латиница, без пробелов.</li>
+  <li>Оптимизируй картинки перед загрузкой — экономия веса APK.</li>
+  <li>Не удаляй используемые изображения — проект сломается.</li>
+  <li>Размеры подбирай под задачу: иконки 48–96 px, обложки 600–800 px.</li>
+  <li>Иконку приложения загружай отдельно, не через этот менеджер.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Загружают большие фото.</b> APK раздувается.</li>
+  <li><b>Кириллица в именах.</b> Проблемы с Android.</li>
+  <li><b>Дублируют картинки.</b> Мусор в проекте.</li>
+  <li><b>Удаляют используемые.</b> Сборка падает.</li>
+  <li><b>Забывают про ScaleType.</b> Картинка искажена.</li>
+  <li><b>Не оптимизируют.</b> Вес APK растёт.</li>
+  <li><b>Путают с иконкой приложения.</b> Не тот раздел.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
