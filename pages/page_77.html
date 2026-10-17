@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RatingBar — звёзды рейтинга</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>RatingBar — звёзды рейтинга</h1>
+
+<p><b>RatingBar</b> — индикатор рейтинга звёздочками. Пользователь тапает по звёздочкам или видит уже выставленную оценку: от 0 до 5 (или другого максимума).</p>
+
+<p>Иконка в палитре — ряд звёздочек.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Отображает ряд звёзд — закрашенные и незакрашенные.</li>
+  <li>В интерактивном режиме пользователь тапает по звезде — рейтинг выставляется.</li>
+  <li>В режиме отображения звёзды только показывают оценку, но не реагируют на тап.</li>
+  <li>Может принимать дробные значения (например, 3.5 звезды).</li>
+  <li>Текущее значение читается в логике через блок <code>getRating</code>.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Оценка товаров — покупатель ставит 1–5 звёзд.</li>
+  <li>Рейтинг приложений — «Оцените нас».</li>
+  <li>Оценка статьи или поста — понравилось / не понравилось.</li>
+  <li>Отзывы в приложении — насколько удобно.</li>
+  <li>Рейтинг фильмов — показать среднюю оценку.</li>
+  <li>Опросы — оценка от 1 до 5.</li>
+</ul>
+
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Rating</b></td>
+      <td style="border: 1px solid #000;">Текущее значение рейтинга.</td>
+      <td style="border: 1px solid #000;">Число от 0 до NumStars. Например, <code>3.5</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>NumStars</b></td>
+      <td style="border: 1px solid #000;">Количество звёзд.</td>
+      <td style="border: 1px solid #000;">Число. Обычно <code>5</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>StepSize</b></td>
+      <td style="border: 1px solid #000;">Шаг изменения рейтинга.</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — целые звёзды;<br><code>0.5</code> — половинки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>IsIndicator</b></td>
+      <td style="border: 1px solid #000;">Режим «только отображение» — пользователь не может менять рейтинг.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>RatingTint</b></td>
+      <td style="border: 1px solid #000;">Цвет закрашенных звёзд.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ProgressTint</b></td>
+      <td style="border: 1px solid #000;">Цвет незакрашенных (фоновых) звёзд.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> или <code>match_parent</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по RatingBar в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>ratingbar1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>ratingbar1</code>, <code>ratingbar2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>productRating</code>, если это оценка товара.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>android:numStars="5"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает тип виджета — <code>RatingBar</code>. Обычно менять не нужно.</td>
+      <td style="border: 1px solid #000;">RatingBar и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет виджет по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт для звёзд.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет виджет по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 8 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета — от него до соседних элементов.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin top 8 — между звёздами и текстом.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>none</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли виджет на нажатия (если не IsIndicator).</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активен;<br><b>выкл</b> — заблокирован.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> в панели свойств доступен только внешний вид. <b>NumStars</b>, <b>StepSize</b>, <b>Rating</b> и <b>IsIndicator</b> задаются через <b>Пользовательские атрибуты</b> — в виде <code>android:numStars="5"</code>, <code>android:stepSize="1.0"</code>, <code>android:rating="3"</code>, <code>android:isIndicator="true"</code>.</div>
+
+<h2>Как перетащить RatingBar на макет</h2>
+
+<p>RatingBar, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b>, <b>Linear(H)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Widgets</b> в палитре слева.</li>
+  <li>Зажми <b>RatingBar</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — звёзды появятся в разметке.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай:
+    <ul>
+      <li><code>android:numStars="5"</code> — количество звёзд;</li>
+      <li><code>android:stepSize="1.0"</code> — шаг (1.0 или 0.5);</li>
+      <li><code>android:rating="0"</code> — начальное значение;</li>
+      <li><code>android:isIndicator="false"</code> — можно ли менять.</li>
+    </ul>
+  </li>
+  <li>Присвой осмысленный <b>ID</b> — он нужен для логики.</li>
+  <li>Для интерактивного режима открой вкладку «События» и добавь событие <code>onRatingChanged</code>.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по RatingBar в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> если <code>isIndicator = true</code>, пользователь не может изменить оценку. Это режим только для отображения — например, показать средний рейтинг товара.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> StepSize = 1.0 запрещает дробные оценки. Если нужно разрешить «3.5 звезды» — поставь StepSize = 0.5.</div>
+
+<div class="hint">💡 <b>Совет:</b> для оценки товаров используй StepSize = 1.0 — обычно пользователю достаточно целых звёзд. Половинки нужны редко.</div>
+
+<div class="hint">💡 <b>Совет:</b> для среднего рейтинга (например, из 100 отзывов) используй IsIndicator = true и StepSize = 0.5. Так можно показать 4.5 звезды без интерактивности.</div>
+
+<div class="hint">💡 <b>Совет:</b> после того как пользователь поставил оценку — покажи ему спасибо или предложи написать отзыв. Просто звёзды без реакции выглядят как «чёрная дыра».</div>
+
+<div class="hint">💡 <b>Совет:</b> не делай 10 звёзд. Стандарт — 5. Воспринимается интуитивно.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> оставить IsIndicator = false на экране, где рейтинг должен отображаться как «средний». Пользователь может случайно изменить чужую оценку.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про StepSize и удивляться, почему нельзя поставить «ползвезды».</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>RatingBar</b> — индикатор рейтинга звёздочками: интерактивный или только для отображения.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Ключевые настройки задаются через <b>Пользовательские атрибуты</b>: <code>numStars</code>, <code>stepSize</code>, <code>rating</code>, <code>isIndicator</code>.</li>
+  <li>Для интерактивного режима используется <code>isIndicator = false</code> + событие <code>onRatingChanged</code>.</li>
+  <li>Для отображения среднего рейтинга — <code>isIndicator = true</code>.</li>
+  <li>Стандарт — 5 звёзд. StepSize = 1.0 для целых, 0.5 для половинок.</li>
+  <li>Текущее значение читается в логике через блок <code>getRating</code>.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Тапают по RatingBar в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Ищут NumStars и StepSize в обычных свойствах.</b> Их нужно задавать через «Пользовательские атрибуты».</li>
+  <li><b>Оставляют IsIndicator = false на экране отображения среднего рейтинга.</b> Пользователь может случайно изменить оценку.</li>
+  <li><b>Забывают про StepSize.</b> Половинки звёзд не работают.</li>
+  <li><b>Не добавляют событие onRatingChanged.</b> Оценка не считывается в логику.</li>
+  <li><b>Делают 10 звёзд.</b> Пользователь путается. Стандарт — 5.</li>
+  <li><b>Не показывают реакцию на оценку.</b> Пользователь поставил звезду — и ничего. Лучше показать «Спасибо!».</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
