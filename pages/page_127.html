@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FilePicker — выбор файла</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>FilePicker — выбор файла</h1>
+
+<p><b>FilePicker</b> — компонент для выбора файла из памяти устройства. Открывает системный файловый менеджер, пользователь выбирает файл — приложение получает путь к нему.</p>
+
+<p>Иконка в диалоге добавления — папка с файлом.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Открывает системный файловый менеджер Android.</li>
+  <li>Пользователь выбирает файл из памяти: документ, картинку, видео, музыку.</li>
+  <li>Приложение получает путь к файлу (или URI).</li>
+  <li>Выбранный файл можно прочитать, отобразить, загрузить — в зависимости от типа.</li>
+  <li>Пользователь может отменить выбор — тогда вернётся пустой результат.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Загрузка изображения — выбор аватарки или картинки.</li>
+  <li>Открытие документа — просмотр PDF, DOC, TXT.</li>
+  <li>Загрузка на сервер — выбор файла для отправки через RequestNetwork.</li>
+  <li>Импорт данных — выбор JSON, CSV, XML для парсинга.</li>
+  <li>Установка обоев — выбор картинки.</li>
+  <li>Работа с музыкой — выбор трека для воспроизведения.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>fileChooser</code>, <code>picker</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>openFilePicker</b></td>
+      <td style="border: 1px solid #000;">Открыть системный выбор файла.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getFilePath</b></td>
+      <td style="border: 1px solid #000;">Получить путь выбранного файла.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getFileName</b></td>
+      <td style="border: 1px solid #000;">Получить имя файла.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getFileExtension</b></td>
+      <td style="border: 1px solid #000;">Получить расширение (pdf, jpg, mp3).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Подключи компонент FilePicker на вкладке «Компонент».</li>
+  <li>Задай ему имя — например, <code>picker</code>.</li>
+  <li>В логике добавь:
+    <ul>
+      <li>событие <code>onFilePicked</code> (если есть в версии) — срабатывает после выбора;</li>
+      <li>блок <code>openFilePicker</code> — запускает выбор;</li>
+      <li>блок <code>getFilePath</code> — читает путь.</li>
+    </ul>
+  </li>
+  <li>При отмене выбора проверяй, что путь не пустой, и не выполняй дальнейшие действия.</li>
+  <li>Внутри события обрабатывай файл: показывай в ImageView, читай содержимое, отправляй на сервер.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> для работы с файлами часто нужны разрешения: READ_EXTERNAL_STORAGE. Без них выбор файла может не сработать.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> путь к файлу может быть недоступен для прямого чтения — в новых версиях Android используется URI вместо пути. Проверяй, что возвращает компонент.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не пытайся читать файлы по пути без проверки разрешений. Приложение упадёт с SecurityException.</div>
+
+<div class="hint">💡 <b>Совет:</b> для выбора картинки используй FilePicker вместе с ImageView. После выбора загружай картинку в ImageView через блок <code>setImage</code>.</div>
+
+<div class="hint">💡 <b>Совет:</b> для загрузки на сервер используй FilePicker + RequestNetwork с Multipart. Файл передаётся в теле запроса.</div>
+
+<div class="hint">💡 <b>Совет:</b> проверяй расширение файла перед обработкой. Пользователь может выбрать не тот тип — приложение должно корректно отреагировать.</div>
+
+<div class="hint">💡 <b>Совет:</b> не заставляй пользователя искать файл наугад. Покажи подсказку: «Выберите изображение в формате JPG или PNG».</div>
+
+<div class="hint">💡 <b>Совет:</b> для простого выбора изображения рассмотри альтернативу — Intent с ACTION_PICK для галереи. Иногда он проще, чем FilePicker.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не запрашивать разрешения на чтение памяти. FilePicker открывается, но файл не читается.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не проверять отмену выбора. Если пользователь закрыл диалог без выбора — путь пустой, и приложение может упасть.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> пытаться читать файл по пути в новых версиях Android. Там используется URI — путь может быть недоступен напрямую.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не проверять тип файла. Пользователь выбирает видео, а приложение ждёт картинку — возможна ошибка.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>FilePicker</b> — компонент для выбора файла из памяти устройства.</li>
+  <li>Открывает системный файловый менеджер Android.</li>
+  <li>Возвращает путь (или URI) к выбранному файлу.</li>
+  <li>Основные блоки: <b>openFilePicker</b>, <b>getFilePath</b>, <b>getFileName</b>, <b>getFileExtension</b>.</li>
+  <li>Обычно используется вместе с событиями onFilePicked или подобными.</li>
+  <li>Для работы часто нужны разрешения на чтение памяти.</li>
+  <li>Обрабатывай отмену выбора — путь может быть пустым.</li>
+  <li>Проверяй тип файла перед обработкой.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Не запрашивают разрешения на память.</b> Файл не читается.</li>
+  <li><b>Не проверяют отмену выбора.</b> Приложение падает при пустом пути.</li>
+  <li><b>Используют путь в новых версиях Android.</b> Нужен URI.</li>
+  <li><b>Не проверяют тип файла.</b> Ошибки при обработке.</li>
+  <li><b>Не подсказывают формат.</b> Пользователь выбирает что попало.</li>
+  <li><b>Используют FilePicker для простой галереи.</b> Можно проще — через Intent.</li>
+  <li><b>Не обрабатывают onFilePicked.</b> Выбор файла ничего не делает.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
