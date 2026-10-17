@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Категория Widgets (виджеты)</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Категория Widgets (виджеты)</h1>
+
+<p><b>Widgets</b> — третья категория в палитре виджетов и самая большая по количеству элементов. В ней собраны базовые компоненты интерфейса, из которых строится большая часть любого экрана: тексты, поля ввода, кнопки, картинки, переключатели, индикаторы.</p>
+
+<p>В отличие от <b>Layouts</b> (контейнеров), виджеты этой категории — видимые элементы. Именно их пользователь видит на экране и взаимодействует с ними. В отличие от <b>AndroidX</b>, это базовые компоненты без дополнительных обёрток и современного вида «из коробки».</p>
+
+<h2>Из чего состоит категория</h2>
+
+<p>В категории Widgets семнадцать компонентов. Ниже они разбиты по группам.</p>
+
+<h3>Тексты и ввод</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Виджет</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TextView</b></td>
+      <td style="border: 1px solid #000;">Отображение текста — заголовки, подписи, описания.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>EditText</b></td>
+      <td style="border: 1px solid #000;">Поле ввода текста — имя, email, пароль, число.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>AutoCompleteTextView</b></td>
+      <td style="border: 1px solid #000;">Поле ввода с автодополнением — предлагает варианты по мере ввода.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>MultiAutoCompleteTextView</b></td>
+      <td style="border: 1px solid #000;">Поле с автодополнением для нескольких значений — например, ввод нескольких тегов или получателей.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Кнопки и переключатели</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Виджет</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Button</b></td>
+      <td style="border: 1px solid #000;">Обычная кнопка с текстом. Реагирует на нажатие.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>MaterialButton</b></td>
+      <td style="border: 1px solid #000;">Кнопка в стиле Material Design — с ripple-эффектом, поддержкой иконок, закруглений.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>CheckBox</b></td>
+      <td style="border: 1px solid #000;">Флажок с независимым состоянием. Можно включить несколько.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>RadioButton</b></td>
+      <td style="border: 1px solid #000;">Радиокнопка. Используется только внутри RadioGroup, где выбрана может быть одна.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Switch</b></td>
+      <td style="border: 1px solid #000;">Переключатель «вкл/выкл» — как тумблер в настройках.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Виджет</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ImageView</b></td>
+      <td style="border: 1px solid #000;">Отображение картинки из ресурсов или загруженной по ссылке.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>CircleImageView</b></td>
+      <td style="border: 1px solid #000;">Круглая картинка. Чаще всего используется для аватарок.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Прогресс и индикаторы</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Виджет</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>SeekBar</b></td>
+      <td style="border: 1px solid #000;">Ползунок для выбора значения из диапазона — громкость, яркость, цена.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ProgressBar</b></td>
+      <td style="border: 1px solid #000;">Индикатор загрузки — линейный или круговой.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>RatingBar</b></td>
+      <td style="border: 1px solid #000;">Рейтинг звёздочками. Обычно от 1 до 5.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Прочее</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Виджет</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>SearchView</b></td>
+      <td style="border: 1px solid #000;">Поле поиска с иконкой лупы и встроенной логикой ввода.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>VideoView</b></td>
+      <td style="border: 1px solid #000;">Проигрыватель видео внутри экрана.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>WebView</b></td>
+      <td style="border: 1px solid #000;">Встроенный браузер для отображения веб-страниц прямо в приложении.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Зачем нужны базовые виджеты</h2>
+
+<ul>
+  <li><b>Основа интерфейса.</b> Большинство приложений на 80% состоят из этих виджетов.</li>
+  <li><b>Простота.</b> Работают «из коробки», без подключения дополнительных библиотек.</li>
+  <li><b>Гибкость.</b> Настраиваются через панель свойств: текст, цвет, размер, отступы.</li>
+  <li><b>Совместимость.</b> Работают на всех версиях Android.</li>
+</ul>
+
+<h2>Как перетащить виджет на макет</h2>
+
+<p>Все виджеты этой категории попадают на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по виджету в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b>, <b>Linear(H)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Widgets</b> в палитре слева.</li>
+  <li>Зажми нужный виджет (например, TextView) и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — виджет появится в разметке.</li>
+  <li>Тапни по нему — откроется панель свойств, где можно настроить текст, цвет, размер, отступы.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по виджету в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<h2>Что важно понимать</h2>
+
+<ul>
+  <li>Виджеты из этой категории не видны без разметки. Их нужно добавлять в контейнеры (Linear, RelativeLayout).</li>
+  <li>Многие виджеты имеют собственные события — например, Button реагирует на <code>onClick</code>, CheckBox — на <code>onCheckedChanged</code>.</li>
+  <li>Некоторые компоненты требуют логики для работы: WebView нужно указать URL, VideoView — путь к файлу, SearchView — логику поиска.</li>
+  <li>Часть виджетов (VideoView, WebView) требует разрешений — интернет, доступ к файлам, — иначе не заработает.</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> WebView и VideoView значительно увеличивают вес APK. Если они не нужны — не добавляй их «на будущее».</div>
+
+<div class="hint">💡 <b>Совет:</b> начинай с базовых — TextView, Button, EditText, ImageView. Они покрывают 90% задач. Остальные изучай по мере необходимости.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетащить виджет в корень макета, не выбрав контейнер. Виджет может наложиться на другие элементы, и его будет сложно найти в разметке.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Widgets</b> — категория базовых видимых компонентов интерфейса.</li>
+  <li>В ней 17 виджетов: тексты, поля ввода, кнопки, переключатели, картинки, индикаторы и специальные компоненты.</li>
+  <li>Виджеты перетаскиваются на макет <b>только перетаскиванием</b>, а не тапом.</li>
+  <li>Виджеты размещаются внутри контейнеров: Linear(V), Linear(H), RelativeLayout.</li>
+  <li>Многие виджеты имеют собственные события (<code>onClick</code>, <code>onCheckedChanged</code>) и требуют настройки логики.</li>
+  <li>WebView и VideoView утяжеляют APK — используй их только при реальной необходимости.</li>
+  <li>Для старта достаточно четырёх: TextView, Button, EditText, ImageView.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Тапают по виджету в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Перетаскивают виджет в корень макета без контейнера.</b> Виджет может наложиться на другие элементы.</li>
+  <li><b>Забывают про события.</b> Кнопка не срабатывает, чекбокс не реагирует — потому что на вкладке «События» ничего не добавлено.</li>
+  <li><b>Не настраивают InputType у EditText.</b> Поле не пропускает цифры, email, пароль так, как нужно.</li>
+  <li><b>Добавляют WebView или VideoView «на будущее».</b> Это утяжеляет APK и требует разрешений.</li>
+  <li><b>Используют CircleImageView без подключения библиотеки.</b> Без неё виджет не отобразится.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
