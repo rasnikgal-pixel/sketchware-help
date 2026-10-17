@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Логика EditorActivity</title>
+</head>
+<body>
+<meta charset="utf-8">
+<h1>Логика EditorActivity</h1>
+
+<p><b>EditorActivity</b> — экран редактирования проекта. Здесь логика сложнее, чем в MainActivity, потому что нужно работать с тремя панелями и с содержимым проекта.</p>
+
+<p>В этом разделе — <b>одиннадцать событий</b>:</p>
+
+<ol>
+  <li><b>При создании / (onCreate)</b> — загрузка проекта, показ панели «Разделы», загрузка дерева разделов.</li>
+  <li><b>Нажатие btnTabSections / (onClick)</b> — показать панель разделов.</li>
+  <li><b>Нажатие btnTabEditor / (onClick)</b> — показать панель HTML.</li>
+  <li><b>Нажатие btnTabInfo / (onClick)</b> — показать панель информации.</li>
+  <li><b>Нажатие btnAddSection / (onClick)</b> — добавить раздел.</li>
+  <li><b>Нажатие btnRenameSection / (onClick)</b> — переименовать раздел.</li>
+  <li><b>Нажатие btnDeleteSection / (onClick)</b> — удалить раздел.</li>
+  <li><b>Нажатие listSections / (onItemClick)</b> — выбрать раздел, загрузить его HTML в редактор.</li>
+  <li><b>Нажатие btnSave / (onClick)</b> — сохранить текущий HTML в раздел.</li>
+  <li><b>Нажатие btnPreview / (onClick)</b> — открыть PreviewActivity с HTML.</li>
+  <li><b>Нажатие btnFind / (onClick)</b> — найти текст в HTML.</li>
+</ol>
+
+<p>Это самый большой раздел. Но каждое событие — небольшое. Идём по порядку.</p>
+
+<h2>Как работает EditorActivity в целом</h2>
+
+<p>Прежде чем разбирать события по отдельности, поймём логику экрана:</p>
+
+<ol>
+  <li>Экран получает <code>project_id</code> из Intent (переданного с главного экрана).</li>
+  <li>Читает из хранилища имя проекта, автора и структуру разделов.</li>
+  <li>Заполняет панель информации: имя и автора.</li>
+  <li>Заполняет список разделов (ListView).</li>
+  <li>Показывает панель «Разделы» и скрывает две другие.</li>
+  <li>Пользователь тапает по разделу → загружается его HTML в editorText.</li>
+  <li>Пользователь редактирует HTML → нажимает «Сохранить» → HTML записывается в хранилище.</li>
+  <li>Пользователь нажимает «Предпросмотр» → HTML передаётся в PreviewActivity.</li>
+</ol>
+
+<hr>
+
+<h2>Событие 1. При создании / (onCreate)</h2>
+
+<p><b>Когда срабатывает:</b> при открытии EditorActivity — то есть когда пользователь тапнул по проекту на главном экране.</p>
+
+<p><b>Что делает:</b> получает ID проекта из Intent, читает данные проекта, показывает панель «Разделы», скрывает две другие, заполняет информацию и список разделов.</p>
+
+<p><b>Порядок блоков:</b></p>
+
+<ol>
+  <li>Получить данные <code>project_id</code> из Intent — <b>Получить данные / (Get Extra)</b> для компонента <code>goToScreen</code>. Результат в <code>projectId</code>.</li>
+  <li>Прочитать из хранилища имя проекта — <b>Прочитать строку / (Get String)</b>, ключ <code>project_id_name</code>, значение по умолчанию <code>""</code>. Результат в <code>projectName</code>.</li>
+  <li>Прочитать автора — ключ <code>project_id_author</code>. Результат в <code>projectAuthor</code>.</li>
+  <li>Прочитать структуру разделов — ключ <code>project_id_structure</code>. Результат в <code>structure</code>.</li>
+  <li>Установить текст в заголовок шапки — <b>Установить текст / (Set Text)</b> для <code>titleEdit</code> = <code>projectName</code>.</li>
+  <li>Установить текст в infoName — <b>Установить текст / (Set Text)</b> = <code>"Название: " + projectName</code>.</li>
+  <li>Установить текст в infoAuthor — <b>Установить текст / (Set Text)</b> = <code>"Автор: " + projectAuthor</code>.</li>
+  <li>Установить текст в infoStats — <b>Установить текст / (Set Text)</b> = <code>"Разделов: 0 · Символов: 0"</code>.</li>
+  <li>Скрыть панели — <b>Установить видимость / (Set Visibility)</b>:
+    <ul>
+      <li>panelEditor → <b>Скрытый / (Gone)</b>.</li>
+      <li>panelInfo → <b>Скрытый / (Gone)</b>.</li>
+    </ul>
+  </li>
+  <li>Показать панель разделов — <b>Установить видимость / (Set Visibility)</b> для <code>panelSections</code> → <b>Видимый / (Visible)</b>.</li>
+  <li>Установить цвет кнопки «Разделы» в синий — <b>Установить цвет фона / (Set Background Color)</b> для <code>btnTabSections</code> = <code>#3F51B5</code>.</li>
+  <li>Установить цвет кнопок «HTML» и «Инфо» в серый — <b>Установить цвет фона / (Set Background Color)</b> = <code>#9E9E9E</code>.</li>
+  <li>Если <code>structure == ""</code> — заполнить listSections заглушкой «Нет разделов» через <b>Установить список / (Set List Data)</b>.</li>
+  <li>Иначе — разбить структуру по <code>;;;</code> через <b>Разделить / (Split)</b>. Результат в <code>sections</code>. Заполнить listSections через <b>Установить список / (Set List Data)</b>.</li>
+</ol>
+
+<p><b>Псевдокод onCreate:</b></p>
+
+<pre>
+// ──── ШАГ 1. Получаем ID проекта из Intent ────
+// MainActivity передала этот ID при переходе.
+projectId = goToScreen.getExtra("project_id")
+
+// ──── ШАГ 2. Читаем метаданные проекта ────
+projectName = getString("project_" + projectId + "_name", "")
+projectAuthor = getString("project_" + projectId + "_author", "")
+structure = getString("project_" + projectId + "_structure", "")
+
+// ──── ШАГ 3. Заполняем информацию о проекте ────
+// Устанавливаем имя проекта в шапке экрана.
+titleEdit.setText(projectName)
+
+infoName.setText("Название: " + projectName)
+infoAuthor.setText("Автор: " + projectAuthor)
+infoStats.setText("Разделов: 0 · Символов: 0")
+
+// ──── ШАГ 4. Настраиваем видимость панелей ────
+// Скрываем панели редактора и информации.
+panelEditor.setVisibility(GONE)
+panelInfo.setVisibility(GONE)
+
+// Показываем панель разделов.
+panelSections.setVisibility(VISIBLE)
+
+// ──── ШАГ 5. Настраиваем цвета кнопок-вкладок ────
+btnTabSections.setBackgroundColor("#3F51B5")
+btnTabEditor.setBackgroundColor("#9E9E9E")
+btnTabInfo.setBackgroundColor("#9E9E9E")
+
+// ──── ШАГ 6. Заполняем список разделов ────
+if (structure == "") {
+    listSections.setListData(["Нет разделов"])
+} else {
+    sections = structure.split(";;;")
+    listSections.setListData(sections)
+}
+</pre>
+
+<hr>
+
+<h2>Событие 2. Нажатие btnTabSections / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке-вкладке «Разделы».</p>
+
+<p><b>Что делает:</b> показывает панель разделов, скрывает две другие, перекрашивает кнопки.</p>
+
+<p><b>Порядок блоков:</b></p>
+<ol>
+  <li>Показать panelSections — <b>Установить видимость / (Set Visibility)</b> → <b>Видимый / (Visible)</b>.</li>
+  <li>Скрыть panelEditor и panelInfo — <b>Установить видимость / (Set Visibility)</b> → <b>Скрытый / (Gone)</b>.</li>
+  <li>Перекрасить кнопки: btnTabSections → синий, btnTabEditor и btnTabInfo → серые.</li>
+</ol>
+
+<p><b>Псевдокод onClick btnTabSections:</b></p>
+
+<pre>
+panelSections.setVisibility(VISIBLE)
+panelEditor.setVisibility(GONE)
+panelInfo.setVisibility(GONE)
+
+btnTabSections.setBackgroundColor("#3F51B5")
+btnTabEditor.setBackgroundColor("#9E9E9E")
+btnTabInfo.setBackgroundColor("#9E9E9E")
+</pre>
+
+<hr>
+
+<h2>Событие 3. Нажатие btnTabEditor / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке-вкладке «HTML».</p>
+
+<p><b>Что делает:</b> показывает панель редактора HTML, скрывает две другие, перекрашивает кнопки.</p>
+
+<p><b>Порядок блоков:</b></p>
+<ol>
+  <li>Показать panelEditor.</li>
+  <li>Скрыть panelSections и panelInfo.</li>
+  <li>Перекрасить кнопки: btnTabEditor → синий, остальные → серые.</li>
+</ol>
+
+<p><b>Псевдокод onClick btnTabEditor:</b></p>
+
+<pre>
+panelEditor.setVisibility(VISIBLE)
+panelSections.setVisibility(GONE)
+panelInfo.setVisibility(GONE)
+
+btnTabSections.setBackgroundColor("#9E9E9E")
+btnTabEditor.setBackgroundColor("#3F51B5")
+btnTabInfo.setBackgroundColor("#9E9E9E")
+</pre>
+
+<hr>
+
+<h2>Событие 4. Нажатие btnTabInfo / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке-вкладке «Инфо».</p>
+
+<p><b>Что делает:</b> показывает панель информации, скрывает две другие, перекрашивает кнопки.</p>
+
+<p><b>Порядок блоков:</b></p>
+<ol>
+  <li>Показать panelInfo.</li>
+  <li>Скрыть panelSections и panelEditor.</li>
+  <li>Перекрасить кнопки: btnTabInfo → синий, остальные → серые.</li>
+</ol>
+
+<p><b>Псевдокод onClick btnTabInfo:</b></p>
+
+<pre>
+panelInfo.setVisibility(VISIBLE)
+panelSections.setVisibility(GONE)
+panelEditor.setVisibility(GONE)
+
+btnTabSections.setBackgroundColor("#9E9E9E")
+btnTabEditor.setBackgroundColor("#9E9E9E")
+btnTabInfo.setBackgroundColor("#3F51B5")
+</pre>
+
+<p><b>Что важно понять про переключение панелей:</b></p>
+
+<ul>
+  <li>Алгоритм один и тот же для всех трёх кнопок: показать одну, скрыть две, перекрасить кнопки.</li>
+  <li>Мы используем <b>Скрытый / (Gone)</b>, а не <b>Невидимый / (Invisible)</b>. Gone убирает панель из разметки полностью.</li>
+  <li>Цвет активной кнопки — синий (#3F51B5). Неактивные — серые (#9E9E9E).</li>
+</ul>
+
+<hr>
+
+<h2>Событие 5. Нажатие btnAddSection / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке «+» в панели разделов.</p>
+
+<p><b>Что делает:</b> открывает диалог ввода имени нового раздела, добавляет раздел в структуру, обновляет список.</p>
+
+<p><b>Порядок блоков в onClick:</b></p>
+
+<ol>
+  <li>Показать диалог ввода — <b>Диалог / (Dialog)</b> → <b>Показать / (Show)</b>.</li>
+</ol>
+
+<p><b>В onDialogPositiveClick:</b></p>
+
+<ol>
+  <li>Прочитать введённое имя — <b>Получить текст / (Get Text)</b> для <code>inputSectionName</code>. Результат в <code>newSection</code>.</li>
+  <li>Если <code>newSection == ""</code> — показать <b>Всплывающее сообщение / (Toast)</b> «Введите имя» и завершить.</li>
+  <li>Прочитать текущую структуру — <b>Прочитать строку / (Get String)</b> для <code>project_id_structure</code>.</li>
+  <li>Если структура пуста — записать только <code>newSection</code>.</li>
+  <li>Иначе — записать <code>structure + ";;;" + newSection</code>.</li>
+  <li>Создать пустую страницу для нового раздела — <b>Записать строку / (Put String)</b> в ключ <code>project_id_pages_newSection</code> со значением <code>&lt;h1&gt;newSection&lt;/h1&gt;</code>.</li>
+  <li>Обновить список разделов.</li>
+  <li>Показать <b>Всплывающее сообщение / (Toast)</b> «Раздел добавлен».</li>
+</ol>
+
+<p><b>Псевдокод onClick btnAddSection:</b></p>
+
+<pre>
+myDialog.setTitle("Новый раздел")
+myDialog.setPositiveButton("Добавить")
+myDialog.setNegativeButton("Отмена")
+myDialog.show()
+
+// ──── В onDialogPositiveClick: ────
+newSection = inputSectionName.getText()
+
+if (newSection == "") {
+    Toast("Введите имя")
+    return
+}
+
+structure = getString("project_" + projectId + "_structure", "")
+
+if (structure == "") {
+    putString("project_" + projectId + "_structure", newSection)
+} else {
+    putString("project_" + projectId + "_structure", structure + ";;;" + newSection)
+}
+
+putString(
+    "project_" + projectId + "_pages_" + newSection,
+    "&lt;h1&gt;" + newSection + "&lt;/h1&gt;"
+)
+
+structure = getString("project_" + projectId + "_structure", "")
+sections = structure.split(";;;")
+listSections.setListData(sections)
+
+Toast("Раздел добавлен")
+</pre>
+
+<hr>
+
+<h2>Событие 6. Нажатие btnRenameSection / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке «✎» в панели разделов.</p>
+
+<p><b>Что делает:</b> переименовывает выбранный раздел, сохраняет его HTML под новым ключом.</p>
+
+<p><b>Порядок блоков в onClick:</b></p>
+
+<ol>
+  <li>Получить выбранный элемент из списка — <b>Получить выбранный элемент / (Get Selected Item)</b> для <code>listSections</code>. Результат в <code>oldName</code>.</li>
+  <li>Если <code>oldName == null</code> — показать Toast «Выберите раздел» и завершить.</li>
+  <li>Показать диалог ввода нового имени.</li>
+</ol>
+
+<p><b>В onDialogPositiveClick:</b></p>
+
+<ol>
+  <li>Получить новое имя из поля — <b>Получить текст / (Get Text)</b>. Результат в <code>newName</code>.</li>
+  <li>Прочитать структуру разделов.</li>
+  <li>Заменить <code>oldName</code> на <code>newName</code> в структуре — <b>Заменить / (Replace)</b>.</li>
+  <li>Записать обновлённую структуру обратно.</li>
+  <li>Прочитать HTML старого раздела.</li>
+  <li>Записать HTML под новым ключом.</li>
+  <li>Удалить старый ключ.</li>
+  <li>Обновить список разделов.</li>
+</ol>
+
+<p><b>Псевдокод onClick btnRenameSection:</b></p>
+
+<pre>
+oldName = listSections.getSelectedItem()
+
+if (oldName == null) {
+    Toast("Выберите раздел")
+    return
+}
+
+myDialog.setTitle("Переименовать раздел")
+myDialog.setPositiveButton("Переименовать")
+myDialog.setNegativeButton("Отмена")
+myDialog.show()
+
+// ──── В onDialogPositiveClick: ────
+newName = inputSectionName.getText()
+
+if (newName == "") {
+    Toast("Введите имя")
+    return
+}
+
+structure = getString("project_" + projectId + "_structure", "")
+newStructure = structure.replace(oldName, newName)
+putString("project_" + projectId + "_structure", newStructure)
+
+html = getString("project_" + projectId + "_pages_" + oldName, "")
+putString("project_" + projectId + "_pages_" + newName, html)
+remove("project_" + projectId + "_pages_" + oldName)
+
+structure = getString("project_" + projectId + "_structure", "")
+sections = structure.split(";;;")
+listSections.setListData(sections)
+</pre>
+
+<hr>
+
+<h2>Событие 7. Нажатие btnDeleteSection / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке «🗑» в панели разделов.</p>
+
+<p><b>Что делает:</b> удаляет выбранный раздел и его страницу после подтверждения.</p>
+
+<p><b>Порядок блоков в onClick:</b></p>
+
+<ol>
+  <li>Получить выбранный раздел.</li>
+  <li>Если <code>null</code> — Toast «Выберите раздел» и завершить.</li>
+  <li>Показать диалог подтверждения.</li>
+</ol>
+
+<p><b>В onDialogPositiveClick:</b></p>
+
+<ol>
+  <li>Прочитать структуру.</li>
+  <li>Заменить <code>name</code> на пустую строку — <b>Заменить / (Replace)</b>.</li>
+  <li>Схлопнуть двойные <code>;;;;;;</code> → <code>;;;</code>.</li>
+  <li>Убрать лишние <code>;</code> в начале и конце — <b>Обрезать / (Trim)</b>.</li>
+  <li>Записать структуру обратно.</li>
+  <li>Удалить страницу раздела — <b>Удалить / (Remove)</b>.</li>
+  <li>Обновить список.</li>
+  <li>Toast «Раздел удалён».</li>
+</ol>
+
+<p><b>Псевдокод onClick btnDeleteSection:</b></p>
+
+<pre>
+name = listSections.getSelectedItem()
+
+if (name == null) {
+    Toast("Выберите раздел")
+    return
+}
+
+myDialog.setTitle("Удаление раздела")
+myDialog.setMessage("Удалить раздел " + name + "?")
+myDialog.setPositiveButton("Удалить")
+myDialog.setNegativeButton("Отмена")
+myDialog.show()
+
+// ──── В onDialogPositiveClick: ────
+structure = getString("project_" + projectId + "_structure", "")
+s1 = structure.replace(name, "")
+s2 = s1.replace(";;;;;;", ";;;")
+s3 = s2.trim(";")
+putString("project_" + projectId + "_structure", s3)
+
+remove("project_" + projectId + "_pages_" + name)
+
+structure = getString("project_" + projectId + "_structure", "")
+if (structure == "") {
+    listSections.setListData(["Нет разделов"])
+} else {
+    sections = structure.split(";;;")
+    listSections.setListData(sections)
+}
+
+Toast("Раздел удалён")
+</pre>
+
+<hr>
+
+<h2>Событие 8. Нажатие listSections / (onItemClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по элементу списка разделов.</p>
+
+<p><b>Что делает:</b> загружает HTML выбранного раздела в редактор и переключается на панель «HTML».</p>
+
+<p><b>Порядок блоков:</b></p>
+
+<ol>
+  <li>Получить выбранный раздел — <b>Получить элемент / (Get Item At)</b> для <code>listSections</code> с позицией <code>position</code>. Результат в <code>sectionName</code>.</li>
+  <li>Сохранить имя последнего раздела — <b>Записать строку / (Put String)</b> в <code>last_page_file</code> = <code>sectionName</code>.</li>
+  <li>Прочитать HTML раздела — <b>Прочитать строку / (Get String)</b> для <code>project_id_pages_sectionName</code>, по умолчанию <code>""</code>. Результат в <code>html</code>.</li>
+  <li>Установить HTML в editorText — <b>Установить текст / (Set Text)</b>.</li>
+  <li>Показать панель HTML.</li>
+  <li>Скрыть panelSections и panelInfo.</li>
+  <li>Перекрасить кнопки: btnTabEditor → синий, остальные → серые.</li>
+</ol>
+
+<p><b>Псевдокод onItemClick listSections:</b></p>
+
+<pre>
+sectionName = listSections.getItemAt(position)
+putString("last_page_file", sectionName)
+
+html = getString(
+    "project_" + projectId + "_pages_" + sectionName,
+    ""
+)
+editorText.setText(html)
+
+panelEditor.setVisibility(VISIBLE)
+panelSections.setVisibility(GONE)
+panelInfo.setVisibility(GONE)
+
+btnTabSections.setBackgroundColor("#9E9E9E")
+btnTabEditor.setBackgroundColor("#3F51B5")
+btnTabInfo.setBackgroundColor("#9E9E9E")
+</pre>
+
+<hr>
+
+<h2>Событие 9. Нажатие btnSave / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке «Сохранить» внизу экрана.</p>
+
+<p><b>Что делает:</b> сохраняет текущий HTML из editorText в раздел, который был выбран последним.</p>
+
+<p><b>Порядок блоков:</b></p>
+
+<ol>
+  <li>Прочитать <code>last_page_file</code> — <b>Прочитать строку / (Get String)</b>. Результат в <code>currentSection</code>.</li>
+  <li>Если <code>currentSection == ""</code> — Toast «Раздел не выбран» и завершить.</li>
+  <li>Прочитать HTML из editorText — <b>Получить текст / (Get Text)</b>. Результат в <code>html</code>.</li>
+  <li>Записать HTML в раздел — <b>Записать строку / (Put String)</b> в ключ <code>project_id_pages_currentSection</code>.</li>
+  <li>Обновить статистику — <b>Установить текст / (Set Text)</b> для <code>infoStats</code>.</li>
+  <li>Показать Toast «Сохранено».</li>
+</ol>
+
+<p><b>Псевдокод onClick btnSave:</b></p>
+
+<pre>
+currentSection = getString("last_page_file", "")
+
+if (currentSection == "") {
+    Toast("Раздел не выбран")
+    return
+}
+
+html = editorText.getText()
+
+putString(
+    "project_" + projectId + "_pages_" + currentSection,
+    html
+)
+
+infoStats.setText("Разделов: " + count + " · Символов: " + html.length)
+
+Toast("Сохранено")
+</pre>
+
+<hr>
+
+<h2>Событие 10. Нажатие btnPreview / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке «Предпросмотр» внизу экрана.</p>
+
+<p><b>Что делает:</b> открывает PreviewActivity и передаёт ей текущий HTML из editorText.</p>
+
+<p><b>Порядок блоков:</b></p>
+
+<ol>
+  <li>Прочитать <code>last_page_file</code>.</li>
+  <li>Если <code>currentSection == ""</code> — Toast «Раздел не выбран» и завершить.</li>
+  <li>Прочитать HTML из editorText.</li>
+  <li>Сохранить HTML в раздел (защита от потери).</li>
+  <li>Установить экран для <code>goToScreen</code> = <b>PreviewActivity</b>.</li>
+  <li>Добавить данные <code>html_content</code> = <code>html</code>.</li>
+  <li>Запустить экран.</li>
+</ol>
+
+<p><b>Псевдокод onClick btnPreview:</b></p>
+
+<pre>
+currentSection = getString("last_page_file", "")
+
+if (currentSection == "") {
+    Toast("Раздел не выбран")
+    return
+}
+
+html = editorText.getText()
+
+putString(
+    "project_" + projectId + "_pages_" + currentSection,
+    html
+)
+
+goToScreen.setScreen(PreviewActivity)
+goToScreen.putExtra("html_content", html)
+goToScreen.startActivity()
+</pre>
+
+<hr>
+
+<h2>Событие 11. Нажатие btnFind / (onClick)</h2>
+
+<p><b>Когда срабатывает:</b> при тапе по кнопке «Найти» внизу экрана.</p>
+
+<p><b>Что делает:</b> открывает диалог с полем ввода, ищет текст в HTML и выделяет его в редакторе.</p>
+
+<p><b>Порядок блоков в onClick:</b></p>
+
+<ol>
+  <li>Показать диалог ввода запроса.</li>
+</ol>
+
+<p><b>В onDialogPositiveClick:</b></p>
+
+<ol>
+  <li>Получить текст запроса — <b>Получить текст / (Get Text)</b>. Результат в <code>query</code>.</li>
+  <li>Прочитать HTML из editorText.</li>
+  <li>Найти позицию запроса — <b>Найти позицию / (IndexOf)</b> для <code>html</code> и <code>query</code>. Результат в <code>pos</code>.</li>
+  <li>Если <code>pos &lt; 0</code> — Toast «Не найдено».</li>
+  <li>Иначе — выделить найденный текст — <b>Установить выделение / (Set Selection)</b> для <code>editorText</code> от <code>pos</code> до <code>pos + query.length</code>.</li>
+  <li>Показать панель HTML.</li>
+</ol>
+
+<p><b>Псевдокод onClick btnFind:</b></p>
+
+<pre>
+myDialog.setTitle("Найти в HTML")
+myDialog.setPositiveButton("Найти")
+myDialog.setNegativeButton("Отмена")
+myDialog.show()
+
+// ──── В onDialogPositiveClick: ────
+query = inputSearch.getText()
+html = editorText.getText()
+
+pos = html.indexOf(query)
+
+if (pos &lt; 0) {
+    Toast("Не найдено")
+} else {
+    editorText.setSelection(pos, pos + query.length())
+    panelEditor.setVisibility(VISIBLE)
+    panelSections.setVisibility(GONE)
+    panelInfo.setVisibility(GONE)
+}
+</pre>
+
+<hr>
+
+<h2>Сводная таблица событий EditorActivity</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; text-align: left;">Событие</th>
+      <th style="border: 1px solid #000; text-align: left;">Когда срабатывает</th>
+      <th style="border: 1px solid #000; text-align: left;">Что делает</th>
+      <th style="border: 1px solid #000; text-align: left;">Компоненты</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border: 1px solid #000;">onCreate</td><td style="border: 1px solid #000;">При открытии экрана</td><td style="border: 1px solid #000;">Загрузка проекта, показ панели разделов</td><td style="border: 1px solid #000;">goToScreen, getString, setText</td></tr>
+    <tr><td style="border: 1px solid #000;">btnTabSections onClick</td><td style="border: 1px solid #000;">Тап по «Разделы»</td><td style="border: 1px solid #000;">Показать панель разделов</td><td style="border: 1px solid #000;">setVisibility, setBackgroundColor</td></tr>
+    <tr><td style="border: 1px solid #000;">btnTabEditor onClick</td><td style="border: 1px solid #000;">Тап по «HTML»</td><td style="border: 1px solid #000;">Показать панель редактора</td><td style="border: 1px solid #000;">setVisibility, setBackgroundColor</td></tr>
+    <tr><td style="border: 1px solid #000;">btnTabInfo onClick</td><td style="border: 1px solid #000;">Тап по «Инфо»</td><td style="border: 1px solid #000;">Показать панель информации</td><td style="border: 1px solid #000;">setVisibility, setBackgroundColor</td></tr>
+    <tr><td style="border: 1px solid #000;">btnAddSection onClick</td><td style="border: 1px solid #000;">Тап по «+»</td><td style="border: 1px solid #000;">Добавить новый раздел</td><td style="border: 1px solid #000;">myDialog, putString, getString</td></tr>
+    <tr><td style="border: 1px solid #000;">btnRenameSection onClick</td><td style="border: 1px solid #000;">Тап по «✎»</td><td style="border: 1px solid #000;">Переименовать раздел</td><td style="border: 1px solid #000;">myDialog, getSelectedItem, replace</td></tr>
+    <tr><td style="border: 1px solid #000;">btnDeleteSection onClick</td><td style="border: 1px solid #000;">Тап по «🗑»</td><td style="border: 1px solid #000;">Удалить раздел</td><td style="border: 1px solid #000;">myDialog, replace, remove</td></tr>
+    <tr><td style="border: 1px solid #000;">listSections onItemClick</td><td style="border: 1px solid #000;">Тап по разделу</td><td style="border: 1px solid #000;">Открыть раздел в редакторе</td><td style="border: 1px solid #000;">getItemAt, getString, setText</td></tr>
+    <tr><td style="border: 1px solid #000;">btnSave onClick</td><td style="border: 1px solid #000;">Тап по «Сохранить»</td><td style="border: 1px solid #000;">Сохранить HTML в раздел</td><td style="border: 1px solid #000;">getString, getText, putString, Toast</td></tr>
+    <tr><td style="border: 1px solid #000;">btnPreview onClick</td><td style="border: 1px solid #000;">Тап по «Предпросмотр»</td><td style="border: 1px solid #000;">Открыть PreviewActivity</td><td style="border: 1px solid #000;">goToScreen, putString, putExtra, startActivity</td></tr>
+    <tr><td style="border: 1px solid #000;">btnFind onClick</td><td style="border: 1px solid #000;">Тап по «Найти»</td><td style="border: 1px solid #000;">Найти текст в HTML</td><td style="border: 1px solid #000;">myDialog, indexOf, setSelection</td></tr>
+  </tbody>
+</table>
+
+<h2>Что важно понять про логику EditorActivity</h2>
+
+<p><b>Первое — три панели.</b> Все три события переключения панелей похожи. Разница только в том, какая панель становится видимой. Это удобно: одна и та же логика повторяется три раза с минимальными изменениями.</p>
+
+<p><b>Второе — состояние текущего раздела.</b> Информация о том, какой раздел сейчас открыт, хранится в <code>last_page_file</code>. Это значение читается при сохранении, предпросмотре и поиске.</p>
+
+<p><b>Третье — структура данных.</b> Структура разделов хранится как строка с разделителем <code>;;;</code>. Разбивается через <b>Разделить / (Split)</b> и собирается через конкатенацию. HTML каждой страницы хранится под отдельным ключом: <code>project_id_pages_имя_раздела</code>.</p>
+
+<p><b>Четвёртое — при переименовании переносим HTML.</b> Так как имя раздела — это ключ, при переименовании содержимое нужно скопировать под новый ключ и удалить старый. Иначе HTML потеряется.</p>
+
+<p><b>Пятое — при сохранении обновляем статистику.</b> <code>infoStats</code> показывает количество символов. Обновляем его после каждого сохранения.</p>
+
+<div style="border: 2px solid #27a; background: #eaf4fb; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Совет.</b> После того как опишешь логику EditorActivity, проверь сценарии: создай проект, добавь раздел, отредактируй HTML, сохрани, посмотри предпросмотр. Переименуй раздел, проверь, что HTML сохранился. Удали раздел.
+</div>
+
+<div style="border: 2px solid #a27; background: #fdeef5; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Частая ошибка.</b> Забыть сохранить HTML при нажатии «Предпросмотр». Если пользователь редактировал, но не нажал «Сохранить», и сразу нажал «Предпросмотр» — HTML потеряется. В логике мы сохраняем его перед переходом.
+</div>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
