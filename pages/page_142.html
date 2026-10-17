@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ProgressDialog — окно загрузки</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>ProgressDialog — окно загрузки</h1>
+
+<p><b>ProgressDialog</b> — компонент для показа индикатора загрузки с возможностью блокировки интерфейса. Отображает всплывающее окно с крутящимся спиннером и текстом — пока идёт длительная операция.</p>
+
+<p>Иконка в диалоге добавления — круг со стрелкой или значок загрузки.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Открывает всплывающее окно с индикатором загрузки.</li>
+  <li>Показывает сообщение — например, «Загрузка…», «Подождите…».</li>
+  <li>Может блокировать интерфейс — пользователь не может тапать по экрану, пока операция не завершится.</li>
+  <li>Не имеет своих событий — управляется через блоки <code>show</code> и <code>dismiss</code>.</li>
+  <li>Автоматически закрывается только если ты сам его закроешь — не завершается по времени.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Загрузка данных из сети — пока приходит ответ от RequestNetwork.</li>
+  <li>Долгая операция — сохранение, обработка, шифрование.</li>
+  <li>Отправка формы — пока данные уходят на сервер.</li>
+  <li>Инициализация — при первом запуске приложения.</li>
+  <li>Работа с файлами — чтение / запись больших данных.</li>
+  <li>Любое действие, которое длится больше секунды.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>loadingDialog</code>, <code>loading</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>show</b></td>
+      <td style="border: 1px solid #000;">Показать диалог загрузки.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>dismiss</b></td>
+      <td style="border: 1px solid #000;">Закрыть диалог.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setTitle</b></td>
+      <td style="border: 1px solid #000;">Задать заголовок.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setMessage</b></td>
+      <td style="border: 1px solid #000;">Задать текст сообщения.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setCancelable</b></td>
+      <td style="border: 1px solid #000;">Можно ли закрыть тапом вне окна или кнопкой «Назад».</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Подключи компонент ProgressDialog на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>loading</code>.</li>
+  <li>В логике:
+    <ul>
+      <li>вызови <code>show</code> перед началом долгой операции;</li>
+      <li>выполни операцию (RequestNetwork, файл, вычисление);</li>
+      <li>в завершении операции вызови <code>dismiss</code>.</li>
+    </ul>
+  </li>
+  <li>Обязательно закрывай диалог — во всех ветках: успех, ошибка, отмена.</li>
+</ol>
+
+<h2>Пример: загрузка с сервера</h2>
+
+<ul>
+  <li><code>onClick</code> кнопки «Загрузить» → <code>loading.show()</code>.</li>
+  <li>Затем <code>RequestNetwork.startRequestNetwork()</code>.</li>
+  <li>В <code>onResponse</code> → <code>loading.dismiss()</code> → показ данных.</li>
+  <li>В <code>onErrorResponse</code> → <code>loading.dismiss()</code> → показ ошибки.</li>
+</ul>
+
+<h2>Пример: сохранение файла</h2>
+
+<ul>
+  <li><code>onClick</code> кнопки «Сохранить» → <code>loading.show()</code>.</li>
+  <li>Логика сохранения файла.</li>
+  <li>По завершении → <code>loading.dismiss()</code>.</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> диалог не закрывается сам. Если ты вызвал <code>show</code>, а <code>dismiss</code> не вызвал — окно останется висеть, и приложение будет «заблокировано».</div>
+
+<div class="warn">⚠️ <b>Важно:</b> закрывай диалог во всех случаях: и при успехе, и при ошибке, и при отмене. Иначе получишь «вечную загрузку».</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не используй ProgressDialog для очень долгих операций (больше 10–15 секунд). Пользователь подумает, что приложение «зависло». Лучше — линейный ProgressBar с процентами.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не показывай два ProgressDialog одновременно. Второй вызов <code>show</code> при открытом первом — непредсказуемое поведение.</div>
+
+<div class="hint">💡 <b>Совет:</b> для сетевых запросов используй ProgressDialog в связке с RequestNetwork. Показал перед запросом — закрыл в <code>onResponse</code> и <code>onErrorResponse</code>.</div>
+
+<div class="hint">💡 <b>Совет:</b> задавай понятное сообщение: «Загрузка погоды», «Отправка данных». Общее «Подождите…» менее информативно.</div>
+
+<div class="hint">💡 <b>Совет:</b> задавай <code>setCancelable = false</code> для критичных операций — чтобы пользователь не мог прервать сохранение или отправку.</div>
+
+<div class="hint">💡 <b>Совет:</b> задавай <code>setCancelable = true</code> для необязательных операций — чтобы пользователь мог отменить, если передумал.</div>
+
+<div class="hint">💡 <b>Совет:</b> для очень быстрых операций (меньше 500 мс) ProgressDialog не нужен. Он появится и исчезнет так быстро, что пользователь не заметит — только визуальное «мигание».</div>
+
+<div class="hint">💡 <b>Совет:</b> для долгих операций с прогрессом (скачивание файла) используй ProgressBar с горизонтальным индикатором вместо ProgressDialog. Он показывает процент загрузки.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про <code>dismiss</code>. Диалог висит вечно, пользователь не может пользоваться приложением.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не закрыть диалог при ошибке. В <code>onErrorResponse</code> забыт <code>dismiss</code> — загрузка продолжается бесконечно.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> использовать ProgressDialog для долгих операций без прогресса. Пользователь не понимает, работает ли приложение.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не задавать сообщение. Диалог с пустым текстом выглядит непонятно.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> показывать ProgressDialog для операций без реальной загрузки. Например, при обычном переходе между экранами.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>ProgressDialog</b> — компонент для показа окна загрузки с блокировкой интерфейса.</li>
+  <li>Основные блоки: <b>show</b>, <b>dismiss</b>, <b>setTitle</b>, <b>setMessage</b>, <b>setCancelable</b>.</li>
+  <li>Собственных событий нет — управляется блоками вручную.</li>
+  <li>Не закрывается сам — обязательно вызывай <code>dismiss</code>.</li>
+  <li>Закрывай во всех ветках: успех, ошибка, отмена.</li>
+  <li>Для операций больше 10–15 секунд используй ProgressBar с процентами.</li>
+  <li>Для быстрых операций (меньше 500 мс) ProgressDialog не нужен.</li>
+  <li>Для сетевых запросов — в связке с RequestNetwork.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Забывают вызвать dismiss.</b> Диалог висит вечно.</li>
+  <li><b>Не закрывают при ошибке.</b> Загрузка «идёт» бесконечно.</li>
+  <li><b>Используют для долгих операций без прогресса.</b> Пользователь думает, что зависло.</li>
+  <li><b>Не задают сообщение.</b> Диалог непонятный.</li>
+  <li><b>Показывают для мгновенных операций.</b> Только раздражает «мигание».</li>
+  <li><b>Показывают два диалога одновременно.</b> Поведение непредсказуемо.</li>
+  <li><b>Не используют для сетевых запросов.</b> Пользователь не понимает, что идёт загрузка.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
