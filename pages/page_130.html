@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Timer — таймер</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Timer — таймер</h1>
+
+<p><b>Timer</b> — компонент для работы с таймером. Позволяет выполнять действия через определённые интервалы времени или через заданную задержку. Используется для отсчёта, обновления интерфейса, повторяющихся задач.</p>
+
+<p>Иконка в диалоге добавления — часы с секундной стрелкой.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Запускает отсчёт времени с заданным интервалом.</li>
+  <li>Может повторяться (например, каждые 1000 мс) или сработать один раз.</li>
+  <li>На каждом «тике» срабатывает событие <code>onTimerTick</code> — там описывается, что делать.</li>
+  <li>При завершении срабатывает событие <code>onTimerFinished</code>.</li>
+  <li>Может быть остановлен вручную через блок <code>cancel</code> или <code>stop</code>.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Обратный отсчёт — «Осталось 30 секунд».</li>
+  <li>Секундомер — увеличение счётчика каждую секунду.</li>
+  <li>Периодическое обновление — обновление данных каждые N секунд.</li>
+  <li>Анимация — смена кадров через равные интервалы.</li>
+  <li>Напоминания — «Показать сообщение через 5 секунд».</li>
+  <li>Игровой цикл — обновление состояния игры.</li>
+  <li>Имитация загрузки — показ прогресса через интервалы.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>timer1</code>, <code>myTimer</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Interval</b></td>
+      <td style="border: 1px solid #000;">Интервал срабатывания в миллисекундах.</td>
+      <td style="border: 1px solid #000;"><code>1000</code> мс = 1 секунда.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Repeat</b></td>
+      <td style="border: 1px solid #000;">Повторять ли таймер или сработать один раз.</td>
+      <td style="border: 1px solid #000;"><code>true</code> — повторять; <code>false</code> — один раз.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>start</b></td>
+      <td style="border: 1px solid #000;">Запустить таймер.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>cancel</b></td>
+      <td style="border: 1px solid #000;">Остановить таймер.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>pause / resume</b></td>
+      <td style="border: 1px solid #000;">Пауза и продолжение (в некоторых версиях).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>События таймера</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onTimerTick</b></td>
+      <td style="border: 1px solid #000;">Срабатывает каждый интервал. Основное событие для логики.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onTimerFinished</b></td>
+      <td style="border: 1px solid #000;">Срабатывает при завершении (если <code>Repeat = false</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Подключи компонент Timer на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>myTimer</code>.</li>
+  <li>Задай Interval — например, <code>1000</code> для одной секунды.</li>
+  <li>Задай Repeat — <code>true</code>, если таймер должен идти, пока не остановишь.</li>
+  <li>В категории «Компонент» вкладки «События» добавь событие <code>onTimerTick</code> для этого таймера.</li>
+  <li>Внутри <code>onTimerTick</code> опиши логику: увеличь счётчик, обнови TextView, проверь условия остановки.</li>
+</ol>
+
+<h2>Пример: секундомер</h2>
+
+<ul>
+  <li>В <code>onCreate</code> инициализируй переменную <code>seconds = 0</code>.</li>
+  <li>В <code>onClick</code> кнопки «Старт» вызови <code>myTimer.start()</code>.</li>
+  <li>В <code>onTimerTick</code>:
+    <ul>
+      <li>увеличь <code>seconds</code> на 1;</li>
+      <li>установи в TextView значение <code>seconds</code>;</li>
+      <li>если <code>seconds &gt;= 60</code>, останови таймер: <code>myTimer.cancel()</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> интервал измеряется в миллисекундах. <code>1000</code> — это 1 секунда, а не 1 миллисекунда. Частая путаница.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> Timer работает, пока приложение активно. При сворачивании или закрытии он останавливается. Для работы в фоне нужен AlarmManager или ForegroundService — но они сложнее и требуют дополнительных разрешений.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не делай интервал слишком маленьким (например, 10 мс). Это перегружает устройство и быстро разряжает батарею.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не забывай останавливать таймер, когда он больше не нужен. Иначе он продолжит работать впустую.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> логика внутри <code>onTimerTick</code> должна быть быстрой. Если она занимает больше времени, чем интервал — таймер будет «догонять» и создавать очередь.</div>
+
+<div class="hint">💡 <b>Совет:</b> для обратного отсчёта заведи переменную с числом секунд. В каждом тике уменьшай её на 1 и обновляй TextView. При нуле — останови таймер и выполни действие.</div>
+
+<div class="hint">💡 <b>Совет:</b> для секундомера — наоборот, увеличивай переменную. Обновляй TextView каждую секунду.</div>
+
+<div class="hint">💡 <b>Совет:</b> для анимации используй интервал 16 мс (это ~60 кадров в секунду). Но помни, что для плавной анимации лучше использовать ObjectAnimator, а не Timer.</div>
+
+<div class="hint">💡 <b>Совет:</b> для периодического обновления данных с сервера используй интервал 10 000–60 000 мс (10–60 секунд). Не чаще — иначе устройство будет перегружено.</div>
+
+<div class="hint">💡 <b>Совет:</b> останавливай таймер в <code>onPause</code> или <code>onStop</code>, чтобы он не работал, когда пользователь ушёл с экрана.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> путать единицы измерения. Interval = 1 — это 1 миллисекунда, а не 1 секунда. Таймер сработает слишком быстро.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не останавливать таймер. Он продолжает срабатывать, обновляя интерфейс, даже когда это не нужно.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> слишком маленький интервал. Устройство перегружается, батарея садится.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> тяжёлая логика в <code>onTimerTick</code>. Таймер не успевает, срабатывания «наслаиваются».</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> ожидать, что таймер работает в фоне. Timer останавливается при сворачивании приложения.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Timer</b> — компонент для периодических действий и отсчёта времени.</li>
+  <li>Основные настройки: <b>Interval</b> (мс), <b>Repeat</b> (да / нет).</li>
+  <li>Основные блоки: <b>start</b>, <b>cancel</b>, <b>pause / resume</b>.</li>
+  <li>Основное событие — <code>onTimerTick</code>, срабатывает каждый интервал.</li>
+  <li>Событие <code>onTimerFinished</code> — при завершении, если <code>Repeat = false</code>.</li>
+  <li>Работает только пока приложение активно.</li>
+  <li>Не делай слишком маленький интервал — устройство перегружается.</li>
+  <li>Останавливай таймер, когда он больше не нужен.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Путают миллисекунды и секунды.</b> Interval = 1 — это 1 мс, а не 1 с.</li>
+  <li><b>Не останавливают таймер.</b> Он продолжает срабатывать впустую.</li>
+  <li><b>Ставят слишком маленький интервал.</b> Перегрузка устройства.</li>
+  <li><b>Тяжёлая логика в onTimerTick.</b> Наслоение срабатываний.</li>
+  <li><b>Ждут работу в фоне.</b> Timer останавливается при сворачивании.</li>
+  <li><b>Забывают остановить в onPause.</b> Таймер работает вхолостую.</li>
+  <li><b>Используют Timer для плавной анимации.</b> Лучше ObjectAnimator.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
