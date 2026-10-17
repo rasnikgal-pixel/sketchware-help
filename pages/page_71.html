@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CircleImageView — круглая картинка</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>CircleImageView — круглая картинка</h1>
+
+<p><b>CircleImageView</b> — ImageView, который отображает изображение в круглой форме. Автоматически обрезает картинку по кругу, независимо от её исходных пропорций.</p>
+
+<p>Иконка в палитре — круг с изображением внутри.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Отображает картинку по кругу.</li>
+  <li>Любое изображение обрезается по форме круга.</li>
+  <li>Не нужно вручную делать круглую маску, использовать ShapeDrawable или библиотеки — всё встроено.</li>
+  <li>При одинаковой ширине и высоте круг получается идеальным.</li>
+  <li>Может быть кликабельным.</li>
+  <li>Поддерживает рамку вокруг картинки через BorderWidth и BorderColor.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Аватарки пользователей — в профиле, чатах, комментариях.</li>
+  <li>Иконки в списках — например, логотипы брендов.</li>
+  <li>Контакты — телефонная книга, мессенджеры.</li>
+  <li>Подписки и подписчики — списки пользователей.</li>
+  <li>Любое место, где нужна круглая картинка с аккуратным краем.</li>
+</ul>
+
+<p>Круглые аватарки — стандарт современных приложений. Квадратные уже не в моде.</p>
+
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Image / Src</b></td>
+      <td style="border: 1px solid #000;">Ссылка на изображение из Менеджера изображений.</td>
+      <td style="border: 1px solid #000;">Drawable-ресурс.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>BorderWidth</b></td>
+      <td style="border: 1px solid #000;">Толщина рамки вокруг круга.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0dp</code> — без рамки. На скриншоте — <code>3dp</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>BorderColor</b></td>
+      <td style="border: 1px solid #000;">Цвет рамки.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры. На скриншоте — <code>#000000</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleType</b></td>
+      <td style="border: 1px solid #000;">Способ масштабирования картинки внутри круга.</td>
+      <td style="border: 1px solid #000;"><code>centerCrop</code> — заполнить круг, обрезая лишнее (рекомендуется);<br><code>fitCenter</code> — вписать, по краям может остаться фон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Alpha</b></td>
+      <td style="border: 1px solid #000;">Прозрачность.</td>
+      <td style="border: 1px solid #000;">Число от 0 до 1.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Padding / Margin</b></td>
+      <td style="border: 1px solid #000;">Внутренние и внешние отступы.</td>
+      <td style="border: 1px solid #000;">Число в dp для каждой стороны.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота. Должны быть равны для идеального круга.</td>
+      <td style="border: 1px solid #000;">Число в dp. Например, 64dp и 64dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Clickable</b></td>
+      <td style="border: 1px solid #000;">Реагирует ли на нажатие.</td>
+      <td style="border: 1px solid #000;">Переключатель: вкл / выкл.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства виджета</h2>
+
+<p>Открой панель свойств, тапнув по CircleImageView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>circleimageview1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя виджета. По этому имени виджет виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>circleimageview1</code>, <code>circleimageview2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>avatarImage</code>, если это аватарка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Здесь задаётся рамка вокруг круга.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">На скриншоте заданы <code>app:civ_border_width="3dp"</code> и <code>app:civ_border_color="#000000"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает полный класс компонента: <code>de.hdodenhof.circleimageview.CircleImageView</code>.</td>
+      <td style="border: 1px solid #000;">CircleImageView и другие типы виджетов.</td>
+      <td style="border: 1px solid #000;">Оставь как есть.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет виджет по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>64dp</code> — стандартный размер аватарки в списке.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет виджет по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>64dp</code> — должно совпадать с шириной для ровного круга.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> виджета — от краёв до картинки. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 0 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> виджета — от него до соседних элементов.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Margin end 12 — между аватаркой и текстом.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как виджет выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>center_horizontal</code>, <code>right</code>.</td>
+      <td style="border: 1px solid #000;"><code>center_horizontal</code> — по центру родителя.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт виджет. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт для аватарки.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Изображение</b><br>Image / Src</td>
+      <td style="border: 1px solid #000;">Ссылка на изображение из Менеджера изображений проекта.</td>
+      <td style="border: 1px solid #000;">Drawable-ресурс. По умолчанию — <code>default_image</code>.</td>
+      <td style="border: 1px solid #000;">Выбери загруженную аватарку.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Тип масштабирования</b><br>ScaleType</td>
+      <td style="border: 1px solid #000;">Как картинка масштабируется под размер круга.</td>
+      <td style="border: 1px solid #000;"><code>CENTER_CROP</code> — заполнить круг, обрезая лишнее (рекомендуется);<br><code>FIT_CENTER</code> — вписать, по краям может остаться фон. На скриншоте — <code>CENTER</code>.</td>
+      <td style="border: 1px solid #000;"><code>CENTER_CROP</code> — заполнит круг полностью.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон виджета из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка виджета сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Серый фон под аватаркой — <code>#CCCCCC</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли виджет на нажатия (если Clickable = true).</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активно;<br><b>выкл</b> — заблокировано.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот виджета вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько виджет прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг виджета по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает виджет по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает виджет по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> ключевые параметры (<b>BorderWidth</b>, <b>BorderColor</b>) задаются через <b>Пользовательские атрибуты</b> — их нужно вручную прописать в виде <code>app:civ_border_width="3dp"</code>, <code>app:civ_border_color="#000000"</code>.</div>
+
+<h2>Как перетащить CircleImageView на макет</h2>
+
+<p>CircleImageView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Убедись, что на макете уже есть контейнер — <b>Linear(V)</b>, <b>Linear(H)</b> или <b>RelativeLayout</b>.</li>
+  <li>Раскрой категорию <b>Widgets</b> в палитре слева.</li>
+  <li>Зажми <b>CircleImageView</b> и, не отпуская, перетащи его <b>поверх контейнера</b> — он подсветится, и виджет встанет внутрь.</li>
+  <li>Отпусти в нужном месте — круглая картинка появится в разметке.</li>
+  <li>Задай <b>Ширину</b> и <b>Высоту</b> одинаковыми — например, 64dp и 64dp.</li>
+  <li>Задай <b>Изображение</b> — выбери картинку из Менеджера изображений.</li>
+  <li>Задай <b>Тип масштабирования</b> = <code>CENTER_CROP</code>, чтобы картинка заняла весь круг.</li>
+  <li>Через <b>Пользовательские атрибуты</b> задай <code>app:civ_border_width</code> и <code>app:civ_border_color</code>, если нужна рамка.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по CircleImageView в палитре ничего не делает. Виджет попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> если Width ≠ Height, круг превратится в овал. Для ровного круга стороны должны быть равны.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> без ScaleType = centerCrop картинка может не заполнить круг полностью — по краям останутся пустые области.</div>
+
+<div class="hint">💡 <b>Совет:</b> для аватарки пользователя в списке используй 48dp × 48dp. В профиле — 96dp × 96dp или больше.</div>
+
+<div class="hint">💡 <b>Совет:</b> рамка BorderWidth = 2dp, BorderColor из темы — добавляет аккуратный стиль. Особенно хорошо смотрится на белых фонах.</div>
+
+<div class="hint">💡 <b>Совет:</b> если картинка не круглая, а ты хочешь круг — обязательно centerCrop. Если оставить fitCenter, картинка впишется внутрь, а по краям круга появится фон.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> задавать разные значения Width и Height. Получится овал, а не круг.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про ScaleType. Картинка будет вписана в квадрат, а не заполнит круг.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>CircleImageView</b> — ImageView, который автоматически обрезает картинку по кругу.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Для ровного круга <b>Ширина должна быть равна Высоте</b>.</li>
+  <li>Для заполнения круга задавай <b>Тип масштабирования</b> = <code>CENTER_CROP</code>.</li>
+  <li>Рамка задаётся через <b>Пользовательские атрибуты</b>: <code>app:civ_border_width</code> и <code>app:civ_border_color</code>.</li>
+  <li>Стандартные размеры: 48dp — в списке, 96dp+ — в профиле.</li>
+  <li>Для круглых аватарок CircleImageView удобнее обычного ImageView.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Тапают по CircleImageView в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Задают разные Width и Height.</b> Получается овал, а не круг.</li>
+  <li><b>Оставляют ScaleType = CENTER.</b> Картинка не заполняет круг — по краям виден фон.</li>
+  <li><b>Ищут BorderWidth и BorderColor в обычных свойствах.</b> Их нужно задавать через «Пользовательские атрибуты».</li>
+  <li><b>Забывают про библиотеку CircleImageView.</b> Без неё виджет не отобразится.</li>
+  <li><b>Используют CircleImageView для квадратной картинки.</b> Обрежет по кругу — но если квадрат нужен, берите ImageView.</li>
+  <li><b>Ставят огромные размеры (200dp+) для аватарки в списке.</b> Выглядит громоздко, лучше 48–64dp.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
