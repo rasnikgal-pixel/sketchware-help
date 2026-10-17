@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FragmentAdapter — адаптер для ViewPager</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>FragmentAdapter — адаптер для ViewPager</h1>
+
+<p><b>FragmentAdapter</b> — компонент для управления фрагментами. Связывает ViewPager с несколькими Fragment — экранами, которые можно переключать свайпом или через вкладки.</p>
+
+<p>Иконка в диалоге добавления — несколько прямоугольников рядом.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Связывает ViewPager с набором Fragment (фрагментов).</li>
+  <li>Каждый Fragment — это отдельный экран внутри одной Activity.</li>
+  <li>Пользователь свайпает влево-вправо или тапает по вкладке TabLayout — переключается между фрагментами.</li>
+  <li>Adapter управляет загрузкой и переиспользованием фрагментов.</li>
+  <li>В отличие от Activity, фрагменты легче и быстрее переключаются.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Онбординг — знакомство с приложением в 3–5 слайдах.</li>
+  <li>Табы и вкладки — «Новости», «Популярное», «Избранное» в одном экране.</li>
+  <li>Галерея — просмотр изображений свайпом.</li>
+  <li>Разделы одного приложения — без перехода на новый экран.</li>
+  <li>Адаптивный интерфейс — на планшете два фрагмента рядом, на телефоне — по одному.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>pagerAdapter</code>, <code>adapter</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setViewPager</b></td>
+      <td style="border: 1px solid #000;">Привязать адаптер к ViewPager.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setTabLayout</b></td>
+      <td style="border: 1px solid #000;">Связать с вкладками TabLayout.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>addFragment</b></td>
+      <td style="border: 1px solid #000;">Добавить фрагмент в адаптер.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setTitles</b></td>
+      <td style="border: 1px solid #000;">Задать заголовки вкладок.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getItem</b></td>
+      <td style="border: 1px solid #000;">Получить фрагмент по позиции.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getCount</b></td>
+      <td style="border: 1px solid #000;">Количество фрагментов.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Создай Fragment для каждой страницы через Менеджер представлений (тип «Fragment»).</li>
+  <li>В разметке добавь ViewPager (и опционально TabLayout).</li>
+  <li>Подключи компонент FragmentAdapter на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>adapter</code>.</li>
+  <li>В логике:
+    <ul>
+      <li>добавь фрагменты через <code>addFragment</code>;</li>
+      <li>задай заголовки через <code>setTitles</code>;</li>
+      <li>привяжи к ViewPager через <code>setViewPager</code>;</li>
+      <li>если есть TabLayout — свяжи через <code>setTabLayout</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Пример: онбординг</h2>
+
+<ul>
+  <li>Создай 3 Fragment: Slide1, Slide2, Slide3.</li>
+  <li>ViewPager на главном экране.</li>
+  <li>FragmentAdapter — добавь три фрагмента.</li>
+  <li><code>setViewPager</code> — свяжи.</li>
+  <li>Пользователь свайпает — переключаются слайды.</li>
+</ul>
+
+<h2>Пример: вкладки</h2>
+
+<ul>
+  <li>TabLayout + ViewPager на экране.</li>
+  <li>3 Fragment: «Новости», «Популярное», «Избранное».</li>
+  <li>FragmentAdapter — добавь 3 фрагмента.</li>
+  <li><code>setTabLayout</code> — свяжи с вкладками.</li>
+  <li>Пользователь тапает по вкладке или свайпает — переключается.</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> для каждого фрагмента нужен свой Layout (XML-файл). Без разметки фрагмент будет пустым.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> FragmentAdapter работает только с ViewPager. Без ViewPager компонент бесполезен.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не путай Fragment и Activity. Фрагмент — это часть экрана, Activity — сам экран. FragmentAdapter управляет фрагментами.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> фрагменты не удаляются полностью — они остаются в памяти. Если их много, приложение может «съесть» память.</div>
+
+<div class="hint">💡 <b>Совет:</b> для онбординга используй 3–5 фрагментов с картинкой, заголовком и текстом. Внизу — точки-индикаторы и кнопка «Далее».</div>
+
+<div class="hint">💡 <b>Совет:</b> для вкладок используй TabLayout + ViewPager. Это стандартный паттерн Android — пользователь и тапает, и свайпает.</div>
+
+<div class="hint">💡 <b>Совет:</b> для галереи каждый фрагмент — ImageView с картинкой. Пользователь листает — меняется фото.</div>
+
+<div class="hint">💡 <b>Совет:</b> для динамического количества фрагментов (например, зависит от данных) — используй цикл в логике. Добавляй фрагменты по мере необходимости.</div>
+
+<div class="hint">💡 <b>Совет:</b> не делай много фрагментов — 5–7 максимум. Больше — сложно ориентироваться пользователю, и приложение тормозит.</div>
+
+<div class="hint">💡 <b>Совет:</b> для плавного переключения используй <code>setOffscreenPageLimit</code> — сколько фрагментов держать в памяти. 1–2 — оптимально.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не создавать Fragment перед использованием FragmentAdapter. Адаптер не с чем связывать.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не привязывать к ViewPager. Компонент «висит» без действия.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> путать Fragment и Activity. Fragment — часть экрана, Activity — сам экран.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> делать десятки фрагментов. Приложение тормозит, память забивается.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не задавать заголовки для вкладок. Пользователь не понимает, куда тапает.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>FragmentAdapter</b> — компонент для управления фрагментами через ViewPager.</li>
+  <li>Основные блоки: <b>setViewPager</b>, <b>setTabLayout</b>, <b>addFragment</b>, <b>setTitles</b>, <b>getItem</b>, <b>getCount</b>.</li>
+  <li>Работает только в связке с ViewPager (и опционально с TabLayout).</li>
+  <li>Каждому фрагменту нужен свой Layout.</li>
+  <li>Для онбординга — 3–5 фрагментов с картинкой, текстом, индикаторами.</li>
+  <li>Для вкладок — TabLayout + ViewPager + FragmentAdapter.</li>
+  <li>Не делай много фрагментов — приложение тормозит.</li>
+  <li>Fragment — часть экрана; Activity — сам экран.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Не создают Fragment.</b> Адаптеру нечего показывать.</li>
+  <li><b>Не привязывают к ViewPager.</b> Компонент бесполезен.</li>
+  <li><b>Путают Fragment и Activity.</b> Разные уровни вложенности.</li>
+  <li><b>Делают слишком много фрагментов.</b> Приложение тормозит.</li>
+  <li><b>Не задают заголовки для вкладок.</b> Пользователь не понимает навигацию.</li>
+  <li><b>Не создают Layout для фрагмента.</b> Фрагмент пустой.</li>
+  <li><b>Забывают про setOffscreenPageLimit.</b> Много фрагментов в памяти.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
