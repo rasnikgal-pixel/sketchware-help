@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Компоненты</title>
+</head>
+<body>
+<meta charset="utf-8">
+<h1>Компоненты HelpStudio</h1>
+
+<p>Компоненты — невидимые сервисы приложения. В HelpStudio их три:</p>
+
+<ul>
+  <li><b>Намерение / (Intent)</b> — переходы между экранами.</li>
+  <li><b>Диалог / (Dialog)</b> — всплывающие окна.</li>
+  <li><b>Индикатор выполнения / (ProgressDialog)</b> — показ процесса.</li>
+</ul>
+
+<div style="border: 2px solid #a72; background: #fdf4e3; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Внимание.</b> SharedPreferences в компонентах нет. Хранение данных в Sketchware Pro 7 работает через блоки из палитры: <b>Записать строку / (Put String)</b>, <b>Прочитать строку / (Get String)</b> и другие. Эти блоки находятся в палитре блоков на вкладке «События». Компонент для этого подключать не нужно.
+</div>
+
+<h2>Как подключить компонент — по шагам</h2>
+
+<ol>
+  <li>Открой вкладку <b>«Компонент»</b> в шапке рабочего экрана проекта.</li>
+  <li>Нажми <b>«+»</b> в правом нижнем углу — откроется диалог со списком компонентов.</li>
+  <li>Найди нужный в категории.</li>
+  <li>Тапни по нему — откроется форма настройки.</li>
+  <li>Задай <b>имя компонента</b>.</li>
+  <li>Нажми <b>«Добавить»</b> — компонент появится в списке.</li>
+</ol>
+
+<div style="border: 2px solid #a72; background: #fdf4e3; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Внимание.</b> Компоненты подключаются один раз на весь проект. Они доступны во всех экранах.
+</div>
+
+<h2>Компонент 1. Намерение / (Intent)</h2>
+
+<p>Механизм переходов между экранами и передачи данных.</p>
+
+<p><b>Как подключить:</b></p>
+<ul>
+  <li>Вкладка «Компонент» → «+» → категория «Основные» → Intent.</li>
+  <li>Имя компонента: <b>goToScreen</b>.</li>
+  <li>Нажать «Добавить».</li>
+</ul>
+
+<p><b>Блоки, которые появятся в логике:</b></p>
+<ul>
+  <li><b>Установить экран / (Set Screen)</b> — задать, на какой экран перейти.</li>
+  <li><b>Добавить данные / (Put Extra)</b> — передать значение.</li>
+  <li><b>Получить данные / (Get Extra)</b> — прочитать переданное значение.</li>
+  <li><b>Запустить экран / (Start Activity)</b> — открыть экран.</li>
+  <li><b>Завершить / (Finish)</b> — закрыть текущий экран.</li>
+</ul>
+
+<div style="border: 2px solid #a72; background: #fdf4e3; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Внимание.</b> Ключи данных при передаче и чтении должны совпадать. Если в <b>Put Extra</b> ключ <code>project_id</code>, то в <b>Get Extra</b> должен быть тот же ключ.
+</div>
+
+<h2>Компонент 2. Диалог / (Dialog)</h2>
+
+<p>Всплывающее окно поверх текущего экрана.</p>
+
+<p><b>Как подключить:</b></p>
+<ul>
+  <li>Вкладка «Компонент» → «+» → категория «Основные» → Dialog.</li>
+  <li>Имя компонента: <b>myDialog</b>.</li>
+</ul>
+
+<p><b>Блоки:</b></p>
+<ul>
+  <li><b>Показать / (Show)</b> — показать диалог.</li>
+  <li><b>Установить заголовок / (Set Title)</b>.</li>
+  <li><b>Установить сообщение / (Set Message)</b>.</li>
+  <li><b>Установить положительную кнопку / (Set Positive Button)</b>.</li>
+  <li><b>Установить отрицательную кнопку / (Set Negative Button)</b>.</li>
+  <li><b>Закрыть / (Dismiss)</b>.</li>
+</ul>
+
+<p><b>События:</b></p>
+<ul>
+  <li><b>При нажатии положительной / (onDialogPositiveClick)</b>.</li>
+  <li><b>При нажатии отрицательной / (onDialogNegativeClick)</b>.</li>
+</ul>
+
+<div style="border: 2px solid #a27; background: #fdeef5; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Частая ошибка.</b> Забыть добавить события <b>onDialogPositiveClick</b> и <b>onDialogNegativeClick</b>. Без них диалог откроется, но нажатия ничего не сделают.
+</div>
+
+<h2>Компонент 3. Индикатор выполнения / (ProgressDialog)</h2>
+
+<p>Всплывающее окно с крутящимся спиннером.</p>
+
+<p><b>Как подключить:</b></p>
+<ul>
+  <li>Вкладка «Компонент» → «+» → категория «Основные» → ProgressDialog.</li>
+  <li>Имя компонента: <b>loadingDialog</b>.</li>
+</ul>
+
+<p><b>Блоки:</b></p>
+<ul>
+  <li><b>Показать / (Show)</b>.</li>
+  <li><b>Закрыть / (Dismiss)</b>.</li>
+  <li><b>Установить сообщение / (Set Message)</b>.</li>
+</ul>
+
+<div style="border: 2px solid #a72; background: #fdf4e3; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Внимание.</b> Прогресс-диалог не закрывается сам. Вызвал <b>Show</b> — обязательно вызови <b>Dismiss</b>.
+</div>
+
+<h2>Хранение данных — через блоки</h2>
+
+<p>В HelpStudio нужно сохранять данные между запусками приложения. Для этого используются блоки из палитры логики, а не компоненты.</p>
+
+<p><b>Где найти блоки:</b></p>
+<ol>
+  <li>Открой вкладку «События».</li>
+  <li>Открой любое событие (например, onCreate).</li>
+  <li>В палитре блоков найди категорию с блоками хранения.</li>
+  <li>Блоки: <b>Записать строку / (Put String)</b>, <b>Прочитать строку / (Get String)</b>, <b>Записать булево / (Put Boolean)</b>, <b>Прочитать булево / (Get Boolean)</b>, <b>Записать число / (Put Int)</b>, <b>Прочитать число / (Get Int)</b>, <b>Удалить / (Remove)</b>, <b>Очистить всё / (Clear)</b>.</li>
+</ol>
+
+<p><b>Что будем хранить:</b></p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; text-align: left;">Ключ</th>
+      <th style="border: 1px solid #000; text-align: left;">Тип</th>
+      <th style="border: 1px solid #000; text-align: left;">Что хранит</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border: 1px solid #000;">projects_list</td><td style="border: 1px solid #000;">Строка</td><td style="border: 1px solid #000;">Список проектов (разделитель <code>;;;</code>).</td></tr>
+    <tr><td style="border: 1px solid #000;">theme_dark</td><td style="border: 1px solid #000;">Булево</td><td style="border: 1px solid #000;">Тёмная тема включена.</td></tr>
+    <tr><td style="border: 1px solid #000;">last_project_id</td><td style="border: 1px solid #000;">Строка</td><td style="border: 1px solid #000;">ID последнего проекта.</td></tr>
+    <tr><td style="border: 1px solid #000;">last_page_file</td><td style="border: 1px solid #000;">Строка</td><td style="border: 1px solid #000;">Имя последнего раздела.</td></tr>
+    <tr><td style="border: 1px solid #000;">editor_font_size</td><td style="border: 1px solid #000;">Число</td><td style="border: 1px solid #000;">Размер шрифта.</td></tr>
+    <tr><td style="border: 1px solid #000;">autosave</td><td style="border: 1px solid #000;">Булево</td><td style="border: 1px solid #000;">Флаг автосохранения.</td></tr>
+    <tr><td style="border: 1px solid #000;">ui_accent_color</td><td style="border: 1px solid #000;">Строка</td><td style="border: 1px solid #000;">Акцентный цвет.</td></tr>
+    <tr><td style="border: 1px solid #000;">project_&lt;id&gt;_name</td><td style="border: 1px solid #000;">Строка</td><td style="border: 1px solid #000;">Название проекта.</td></tr>
+    <tr><td style="border: 1px solid #000;">project_&lt;id&gt;_author</td><td style="border: 1px solid #000;">Строка</td><td style="border: 1px solid #000;">Автор.</td></tr>
+    <tr><td style="border: 1px solid #000;">project_&lt;id&gt;_structure</td><td style="border: 1px solid #000;">Строка</td><td style="border: 1px solid #000;">Список разделов.</td></tr>
+    <tr><td style="border: 1px solid #000;">project_&lt;id&gt;_pages_&lt;section&gt;</td><td style="border: 1px solid #000;">Строка</td><td style="border: 1px solid #000;">HTML-содержимое страницы.</td></tr>
+  </tbody>
+</table>
+
+<div style="border: 2px solid #a27; background: #fdeef5; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Частая ошибка.</b> Забыть про <b>значение по умолчанию</b> при чтении. Если ключа нет (первый запуск), <b>Прочитать строку / (Get String)</b> без значения по умолчанию может вернуть ошибку. Всегда указывай значение по умолчанию.
+</div>
+
+<h2>Сводная таблица компонентов</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; text-align: left;">Компонент</th>
+      <th style="border: 1px solid #000; text-align: left;">Имя</th>
+      <th style="border: 1px solid #000; text-align: left;">Где используется</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border: 1px solid #000;">Intent</td><td style="border: 1px solid #000;">goToScreen</td><td style="border: 1px solid #000;">Все экраны</td></tr>
+    <tr><td style="border: 1px solid #000;">Dialog</td><td style="border: 1px solid #000;">myDialog</td><td style="border: 1px solid #000;">MainActivity, EditorActivity</td></tr>
+    <tr><td style="border: 1px solid #000;">ProgressDialog</td><td style="border: 1px solid #000;">loadingDialog</td><td style="border: 1px solid #000;">EditorActivity</td></tr>
+  </tbody>
+</table>
+
+<h2>Что важно понять про компоненты</h2>
+
+<p><b>Первое — компоненты не работают сами по себе.</b> Они становятся доступны в логике, но вызывать их нужно через блоки в событиях. Просто подключить Dialog — недостаточно. Нужно в событии вызвать <b>Показать / (Show)</b>, чтобы диалог появился.</p>
+
+<p><b>Второе — компоненты видны во всех экранах.</b> Один компонент Intent можно использовать и в MainActivity, и в EditorActivity, и в PreviewActivity, и в SettingsActivity. Не нужно дублировать.</p>
+
+<p><b>Третье — не подключай лишние компоненты.</b> Если компонент не используется — он всё равно увеличивает вес APK. Подключай только то, что реально нужно.</p>
+
+<div style="border: 2px solid #2a7; background: #eefaf2; padding: 12px; margin: 16px 0; border-radius: 6px;">
+<b>Подсказка для новичка.</b> После подключения компонента в шапке проекта на секунду появляется сообщение «В редакторе логики добавлены новые блоки». Это значит, что в палитре блоков появились новые блоки для этого компонента. Открой любое событие и убедись, что они там есть.
+</div>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
