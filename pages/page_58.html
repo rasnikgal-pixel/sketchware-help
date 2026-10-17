@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BottomNavigationView — нижняя навигация</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>BottomNavigationView — нижняя навигация</h1>
+
+<p><b>BottomNavigationView</b> — нижнее меню навигации. Компонент, который показывает 3–5 иконок с подписями внизу экрана. Пользователь тапает по иконке, и приложение переключается между основными разделами.</p>
+
+<p>Иконка в палитре — прямоугольник с выделенной нижней полосой.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Внизу экрана — горизонтальный ряд иконок.</li>
+  <li>Активная иконка подсвечивается цветом colorAccent, остальные — серые.</li>
+  <li>При тапе по иконке срабатывает событие и открывается соответствующий раздел.</li>
+  <li>Меню «прибито» к нижнему краю — не уезжает при прокрутке содержимого.</li>
+</ul>
+
+<h2>Из чего состоит</h2>
+
+<ul>
+  <li><b>Пункты меню (MenuItem)</b> — обычно 3–5 штук, каждый с иконкой и подписью.</li>
+  <li><b>Слушатель (OnNavigationItemSelectedListener)</b> — реагирует на выбор пункта.</li>
+  <li><b>Активный пункт</b> — тот, который выбран в данный момент.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Основные разделы приложения — «Главная», «Поиск», «Профиль».</li>
+  <li>Мессенджеры и соцсети — «Чаты», «Контакты», «Настройки».</li>
+  <li>Магазины — «Каталог», «Корзина», «Избранное», «Профиль».</li>
+  <li>Любое приложение с 3–5 главными экранами, между которыми пользователь переключается часто.</li>
+</ul>
+
+<h2>Настройки</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Background</b></td>
+      <td style="border: 1px solid #000;">Цвет фона меню.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ItemIconTint</b></td>
+      <td style="border: 1px solid #000;">Цвет иконок пунктов.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ItemTextColor</b></td>
+      <td style="border: 1px solid #000;">Цвет текста подписей под иконками.</td>
+      <td style="border: 1px solid #000;">HEX или выбор из палитры.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Menu</b></td>
+      <td style="border: 1px solid #000;">Файл меню, где описаны пункты.</td>
+      <td style="border: 1px solid #000;">Ресурс-файл (например, <code>bottom_navigation_menu.xml</code>).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>LabelVisibilityMode</b></td>
+      <td style="border: 1px solid #000;">Когда показывать подписи под иконками.</td>
+      <td style="border: 1px solid #000;">Всегда, никогда или только у активного пункта.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Width / Height</b></td>
+      <td style="border: 1px solid #000;">Ширина и высота компонента.</td>
+      <td style="border: 1px solid #000;">По умолчанию <code>match_parent</code> по ширине и <code>wrap_content</code> по высоте.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Свойства контейнера</h2>
+
+<p>Открой панель свойств, тапнув по BottomNavigationView в рабочей области. Ниже — все свойства с описанием. Значения указаны в том виде, в каком они отображаются в Sketchware Pro 7 (на скриншоте пример ID — <code>bottomnavigation1</code>).</p>
+
+<h3>Основные</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ID</b></td>
+      <td style="border: 1px solid #000;">Уникальное имя компонента. По этому имени он виден на вкладке «События» и в блоках логики.</td>
+      <td style="border: 1px solid #000;">Любая строка без пробелов. По умолчанию — <code>bottomnavigation1</code>, <code>bottomnavigation2</code> и т. д.</td>
+      <td style="border: 1px solid #000;">Переименуй в <code>mainNav</code>, если это главное меню приложения.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Пользовательские атрибуты</b></td>
+      <td style="border: 1px solid #000;">Дополнительные XML-атрибуты, которые можно задать вручную. Нужны опытным пользователям.</td>
+      <td style="border: 1px solid #000;">Пары «атрибут = значение».</td>
+      <td style="border: 1px solid #000;">Например, <code>app:itemIconTint="#FF5722"</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Конвертировать</b></td>
+      <td style="border: 1px solid #000;">Показывает полный класс компонента: <code>com.google.android.material.bottomnavigation.BottomNavigationView</code>.</td>
+      <td style="border: 1px solid #000;">BottomNavigationView (Material) и другие.</td>
+      <td style="border: 1px solid #000;">Обычно менять не нужно.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства макета</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ширина</b><br>Width</td>
+      <td style="border: 1px solid #000;">Насколько широким будет меню по горизонтали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — на всю ширину родителя;<br><code>wrap_content</code> — по содержимому;<br>число в dp.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code> — стандарт для нижнего меню.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Высота</b><br>Height</td>
+      <td style="border: 1px solid #000;">Насколько высоким будет меню по вертикали.</td>
+      <td style="border: 1px solid #000;"><code>match_parent</code>, <code>wrap_content</code>, число в dp.</td>
+      <td style="border: 1px solid #000;"><code>wrap_content</code> — стандарт для нижнего меню.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внутренний отступ</b><br>Padding</td>
+      <td style="border: 1px solid #000;">Отступ <b>внутри</b> компонента — от краёв до иконок. Формат: «осталось: N, top: N, right: N, bottom: N».</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">На скриншоте Padding = 0 со всех сторон.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Внешний отступ</b><br>Margin</td>
+      <td style="border: 1px solid #000;">Отступ <b>снаружи</b> компонента — от него до соседних элементов и краёв родителя.</td>
+      <td style="border: 1px solid #000;">Числа в dp для каждой стороны: left («осталось»), top, right, bottom.</td>
+      <td style="border: 1px solid #000;">Обычно 0 — меню прижато к краям.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Гравитация макета</b><br>Layout gravity</td>
+      <td style="border: 1px solid #000;">Как компонент выравнивается внутри родителя.</td>
+      <td style="border: 1px solid #000;"><code>none</code> — по умолчанию;<br>например, <code>bottom</code> — прижать к низу.</td>
+      <td style="border: 1px solid #000;">Если родитель — RelativeLayout, ставь <code>bottom</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вес</b><br>Weight</td>
+      <td style="border: 1px solid #000;">Доля свободного места родителя, которую займёт этот компонент. Работает только внутри родителя с весом.</td>
+      <td style="border: 1px solid #000;">Число. <code>0</code> — вес не задан.</td>
+      <td style="border: 1px solid #000;"><code>0</code> — стандарт, менять не нужно.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Свойства изображения</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Свойство (рус / англ)</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Ресурс фона</b><br>Background resource</td>
+      <td style="border: 1px solid #000;">Картинка-фон компонента из ресурсов проекта.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без фона;<br>любой drawable-ресурс.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>NONE</code> и задают цвет.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Цвет фона</b><br>Background color</td>
+      <td style="border: 1px solid #000;">Заливка меню сплошным цветом.</td>
+      <td style="border: 1px solid #000;"><code>NONE</code> — без цвета;<br>HEX или выбор из палитры.</td>
+      <td style="border: 1px solid #000;">Белый фон для нижнего меню — <code>#FFFFFF</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Enabled</b><br>Включено</td>
+      <td style="border: 1px solid #000;">Реагирует ли меню на тапы по иконкам.</td>
+      <td style="border: 1px solid #000;">Переключатель: <b>вкл</b> — активно;<br><b>выкл</b> — заблокировано.</td>
+      <td style="border: 1px solid #000;">На скриншоте — включено.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Вращение</b><br>Rotation</td>
+      <td style="border: 1px solid #000;">Поворот компонента вокруг центра.</td>
+      <td style="border: 1px solid #000;">Градусы. <code>0</code> — без поворота.</td>
+      <td style="border: 1px solid #000;">Обычно оставляют <code>0</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Прозрачность</b><br>Alpha</td>
+      <td style="border: 1px solid #000;">Насколько компонент прозрачен.</td>
+      <td style="border: 1px solid #000;">Число от <code>0.0</code> (полностью прозрачный) до <code>1.0</code> (полностью непрозрачный).</td>
+      <td style="border: 1px solid #000;"><code>1.0</code> — стандарт.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationX</b></td>
+      <td style="border: 1px solid #000;">Сдвиг компонента по горизонтали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>20.0</code> — визуально сдвинется на 20 dp вправо.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TranslationY</b></td>
+      <td style="border: 1px solid #000;">Сдвиг компонента по вертикали без изменения его места в разметке.</td>
+      <td style="border: 1px solid #000;">Число в dp. <code>0.0</code> — без сдвига.</td>
+      <td style="border: 1px solid #000;"><code>-10.0</code> — визуально поднимется на 10 dp.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleX</b></td>
+      <td style="border: 1px solid #000;">Масштаб по горизонтали — растягивает или сжимает компонент по ширине.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>1.5</code> — ширина увеличится в 1,5 раза.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ScaleY</b></td>
+      <td style="border: 1px solid #000;">Масштаб по вертикали — растягивает или сжимает компонент по высоте.</td>
+      <td style="border: 1px solid #000;">Число. <code>1.0</code> — исходный размер.</td>
+      <td style="border: 1px solid #000;"><code>0.5</code> — высота уменьшится вдвое.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="hint">💡 <b>Совет для новичков:</b> на первых порах достаточно свойств <b>Ширина</b>, <b>Высота</b>, <b>Цвет фона</b> и настройки <b>Menu</b> (файл меню с пунктами). Остальные оставь по умолчанию.</div>
+
+<h2>Как перетащить BottomNavigationView на макет</h2>
+
+<p>BottomNavigationView, как и любой другой виджет, попадает на экран <b>только перетаскиванием (drag &amp; drop)</b>. Обычный тап по нему в палитре ничего не делает.</p>
+
+<ol>
+  <li>Открой вкладку <b>«Дизайнер»</b>.</li>
+  <li>Раскрой категорию <b>AndroidX</b> в палитре слева.</li>
+  <li>Зажми <b>BottomNavigationView</b> и, не отпуская, перетащи его на макет (лучше внутрь Linear(V) с гравитацией bottom или в RelativeLayout с alignParentBottom).</li>
+  <li>Отпусти в нужном месте — меню появится в разметке.</li>
+  <li>В свойствах задай цвета (<b>Цвет фона</b>, <b>ItemIconTint</b>, <b>ItemTextColor</b>) и <b>LabelVisibilityMode</b>.</li>
+  <li>В Менеджере ресурсов → Менеджер меню создай XML-файл меню с пунктами: id, иконка, заголовок.</li>
+  <li>В свойствах компонента укажи этот файл в поле <b>Menu</b>.</li>
+  <li>Открой вкладку «События» — добавь событие <code>onNavigationItemSelected</code> и блоки для каждого пункта.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> обычный тап по BottomNavigationView в палитре ничего не делает. Компонент попадает на макет только перетаскиванием.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> BottomNavigationView не переключает экраны автоматически. Он только сообщает логике, какой пункт выбран. Что показывать — описывается в блоках событий вручную (обычно через Fragment или смену видимости Linear).</div>
+
+<div class="warn">⚠️ <b>Важно:</b> Android рекомендует 3–5 пунктов в нижнем меню. Меньше трёх — выглядит странно, больше пяти — иконки становятся слишком мелкими, а некоторые могут уйти в раздел «Ещё».</div>
+
+<div class="hint">💡 <b>Совет:</b> подписи под иконками — обязательны. Иконки без подписей пользователю непонятны, если он не знает приложение.</div>
+
+<div class="hint">💡 <b>Совет:</b> используй BottomNavigationView для главных разделов приложения, а вкладки (TabLayout) — для второстепенных внутри одного раздела.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> перетащить BottomNavigationView без меню. Компонент появится пустой полосой без иконок — потому что не указан файл меню.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>BottomNavigationView</b> — нижнее меню навигации в стиле Material Design, 3–5 иконок с подписями.</li>
+  <li>Перетаскивается на макет как любой другой виджет — <b>перетаскиванием</b>, а не тапом.</li>
+  <li>Ключевые настройки: <b>Menu</b> (файл меню), <b>ItemIconTint</b>, <b>ItemTextColor</b>, <b>LabelVisibilityMode</b>.</li>
+  <li>Сам по себе не переключает экраны — нужно событие <code>onNavigationItemSelected</code>.</li>
+  <li>Оптимальное количество пунктов — 3–5.</li>
+  <li>Подходит для главных разделов приложения, между которыми пользователь часто переключается.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Тапают по BottomNavigationView в палитре</b> и ждут, что он появится на экране. Нужно именно перетащить.</li>
+  <li><b>Перетащили меню, но не указали файл Menu.</b> Меню пустое, без иконок и подписей.</li>
+  <li><b>Не добавили событие onNavigationItemSelected.</b> Иконки видны, но при тапе ничего не происходит.</li>
+  <li><b>Сделали больше 5 пунктов.</b> Иконки становятся мелкими, часть может уйти в раздел «Ещё».</li>
+  <li><b>Не задали подписи у пунктов.</b> Иконки без подписей пользователю непонятны.</li>
+  <li><b>Путают с TabLayout.</b> TabLayout — вкладки сверху, BottomNavigationView — меню снизу.</li>
+  <li><b>Забывают про Material-библиотеку.</b> Без неё компонент может не отобразиться.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
