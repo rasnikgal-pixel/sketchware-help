@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TextToSpeech — озвучка текста</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>TextToSpeech — озвучка текста</h1>
+
+<p><b>TextToSpeech</b> — компонент для озвучивания текста. Превращает написанный текст в речь: пользователь слышит то, что было введено или передано из логики.</p>
+
+<p>Иконка в диалоге добавления — динамик с текстом.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Озвучивает текст с помощью встроенного в Android синтезатора речи.</li>
+  <li>Поддерживает много языков — зависит от установленных голосов на устройстве.</li>
+  <li>Можно настраивать скорость, высоту тона, язык.</li>
+  <li>Может остановиться в любой момент, приостановиться или продолжиться.</li>
+  <li>При завершении озвучивания срабатывает событие <code>onSpeechFinished</code>.</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Обучение иностранным языкам — произношение слов.</li>
+  <li>Приложения для слабовидящих — чтение текста вслух.</li>
+  <li>Аудиокниги — озвучивание длинных текстов.</li>
+  <li>Навигация — голосовые подсказки.</li>
+  <li>Оповещения — «Новое сообщение» вслух.</li>
+  <li>Обучение детей — чтение книг, заданий.</li>
+  <li>Переводчики — озвучивание перевода.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>tts</code>, <code>speaker</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>speak</b></td>
+      <td style="border: 1px solid #000;">Озвучить текст.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>stop</b></td>
+      <td style="border: 1px solid #000;">Остановить озвучивание.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setLanguage</b></td>
+      <td style="border: 1px solid #000;">Задать язык (русский, английский и т. д.).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setPitch</b></td>
+      <td style="border: 1px solid #000;">Высота голоса.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setSpeechRate</b></td>
+      <td style="border: 1px solid #000;">Скорость речи.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>isSpeaking</b></td>
+      <td style="border: 1px solid #000;">Проверить, говорит ли сейчас.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Значения параметров</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Параметр</th>
+      <th style="border: 1px solid #000;">Значения</th>
+      <th style="border: 1px solid #000;">Что означает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setPitch</b></td>
+      <td style="border: 1px solid #000;">0.5 / 1.0 / 1.3 / 2.0</td>
+      <td style="border: 1px solid #000;">Низкий / норма / чуть выше / высокий.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setSpeechRate</b></td>
+      <td style="border: 1px solid #000;">0.7 / 1.0 / 1.5 / 2.0</td>
+      <td style="border: 1px solid #000;">Медленно / норма / быстро / очень быстро.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Событие TextToSpeech</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onSpeechFinished</b></td>
+      <td style="border: 1px solid #000;">После окончания озвучивания. Удобно, чтобы запустить следующее действие.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Подключи компонент TextToSpeech на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>speaker</code>.</li>
+  <li>В <code>onCreate</code> инициализируй компонент и установи язык через <code>setLanguage</code>.</li>
+  <li>В нужном событии (например, <code>onClick</code> кнопки) вызови блок <code>speak</code> с текстом.</li>
+  <li>Опционально — задай скорость и высоту голоса.</li>
+  <li>В событии <code>onSpeechFinished</code> опиши действие после озвучивания.</li>
+</ol>
+
+<h2>Пример: озвучивание приветствия</h2>
+
+<ul>
+  <li>В <code>onCreate</code> — <code>setLanguage</code> = русский.</li>
+  <li>В <code>onClick</code> кнопки «Привет» — <code>speak("Привет, пользователь!")</code>.</li>
+  <li>Пользователь слышит озвученный текст.</li>
+</ul>
+
+<h2>Пример: чтение введённого текста</h2>
+
+<ul>
+  <li>EditText с текстом.</li>
+  <li>Button «Озвучить».</li>
+  <li>В <code>onClick</code> — <code>speak(getText из EditText)</code>.</li>
+  <li>Приложение читает то, что написал пользователь.</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> для работы TextToSpeech нужно установленное приложение синтезатора речи на устройстве. Обычно это Google TTS или Samsung TTS. Если их нет — озвучивание не сработает.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> язык нужно задавать заранее, обычно в <code>onCreate</code>. Если не установить — компонент может озвучивать на языке системы, что не всегда уместно.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не все голоса установлены на устройстве. Для русского языка может потребоваться дополнительная загрузка голосовых данных через настройки Android.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> озвучивание не мгновенное. Инициализация компонента занимает время. Если вызвать <code>speak</code> сразу в <code>onCreate</code> — может не сработать. Используй <code>onInit</code> или отложенный запуск.</div>
+
+<div class="hint">💡 <b>Совет:</b> для изучения языков используй <code>setSpeechRate = 0.7</code> — медленнее, чтобы пользователь успевал разобрать произношение.</div>
+
+<div class="hint">💡 <b>Совет:</b> для детских приложений используй <code>setPitch = 1.3</code> — голос выше, звучит дружелюбнее.</div>
+
+<div class="hint">💡 <b>Совет:</b> для длинных текстов разбивай их на короткие фразы. TextToSpeech лучше справляется с короткими сообщениями — и пользователь успевает осмыслить.</div>
+
+<div class="hint">💡 <b>Совет:</b> для навигации используй короткие и чёткие фразы: «Поверните направо через 100 метров». Без лишних слов.</div>
+
+<div class="hint">💡 <b>Совет:</b> для кнопки «Стоп» используй блок <code>stop</code> — если пользователь хочет прервать озвучивание.</div>
+
+<div class="hint">💡 <b>Совет:</b> проверяй, установлен ли язык на устройстве. Если нет — покажи сообщение: «Установите русский голос в настройках Android».</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не устанавливать язык. По умолчанию может озвучиваться на английском, даже если текст русский.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> вызывать <code>speak</code> сразу после создания компонента. Инициализация занимает время — вызов может не сработать.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не проверять наличие голоса для нужного языка. Пользователь не слышит ничего и не понимает почему.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> озвучивать очень длинные тексты одним вызовом. TextToSpeech может обрезать или заикаться. Разбивай на части.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забывать про <code>stop</code>. Озвучивание продолжается, пока не закончится, даже если пользователь ушёл с экрана.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>TextToSpeech</b> — компонент для озвучивания текста.</li>
+  <li>Основные блоки: <b>speak</b>, <b>stop</b>, <b>setLanguage</b>, <b>setPitch</b>, <b>setSpeechRate</b>, <b>isSpeaking</b>.</li>
+  <li>Основное событие: <b>onSpeechFinished</b> — после окончания озвучивания.</li>
+  <li>Язык устанавливай заранее, обычно в <code>onCreate</code>.</li>
+  <li>Для обучения языкам — <code>setSpeechRate = 0.7</code>.</li>
+  <li>Для детей — <code>setPitch = 1.3</code>.</li>
+  <li>Разбивай длинные тексты на короткие фразы.</li>
+  <li>Проверяй наличие языка на устройстве — не всегда установлены все голоса.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Не устанавливают язык.</b> Озвучка на неправильном языке.</li>
+  <li><b>Вызывают speak сразу в onCreate.</b> Не срабатывает из-за инициализации.</li>
+  <li><b>Не проверяют наличие голоса на устройстве.</b> Пользователь не слышит ничего.</li>
+  <li><b>Озвучивают длинные тексты одним вызовом.</b> Заикание и обрезание.</li>
+  <li><b>Забывают про stop.</b> Озвучка продолжается после ухода с экрана.</li>
+  <li><b>Используют слишком быстрый rate для обучения.</b> Пользователь не разбирает слова.</li>
+  <li><b>Не обрабатывают onSpeechFinished.</b> Логика после озвучки не запускается.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
