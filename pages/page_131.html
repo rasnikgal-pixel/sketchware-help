@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dialog — диалоговое окно</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Dialog — диалоговое окно</h1>
+
+<p><b>Dialog</b> — компонент для показа всплывающего диалогового окна. Показывает сообщение, задаёт вопрос, предлагает выбор — поверх текущего экрана. Пользователь отвечает, диалог закрывается.</p>
+
+<p>Иконка в диалоге добавления — квадрат с полосой внизу (как окно).</p>
+
+<h2>Что такое диалоговое окно</h2>
+
+<p><b>Диалоговое окно</b> — это небольшое всплывающее окно, которое появляется поверх текущего экрана и требует от пользователя реакции: подтверждения, ответа на вопрос, выбора одного из вариантов. Пока диалог открыт, пользователь не может работать с остальным интерфейсом — он должен сначала ответить.</p>
+
+<p>Диалоги используются, когда нужно:</p>
+
+<ul>
+  <li>Подтвердить опасное действие — удаление, выход, сброс.</li>
+  <li>Сообщить об ошибке или важном событии.</li>
+  <li>Задать пользователю вопрос.</li>
+  <li>Предложить выбор из нескольких вариантов.</li>
+  <li>Ввести небольшие данные (имя, число, код).</li>
+</ul>
+
+<h2>Какие диалоговые окна есть в Sketchware Pro 7</h2>
+
+<p>В Sketchware Pro 7 доступны четыре типа диалоговых окон. Все они находятся на вкладке «Компонент» в категории <b>«Основные»</b>.</p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Диалог</th>
+      <th style="border: 1px solid #000;">Что показывает</th>
+      <th style="border: 1px solid #000;">Когда использовать</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Dialog</b></td>
+      <td style="border: 1px solid #000;">Заголовок, сообщение и 2–3 кнопки (Да / Нет, ОК / Отмена и т. п.).</td>
+      <td style="border: 1px solid #000;">Подтверждение действий, сообщения, вопросы.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>ProgressDialog</b></td>
+      <td style="border: 1px solid #000;">Индикатор загрузки с текстом «Загрузка…». Может быть с прогрессом или без.</td>
+      <td style="border: 1px solid #000;">Показ процесса: загрузка данных, отправка формы, обработка.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>DatePickerDialog</b></td>
+      <td style="border: 1px solid #000;">Календарь для выбора даты.</td>
+      <td style="border: 1px solid #000;">Выбор даты без размещения DatePicker в разметке.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>TimePickerDialog</b></td>
+      <td style="border: 1px solid #000;">Часы и минуты для выбора времени.</td>
+      <td style="border: 1px solid #000;">Выбор времени без размещения TimePicker в разметке.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как работает Dialog</h2>
+
+<ul>
+  <li>Открывает всплывающее окно в центре экрана.</li>
+  <li>Содержит заголовок, сообщение и кнопки (обычно 2–3).</li>
+  <li>Пользователь тапает по кнопке — срабатывает соответствующее событие.</li>
+  <li>Может быть информационным (только OK) или вопросом (Да / Нет).</li>
+  <li>Закрывается автоматически после нажатия кнопки или тапа вне окна (если разрешено).</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Подтверждение действий — «Удалить запись?».</li>
+  <li>Сообщения об ошибках — «Не удалось подключиться».</li>
+  <li>Информационные окна — «Изменения сохранены».</li>
+  <li>Выбор пользователя — «Сохранить, Отменить, Выйти».</li>
+  <li>Важные предупреждения — «Вы уверены? Действие необратимо».</li>
+  <li>Диалог ввода — реже, обычно для этого EditText в основной разметке.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>confirmDialog</code>, <code>myDialog</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>show</b></td>
+      <td style="border: 1px solid #000;">Показать диалог.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setTitle</b></td>
+      <td style="border: 1px solid #000;">Задать заголовок.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setMessage</b></td>
+      <td style="border: 1px solid #000;">Задать текст сообщения.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setPositiveButton</b></td>
+      <td style="border: 1px solid #000;">Настроить положительную кнопку.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setNegativeButton</b></td>
+      <td style="border: 1px solid #000;">Настроить отрицательную кнопку.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setNeutralButton</b></td>
+      <td style="border: 1px solid #000;">Настроить нейтральную кнопку.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>dismiss</b></td>
+      <td style="border: 1px solid #000;">Закрыть диалог программно.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>События диалога</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Событие</th>
+      <th style="border: 1px solid #000;">Когда срабатывает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDialogPositiveClick</b></td>
+      <td style="border: 1px solid #000;">При нажатии положительной кнопки (Да, ОК, Принять).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDialogNegativeClick</b></td>
+      <td style="border: 1px solid #000;">При нажатии отрицательной кнопки (Нет, Отмена).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>onDialogNeutralClick</b></td>
+      <td style="border: 1px solid #000;">При нажатии нейтральной кнопки (Позже, Пропустить).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Подключи компонент Dialog на вкладке «Компонент».</li>
+  <li>Задай имя — например, <code>myDialog</code>.</li>
+  <li>В Менеджере ресурсов → Менеджер строк задай тексты: заголовок, сообщение, кнопки. Либо пиши их прямо в блоках.</li>
+  <li>В категории «Компонент» вкладки «События» добавь события:
+    <ul>
+      <li><code>onDialogPositiveClick</code> — что делать при «Да»;</li>
+      <li><code>onDialogNegativeClick</code> — что делать при «Нет».</li>
+    </ul>
+  </li>
+  <li>В логике вызови блок <code>show</code> — например, в onClick кнопки «Удалить».</li>
+</ol>
+
+<h2>Пример: подтверждение удаления</h2>
+
+<ul>
+  <li>Кнопка «Удалить» → onClick → блок <code>show</code> для myDialog.</li>
+  <li>Заголовок: «Удаление».</li>
+  <li>Сообщение: «Удалить запись? Действие необратимо».</li>
+  <li>Положительная кнопка: «Удалить».</li>
+  <li>Отрицательная кнопка: «Отмена».</li>
+  <li>В <code>onDialogPositiveClick</code> — выполни удаление.</li>
+  <li>В <code>onDialogNegativeClick</code> — ничего (просто закрой диалог).</li>
+</ul>
+
+<div class="warn">⚠️ <b>Важно:</b> тексты кнопок задаются в блоках (или через ресурсы). Без заданных надписей диалог может показать пустые кнопки.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> не показывай больше одного диалога одновременно. Второй вызов show, пока первый открыт — поведение непредсказуемо.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> диалог не заменяет экран. Для полноценного нового интерфейса используй Activity или Fragment.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> настройка закрытия диалога при тапе вне окна — в новых версиях Android эта опция может быть выключена по умолчанию. Проверь в свойствах компонента.</div>
+
+<div class="hint">💡 <b>Совет:</b> для подтверждения опасных действий используй два диалога: сначала предупреждение, после подтверждения — выполнение.</div>
+
+<div class="hint">💡 <b>Совет:</b> не злоупотребляй диалогами. Если приложение постоянно что-то спрашивает — это раздражает. Оставляй диалоги только для действительно важных решений.</div>
+
+<div class="hint">💡 <b>Совет:</b> для информационных сообщений (без выбора) достаточно одной кнопки «ОК» — не создавай лишние «Нет».</div>
+
+<div class="hint">💡 <b>Совет:</b> для сложных форм ввода используй отдельный экран, а не диалог. Диалоги плохо подходят для больших форм.</div>
+
+<div class="hint">💡 <b>Совет:</b> тексты в диалогах пиши кратко и ясно. «Удалить запись?» — хорошо. «Вы действительно хотите безвозвратно удалить эту запись?» — слишком длинно.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не добавлять события диалога. Пользователь нажимает «Да», но ничего не происходит.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не задавать текст сообщения. Диалог открывается пустым — пользователь не понимает, что от него хотят.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> показывать диалог при каждом действии. Пользователь раздражается.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> называть кнопки неясно. «ОК / Отмена» — понятно. «Да / Нет» на вопрос «Продолжить удаление?» — путает, потому что вопрос обратный.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Диалоговое окно</b> — всплывающее окно поверх экрана, требующее реакции пользователя.</li>
+  <li>В Sketchware Pro 7 четыре типа диалогов: <b>Dialog</b>, <b>ProgressDialog</b>, <b>DatePickerDialog</b>, <b>TimePickerDialog</b>.</li>
+  <li><b>Dialog</b> — для подтверждений, сообщений и вопросов.</li>
+  <li><b>ProgressDialog</b> — для показа процесса загрузки.</li>
+  <li><b>DatePickerDialog</b> — для выбора даты во всплывающем окне.</li>
+  <li><b>TimePickerDialog</b> — для выбора времени во всплывающем окне.</li>
+  <li>Основные блоки: <b>show</b>, <b>setTitle</b>, <b>setMessage</b>, <b>setPositiveButton</b>, <b>setNegativeButton</b>.</li>
+  <li>Основные события: <b>onDialogPositiveClick</b>, <b>onDialogNegativeClick</b>, <b>onDialogNeutralClick</b>.</li>
+  <li>Не злоупотребляй диалогами — только для важных решений.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Не добавляют события диалога.</b> Нажатия на кнопки ничего не делают.</li>
+  <li><b>Не задают текст сообщения.</b> Диалог пустой.</li>
+  <li><b>Показывают диалог слишком часто.</b> Раздражают пользователя.</li>
+  <li><b>Путают кнопки.</b> Да / Нет на обратный вопрос путают.</li>
+  <li><b>Используют Dialog для больших форм.</b> Диалоги не подходят для сложного ввода.</li>
+  <li><b>Показывают два диалога одновременно.</b> Поведение непредсказуемо.</li>
+  <li><b>Путают Dialog и ProgressDialog.</b> Разные задачи — разные компоненты.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
