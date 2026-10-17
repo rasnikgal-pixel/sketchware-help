@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Intent — переходы между экранами</title>
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 8px; vertical-align: top; }
+  th { background: #f2f2f2; text-align: left; }
+  .hint { background: #fff8e1; border-left: 4px solid #ffb300; padding: 10px 12px; margin: 12px 0; }
+  .warn { background: #ffebee; border-left: 4px solid #e53935; padding: 10px 12px; margin: 12px 0; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Intent — переходы между экранами</h1>
+
+<p><b>Intent</b> — компонент для перехода между экранами. Открывает новую Activity, передаёт данные и возвращает результат. Это основной инструмент навигации в приложении.</p>
+
+<p>Иконка в диалоге добавления — стрелка с узлом.</p>
+
+<h2>Как работает</h2>
+
+<ul>
+  <li>Открывает новый экран приложения или другого приложения.</li>
+  <li>Может передавать данные: строки, числа, флаги.</li>
+  <li>Может ожидать результата — например, после выбора файла или фото.</li>
+  <li>Может запускать системные действия: позвонить, открыть браузер, отправить письмо.</li>
+  <li>Существует в двух вариантах: явный (конкретный экран) и неявный (действие, которое выберет система).</li>
+</ul>
+
+<h2>Когда использовать</h2>
+
+<ul>
+  <li>Переход между экранами — из главного меню в настройки.</li>
+  <li>Открытие деталей — тап по элементу списка, открытие подробной информации.</li>
+  <li>Передача данных — имя пользователя, выбранный товар, ID записи.</li>
+  <li>Возврат с результатом — после выбора фото, файла, контакта.</li>
+  <li>Системные действия — звонок, браузер, email, карта.</li>
+</ul>
+
+<h2>Настройки при добавлении</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Настройка</th>
+      <th style="border: 1px solid #000;">Что задаёт</th>
+      <th style="border: 1px solid #000;">Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Имя компонента</b></td>
+      <td style="border: 1px solid #000;">Идентификатор для вызова в логике.</td>
+      <td style="border: 1px solid #000;"><code>goToSettings</code>, <code>goToDetails</code>.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>Целевое Activity</b></td>
+      <td style="border: 1px solid #000;">Экран, который откроется (при явном Intent).</td>
+      <td style="border: 1px solid #000;"><code>SecondActivity</code>, <code>SettingsActivity</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Основные блоки в логике</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000;">Блок</th>
+      <th style="border: 1px solid #000;">Что делает</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000;"><b>startActivity</b></td>
+      <td style="border: 1px solid #000;">Запустить новый экран.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>startActivityForResult</b></td>
+      <td style="border: 1px solid #000;">Запустить экран и ожидать результат.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>putExtra</b></td>
+      <td style="border: 1px solid #000;">Передать данные вместе с Intent.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>getExtra</b></td>
+      <td style="border: 1px solid #000;">Получить данные из Intent (в новой Activity).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setAction</b></td>
+      <td style="border: 1px solid #000;">Задать действие (для неявного Intent).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>setData</b></td>
+      <td style="border: 1px solid #000;">Задать данные (URL, телефон, координаты).</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000;"><b>finish</b></td>
+      <td style="border: 1px solid #000;">Закрыть текущий экран.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Как использовать</h2>
+
+<ol>
+  <li>Подключи компонент Intent на вкладке «Компонент».</li>
+  <li>Задай ему имя — например, <code>goToSecond</code>.</li>
+  <li>В логике найди блоки Intent в палитре.</li>
+  <li>Для перехода: вызови <code>startActivity</code> с указанием, куда идти.</li>
+  <li>Для передачи данных: перед <code>startActivity</code> используй <code>putExtra</code> с ключом и значением.</li>
+  <li>Для получения данных в новой Activity: используй <code>getExtra</code> в её <code>onCreate</code>.</li>
+</ol>
+
+<div class="warn">⚠️ <b>Важно:</b> новая Activity должна существовать в проекте. Добавь её через Менеджер представлений, иначе Intent не сработает.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> ключи данных должны совпадать при передаче и чтении. Если в <code>putExtra</code> ключ <code>user_name</code>, а в <code>getExtra</code> — <code>username</code>, данные не найдутся.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> <code>getExtra</code> возвращает значение по умолчанию, если данные не переданы. Задавай понятное значение по умолчанию — например, пустую строку или 0.</div>
+
+<div class="warn">⚠️ <b>Важно:</b> после <code>startActivity</code> текущий экран остаётся в стеке. Если не хочешь возвращаться назад — используй <code>finish</code> после запуска.</div>
+
+<div class="hint">💡 <b>Совет:</b> для передачи сложных данных (например, всего объекта) используй SharedPreferences или сохраняй в базу данных, а через Intent передавай только ID.</div>
+
+<div class="hint">💡 <b>Совет:</b> для системных действий (звонок, браузер) используй неявный Intent с <code>setAction</code>. Например, <code>Intent.ACTION_DIAL</code> с номером телефона.</div>
+
+<div class="hint">💡 <b>Совет:</b> не передавай через Intent большие объёмы данных (например, картинки). Есть ограничение на размер — приложение может упасть.</div>
+
+<div class="hint">💡 <b>Совет:</b> для возврата результата используй <code>startActivityForResult</code>, а в вызываемой Activity — блок <code>setResult</code> перед <code>finish</code>.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> открывать Activity, которой нет в проекте. Intent не сработает, а ошибка не всегда видна.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> не совпадают ключи при передаче и чтении. Данные «теряются», хотя код выполняется.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> передавать большие данные через Intent. Приложение падает с ошибкой <code>TransactionTooLargeException</code>.</div>
+
+<div class="warn">❌ <b>Частая ошибка:</b> забыть про <code>finish</code>, если не хочешь возвращаться назад. Пользователь нажимает «Назад» и попадает на предыдущий экран.</div>
+
+<h2>Резюме</h2>
+
+<ul>
+  <li><b>Intent</b> — компонент для перехода между экранами и запуска системных действий.</li>
+  <li>Бывает явный (конкретная Activity) и неявный (системное действие).</li>
+  <li>Основные блоки: <b>startActivity</b>, <b>startActivityForResult</b>, <b>putExtra</b>, <b>getExtra</b>, <b>setAction</b>, <b>setData</b>, <b>finish</b>.</li>
+  <li>Ключи данных при передаче и чтении должны совпадать.</li>
+  <li>Для сложных данных используй SharedPreferences или БД — через Intent только ID.</li>
+  <li>Для возврата результата — <code>startActivityForResult</code> + <code>setResult</code>.</li>
+  <li>Не передавай через Intent большие объёмы данных.</li>
+  <li>Для системных действий (звонок, браузер) — <code>setAction</code> и <code>setData</code>.</li>
+</ul>
+
+<h2>Частые ошибки новичков</h2>
+
+<ul>
+  <li><b>Открывают Activity, которой нет в проекте.</b> Intent не срабатывает.</li>
+  <li><b>Не совпадают ключи при передаче и чтении.</b> Данные теряются.</li>
+  <li><b>Передают большие данные через Intent.</b> Приложение падает.</li>
+  <li><b>Забывают про finish.</b> Пользователь возвращается назад.</li>
+  <li><b>Не задают значение по умолчанию для getExtra.</b> Результат непредсказуем.</li>
+  <li><b>Пытаются передать объект целиком.</b> Нельзя — только ID или простые типы.</li>
+  <li><b>Используют Intent для локальных данных.</b> Для простого хранения лучше SharedPreferences.</li>
+</ul>
+
+<!-- manulist:footer -->
+<hr>
+<p><i>Sketchware Pro 7 · Автор: RasNikGal · © 2026</i></p>
+</body>
+</html>
