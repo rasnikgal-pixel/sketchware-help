@@ -1,0 +1,1449 @@
+[
+  {
+    "title": "Sketchware Pro 7",
+    "file": "page_1.html",
+    "children": [
+      {
+        "title": "नाम की उत्पत्ति",
+        "file": "page_28.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proishozhdenie-nazvaniya"
+      },
+      {
+        "title": "इतिहास और उत्पत्ति",
+        "file": "page_2.html",
+        "children": [],
+        "anchor": "block-istoriya-i-proishozhdenie"
+      },
+      {
+        "title": "मुख्य कार्य",
+        "file": "page_4.html",
+        "children": [],
+        "anchor": "block-osnovnye-funktsii"
+      },
+      {
+        "title": "किसके लिए है",
+        "file": "page_5.html",
+        "children": [],
+        "anchor": "block-dlya-kogo-prednaznachen"
+      },
+      {
+        "title": "लाभ",
+        "file": "page_6.html",
+        "children": [],
+        "anchor": "block-preimuschestva"
+      },
+      {
+        "title": "मुख्य विशेषताएं",
+        "file": "page_3.html",
+        "children": [],
+        "anchor": "block-klyuchevye-osobennosti"
+      },
+      {
+        "title": "सिस्टम आवश्यकताएं",
+        "file": "page_7.html",
+        "children": [],
+        "anchor": "block-sistemnye-trebovaniya"
+      },
+      {
+        "title": "निष्कर्ष",
+        "file": "page_8.html",
+        "children": [],
+        "anchor": "block-zaklyuchenie"
+      },
+      {
+        "title": "कॉपीराइट",
+        "file": "page_191.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-avtorskoe-pravo"
+      }
+    ],
+    "anchor": "category-sketchware-pro-7"
+  },
+  {
+    "title": "ऐप इंटरफ़ेस",
+    "file": "page_9.html",
+    "children": [
+      {
+        "title": "मुख्य स्क्रीन (प्रोजेक्ट सूची)",
+        "file": "page_10.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-glavnyy-ekran-spisok-proektov"
+      },
+      {
+        "title": "प्रोजेक्ट प्रबंधन मेनू",
+        "file": "page_11.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menyu-upravleniya-proektom"
+      },
+      {
+        "title": "प्रोजेक्ट सूची को क्रमबद्ध करना",
+        "file": "page_12.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-sortirovka-spiska-proektov"
+      },
+      {
+        "title": "\"Sketchware Pro के बारे में\" अनुभाग (ऐप जानकारी)",
+        "file": "page_13.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-razdel-o-sketchware-pro-informatsiya-o-programme"
+      },
+      {
+        "title": "\"ऐप के बारे में\" विंडो (लिंक और संस्करण)",
+        "file": "page_14.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-okno-o-programme-ssylki-i-versiya"
+      },
+      {
+        "title": "नया प्रमाणपत्र बनाना (साइनिंग कुंजी)",
+        "file": "page_15.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-sozdanie-novogo-sertifikata-klyuch-podpisi"
+      },
+      {
+        "title": "मुख्य सेटिंग्स मेनू (सेटिंग्स)",
+        "file": "page_16.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-glavnoe-menyu-nastroek-nastroyki"
+      },
+      {
+        "title": "ऐप सेटिंग्स (आंतरिक पैरामीटर)",
+        "file": "page_17.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nastroyki-prilozheniya-vnutrennie-parametry"
+      },
+      {
+        "title": "थीम सेटिंग्स (रूप-रंग)",
+        "file": "page_18.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nastroyki-temy-oformlenie"
+      },
+      {
+        "title": "सिस्टम सेटिंग्स (कंपन और ऑटोसेव)",
+        "file": "page_19.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-sistemnye-nastroyki-vibro-i-avtosohranenie"
+      },
+      {
+        "title": "ब्लॉक प्रबंधक (पैलेट प्रबंधन)",
+        "file": "page_20.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-blokov-upravlenie-palitrami"
+      },
+      {
+        "title": "ब्लॉक चयनकर्ता प्रबंधक (चयनकर्ता)",
+        "file": "page_21.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-vybora-blokov-selektory"
+      },
+      {
+        "title": "घटक प्रबंधक (लाइब्रेरी जोड़ना)",
+        "file": "page_22.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-komponentov-dobavlenie-bibliotek"
+      },
+      {
+        "title": "ईवेंट प्रबंधक (श्रोता)",
+        "file": "page_23.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-sobytiy-slushateli"
+      },
+      {
+        "title": "स्थानीय लाइब्रेरी प्रबंधक (निर्भरताएं)",
+        "file": "page_24.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-lokalnyh-bibliotek-zavisimosti"
+      },
+      {
+        "title": "Logcat रीडर प्रबंधक (डिबगिंग)",
+        "file": "page_25.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-chteniya-logcat-otladka"
+      },
+      {
+        "title": "परीक्षण कुंजी के साथ APK पर हस्ताक्षर करना",
+        "file": "page_26.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-podpis-apk-testovym-klyuchom"
+      },
+      {
+        "title": "कार्य निर्देशिका (ऐप फ़ाइलें)",
+        "file": "page_27.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-rabochaya-direktoriya-fayly-programmy"
+      }
+    ],
+    "anchor": "category-interfeys-prilozheniya"
+  },
+  {
+    "title": "पहला प्रोजेक्ट बनाना",
+    "file": "page_29.html",
+    "children": [
+      {
+        "title": "प्रोजेक्ट क्या है",
+        "file": "page_30.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-proekt"
+      },
+      {
+        "title": "\"नया प्रोजेक्ट\" स्क्रीन",
+        "file": "page_31.html",
+        "children": [
+          {
+            "title": "ऐप आइकन",
+            "file": "page_32.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-ikonka-prilozheniya"
+          },
+          {
+            "title": "फ़ील्ड \"ऐप का नाम दर्ज करें\"",
+            "file": "page_33.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-pole-vvedite-imya-prilozheniya"
+          },
+          {
+            "title": "रद्द करें और बनाएं बटन",
+            "file": "page_38.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-knopki-otmena-i-sozdat"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-ekran-novyy-proekt"
+      },
+      {
+        "title": "फ़ील्ड \"पैकेज नाम\"",
+        "file": "page_34.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-pole-imya-paketa"
+      },
+      {
+        "title": "फ़ील्ड \"प्रोजेक्ट नाम\"",
+        "file": "page_35.html",
+        "children": [
+          {
+            "title": "संस्करण कोड",
+            "file": "page_37.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-kod-versii"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-pole-imya-proekta"
+      },
+      {
+        "title": "रंग पैलेट",
+        "file": "page_36.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-tsvetovaya-palitra"
+      },
+      {
+        "title": "\"बनाएं\" के बाद क्या होता है",
+        "file": "page_41.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-posle-sozdat"
+      },
+      {
+        "title": "प्रोजेक्ट टॉप बार",
+        "file": "page_42.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-verhnyaya-panel-proekta"
+      },
+      {
+        "title": "तीन प्रोजेक्ट टैब",
+        "file": "page_43.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-tri-vkladki-proekta"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-sozdanie-pervogo-proekta"
+  },
+  {
+    "title": "डिज़ाइनर (व्यू)",
+    "file": "page_44.html",
+    "children": [
+      {
+        "title": "डिज़ाइनर क्या है",
+        "file": "page_45.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-dizayner"
+      },
+      {
+        "title": "डिज़ाइनर टॉप बार",
+        "file": "page_46.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-verhnyaya-panel-dizaynera"
+      },
+      {
+        "title": "\"विजेट बनाएं\" बटन",
+        "file": "page_47.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-knopka-sozdat-vidzhet"
+      },
+      {
+        "title": "विजेट पैलेट — सामान्य",
+        "file": "page_48.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-palitra-vidzhetov-obschee"
+      },
+      {
+        "title": "लेआउट श्रेणी (लेआउट)",
+        "file": "page_49.html",
+        "children": [
+          {
+            "title": "Linear(H) — क्षैतिज",
+            "file": "page_50.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-linear-h-gorizontalnyy"
+          },
+          {
+            "title": "Linear(V) — लंबवत",
+            "file": "page_51.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-linear-v-vertikalnyy"
+          },
+          {
+            "title": "Scroll(H) — क्षैतिज स्क्रॉल",
+            "file": "page_52.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-scroll-h-gorizontalnaya-prokrutka"
+          },
+          {
+            "title": "Scroll(V) — लंबवत स्क्रॉल",
+            "file": "page_53.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-scroll-v-vertikalnaya-prokrutka"
+          },
+          {
+            "title": "RadioGroup — रेडियो बटन समूह",
+            "file": "page_54.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-radiogroup-gruppa-radioknopok"
+          },
+          {
+            "title": "RelativeLayout — सापेक्ष लेआउट",
+            "file": "page_55.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-relativelayout-otnositelnyy-maket"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-layouts-makety"
+      },
+      {
+        "title": "AndroidX श्रेणी (आधुनिक घटक)",
+        "file": "page_56.html",
+        "children": [
+          {
+            "title": "TabLayout — टैब",
+            "file": "page_57.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-tablayout-vkladki"
+          },
+          {
+            "title": "BottomNavigationView — निचला नेविगेशन",
+            "file": "page_58.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-bottomnavigationview-nizhnyaya-navigatsiya"
+          },
+          {
+            "title": "CollapsingToolbar — सिकुड़ने वाला टूलबार",
+            "file": "page_59.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-collapsingtoolbar-sezzhayuschaya-panel"
+          },
+          {
+            "title": "CardView — कार्ड",
+            "file": "page_60.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-cardview-kartochka"
+          },
+          {
+            "title": "TextInputLayout — सुंदर इनपुट फ़ील्ड",
+            "file": "page_61.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-textinputlayout-krasivoe-pole-vvoda"
+          },
+          {
+            "title": "SwipeRefreshLayout — स्वाइप से रीफ्रेश",
+            "file": "page_62.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-swiperefreshlayout-obnovlenie-svaypom"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-androidx-sovremennye-komponenty"
+      },
+      {
+        "title": "Widgets श्रेणी (विजेट)",
+        "file": "page_63.html",
+        "children": [
+          {
+            "title": "TextView — टेक्स्ट",
+            "file": "page_64.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-textview-tekst"
+          },
+          {
+            "title": "EditText — इनपुट फ़ील्ड",
+            "file": "page_65.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-edittext-pole-vvoda"
+          },
+          {
+            "title": "AutoCompleteTextView — ऑटो-सुझाव",
+            "file": "page_66.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-autocompletetextview-avtopodskazki"
+          },
+          {
+            "title": "MultiAutoCompleteTextView — कई ऑटो-सुझाव",
+            "file": "page_67.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-multiautocompletetextview-neskolko-avtopodskazok"
+          },
+          {
+            "title": "Button — बटन",
+            "file": "page_68.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-button-knopka"
+          },
+          {
+            "title": "MaterialButton — आधुनिक बटन",
+            "file": "page_69.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-materialbutton-sovremennaya-knopka"
+          },
+          {
+            "title": "ImageView — छवि",
+            "file": "page_70.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-imageview-izobrazhenie"
+          },
+          {
+            "title": "CircleImageView — गोल छवि",
+            "file": "page_71.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-circleimageview-kruglaya-kartinka"
+          },
+          {
+            "title": "CheckBox — चेकबॉक्स",
+            "file": "page_72.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-checkbox-galochka"
+          },
+          {
+            "title": "RadioButton — रेडियो बटन",
+            "file": "page_73.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-radiobutton-radioknopka"
+          },
+          {
+            "title": "Switch — स्विच",
+            "file": "page_74.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-switch-tumbler"
+          },
+          {
+            "title": "SeekBar — सीक बार",
+            "file": "page_75.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-seekbar-polzunok"
+          },
+          {
+            "title": "ProgressBar — प्रगति बार",
+            "file": "page_76.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-progressbar-indikator-zagruzki"
+          },
+          {
+            "title": "RatingBar — रेटिंग सितारे",
+            "file": "page_77.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-ratingbar-zvezdy-reytinga"
+          },
+          {
+            "title": "SearchView — खोज फ़ील्ड",
+            "file": "page_78.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-searchview-pole-poiska"
+          },
+          {
+            "title": "VideoView — वीडियो प्लेयर",
+            "file": "page_79.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-videoview-videopleer"
+          },
+          {
+            "title": "WebView — मिनी ब्राउज़र",
+            "file": "page_80.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-webview-mini-brauzer"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-widgets-vidzhety"
+      },
+      {
+        "title": "सूची श्रेणी",
+        "file": "page_81.html",
+        "children": [
+          {
+            "title": "ListView — लंबवत सूची",
+            "file": "page_82.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-listview-vertikalnyy-spisok"
+          },
+          {
+            "title": "GridView — ग्रिड",
+            "file": "page_83.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-gridview-setka"
+          },
+          {
+            "title": "RecyclerView — आधुनिक सूची",
+            "file": "page_84.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-recyclerview-sovremennyy-spisok"
+          },
+          {
+            "title": "Spinner — ड्रॉपडाउन सूची",
+            "file": "page_85.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-spinner-vypadayuschiy-spisok"
+          },
+          {
+            "title": "ViewPager — स्वाइप पेज",
+            "file": "page_86.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-viewpager-stranitsy-so-svaypom"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-spiski"
+      },
+      {
+        "title": "लाइब्रेरी श्रेणी",
+        "file": "page_87.html",
+        "children": [
+          {
+            "title": "WaveSideBar — वर्णमाला सूचकांक",
+            "file": "page_88.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-wavesidebar-alfavitnyy-ukazatel"
+          },
+          {
+            "title": "PatternLockView — पैटर्न लॉक",
+            "file": "page_89.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-patternlockview-graficheskiy-klyuch"
+          },
+          {
+            "title": "CodeView — कोड फ़ील्ड",
+            "file": "page_90.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-codeview-pole-koda"
+          },
+          {
+            "title": "LottieAnimation — JSON एनीमेशन",
+            "file": "page_91.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-lottieanimation-json-animatsiya"
+          },
+          {
+            "title": "OTPView — OTP कोड फ़ील्ड",
+            "file": "page_92.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-otpview-pole-otp-koda"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-biblioteki"
+      },
+      {
+        "title": "Google श्रेणी",
+        "file": "page_93.html",
+        "children": [
+          {
+            "title": "AdView — विज्ञापन बैनर",
+            "file": "page_94.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-adview-reklamnyy-banner"
+          },
+          {
+            "title": "MapView — Google मैप",
+            "file": "page_95.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-mapview-karta-google"
+          },
+          {
+            "title": "SignInButton — Google साइन-इन",
+            "file": "page_96.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-signinbutton-vhod-cherez-google"
+          },
+          {
+            "title": "YoutubePlayer — YouTube प्लेयर",
+            "file": "page_97.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-youtubeplayer-youtube-pleer"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-google"
+      },
+      {
+        "title": "दिनांक और समय श्रेणी",
+        "file": "page_98.html",
+        "children": [
+          {
+            "title": "AnalogClock — एनालॉग घड़ी",
+            "file": "page_99.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-analogclock-analogovye-chasy"
+          },
+          {
+            "title": "DigitalClock — डिजिटल घड़ी",
+            "file": "page_100.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-digitalclock-tsifrovye-chasy"
+          },
+          {
+            "title": "TimePicker — समय चयनकर्ता",
+            "file": "page_101.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-timepicker-vybor-vremeni"
+          },
+          {
+            "title": "DatePicker — तिथि चयनकर्ता",
+            "file": "page_102.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-datepicker-vybor-daty"
+          },
+          {
+            "title": "CalendarView — कैलेंडर",
+            "file": "page_103.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-calendarview-kalendar"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-data-i-vremya"
+      },
+      {
+        "title": "main.xml कार्यक्षेत्र",
+        "file": "page_104.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-rabochaya-oblast-main-xml"
+      },
+      {
+        "title": "संपादक निचला बार",
+        "file": "page_105.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nizhnyaya-panel-redaktora"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-dizayner-view"
+  },
+  {
+    "title": "तर्क (ईवेंट)",
+    "file": "page_106.html",
+    "children": [
+      {
+        "title": "तर्क क्या है",
+        "file": "page_107.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-logika"
+      },
+      {
+        "title": "ईवेंट क्या है",
+        "file": "page_108.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-sobytie"
+      },
+      {
+        "title": "ब्लॉक क्या है",
+        "file": "page_109.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-blok"
+      },
+      {
+        "title": "टॉप बार",
+        "file": "page_110.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-verhnyaya-panel"
+      },
+      {
+        "title": "बायां मेनू",
+        "file": "page_111.html",
+        "children": [
+          {
+            "title": "गतिविधि",
+            "file": "page_112.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-aktivnost"
+          },
+          {
+            "title": "दृश्य",
+            "file": "page_113.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-view"
+          },
+          {
+            "title": "घटक",
+            "file": "page_114.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-komponent"
+          },
+          {
+            "title": "ड्रॉअर",
+            "file": "page_115.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-drawer"
+          },
+          {
+            "title": "अधिक ब्लॉक",
+            "file": "page_116.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-more-block"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-levoe-menyu"
+      },
+      {
+        "title": "onCreate ईवेंट",
+        "file": "page_117.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "event-sobytie-oncreate"
+      },
+      {
+        "title": "ब्लॉक पैलेट",
+        "file": "page_118.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-palitra-blokov"
+      },
+      {
+        "title": "\"+\" बटन",
+        "file": "page_119.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-knopka"
+      },
+      {
+        "title": "निचला बार",
+        "file": "page_120.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nizhnyaya-panel"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-logika-sobytiya"
+  },
+  {
+    "title": "घटक",
+    "file": "page_121.html",
+    "children": [
+      {
+        "title": "घटक क्या है",
+        "file": "page_122.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-komponent"
+      },
+      {
+        "title": "यह विजेट से कैसे भिन्न है",
+        "file": "page_123.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chem-otlichaetsya-ot-vidzheta"
+      },
+      {
+        "title": "\"मुख्य\" श्रेणी",
+        "file": "page_124.html",
+        "children": [
+          {
+            "title": "Intent — स्क्रीन के बीच संक्रमण",
+            "file": "page_125.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-intent-perehody-mezhdu-ekranami"
+          },
+          {
+            "title": "SharedPreferences — सेटिंग्स भंडारण",
+            "file": "page_126.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-sharedpreferences-hranilische-nastroek"
+          },
+          {
+            "title": "FilePicker — फ़ाइल चयनकर्ता",
+            "file": "page_127.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-filepicker-vybor-fayla"
+          },
+          {
+            "title": "Calendar — तिथियों के साथ काम करना",
+            "file": "page_128.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-calendar-rabota-s-datami"
+          },
+          {
+            "title": "Vibrator — कंपन",
+            "file": "page_129.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-vibrator-vibratsiya"
+          },
+          {
+            "title": "Timer — टाइमर",
+            "file": "page_130.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-timer-taymer"
+          },
+          {
+            "title": "Dialog — संवाद बॉक्स",
+            "file": "page_131.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-dialog-dialogovoe-okno"
+          },
+          {
+            "title": "MediaPlayer — ऑडियो प्लेबैक",
+            "file": "page_132.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-mediaplayer-proigryvanie-audio"
+          },
+          {
+            "title": "SoundPool — छोटी ध्वनियाँ",
+            "file": "page_133.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-soundpool-korotkie-zvuki"
+          },
+          {
+            "title": "ObjectAnimator — ऑब्जेक्ट एनिमेशन",
+            "file": "page_134.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-objectanimator-animatsii-obektov"
+          },
+          {
+            "title": "Camera — कैमरा",
+            "file": "page_135.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-camera-kamera"
+          },
+          {
+            "title": "Gyroscope — झुकाव सेंसर",
+            "file": "page_136.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-gyroscope-datchik-naklona"
+          },
+          {
+            "title": "TextToSpeech — टेक्स्ट-टू-स्पीच",
+            "file": "page_137.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-texttospeech-ozvuchka-teksta"
+          },
+          {
+            "title": "SpeechToText — वाक् पहचान",
+            "file": "page_138.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-speechtotext-raspoznavanie-rechi"
+          },
+          {
+            "title": "RequestNetwork — HTTP अनुरोध",
+            "file": "page_139.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-requestnetwork-http-zaprosy"
+          },
+          {
+            "title": "BluetoothConnect — ब्लूटूथ कनेक्शन",
+            "file": "page_140.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-bluetoothconnect-bluetooth-soedinenie"
+          },
+          {
+            "title": "LocationManager — GPS स्थान",
+            "file": "page_141.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-locationmanager-gps-geolokatsiya"
+          },
+          {
+            "title": "ProgressDialog — लोडिंग डायलॉग",
+            "file": "page_142.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-progressdialog-okno-zagruzki"
+          },
+          {
+            "title": "DatePickerDialog — तिथि चयनकर्ता संवाद",
+            "file": "page_143.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-datepickerdialog-dialog-vybora-daty"
+          },
+          {
+            "title": "TimePickerDialog — समय चयनकर्ता संवाद",
+            "file": "page_144.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-timepickerdialog-dialog-vybora-vremeni"
+          },
+          {
+            "title": "Notification — सूचनाएं",
+            "file": "page_145.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-notification-uvedomleniya"
+          },
+          {
+            "title": "FragmentAdapter — ViewPager के लिए एडाप्टर",
+            "file": "page_146.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-fragmentadapter-adapter-dlya-viewpager"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-osnovnye"
+      },
+      {
+        "title": "\"विज्ञापन\" श्रेणी",
+        "file": "page_147.html",
+        "children": [
+          {
+            "title": "InterstitialAd — पूर्ण-स्क्रीन विज्ञापन",
+            "file": "page_148.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-interstitialad-polnoekrannaya-reklama"
+          },
+          {
+            "title": "RewardedVideoAd — पुरस्कृत विज्ञापन",
+            "file": "page_149.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-rewardedvideoad-reklama-za-nagradu"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-reklama"
+      },
+      {
+        "title": "\"Firebase\" श्रेणी",
+        "file": "page_150.html",
+        "children": [
+          {
+            "title": "Firebase DB — क्लाउड डेटाबेस",
+            "file": "page_151.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-firebase-db-oblachnaya-baza-dannyh"
+          },
+          {
+            "title": "Firebase Auth — Firebase प्राधिकरण",
+            "file": "page_152.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-firebase-auth-avtorizatsiya-firebase"
+          },
+          {
+            "title": "Firebase Storage — क्लाउड स्टोरेज",
+            "file": "page_153.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-firebase-storage-oblachnoe-hranilische"
+          },
+          {
+            "title": "PhoneAuth — SMS साइन-इन",
+            "file": "page_154.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-phoneauth-vhod-po-sms"
+          },
+          {
+            "title": "Cloud Message — पुश सूचनाएं",
+            "file": "page_155.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-cloud-message-push-uvedomleniya"
+          },
+          {
+            "title": "Google Login — Google साइन-इन",
+            "file": "page_156.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-google-login-vhod-cherez-google"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-firebase"
+      },
+      {
+        "title": "\"अन्य\" श्रेणी",
+        "file": "page_157.html",
+        "children": [
+          {
+            "title": "AsyncTask — पृष्ठभूमि कार्य",
+            "file": "page_158.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-asynctask-fonovaya-zadacha"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-drugoe"
+      },
+      {
+        "title": "घटक हटाना",
+        "file": "page_159.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-udalenie-komponenta"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-komponenty"
+  },
+  {
+    "title": "प्रोजेक्ट के अंदर \"सेटिंग्स\" मेनू",
+    "file": "page_160.html",
+    "children": [
+      {
+        "title": "यह मेनू क्या है",
+        "file": "page_161.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-eto-za-menyu"
+      },
+      {
+        "title": "संसाधन प्रबंधक",
+        "file": "page_162.html",
+        "children": [
+          {
+            "title": "लाइब्रेरी प्रबंधक",
+            "file": "page_163.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-bibliotek"
+          },
+          {
+            "title": "प्रदाता प्रबंधक",
+            "file": "page_164.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-predostavleniy"
+          },
+          {
+            "title": "छवि प्रबंधक",
+            "file": "page_165.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-izobrazheniy"
+          },
+          {
+            "title": "ध्वनि प्रबंधक",
+            "file": "page_166.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-zvukov"
+          },
+          {
+            "title": "फ़ॉन्ट प्रबंधक",
+            "file": "page_167.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-shriftov"
+          },
+          {
+            "title": "Java/Kotlin प्रबंधक",
+            "file": "page_168.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-java-kotlin"
+          },
+          {
+            "title": "संसाधन प्रबंधक",
+            "file": "page_169.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-resursov"
+          },
+          {
+            "title": "संसाधन संपादक",
+            "file": "page_170.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-redaktor-resursov"
+          },
+          {
+            "title": "संसाधन आयात",
+            "file": "page_171.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-import-resursov"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-menedzhery-resursov"
+      },
+      {
+        "title": "कोड प्रबंधक",
+        "file": "page_172.html",
+        "children": [
+          {
+            "title": "अनुमति प्रबंधक",
+            "file": "page_173.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-razresheniy"
+          },
+          {
+            "title": "AppCompat प्रबंधक",
+            "file": "page_174.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-appcompat"
+          },
+          {
+            "title": "AndroidManifest प्रबंधक",
+            "file": "page_175.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-androidmanifest"
+          },
+          {
+            "title": "कस्टम ब्लॉक देखें",
+            "file": "page_176.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-prosmotr-polzovatelskih-blokov"
+          },
+          {
+            "title": "XML कमांड प्रबंधक",
+            "file": "page_177.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-xml-komand"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-menedzhery-koda"
+      },
+      {
+        "title": "सुरक्षा प्रबंधक",
+        "file": "page_178.html",
+        "children": [
+          {
+            "title": "कोड संपीड़न प्रबंधक",
+            "file": "page_179.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-szhatiya-koda"
+          },
+          {
+            "title": "StringFog प्रबंधक",
+            "file": "page_180.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-stringfog"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-menedzhery-zaschity"
+      },
+      {
+        "title": "देखें और डिबग करें",
+        "file": "page_181.html",
+        "children": [
+          {
+            "title": "स्रोत कोड दिखाएं",
+            "file": "page_182.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-pokazat-ishodnyy-kod"
+          },
+          {
+            "title": "Logcat रीडर प्रबंधक",
+            "file": "page_183.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-chteniya-logcat"
+          },
+          {
+            "title": "संग्रह प्रबंधक",
+            "file": "page_184.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-kollektsiy"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-prosmotr-i-otladka"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-menyu-nastroyka-vnutri-proekta"
+  },
+  {
+    "title": "प्रोजेक्ट विकास (अभ्यास)",
+    "file": "page_185.html",
+    "children": [
+      {
+        "title": "प्रोजेक्ट 1. Hello World",
+        "file": "page_186.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-1-hello-world"
+      },
+      {
+        "title": "प्रोजेक्ट 2. बटन + Toast",
+        "file": "page_192.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-2-knopka-toast"
+      },
+      {
+        "title": "प्रोजेक्ट 3. कैलकुलेटर",
+        "file": "page_197.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-3-kalkulyator"
+      },
+      {
+        "title": "प्रोजेक्ट 4. नोट्स",
+        "file": "page_203.html",
+        "children": [
+          {
+            "title": "भंडारण के लिए SharedPreferences",
+            "file": "page_207.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-sharedpreferences-dlya-hraneniya"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-proekt-4-zametki"
+      },
+      {
+        "title": "प्रोजेक्ट 5. मौसम (इंटरनेट + API)",
+        "file": "page_209.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-5-pogoda-internet-api"
+      },
+      {
+        "title": "प्रोजेक्ट 6. बहुभाषी ऐप",
+        "file": "page_215.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-6-mnogoyazychnoe-prilozhenie"
+      },
+      {
+        "title": "प्रोजेक्ट 7. अंतिम बड़ा प्रोजेक्ट Help Studio",
+        "file": "page_221.html",
+        "children": [
+          {
+            "title": "MainActivity लेआउट",
+            "file": "page_222.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-ekrana-mainactivity"
+          },
+          {
+            "title": "EditorActivity लेआउट",
+            "file": "page_223.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-ekrana-editoractivity"
+          },
+          {
+            "title": "PreviewActivity लेआउट",
+            "file": "page_224.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-ekrana-previewactivity"
+          },
+          {
+            "title": "Разметка SettingActivity",
+            "file": "page_225.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-settingactivity"
+          },
+          {
+            "title": "घटक",
+            "file": "page_226.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-komponenty"
+          },
+          {
+            "title": "MainActivity तर्क",
+            "file": "page_227.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-mainactivity"
+          },
+          {
+            "title": "EditorActivity तर्क",
+            "file": "page_39.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-editoractivity"
+          },
+          {
+            "title": "PreviewActivity तर्क",
+            "file": "page_40.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-previewactivity"
+          },
+          {
+            "title": "SettingsActivity तर्क",
+            "file": "page_187.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-settingsactivity"
+          },
+          {
+            "title": "विज्ञापन जोड़ना",
+            "file": "page_188.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-dobavlenie-reklamy"
+          },
+          {
+            "title": "GooglePlay में प्रकाशित करना",
+            "file": "page_189.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-publikatsiya-v-googleplay"
+          },
+          {
+            "title": "समापन",
+            "file": "page_190.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-zavershenie"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-proekt-7-finalnyy-bolshoy-proekt-help-studio"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-razrabotka-proektov-praktika"
+  }
+]

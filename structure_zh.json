@@ -1,0 +1,1449 @@
+[
+  {
+    "title": "Sketchware Pro 7",
+    "file": "page_1.html",
+    "children": [
+      {
+        "title": "名称由来",
+        "file": "page_28.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proishozhdenie-nazvaniya"
+      },
+      {
+        "title": "历史与起源",
+        "file": "page_2.html",
+        "children": [],
+        "anchor": "block-istoriya-i-proishozhdenie"
+      },
+      {
+        "title": "主要功能",
+        "file": "page_4.html",
+        "children": [],
+        "anchor": "block-osnovnye-funktsii"
+      },
+      {
+        "title": "适用人群",
+        "file": "page_5.html",
+        "children": [],
+        "anchor": "block-dlya-kogo-prednaznachen"
+      },
+      {
+        "title": "优势",
+        "file": "page_6.html",
+        "children": [],
+        "anchor": "block-preimuschestva"
+      },
+      {
+        "title": "主要特点",
+        "file": "page_3.html",
+        "children": [],
+        "anchor": "block-klyuchevye-osobennosti"
+      },
+      {
+        "title": "系统要求",
+        "file": "page_7.html",
+        "children": [],
+        "anchor": "block-sistemnye-trebovaniya"
+      },
+      {
+        "title": "结论",
+        "file": "page_8.html",
+        "children": [],
+        "anchor": "block-zaklyuchenie"
+      },
+      {
+        "title": "版权",
+        "file": "page_191.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-avtorskoe-pravo"
+      }
+    ],
+    "anchor": "category-sketchware-pro-7"
+  },
+  {
+    "title": "应用界面",
+    "file": "page_9.html",
+    "children": [
+      {
+        "title": "主屏幕（项目列表）",
+        "file": "page_10.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-glavnyy-ekran-spisok-proektov"
+      },
+      {
+        "title": "项目管理菜单",
+        "file": "page_11.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menyu-upravleniya-proektom"
+      },
+      {
+        "title": "项目列表排序",
+        "file": "page_12.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-sortirovka-spiska-proektov"
+      },
+      {
+        "title": "“关于 Sketchware Pro”部分（应用信息）",
+        "file": "page_13.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-razdel-o-sketchware-pro-informatsiya-o-programme"
+      },
+      {
+        "title": "“关于”窗口（链接和版本）",
+        "file": "page_14.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-okno-o-programme-ssylki-i-versiya"
+      },
+      {
+        "title": "创建新证书（签名密钥）",
+        "file": "page_15.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-sozdanie-novogo-sertifikata-klyuch-podpisi"
+      },
+      {
+        "title": "主设置菜单（设置）",
+        "file": "page_16.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-glavnoe-menyu-nastroek-nastroyki"
+      },
+      {
+        "title": "应用设置（内部参数）",
+        "file": "page_17.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nastroyki-prilozheniya-vnutrennie-parametry"
+      },
+      {
+        "title": "主题设置（外观）",
+        "file": "page_18.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nastroyki-temy-oformlenie"
+      },
+      {
+        "title": "系统设置（振动和自动保存）",
+        "file": "page_19.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-sistemnye-nastroyki-vibro-i-avtosohranenie"
+      },
+      {
+        "title": "块管理器（调色板管理）",
+        "file": "page_20.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-blokov-upravlenie-palitrami"
+      },
+      {
+        "title": "块选择管理器（选择器）",
+        "file": "page_21.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-vybora-blokov-selektory"
+      },
+      {
+        "title": "组件管理器（添加库）",
+        "file": "page_22.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-komponentov-dobavlenie-bibliotek"
+      },
+      {
+        "title": "事件管理器（监听器）",
+        "file": "page_23.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-sobytiy-slushateli"
+      },
+      {
+        "title": "本地库管理器（依赖项）",
+        "file": "page_24.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-lokalnyh-bibliotek-zavisimosti"
+      },
+      {
+        "title": "Logcat 读取管理器（调试）",
+        "file": "page_25.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-chteniya-logcat-otladka"
+      },
+      {
+        "title": "使用测试密钥签名 APK",
+        "file": "page_26.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-podpis-apk-testovym-klyuchom"
+      },
+      {
+        "title": "工作目录（应用文件）",
+        "file": "page_27.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-rabochaya-direktoriya-fayly-programmy"
+      }
+    ],
+    "anchor": "category-interfeys-prilozheniya"
+  },
+  {
+    "title": "创建第一个项目",
+    "file": "page_29.html",
+    "children": [
+      {
+        "title": "什么是项目",
+        "file": "page_30.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-proekt"
+      },
+      {
+        "title": "“新建项目”屏幕",
+        "file": "page_31.html",
+        "children": [
+          {
+            "title": "应用图标",
+            "file": "page_32.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-ikonka-prilozheniya"
+          },
+          {
+            "title": "字段“输入应用名称”",
+            "file": "page_33.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-pole-vvedite-imya-prilozheniya"
+          },
+          {
+            "title": "取消和创建按钮",
+            "file": "page_38.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-knopki-otmena-i-sozdat"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-ekran-novyy-proekt"
+      },
+      {
+        "title": "字段“包名”",
+        "file": "page_34.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-pole-imya-paketa"
+      },
+      {
+        "title": "字段“项目名称”",
+        "file": "page_35.html",
+        "children": [
+          {
+            "title": "版本代码",
+            "file": "page_37.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-kod-versii"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-pole-imya-proekta"
+      },
+      {
+        "title": "调色板",
+        "file": "page_36.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-tsvetovaya-palitra"
+      },
+      {
+        "title": "点击“创建”后会发生什么",
+        "file": "page_41.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-posle-sozdat"
+      },
+      {
+        "title": "项目顶部栏",
+        "file": "page_42.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-verhnyaya-panel-proekta"
+      },
+      {
+        "title": "三个项目标签页",
+        "file": "page_43.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-tri-vkladki-proekta"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-sozdanie-pervogo-proekta"
+  },
+  {
+    "title": "设计器（视图）",
+    "file": "page_44.html",
+    "children": [
+      {
+        "title": "什么是设计器",
+        "file": "page_45.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-dizayner"
+      },
+      {
+        "title": "设计器顶部栏",
+        "file": "page_46.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-verhnyaya-panel-dizaynera"
+      },
+      {
+        "title": "“创建小部件”按钮",
+        "file": "page_47.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-knopka-sozdat-vidzhet"
+      },
+      {
+        "title": "小部件调色板 — 概述",
+        "file": "page_48.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-palitra-vidzhetov-obschee"
+      },
+      {
+        "title": "布局类别（布局）",
+        "file": "page_49.html",
+        "children": [
+          {
+            "title": "Linear(H) — 水平",
+            "file": "page_50.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-linear-h-gorizontalnyy"
+          },
+          {
+            "title": "Linear(V) — 垂直",
+            "file": "page_51.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-linear-v-vertikalnyy"
+          },
+          {
+            "title": "Scroll(H) — 水平滚动",
+            "file": "page_52.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-scroll-h-gorizontalnaya-prokrutka"
+          },
+          {
+            "title": "Scroll(V) — 垂直滚动",
+            "file": "page_53.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-scroll-v-vertikalnaya-prokrutka"
+          },
+          {
+            "title": "RadioGroup — 单选按钮组",
+            "file": "page_54.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-radiogroup-gruppa-radioknopok"
+          },
+          {
+            "title": "RelativeLayout — 相对布局",
+            "file": "page_55.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-relativelayout-otnositelnyy-maket"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-layouts-makety"
+      },
+      {
+        "title": "AndroidX 类别（现代组件）",
+        "file": "page_56.html",
+        "children": [
+          {
+            "title": "TabLayout — 标签页",
+            "file": "page_57.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-tablayout-vkladki"
+          },
+          {
+            "title": "BottomNavigationView — 底部导航",
+            "file": "page_58.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-bottomnavigationview-nizhnyaya-navigatsiya"
+          },
+          {
+            "title": "CollapsingToolbar — 可折叠工具栏",
+            "file": "page_59.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-collapsingtoolbar-sezzhayuschaya-panel"
+          },
+          {
+            "title": "CardView — 卡片",
+            "file": "page_60.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-cardview-kartochka"
+          },
+          {
+            "title": "TextInputLayout — 美观的输入框",
+            "file": "page_61.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-textinputlayout-krasivoe-pole-vvoda"
+          },
+          {
+            "title": "SwipeRefreshLayout — 滑动刷新",
+            "file": "page_62.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-swiperefreshlayout-obnovlenie-svaypom"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-androidx-sovremennye-komponenty"
+      },
+      {
+        "title": "Widgets 类别（小部件）",
+        "file": "page_63.html",
+        "children": [
+          {
+            "title": "TextView — 文本",
+            "file": "page_64.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-textview-tekst"
+          },
+          {
+            "title": "EditText — 输入框",
+            "file": "page_65.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-edittext-pole-vvoda"
+          },
+          {
+            "title": "AutoCompleteTextView — 自动建议",
+            "file": "page_66.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-autocompletetextview-avtopodskazki"
+          },
+          {
+            "title": "MultiAutoCompleteTextView — 多个自动建议",
+            "file": "page_67.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-multiautocompletetextview-neskolko-avtopodskazok"
+          },
+          {
+            "title": "Button — 按钮",
+            "file": "page_68.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-button-knopka"
+          },
+          {
+            "title": "MaterialButton — 现代按钮",
+            "file": "page_69.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-materialbutton-sovremennaya-knopka"
+          },
+          {
+            "title": "ImageView — 图片",
+            "file": "page_70.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-imageview-izobrazhenie"
+          },
+          {
+            "title": "CircleImageView — 圆形图片",
+            "file": "page_71.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-circleimageview-kruglaya-kartinka"
+          },
+          {
+            "title": "CheckBox — 复选框",
+            "file": "page_72.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-checkbox-galochka"
+          },
+          {
+            "title": "RadioButton — 单选按钮",
+            "file": "page_73.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-radiobutton-radioknopka"
+          },
+          {
+            "title": "Switch — 开关",
+            "file": "page_74.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-switch-tumbler"
+          },
+          {
+            "title": "SeekBar — 拖动条",
+            "file": "page_75.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-seekbar-polzunok"
+          },
+          {
+            "title": "ProgressBar — 进度条",
+            "file": "page_76.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-progressbar-indikator-zagruzki"
+          },
+          {
+            "title": "RatingBar — 评分星",
+            "file": "page_77.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-ratingbar-zvezdy-reytinga"
+          },
+          {
+            "title": "SearchView — 搜索框",
+            "file": "page_78.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-searchview-pole-poiska"
+          },
+          {
+            "title": "VideoView — 视频播放器",
+            "file": "page_79.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-videoview-videopleer"
+          },
+          {
+            "title": "WebView — 迷你浏览器",
+            "file": "page_80.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-webview-mini-brauzer"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-widgets-vidzhety"
+      },
+      {
+        "title": "列表类别",
+        "file": "page_81.html",
+        "children": [
+          {
+            "title": "ListView — 垂直列表",
+            "file": "page_82.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-listview-vertikalnyy-spisok"
+          },
+          {
+            "title": "GridView — 网格",
+            "file": "page_83.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-gridview-setka"
+          },
+          {
+            "title": "RecyclerView — 现代列表",
+            "file": "page_84.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-recyclerview-sovremennyy-spisok"
+          },
+          {
+            "title": "Spinner — 下拉列表",
+            "file": "page_85.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-spinner-vypadayuschiy-spisok"
+          },
+          {
+            "title": "ViewPager — 滑动页面",
+            "file": "page_86.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-viewpager-stranitsy-so-svaypom"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-spiski"
+      },
+      {
+        "title": "库类别",
+        "file": "page_87.html",
+        "children": [
+          {
+            "title": "WaveSideBar — 字母索引",
+            "file": "page_88.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-wavesidebar-alfavitnyy-ukazatel"
+          },
+          {
+            "title": "PatternLockView — 图案锁",
+            "file": "page_89.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-patternlockview-graficheskiy-klyuch"
+          },
+          {
+            "title": "CodeView — 代码框",
+            "file": "page_90.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-codeview-pole-koda"
+          },
+          {
+            "title": "LottieAnimation — JSON 动画",
+            "file": "page_91.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-lottieanimation-json-animatsiya"
+          },
+          {
+            "title": "OTPView — OTP 代码框",
+            "file": "page_92.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-otpview-pole-otp-koda"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-biblioteki"
+      },
+      {
+        "title": "Google 类别",
+        "file": "page_93.html",
+        "children": [
+          {
+            "title": "AdView — 广告横幅",
+            "file": "page_94.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-adview-reklamnyy-banner"
+          },
+          {
+            "title": "MapView — Google 地图",
+            "file": "page_95.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-mapview-karta-google"
+          },
+          {
+            "title": "SignInButton — Google 登录",
+            "file": "page_96.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-signinbutton-vhod-cherez-google"
+          },
+          {
+            "title": "YoutubePlayer — YouTube 播放器",
+            "file": "page_97.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-youtubeplayer-youtube-pleer"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-google"
+      },
+      {
+        "title": "日期和时间类别",
+        "file": "page_98.html",
+        "children": [
+          {
+            "title": "AnalogClock — 模拟时钟",
+            "file": "page_99.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-analogclock-analogovye-chasy"
+          },
+          {
+            "title": "DigitalClock — 数字时钟",
+            "file": "page_100.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-digitalclock-tsifrovye-chasy"
+          },
+          {
+            "title": "TimePicker — 时间选择器",
+            "file": "page_101.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-timepicker-vybor-vremeni"
+          },
+          {
+            "title": "DatePicker — 日期选择器",
+            "file": "page_102.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-datepicker-vybor-daty"
+          },
+          {
+            "title": "CalendarView — 日历",
+            "file": "page_103.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-calendarview-kalendar"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-data-i-vremya"
+      },
+      {
+        "title": "main.xml 工作区",
+        "file": "page_104.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-rabochaya-oblast-main-xml"
+      },
+      {
+        "title": "编辑器底部栏",
+        "file": "page_105.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nizhnyaya-panel-redaktora"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-dizayner-view"
+  },
+  {
+    "title": "逻辑（事件）",
+    "file": "page_106.html",
+    "children": [
+      {
+        "title": "什么是逻辑",
+        "file": "page_107.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-logika"
+      },
+      {
+        "title": "什么是事件",
+        "file": "page_108.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-sobytie"
+      },
+      {
+        "title": "什么是块",
+        "file": "page_109.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-blok"
+      },
+      {
+        "title": "顶部栏",
+        "file": "page_110.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-verhnyaya-panel"
+      },
+      {
+        "title": "左侧菜单",
+        "file": "page_111.html",
+        "children": [
+          {
+            "title": "活动",
+            "file": "page_112.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-aktivnost"
+          },
+          {
+            "title": "视图",
+            "file": "page_113.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-view"
+          },
+          {
+            "title": "组件",
+            "file": "page_114.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-komponent"
+          },
+          {
+            "title": "抽屉",
+            "file": "page_115.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-drawer"
+          },
+          {
+            "title": "更多块",
+            "file": "page_116.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-more-block"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-levoe-menyu"
+      },
+      {
+        "title": "onCreate 事件",
+        "file": "page_117.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "event-sobytie-oncreate"
+      },
+      {
+        "title": "块调色板",
+        "file": "page_118.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-palitra-blokov"
+      },
+      {
+        "title": "“+”按钮",
+        "file": "page_119.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-knopka"
+      },
+      {
+        "title": "底部栏",
+        "file": "page_120.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nizhnyaya-panel"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-logika-sobytiya"
+  },
+  {
+    "title": "组件",
+    "file": "page_121.html",
+    "children": [
+      {
+        "title": "什么是组件",
+        "file": "page_122.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-komponent"
+      },
+      {
+        "title": "它与小部件有何不同",
+        "file": "page_123.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chem-otlichaetsya-ot-vidzheta"
+      },
+      {
+        "title": "“主要”类别",
+        "file": "page_124.html",
+        "children": [
+          {
+            "title": "Intent — 屏幕之间的跳转",
+            "file": "page_125.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-intent-perehody-mezhdu-ekranami"
+          },
+          {
+            "title": "SharedPreferences — 设置存储",
+            "file": "page_126.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-sharedpreferences-hranilische-nastroek"
+          },
+          {
+            "title": "FilePicker — 文件选择器",
+            "file": "page_127.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-filepicker-vybor-fayla"
+          },
+          {
+            "title": "Calendar — 日期处理",
+            "file": "page_128.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-calendar-rabota-s-datami"
+          },
+          {
+            "title": "Vibrator — 振动",
+            "file": "page_129.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-vibrator-vibratsiya"
+          },
+          {
+            "title": "Timer — 定时器",
+            "file": "page_130.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-timer-taymer"
+          },
+          {
+            "title": "Dialog — 对话框",
+            "file": "page_131.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-dialog-dialogovoe-okno"
+          },
+          {
+            "title": "MediaPlayer — 音频播放",
+            "file": "page_132.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-mediaplayer-proigryvanie-audio"
+          },
+          {
+            "title": "SoundPool — 短音效",
+            "file": "page_133.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-soundpool-korotkie-zvuki"
+          },
+          {
+            "title": "ObjectAnimator — 对象动画",
+            "file": "page_134.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-objectanimator-animatsii-obektov"
+          },
+          {
+            "title": "Camera — 相机",
+            "file": "page_135.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-camera-kamera"
+          },
+          {
+            "title": "Gyroscope — 倾斜传感器",
+            "file": "page_136.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-gyroscope-datchik-naklona"
+          },
+          {
+            "title": "TextToSpeech — 文本转语音",
+            "file": "page_137.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-texttospeech-ozvuchka-teksta"
+          },
+          {
+            "title": "SpeechToText — 语音识别",
+            "file": "page_138.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-speechtotext-raspoznavanie-rechi"
+          },
+          {
+            "title": "RequestNetwork — HTTP 请求",
+            "file": "page_139.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-requestnetwork-http-zaprosy"
+          },
+          {
+            "title": "BluetoothConnect — 蓝牙连接",
+            "file": "page_140.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-bluetoothconnect-bluetooth-soedinenie"
+          },
+          {
+            "title": "LocationManager — GPS 定位",
+            "file": "page_141.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-locationmanager-gps-geolokatsiya"
+          },
+          {
+            "title": "ProgressDialog — 加载窗口",
+            "file": "page_142.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-progressdialog-okno-zagruzki"
+          },
+          {
+            "title": "DatePickerDialog — 日期选择对话框",
+            "file": "page_143.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-datepickerdialog-dialog-vybora-daty"
+          },
+          {
+            "title": "TimePickerDialog — 时间选择对话框",
+            "file": "page_144.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-timepickerdialog-dialog-vybora-vremeni"
+          },
+          {
+            "title": "Notification — 通知",
+            "file": "page_145.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-notification-uvedomleniya"
+          },
+          {
+            "title": "FragmentAdapter — ViewPager 适配器",
+            "file": "page_146.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-fragmentadapter-adapter-dlya-viewpager"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-osnovnye"
+      },
+      {
+        "title": "“广告”类别",
+        "file": "page_147.html",
+        "children": [
+          {
+            "title": "InterstitialAd — 全屏广告",
+            "file": "page_148.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-interstitialad-polnoekrannaya-reklama"
+          },
+          {
+            "title": "RewardedVideoAd — 激励广告",
+            "file": "page_149.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-rewardedvideoad-reklama-za-nagradu"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-reklama"
+      },
+      {
+        "title": "“Firebase”类别",
+        "file": "page_150.html",
+        "children": [
+          {
+            "title": "Firebase DB — 云数据库",
+            "file": "page_151.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-firebase-db-oblachnaya-baza-dannyh"
+          },
+          {
+            "title": "Firebase Auth — Firebase 授权",
+            "file": "page_152.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-firebase-auth-avtorizatsiya-firebase"
+          },
+          {
+            "title": "Firebase Storage — 云存储",
+            "file": "page_153.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-firebase-storage-oblachnoe-hranilische"
+          },
+          {
+            "title": "PhoneAuth — 短信登录",
+            "file": "page_154.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-phoneauth-vhod-po-sms"
+          },
+          {
+            "title": "Cloud Message — 推送通知",
+            "file": "page_155.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-cloud-message-push-uvedomleniya"
+          },
+          {
+            "title": "Google Login — Google 登录",
+            "file": "page_156.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-google-login-vhod-cherez-google"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-firebase"
+      },
+      {
+        "title": "“其他”类别",
+        "file": "page_157.html",
+        "children": [
+          {
+            "title": "AsyncTask — 后台任务",
+            "file": "page_158.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-asynctask-fonovaya-zadacha"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-drugoe"
+      },
+      {
+        "title": "删除组件",
+        "file": "page_159.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-udalenie-komponenta"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-komponenty"
+  },
+  {
+    "title": "项目内的“设置”菜单",
+    "file": "page_160.html",
+    "children": [
+      {
+        "title": "这是什么菜单",
+        "file": "page_161.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-eto-za-menyu"
+      },
+      {
+        "title": "资源管理器",
+        "file": "page_162.html",
+        "children": [
+          {
+            "title": "库管理器",
+            "file": "page_163.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-bibliotek"
+          },
+          {
+            "title": "提供者管理器",
+            "file": "page_164.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-predostavleniy"
+          },
+          {
+            "title": "图像管理器",
+            "file": "page_165.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-izobrazheniy"
+          },
+          {
+            "title": "声音管理器",
+            "file": "page_166.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-zvukov"
+          },
+          {
+            "title": "字体管理器",
+            "file": "page_167.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-shriftov"
+          },
+          {
+            "title": "Java/Kotlin 管理器",
+            "file": "page_168.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-java-kotlin"
+          },
+          {
+            "title": "资源管理器",
+            "file": "page_169.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-resursov"
+          },
+          {
+            "title": "资源编辑器",
+            "file": "page_170.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-redaktor-resursov"
+          },
+          {
+            "title": "导入资源",
+            "file": "page_171.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-import-resursov"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-menedzhery-resursov"
+      },
+      {
+        "title": "代码管理器",
+        "file": "page_172.html",
+        "children": [
+          {
+            "title": "权限管理器",
+            "file": "page_173.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-razresheniy"
+          },
+          {
+            "title": "AppCompat 管理器",
+            "file": "page_174.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-appcompat"
+          },
+          {
+            "title": "AndroidManifest 管理器",
+            "file": "page_175.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-androidmanifest"
+          },
+          {
+            "title": "查看自定义块",
+            "file": "page_176.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-prosmotr-polzovatelskih-blokov"
+          },
+          {
+            "title": "XML 命令管理器",
+            "file": "page_177.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-xml-komand"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-menedzhery-koda"
+      },
+      {
+        "title": "保护管理器",
+        "file": "page_178.html",
+        "children": [
+          {
+            "title": "代码压缩管理器",
+            "file": "page_179.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-szhatiya-koda"
+          },
+          {
+            "title": "StringFog 管理器",
+            "file": "page_180.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-stringfog"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-menedzhery-zaschity"
+      },
+      {
+        "title": "查看和调试",
+        "file": "page_181.html",
+        "children": [
+          {
+            "title": "显示源代码",
+            "file": "page_182.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-pokazat-ishodnyy-kod"
+          },
+          {
+            "title": "Logcat 读取管理器",
+            "file": "page_183.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-chteniya-logcat"
+          },
+          {
+            "title": "集合管理器",
+            "file": "page_184.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-kollektsiy"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-prosmotr-i-otladka"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-menyu-nastroyka-vnutri-proekta"
+  },
+  {
+    "title": "项目开发（实践）",
+    "file": "page_185.html",
+    "children": [
+      {
+        "title": "项目 1. Hello World",
+        "file": "page_186.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-1-hello-world"
+      },
+      {
+        "title": "项目 2. 按钮 + Toast",
+        "file": "page_192.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-2-knopka-toast"
+      },
+      {
+        "title": "项目 3. 计算器",
+        "file": "page_197.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-3-kalkulyator"
+      },
+      {
+        "title": "项目 4. 笔记",
+        "file": "page_203.html",
+        "children": [
+          {
+            "title": "用于存储的 SharedPreferences",
+            "file": "page_207.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-sharedpreferences-dlya-hraneniya"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-proekt-4-zametki"
+      },
+      {
+        "title": "项目 5. 天气（互联网 + API）",
+        "file": "page_209.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-5-pogoda-internet-api"
+      },
+      {
+        "title": "项目 6. 多语言应用",
+        "file": "page_215.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-6-mnogoyazychnoe-prilozhenie"
+      },
+      {
+        "title": "项目 7. 最终大项目 Help Studio",
+        "file": "page_221.html",
+        "children": [
+          {
+            "title": "MainActivity 布局",
+            "file": "page_222.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-ekrana-mainactivity"
+          },
+          {
+            "title": "EditorActivity 布局",
+            "file": "page_223.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-ekrana-editoractivity"
+          },
+          {
+            "title": "PreviewActivity 布局",
+            "file": "page_224.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-ekrana-previewactivity"
+          },
+          {
+            "title": "Разметка SettingActivity",
+            "file": "page_225.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-settingactivity"
+          },
+          {
+            "title": "组件",
+            "file": "page_226.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-komponenty"
+          },
+          {
+            "title": "MainActivity 逻辑",
+            "file": "page_227.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-mainactivity"
+          },
+          {
+            "title": "EditorActivity 逻辑",
+            "file": "page_39.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-editoractivity"
+          },
+          {
+            "title": "PreviewActivity 逻辑",
+            "file": "page_40.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-previewactivity"
+          },
+          {
+            "title": "SettingsActivity 逻辑",
+            "file": "page_187.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-settingsactivity"
+          },
+          {
+            "title": "添加广告",
+            "file": "page_188.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-dobavlenie-reklamy"
+          },
+          {
+            "title": "发布到 GooglePlay",
+            "file": "page_189.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-publikatsiya-v-googleplay"
+          },
+          {
+            "title": "完成",
+            "file": "page_190.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-zavershenie"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-proekt-7-finalnyy-bolshoy-proekt-help-studio"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-razrabotka-proektov-praktika"
+  }
+]

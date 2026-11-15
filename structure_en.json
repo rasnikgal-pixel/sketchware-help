@@ -1,0 +1,1449 @@
+[
+  {
+    "title": "Sketchware Pro 7",
+    "file": "page_1.html",
+    "children": [
+      {
+        "title": "Origin of the name",
+        "file": "page_28.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proishozhdenie-nazvaniya"
+      },
+      {
+        "title": "History and origin",
+        "file": "page_2.html",
+        "children": [],
+        "anchor": "block-istoriya-i-proishozhdenie"
+      },
+      {
+        "title": "Main functions",
+        "file": "page_4.html",
+        "children": [],
+        "anchor": "block-osnovnye-funktsii"
+      },
+      {
+        "title": "Who it's for",
+        "file": "page_5.html",
+        "children": [],
+        "anchor": "block-dlya-kogo-prednaznachen"
+      },
+      {
+        "title": "Advantages",
+        "file": "page_6.html",
+        "children": [],
+        "anchor": "block-preimuschestva"
+      },
+      {
+        "title": "Key features",
+        "file": "page_3.html",
+        "children": [],
+        "anchor": "block-klyuchevye-osobennosti"
+      },
+      {
+        "title": "System requirements",
+        "file": "page_7.html",
+        "children": [],
+        "anchor": "block-sistemnye-trebovaniya"
+      },
+      {
+        "title": "Conclusion",
+        "file": "page_8.html",
+        "children": [],
+        "anchor": "block-zaklyuchenie"
+      },
+      {
+        "title": "Copyright",
+        "file": "page_191.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-avtorskoe-pravo"
+      }
+    ],
+    "anchor": "category-sketchware-pro-7"
+  },
+  {
+    "title": "App interface",
+    "file": "page_9.html",
+    "children": [
+      {
+        "title": "Main screen (project list)",
+        "file": "page_10.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-glavnyy-ekran-spisok-proektov"
+      },
+      {
+        "title": "Project management menu",
+        "file": "page_11.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menyu-upravleniya-proektom"
+      },
+      {
+        "title": "Sorting the project list",
+        "file": "page_12.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-sortirovka-spiska-proektov"
+      },
+      {
+        "title": "\"About Sketchware Pro\" section (App info)",
+        "file": "page_13.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-razdel-o-sketchware-pro-informatsiya-o-programme"
+      },
+      {
+        "title": "\"About\" window (Links and version)",
+        "file": "page_14.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-okno-o-programme-ssylki-i-versiya"
+      },
+      {
+        "title": "Creating a new certificate (Signing key)",
+        "file": "page_15.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-sozdanie-novogo-sertifikata-klyuch-podpisi"
+      },
+      {
+        "title": "Main settings menu (Settings)",
+        "file": "page_16.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-glavnoe-menyu-nastroek-nastroyki"
+      },
+      {
+        "title": "App settings (Internal parameters)",
+        "file": "page_17.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nastroyki-prilozheniya-vnutrennie-parametry"
+      },
+      {
+        "title": "Theme settings (Appearance)",
+        "file": "page_18.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nastroyki-temy-oformlenie"
+      },
+      {
+        "title": "System settings (Vibration and autosave)",
+        "file": "page_19.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-sistemnye-nastroyki-vibro-i-avtosohranenie"
+      },
+      {
+        "title": "Block manager (Palette management)",
+        "file": "page_20.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-blokov-upravlenie-palitrami"
+      },
+      {
+        "title": "Block selector manager (Selectors)",
+        "file": "page_21.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-vybora-blokov-selektory"
+      },
+      {
+        "title": "Component manager (Adding libraries)",
+        "file": "page_22.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-komponentov-dobavlenie-bibliotek"
+      },
+      {
+        "title": "Event manager (Listeners)",
+        "file": "page_23.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-sobytiy-slushateli"
+      },
+      {
+        "title": "Local library manager (Dependencies)",
+        "file": "page_24.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-lokalnyh-bibliotek-zavisimosti"
+      },
+      {
+        "title": "Logcat reader manager (Debugging)",
+        "file": "page_25.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-menedzher-chteniya-logcat-otladka"
+      },
+      {
+        "title": "Signing APK with a test key",
+        "file": "page_26.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-podpis-apk-testovym-klyuchom"
+      },
+      {
+        "title": "Working directory (App files)",
+        "file": "page_27.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-rabochaya-direktoriya-fayly-programmy"
+      }
+    ],
+    "anchor": "category-interfeys-prilozheniya"
+  },
+  {
+    "title": "Creating the first project",
+    "file": "page_29.html",
+    "children": [
+      {
+        "title": "What is a project",
+        "file": "page_30.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-proekt"
+      },
+      {
+        "title": "\"New project\" screen",
+        "file": "page_31.html",
+        "children": [
+          {
+            "title": "App icon",
+            "file": "page_32.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-ikonka-prilozheniya"
+          },
+          {
+            "title": "Field \"Enter app name\"",
+            "file": "page_33.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-pole-vvedite-imya-prilozheniya"
+          },
+          {
+            "title": "Cancel and Create buttons",
+            "file": "page_38.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-knopki-otmena-i-sozdat"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-ekran-novyy-proekt"
+      },
+      {
+        "title": "Field \"Package name\"",
+        "file": "page_34.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-pole-imya-paketa"
+      },
+      {
+        "title": "Field \"Project name\"",
+        "file": "page_35.html",
+        "children": [
+          {
+            "title": "Version code",
+            "file": "page_37.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-kod-versii"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-pole-imya-proekta"
+      },
+      {
+        "title": "Color palette",
+        "file": "page_36.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-tsvetovaya-palitra"
+      },
+      {
+        "title": "What happens after \"Create\"",
+        "file": "page_41.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-posle-sozdat"
+      },
+      {
+        "title": "Project top bar",
+        "file": "page_42.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-verhnyaya-panel-proekta"
+      },
+      {
+        "title": "Three project tabs",
+        "file": "page_43.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-tri-vkladki-proekta"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-sozdanie-pervogo-proekta"
+  },
+  {
+    "title": "Designer (View)",
+    "file": "page_44.html",
+    "children": [
+      {
+        "title": "What is the Designer",
+        "file": "page_45.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-dizayner"
+      },
+      {
+        "title": "Designer top bar",
+        "file": "page_46.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-verhnyaya-panel-dizaynera"
+      },
+      {
+        "title": "\"Create widget\" button",
+        "file": "page_47.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-knopka-sozdat-vidzhet"
+      },
+      {
+        "title": "Widget palette — general",
+        "file": "page_48.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-palitra-vidzhetov-obschee"
+      },
+      {
+        "title": "Layouts category (layouts)",
+        "file": "page_49.html",
+        "children": [
+          {
+            "title": "Linear(H) — horizontal",
+            "file": "page_50.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-linear-h-gorizontalnyy"
+          },
+          {
+            "title": "Linear(V) — vertical",
+            "file": "page_51.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-linear-v-vertikalnyy"
+          },
+          {
+            "title": "Scroll(H) — horizontal scroll",
+            "file": "page_52.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-scroll-h-gorizontalnaya-prokrutka"
+          },
+          {
+            "title": "Scroll(V) — vertical scroll",
+            "file": "page_53.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-scroll-v-vertikalnaya-prokrutka"
+          },
+          {
+            "title": "RadioGroup — radio button group",
+            "file": "page_54.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-radiogroup-gruppa-radioknopok"
+          },
+          {
+            "title": "RelativeLayout — relative layout",
+            "file": "page_55.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-relativelayout-otnositelnyy-maket"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-layouts-makety"
+      },
+      {
+        "title": "AndroidX category (modern components)",
+        "file": "page_56.html",
+        "children": [
+          {
+            "title": "TabLayout — tabs",
+            "file": "page_57.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-tablayout-vkladki"
+          },
+          {
+            "title": "BottomNavigationView — bottom navigation",
+            "file": "page_58.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-bottomnavigationview-nizhnyaya-navigatsiya"
+          },
+          {
+            "title": "CollapsingToolbar — collapsing toolbar",
+            "file": "page_59.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-collapsingtoolbar-sezzhayuschaya-panel"
+          },
+          {
+            "title": "CardView — card",
+            "file": "page_60.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-cardview-kartochka"
+          },
+          {
+            "title": "TextInputLayout — nice input field",
+            "file": "page_61.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-textinputlayout-krasivoe-pole-vvoda"
+          },
+          {
+            "title": "SwipeRefreshLayout — swipe to refresh",
+            "file": "page_62.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-swiperefreshlayout-obnovlenie-svaypom"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-androidx-sovremennye-komponenty"
+      },
+      {
+        "title": "Widgets category (widgets)",
+        "file": "page_63.html",
+        "children": [
+          {
+            "title": "TextView — text",
+            "file": "page_64.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-textview-tekst"
+          },
+          {
+            "title": "EditText — input field",
+            "file": "page_65.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-edittext-pole-vvoda"
+          },
+          {
+            "title": "AutoCompleteTextView — auto-suggestions",
+            "file": "page_66.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-autocompletetextview-avtopodskazki"
+          },
+          {
+            "title": "MultiAutoCompleteTextView — multiple auto-suggestions",
+            "file": "page_67.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-multiautocompletetextview-neskolko-avtopodskazok"
+          },
+          {
+            "title": "Button — button",
+            "file": "page_68.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-button-knopka"
+          },
+          {
+            "title": "MaterialButton — modern button",
+            "file": "page_69.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-materialbutton-sovremennaya-knopka"
+          },
+          {
+            "title": "ImageView — image",
+            "file": "page_70.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-imageview-izobrazhenie"
+          },
+          {
+            "title": "CircleImageView — round image",
+            "file": "page_71.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-circleimageview-kruglaya-kartinka"
+          },
+          {
+            "title": "CheckBox — checkbox",
+            "file": "page_72.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-checkbox-galochka"
+          },
+          {
+            "title": "RadioButton — radio button",
+            "file": "page_73.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-radiobutton-radioknopka"
+          },
+          {
+            "title": "Switch — switch",
+            "file": "page_74.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-switch-tumbler"
+          },
+          {
+            "title": "SeekBar — seek bar",
+            "file": "page_75.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-seekbar-polzunok"
+          },
+          {
+            "title": "ProgressBar — progress bar",
+            "file": "page_76.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-progressbar-indikator-zagruzki"
+          },
+          {
+            "title": "RatingBar — rating stars",
+            "file": "page_77.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-ratingbar-zvezdy-reytinga"
+          },
+          {
+            "title": "SearchView — search field",
+            "file": "page_78.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-searchview-pole-poiska"
+          },
+          {
+            "title": "VideoView — video player",
+            "file": "page_79.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-videoview-videopleer"
+          },
+          {
+            "title": "WebView — mini browser",
+            "file": "page_80.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-webview-mini-brauzer"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-widgets-vidzhety"
+      },
+      {
+        "title": "Lists category",
+        "file": "page_81.html",
+        "children": [
+          {
+            "title": "ListView — vertical list",
+            "file": "page_82.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-listview-vertikalnyy-spisok"
+          },
+          {
+            "title": "GridView — grid",
+            "file": "page_83.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-gridview-setka"
+          },
+          {
+            "title": "RecyclerView — modern list",
+            "file": "page_84.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-recyclerview-sovremennyy-spisok"
+          },
+          {
+            "title": "Spinner — dropdown list",
+            "file": "page_85.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-spinner-vypadayuschiy-spisok"
+          },
+          {
+            "title": "ViewPager — swipe pages",
+            "file": "page_86.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-viewpager-stranitsy-so-svaypom"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-spiski"
+      },
+      {
+        "title": "Libraries category",
+        "file": "page_87.html",
+        "children": [
+          {
+            "title": "WaveSideBar — alphabetical index",
+            "file": "page_88.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-wavesidebar-alfavitnyy-ukazatel"
+          },
+          {
+            "title": "PatternLockView — pattern lock",
+            "file": "page_89.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-patternlockview-graficheskiy-klyuch"
+          },
+          {
+            "title": "CodeView — code field",
+            "file": "page_90.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-codeview-pole-koda"
+          },
+          {
+            "title": "LottieAnimation — JSON animation",
+            "file": "page_91.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-lottieanimation-json-animatsiya"
+          },
+          {
+            "title": "OTPView — OTP code field",
+            "file": "page_92.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-otpview-pole-otp-koda"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-biblioteki"
+      },
+      {
+        "title": "Google category",
+        "file": "page_93.html",
+        "children": [
+          {
+            "title": "AdView — ad banner",
+            "file": "page_94.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-adview-reklamnyy-banner"
+          },
+          {
+            "title": "MapView — Google map",
+            "file": "page_95.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-mapview-karta-google"
+          },
+          {
+            "title": "SignInButton — Google sign-in",
+            "file": "page_96.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-signinbutton-vhod-cherez-google"
+          },
+          {
+            "title": "YoutubePlayer — YouTube player",
+            "file": "page_97.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-youtubeplayer-youtube-pleer"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-google"
+      },
+      {
+        "title": "Date and time category",
+        "file": "page_98.html",
+        "children": [
+          {
+            "title": "AnalogClock — analog clock",
+            "file": "page_99.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-analogclock-analogovye-chasy"
+          },
+          {
+            "title": "DigitalClock — digital clock",
+            "file": "page_100.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-digitalclock-tsifrovye-chasy"
+          },
+          {
+            "title": "TimePicker — time picker",
+            "file": "page_101.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-timepicker-vybor-vremeni"
+          },
+          {
+            "title": "DatePicker — date picker",
+            "file": "page_102.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-datepicker-vybor-daty"
+          },
+          {
+            "title": "CalendarView — calendar",
+            "file": "page_103.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-calendarview-kalendar"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-data-i-vremya"
+      },
+      {
+        "title": "main.xml workspace",
+        "file": "page_104.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-rabochaya-oblast-main-xml"
+      },
+      {
+        "title": "Editor bottom bar",
+        "file": "page_105.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nizhnyaya-panel-redaktora"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-dizayner-view"
+  },
+  {
+    "title": "Logic (Events)",
+    "file": "page_106.html",
+    "children": [
+      {
+        "title": "What is logic",
+        "file": "page_107.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-logika"
+      },
+      {
+        "title": "What is an event",
+        "file": "page_108.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-sobytie"
+      },
+      {
+        "title": "What is a block",
+        "file": "page_109.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-blok"
+      },
+      {
+        "title": "Top bar",
+        "file": "page_110.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-verhnyaya-panel"
+      },
+      {
+        "title": "Left menu",
+        "file": "page_111.html",
+        "children": [
+          {
+            "title": "Activity",
+            "file": "page_112.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-aktivnost"
+          },
+          {
+            "title": "View",
+            "file": "page_113.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-view"
+          },
+          {
+            "title": "Component",
+            "file": "page_114.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-komponent"
+          },
+          {
+            "title": "Drawer",
+            "file": "page_115.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-drawer"
+          },
+          {
+            "title": "More Block",
+            "file": "page_116.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-more-block"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-levoe-menyu"
+      },
+      {
+        "title": "onCreate event",
+        "file": "page_117.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "event-sobytie-oncreate"
+      },
+      {
+        "title": "Block palette",
+        "file": "page_118.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-palitra-blokov"
+      },
+      {
+        "title": "\"+\" button",
+        "file": "page_119.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-knopka"
+      },
+      {
+        "title": "Bottom bar",
+        "file": "page_120.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-nizhnyaya-panel"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-logika-sobytiya"
+  },
+  {
+    "title": "Components",
+    "file": "page_121.html",
+    "children": [
+      {
+        "title": "What is a component",
+        "file": "page_122.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-takoe-komponent"
+      },
+      {
+        "title": "How it differs from a widget",
+        "file": "page_123.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chem-otlichaetsya-ot-vidzheta"
+      },
+      {
+        "title": "\"Main\" category",
+        "file": "page_124.html",
+        "children": [
+          {
+            "title": "Intent — transitions between screens",
+            "file": "page_125.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-intent-perehody-mezhdu-ekranami"
+          },
+          {
+            "title": "SharedPreferences — settings storage",
+            "file": "page_126.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-sharedpreferences-hranilische-nastroek"
+          },
+          {
+            "title": "FilePicker — file picker",
+            "file": "page_127.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-filepicker-vybor-fayla"
+          },
+          {
+            "title": "Calendar — working with dates",
+            "file": "page_128.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-calendar-rabota-s-datami"
+          },
+          {
+            "title": "Vibrator — vibration",
+            "file": "page_129.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-vibrator-vibratsiya"
+          },
+          {
+            "title": "Timer — timer",
+            "file": "page_130.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-timer-taymer"
+          },
+          {
+            "title": "Dialog — dialog box",
+            "file": "page_131.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-dialog-dialogovoe-okno"
+          },
+          {
+            "title": "MediaPlayer — audio playback",
+            "file": "page_132.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-mediaplayer-proigryvanie-audio"
+          },
+          {
+            "title": "SoundPool — short sounds",
+            "file": "page_133.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-soundpool-korotkie-zvuki"
+          },
+          {
+            "title": "ObjectAnimator — object animations",
+            "file": "page_134.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-objectanimator-animatsii-obektov"
+          },
+          {
+            "title": "Camera — camera",
+            "file": "page_135.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-camera-kamera"
+          },
+          {
+            "title": "Gyroscope — tilt sensor",
+            "file": "page_136.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-gyroscope-datchik-naklona"
+          },
+          {
+            "title": "TextToSpeech — text-to-speech",
+            "file": "page_137.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-texttospeech-ozvuchka-teksta"
+          },
+          {
+            "title": "SpeechToText — speech recognition",
+            "file": "page_138.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-speechtotext-raspoznavanie-rechi"
+          },
+          {
+            "title": "RequestNetwork — HTTP requests",
+            "file": "page_139.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-requestnetwork-http-zaprosy"
+          },
+          {
+            "title": "BluetoothConnect — Bluetooth connection",
+            "file": "page_140.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-bluetoothconnect-bluetooth-soedinenie"
+          },
+          {
+            "title": "LocationManager — GPS location",
+            "file": "page_141.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-locationmanager-gps-geolokatsiya"
+          },
+          {
+            "title": "ProgressDialog — loading dialog",
+            "file": "page_142.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-progressdialog-okno-zagruzki"
+          },
+          {
+            "title": "DatePickerDialog — date picker dialog",
+            "file": "page_143.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-datepickerdialog-dialog-vybora-daty"
+          },
+          {
+            "title": "TimePickerDialog — time picker dialog",
+            "file": "page_144.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-timepickerdialog-dialog-vybora-vremeni"
+          },
+          {
+            "title": "Notification — notifications",
+            "file": "page_145.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-notification-uvedomleniya"
+          },
+          {
+            "title": "FragmentAdapter — adapter for ViewPager",
+            "file": "page_146.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-fragmentadapter-adapter-dlya-viewpager"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-osnovnye"
+      },
+      {
+        "title": "\"Advertising\" category",
+        "file": "page_147.html",
+        "children": [
+          {
+            "title": "InterstitialAd — full-screen ad",
+            "file": "page_148.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-interstitialad-polnoekrannaya-reklama"
+          },
+          {
+            "title": "RewardedVideoAd — rewarded ad",
+            "file": "page_149.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-rewardedvideoad-reklama-za-nagradu"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-reklama"
+      },
+      {
+        "title": "\"Firebase\" category",
+        "file": "page_150.html",
+        "children": [
+          {
+            "title": "Firebase DB — cloud database",
+            "file": "page_151.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-firebase-db-oblachnaya-baza-dannyh"
+          },
+          {
+            "title": "Firebase Auth — Firebase authorization",
+            "file": "page_152.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-firebase-auth-avtorizatsiya-firebase"
+          },
+          {
+            "title": "Firebase Storage — cloud storage",
+            "file": "page_153.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-firebase-storage-oblachnoe-hranilische"
+          },
+          {
+            "title": "PhoneAuth — SMS sign-in",
+            "file": "page_154.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-phoneauth-vhod-po-sms"
+          },
+          {
+            "title": "Cloud Message — push notifications",
+            "file": "page_155.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-cloud-message-push-uvedomleniya"
+          },
+          {
+            "title": "Google Login — Google sign-in",
+            "file": "page_156.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-google-login-vhod-cherez-google"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-firebase"
+      },
+      {
+        "title": "\"Other\" category",
+        "file": "page_157.html",
+        "children": [
+          {
+            "title": "AsyncTask — background task",
+            "file": "page_158.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-asynctask-fonovaya-zadacha"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "category-kategoriya-drugoe"
+      },
+      {
+        "title": "Removing a component",
+        "file": "page_159.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-udalenie-komponenta"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-komponenty"
+  },
+  {
+    "title": "\"Settings\" menu inside project",
+    "file": "page_160.html",
+    "children": [
+      {
+        "title": "What this menu is",
+        "file": "page_161.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-chto-eto-za-menyu"
+      },
+      {
+        "title": "Resource managers",
+        "file": "page_162.html",
+        "children": [
+          {
+            "title": "Library manager",
+            "file": "page_163.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-bibliotek"
+          },
+          {
+            "title": "Provider manager",
+            "file": "page_164.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-predostavleniy"
+          },
+          {
+            "title": "Image manager",
+            "file": "page_165.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-izobrazheniy"
+          },
+          {
+            "title": "Sound manager",
+            "file": "page_166.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-zvukov"
+          },
+          {
+            "title": "Font manager",
+            "file": "page_167.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-shriftov"
+          },
+          {
+            "title": "Java/Kotlin manager",
+            "file": "page_168.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-java-kotlin"
+          },
+          {
+            "title": "Resource manager",
+            "file": "page_169.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-resursov"
+          },
+          {
+            "title": "Resource editor",
+            "file": "page_170.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-redaktor-resursov"
+          },
+          {
+            "title": "Resource import",
+            "file": "page_171.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-import-resursov"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-menedzhery-resursov"
+      },
+      {
+        "title": "Code managers",
+        "file": "page_172.html",
+        "children": [
+          {
+            "title": "Permission manager",
+            "file": "page_173.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-razresheniy"
+          },
+          {
+            "title": "AppCompat manager",
+            "file": "page_174.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-appcompat"
+          },
+          {
+            "title": "AndroidManifest manager",
+            "file": "page_175.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-androidmanifest"
+          },
+          {
+            "title": "View custom blocks",
+            "file": "page_176.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-prosmotr-polzovatelskih-blokov"
+          },
+          {
+            "title": "XML command manager",
+            "file": "page_177.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-xml-komand"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-menedzhery-koda"
+      },
+      {
+        "title": "Protection managers",
+        "file": "page_178.html",
+        "children": [
+          {
+            "title": "Code compression manager",
+            "file": "page_179.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-szhatiya-koda"
+          },
+          {
+            "title": "StringFog manager",
+            "file": "page_180.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-stringfog"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-menedzhery-zaschity"
+      },
+      {
+        "title": "View and debug",
+        "file": "page_181.html",
+        "children": [
+          {
+            "title": "Show source code",
+            "file": "page_182.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-pokazat-ishodnyy-kod"
+          },
+          {
+            "title": "Logcat reader manager",
+            "file": "page_183.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-chteniya-logcat"
+          },
+          {
+            "title": "Collection manager",
+            "file": "page_184.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-menedzher-kollektsiy"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-prosmotr-i-otladka"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-menyu-nastroyka-vnutri-proekta"
+  },
+  {
+    "title": "Project development (practice)",
+    "file": "page_185.html",
+    "children": [
+      {
+        "title": "Project 1. Hello World",
+        "file": "page_186.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-1-hello-world"
+      },
+      {
+        "title": "Project 2. Button + Toast",
+        "file": "page_192.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-2-knopka-toast"
+      },
+      {
+        "title": "Project 3. Calculator",
+        "file": "page_197.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-3-kalkulyator"
+      },
+      {
+        "title": "Project 4. Notes",
+        "file": "page_203.html",
+        "children": [
+          {
+            "title": "SharedPreferences for storage",
+            "file": "page_207.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-sharedpreferences-dlya-hraneniya"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-proekt-4-zametki"
+      },
+      {
+        "title": "Project 5. Weather (internet + API)",
+        "file": "page_209.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-5-pogoda-internet-api"
+      },
+      {
+        "title": "Project 6. Multilingual app",
+        "file": "page_215.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-proekt-6-mnogoyazychnoe-prilozhenie"
+      },
+      {
+        "title": "Project 7. Final big project Help Studio",
+        "file": "page_221.html",
+        "children": [
+          {
+            "title": "MainActivity layout",
+            "file": "page_222.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-ekrana-mainactivity"
+          },
+          {
+            "title": "EditorActivity layout",
+            "file": "page_223.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-ekrana-editoractivity"
+          },
+          {
+            "title": "PreviewActivity layout",
+            "file": "page_224.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-ekrana-previewactivity"
+          },
+          {
+            "title": "Разметка SettingActivity",
+            "file": "page_225.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-razmetka-settingactivity"
+          },
+          {
+            "title": "Components",
+            "file": "page_226.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "component-komponenty"
+          },
+          {
+            "title": "MainActivity logic",
+            "file": "page_227.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-mainactivity"
+          },
+          {
+            "title": "EditorActivity logic",
+            "file": "page_39.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-editoractivity"
+          },
+          {
+            "title": "PreviewActivity logic",
+            "file": "page_40.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-previewactivity"
+          },
+          {
+            "title": "SettingsActivity logic",
+            "file": "page_187.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-logika-settingsactivity"
+          },
+          {
+            "title": "Adding ads",
+            "file": "page_188.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-dobavlenie-reklamy"
+          },
+          {
+            "title": "Publishing to GooglePlay",
+            "file": "page_189.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-publikatsiya-v-googleplay"
+          },
+          {
+            "title": "Completion",
+            "file": "page_190.html",
+            "children": [],
+            "template_index": 0,
+            "anchor": "block-zavershenie"
+          }
+        ],
+        "template_index": 0,
+        "anchor": "block-proekt-7-finalnyy-bolshoy-proekt-help-studio"
+      }
+    ],
+    "template_index": 0,
+    "anchor": "category-razrabotka-proektov-praktika"
+  }
+]
