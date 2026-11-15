@@ -23,3 +23,33 @@
         // Молча выходим — русская версия работает
     }
 })();
+
+// --- Мультиязычное меню (структура) ---
+(function() {
+    var params = new URLSearchParams(window.location.search);
+    var lang = params.get('lang');
+    if (!lang || lang === 'ru') return;
+
+    fetch('structure_' + lang + '.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            var flat = [];
+            function walk(items) {
+                for (var i = 0; i < items.length; i++) {
+                    flat.push(items[i].title);
+                    if (items[i].children && items[i].children.length > 0) {
+                        walk(items[i].children);
+                    }
+                }
+            }
+            walk(data);
+
+            var titles = document.querySelectorAll('.sidebar-menu .tree-title');
+            for (var i = 0; i < titles.length && i < flat.length; i++) {
+                if (flat[i]) {
+                    titles[i].textContent = flat[i];
+                }
+            }
+        })
+        .catch(function(e) { console.warn('Menu translation failed:', e); });
+})();
