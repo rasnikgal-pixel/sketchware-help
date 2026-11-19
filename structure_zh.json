@@ -1445,5 +1445,137 @@
     ],
     "template_index": 0,
     "anchor": "category-razrabotka-proektov-praktika"
+  },
+  {
+    "title": "控件",
+    "file": "page_1.html",
+    "children": [
+      {
+        "title": "AdView (广告横幅)",
+        "file": "block-adview-reklamnyy-banner.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-adview-reklamnyy-banner"
+      },
+      {
+        "title": "Button (按钮)",
+        "file": "block-button-knopka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-button-knopka"
+      },
+      {
+        "title": "CalendarView (日历)",
+        "file": "block-calendarview-kalendar.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-calendarview-kalendar"
+      },
+      {
+        "title": "CheckBox (复选框)",
+        "file": "block-checkbox-galochka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-checkbox-galochka"
+      },
+      {
+        "title": "EditText (输入框)",
+        "file": "block-edittext-pole-vvoda.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-edittext-pole-vvoda"
+      },
+      {
+        "title": "ImageView (图片)",
+        "file": "block-imageview-izobrazhenie.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-imageview-izobrazhenie"
+      },
+      {
+        "title": "LinearLayout (垂直)",
+        "file": "block-linear-v-vertikalnyy.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-linear-v-vertikalnyy"
+      },
+      {
+        "title": "ListView (垂直列表)",
+        "file": "block-listview-vertikalnyy-spisok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-listview-vertikalnyy-spisok"
+      },
+      {
+        "title": "MapView (Google 地图)",
+        "file": "block-mapview-karta-google.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-mapview-karta-google"
+      },
+      {
+        "title": "ProgressBar (加载指示器)",
+        "file": "block-progressbar-indikator-zagruzki.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-progressbar-indikator-zagruzki"
+      },
+      {
+        "title": "RelativeLayout (相对布局)",
+        "file": "block-relativelayout-otnositelnyy-maket.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-relativelayout-otnositelnyy-maket"
+      },
+      {
+        "title": "HorizontalScrollView (水平滚动)",
+        "file": "block-scroll-h-gorizontalnaya-prokrutka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-scroll-h-gorizontalnaya-prokrutka"
+      },
+      {
+        "title": "ScrollView (垂直滚动)",
+        "file": "block-scroll-v-vertikalnaya-prokrutka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-scroll-v-vertikalnaya-prokrutka"
+      },
+      {
+        "title": "SeekBar (滑块)",
+        "file": "block-seekbar-polzunok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-seekbar-polzunok"
+      },
+      {
+        "title": "Spinner (下拉列表)",
+        "file": "block-spinner-vypadayuschiy-spisok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-spinner-vypadayuschiy-spisok"
+      },
+      {
+        "title": "Switch (开关)",
+        "file": "block-switch-tumbler.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-switch-tumbler"
+      },
+      {
+        "title": "TextView (文本)",
+        "file": "block-textview-tekst.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-textview-tekst"
+      },
+      {
+        "title": "WebView (迷你浏览器)",
+        "file": "block-webview-mini-brauzer.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-webview-mini-brauzer"
+      }
+    ]
   }
 ]

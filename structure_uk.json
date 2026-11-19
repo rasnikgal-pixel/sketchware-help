@@ -1445,5 +1445,137 @@
     ],
     "template_index": 0,
     "anchor": "category-razrabotka-proektov-praktika"
+  },
+  {
+    "title": "Віджети",
+    "file": "page_1.html",
+    "children": [
+      {
+        "title": "AdView (Рекламний банер)",
+        "file": "block-adview-reklamnyy-banner.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-adview-reklamnyy-banner"
+      },
+      {
+        "title": "Button (Кнопка)",
+        "file": "block-button-knopka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-button-knopka"
+      },
+      {
+        "title": "CalendarView (Календар)",
+        "file": "block-calendarview-kalendar.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-calendarview-kalendar"
+      },
+      {
+        "title": "CheckBox (Галочка)",
+        "file": "block-checkbox-galochka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-checkbox-galochka"
+      },
+      {
+        "title": "EditText (Поле введення)",
+        "file": "block-edittext-pole-vvoda.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-edittext-pole-vvoda"
+      },
+      {
+        "title": "ImageView (Зображення)",
+        "file": "block-imageview-izobrazhenie.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-imageview-izobrazhenie"
+      },
+      {
+        "title": "LinearLayout (Вертикальний)",
+        "file": "block-linear-v-vertikalnyy.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-linear-v-vertikalnyy"
+      },
+      {
+        "title": "ListView (Вертикальний список)",
+        "file": "block-listview-vertikalnyy-spisok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-listview-vertikalnyy-spisok"
+      },
+      {
+        "title": "MapView (Карта Google)",
+        "file": "block-mapview-karta-google.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-mapview-karta-google"
+      },
+      {
+        "title": "ProgressBar (Індикатор завантаження)",
+        "file": "block-progressbar-indikator-zagruzki.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-progressbar-indikator-zagruzki"
+      },
+      {
+        "title": "RelativeLayout (Відносний макет)",
+        "file": "block-relativelayout-otnositelnyy-maket.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-relativelayout-otnositelnyy-maket"
+      },
+      {
+        "title": "HorizontalScrollView (Горизонтальна прокрутка)",
+        "file": "block-scroll-h-gorizontalnaya-prokrutka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-scroll-h-gorizontalnaya-prokrutka"
+      },
+      {
+        "title": "ScrollView (Вертикальна прокрутка)",
+        "file": "block-scroll-v-vertikalnaya-prokrutka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-scroll-v-vertikalnaya-prokrutka"
+      },
+      {
+        "title": "SeekBar (Повзунок)",
+        "file": "block-seekbar-polzunok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-seekbar-polzunok"
+      },
+      {
+        "title": "Spinner (Спадний список)",
+        "file": "block-spinner-vypadayuschiy-spisok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-spinner-vypadayuschiy-spisok"
+      },
+      {
+        "title": "Switch (Перемикач)",
+        "file": "block-switch-tumbler.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-switch-tumbler"
+      },
+      {
+        "title": "TextView (Текст)",
+        "file": "block-textview-tekst.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-textview-tekst"
+      },
+      {
+        "title": "WebView (Міні-браузер)",
+        "file": "block-webview-mini-brauzer.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-webview-mini-brauzer"
+      }
+    ]
   }
 ]

@@ -1445,5 +1445,137 @@
     ],
     "template_index": 0,
     "anchor": "category-razrabotka-proektov-praktika"
+  },
+  {
+    "title": "Widgets",
+    "file": "page_1.html",
+    "children": [
+      {
+        "title": "AdView (Ad Banner)",
+        "file": "block-adview-reklamnyy-banner.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-adview-reklamnyy-banner"
+      },
+      {
+        "title": "Button",
+        "file": "block-button-knopka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-button-knopka"
+      },
+      {
+        "title": "CalendarView",
+        "file": "block-calendarview-kalendar.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-calendarview-kalendar"
+      },
+      {
+        "title": "CheckBox",
+        "file": "block-checkbox-galochka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-checkbox-galochka"
+      },
+      {
+        "title": "EditText (Input Field)",
+        "file": "block-edittext-pole-vvoda.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-edittext-pole-vvoda"
+      },
+      {
+        "title": "ImageView",
+        "file": "block-imageview-izobrazhenie.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-imageview-izobrazhenie"
+      },
+      {
+        "title": "LinearLayout (Vertical)",
+        "file": "block-linear-v-vertikalnyy.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-linear-v-vertikalnyy"
+      },
+      {
+        "title": "ListView (Vertical List)",
+        "file": "block-listview-vertikalnyy-spisok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-listview-vertikalnyy-spisok"
+      },
+      {
+        "title": "MapView (Google Map)",
+        "file": "block-mapview-karta-google.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-mapview-karta-google"
+      },
+      {
+        "title": "ProgressBar (Loading Indicator)",
+        "file": "block-progressbar-indikator-zagruzki.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-progressbar-indikator-zagruzki"
+      },
+      {
+        "title": "RelativeLayout",
+        "file": "block-relativelayout-otnositelnyy-maket.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-relativelayout-otnositelnyy-maket"
+      },
+      {
+        "title": "HorizontalScrollView",
+        "file": "block-scroll-h-gorizontalnaya-prokrutka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-scroll-h-gorizontalnaya-prokrutka"
+      },
+      {
+        "title": "ScrollView (Vertical Scroll)",
+        "file": "block-scroll-v-vertikalnaya-prokrutka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-scroll-v-vertikalnaya-prokrutka"
+      },
+      {
+        "title": "SeekBar (Slider)",
+        "file": "block-seekbar-polzunok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-seekbar-polzunok"
+      },
+      {
+        "title": "Spinner (Dropdown List)",
+        "file": "block-spinner-vypadayuschiy-spisok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-spinner-vypadayuschiy-spisok"
+      },
+      {
+        "title": "Switch (Toggle)",
+        "file": "block-switch-tumbler.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-switch-tumbler"
+      },
+      {
+        "title": "TextView (Text)",
+        "file": "block-textview-tekst.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-textview-tekst"
+      },
+      {
+        "title": "WebView (Mini Browser)",
+        "file": "block-webview-mini-brauzer.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-webview-mini-brauzer"
+      }
+    ]
   }
 ]

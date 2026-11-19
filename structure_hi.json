@@ -1445,5 +1445,137 @@
     ],
     "template_index": 0,
     "anchor": "category-razrabotka-proektov-praktika"
+  },
+  {
+    "title": "विजेट",
+    "file": "page_1.html",
+    "children": [
+      {
+        "title": "AdView (विज्ञापन बैनर)",
+        "file": "block-adview-reklamnyy-banner.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-adview-reklamnyy-banner"
+      },
+      {
+        "title": "Button (बटन)",
+        "file": "block-button-knopka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-button-knopka"
+      },
+      {
+        "title": "CalendarView (कैलेंडर)",
+        "file": "block-calendarview-kalendar.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-calendarview-kalendar"
+      },
+      {
+        "title": "CheckBox (चेकबॉक्स)",
+        "file": "block-checkbox-galochka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-checkbox-galochka"
+      },
+      {
+        "title": "EditText (इनपुट फ़ील्ड)",
+        "file": "block-edittext-pole-vvoda.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-edittext-pole-vvoda"
+      },
+      {
+        "title": "ImageView (छवि)",
+        "file": "block-imageview-izobrazhenie.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-imageview-izobrazhenie"
+      },
+      {
+        "title": "LinearLayout (ऊर्ध्वाधर)",
+        "file": "block-linear-v-vertikalnyy.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-linear-v-vertikalnyy"
+      },
+      {
+        "title": "ListView (ऊर्ध्वाधर सूची)",
+        "file": "block-listview-vertikalnyy-spisok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-listview-vertikalnyy-spisok"
+      },
+      {
+        "title": "MapView (Google मानचित्र)",
+        "file": "block-mapview-karta-google.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-mapview-karta-google"
+      },
+      {
+        "title": "ProgressBar (लोडिंग संकेतक)",
+        "file": "block-progressbar-indikator-zagruzki.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-progressbar-indikator-zagruzki"
+      },
+      {
+        "title": "RelativeLayout (सापेक्ष लेआउट)",
+        "file": "block-relativelayout-otnositelnyy-maket.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-relativelayout-otnositelnyy-maket"
+      },
+      {
+        "title": "HorizontalScrollView (क्षैतिज स्क्रॉल)",
+        "file": "block-scroll-h-gorizontalnaya-prokrutka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-scroll-h-gorizontalnaya-prokrutka"
+      },
+      {
+        "title": "ScrollView (ऊर्ध्वाधर स्क्रॉल)",
+        "file": "block-scroll-v-vertikalnaya-prokrutka.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-scroll-v-vertikalnaya-prokrutka"
+      },
+      {
+        "title": "SeekBar (स्लाइडर)",
+        "file": "block-seekbar-polzunok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-seekbar-polzunok"
+      },
+      {
+        "title": "Spinner (ड्रॉपडाउन सूची)",
+        "file": "block-spinner-vypadayuschiy-spisok.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-spinner-vypadayuschiy-spisok"
+      },
+      {
+        "title": "Switch (टॉगल)",
+        "file": "block-switch-tumbler.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-switch-tumbler"
+      },
+      {
+        "title": "TextView (टेक्स्ट)",
+        "file": "block-textview-tekst.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-textview-tekst"
+      },
+      {
+        "title": "WebView (मिनी ब्राउज़र)",
+        "file": "block-webview-mini-brauzer.html",
+        "children": [],
+        "template_index": 0,
+        "anchor": "block-webview-mini-brauzer"
+      }
+    ]
   }
 ]
